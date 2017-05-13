@@ -1,0 +1,16 @@
+<template name="recommend">
+    <section class="article">
+        <header class="article-caption">
+            <h1>推荐活动</h1>
+        </header>
+        <div class="newslist newslist-grid-3">
+            <ul>
+                {{#each item in items}}
+                <li>
+                    {{> recommend_item item=item }}
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+    </section>
+</template>

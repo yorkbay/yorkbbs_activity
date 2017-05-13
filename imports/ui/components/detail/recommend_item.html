@@ -1,0 +1,32 @@
+<template name="recommend_item">
+    <div class="newslist-content">
+        <div class="newslist-cover">
+            <a href="" title=""><img src="/img/img1.jpg" alt=""></a>
+            <p class="newslist-channel"><a href="" title="">{{item.pr}}</a></p>
+            <!--<span class="newslist-label">热门</span>-->
+        </div>
+        <div class="newslist-recommend-cont">
+            <div class="newslist-body">
+                <div class="newslist-date">{{item.btime}} 至 {{item.etime}}</div>
+                <div class="newslist-title newslist-trend-title"><a href="view.html" title="">{{item.ti}}</a></div>
+            </div>
+            <div class="newslist-footer">
+                <div class="newslist-tags">
+                    {{#each tg in item.tg}}
+                        <a href="">#{{tg}} </a>
+                    {{/each}}
+                </div>
+                <div class="newslist-bookmark">
+                    <a href="">
+                        <img src="/img/icon-share.png" alt="" />
+                        <img src="/img/icon-share-red.png" alt="" />
+                    </a>
+                    <a href="">
+                        <img src="/img/icon-heard.png" alt="" />
+                        <img src="/img/icon-heard-red.png" alt="" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

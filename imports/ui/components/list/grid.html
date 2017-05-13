@@ -1,0 +1,17 @@
+<template name="grid">
+    <div class="row">
+        <div class="newslist newslist-grid J-showcase">
+            <div class="playlist-btn playlist-prev"><span></span></div>
+            <div class="playlist-btn palylist-next"><span></span></div>
+            <div class="hot-playlist-content">
+                <ul>
+                    {{#each item in items}}
+                    <li>
+                        {{> grid_item item=item}}
+                    </li>
+                    {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,90 @@
+<template name="detail">
+   {{> share_layer }}
+   {{> error }}
+    <div class="row">
+        <div class="breadcrumb">
+            <i class="breadcrumb-home"><img src="/img/icon-home.jpg" alt="" /></i>
+            <a href="/">网站首页</a>
+            <span>></span>
+            <a href="">活动预告</a>
+            <span>></span>
+            <a href="">详情</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="views">
+            <div class="views-box">
+                <div class="views-cover">
+                    <img src="{{item.img}}" alt="" />
+                </div>
+                <div class="views-content">
+                    <h2>{{item.ti}}</h2>
+                    <ul>
+                        <li>
+                            <div class="views-content-title">时间</div>
+                            <div class="views-content-meta">{{item.btime}} – {{item.etime}}</div>
+                        </li>
+                        <li>
+                            <div class="views-content-title">费用</div>
+                            <div class="views-content-meta">{{item.pr}}</div>
+                        </li>
+                        <li>
+                            <div class="views-content-title">地址</div>
+                            <div class="views-content-meta">{{item.location}}</div>
+                        </li>
+                    </ul>
+                    <div class="views-content-go">
+                        <a href="">
+                            <i>+</i>
+                            <em>立即参加</em>
+                        </a>
+                    </div>
+                    <div class="views-social">
+                        <a href="">
+                            <img src="/img/icon-heard.png" alt="">
+                            <img src="/img/icon-heard-red.png" alt="">
+                            收藏
+                        </a>
+                        <a class="J-share" href="http://fenxianglujing.com">
+                            <img src="/img/icon-share.png" alt="">
+                            <img src="/img/icon-share-red.png" alt="">
+                            分享
+                        </a>
+                    </div>
+                </div>
+                {{> user }}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="l-main">
+            <section class="article">
+                <header class="article-caption">
+                    <h1>活动详情</h1>
+                </header>
+                <article class="article-cont">
+                    {{{item.content}}}
+                </article>
+                <dl class="article-tags">
+                    <dt>标签：</dt>
+                    <dd>
+                        {{#each tg in item.tg}}
+                        <a href="">{{tg}}</a>
+                        <span> | </span>
+                        {{/each}}
+                    </dd>
+                </dl>
+                {{> share }}
+            </section>
+            {{> recommend items=item.recommends}}
+            {{> comment }}
+        </div>
+        <aside class="l-aside-widget">
+            {{> rightmap }}
+            {{> simple }}
+            <div class="active-aside-wechat">
+                <img src="/img/share-wechat.jpg" alt="约克论坛">
+            </div>
+        </aside>
+    </div>
+</template>

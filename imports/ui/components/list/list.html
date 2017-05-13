@@ -1,0 +1,130 @@
+<template name="list">
+    <div class="l-container">
+        <div class="newslist newslist-image">
+            <div class="newslist-image-caption">
+                <h2><a href="" class="newslist-images-current">推荐活动</a></h2>
+                <h2><a href="">最新活动</a></h2>
+                <div class="newslist-image-filter J-newslist-filter">
+                    <a href="">筛选 <i><img src="img/icon-filter.png" alt="" /></i></a>
+                </div>
+            </div>
+            <div class="newslist-caption-conent">
+                <div class="newslist-filter">
+                    <div class="formTable-tags-recommend">
+                        <span>今天</span>
+                        <a href="#" class="tags-close">
+                            <img src="img/close.jpg">
+                        </a>
+                    </div>
+                    <div class="formTable-tags-recommend">
+                        <span>免费活动</span>
+                        <a href="#" class="tags-close">
+                            <img src="img/close.jpg">
+                        </a>
+                    </div>
+                    <div class="formTable-tags-recommend">
+                        <span>周末好去处</span>
+                        <a href="#" class="tags-close">
+                            <img src="img/close.jpg">
+                        </a>
+                    </div>
+                </div>
+                <ul>
+                    {{#each item in items}}
+                    <li>
+                    {{> list_item item=item}}
+                    </li>
+                    {{/each}}
+                </ul>
+                <ul>
+                    <li>
+                        <div class="newslist-content">
+                            <div class="newslist-cover newslist-image-cover">
+                                <a href="" title=""><img src="img/img1.jpg" alt=""></a>
+                                <p class="newslist-channel"><a href="" title="">$5，12岁以下儿童免费</a></p>
+                            </div>
+                            <div class="newslist-image-cont">
+                                <div class="newslist-body">
+                                    <time class="newslist-date">11月20日 至 11月20日</time>
+                                    <div class="newslist-title"><a href="" title="">最新Prima Academy盛大开张——音乐、绘画、舞蹈</a></div>
+                                    <div class="newslist-date newslist-address">Langstaff Community Centre Gym A – 155 Red Maple Road, L4B 4P9</div>
+                                </div>
+                                <div class="newslist-footer">
+                                    <div class="newslist-tags">
+                                        <a href="">#周末好去处 </a>
+                                        <a href="">#公益讲座</a>
+                                    </div>
+                                    <div class="newslist-bookmark">
+                                        <a href="">
+                                            <img src="img/icon-share.png" alt="">
+                                            <img src="img/icon-share-red.png" alt="">
+                                        </a>
+                                        <a href="">
+                                            <img src="img/icon-heard.png" alt="">
+                                            <img src="img/icon-heard-red.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="listpage">
+                <div class="pagination">
+                    <div class="pagination-page">
+                        <!--
+                        <div class="page-wrap">
+                            <a href="#" class="page-next icon-disable">
+                                <span class="page-icon-next"></span> 第一页
+                            </a>
+                        </div>
+                        -->
+                        <div class="page-wrap">
+                            <a href="#" class="page-next icon-disable">
+                                <span class="page-icon-next"></span> 上一页
+                            </a>
+                        </div>
+                        <div class="page-wrap page-wrap-hover">
+                            <div class="page-bg"></div>
+                            <a class="page">1</a>
+                        </div>
+                        <div class="page-wrap">
+                            <div class="page-bg"></div>
+                            <a class="page">2</a>
+                        </div>
+                        <div class="page-wrap">
+                            <div class="page-bg"></div>
+                            <a class="page">3</a>
+                        </div>
+                        <div class="page-wrap">
+                            <div class="page-bg"></div>
+                            <a class="page">4</a>
+                        </div>
+                        <div class="page-wrap">
+                            <div class="page-bg"></div>
+                            <a class="page">5</a>
+                        </div>
+                        <div class="page-wrap">
+                            <a href="#" class="page-next icon-disable">
+                                <span class="page-icon-next"></span> 下一页
+                            </a>
+                        </div>
+                        <!--
+                        <div class="page-wrap">
+                            <a href="#" class="page-next icon-disable">
+                                <span class="page-icon-next"></span> 最后页
+                            </a>
+                        </div>
+                        -->
+                    </div>
+                    <div class="pagination-count">
+                        <span>共</span>
+                        <span>100</span>
+                        <span>页</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,8 +1,10 @@
 <template name="App_body">
+  {{> header }}
+
   {{> Template.dynamic template=main}}
 
-    <link rel="stylesheet" href="css/active.css">
-    <script src="js/jquery.js"></script>
-    <script src="js/play-main.js"></script>
-    <script src="plugin/layer/layer.js"></script>
+  {{> footer }}
+
+    <script src="/js/play-main.js"></script>
+    <script src="/plugin/layer/layer.js"></script>
 </template>

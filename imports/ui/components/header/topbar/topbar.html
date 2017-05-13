@@ -1,0 +1,126 @@
+<template name="topbar">
+    <div id="top">
+        <div class="row top-row">
+            <ul class="top-meta">
+                <li title="加拿大最具影响力的中文网络媒体!" id="web-top-des">加拿大最具影响力的中文网络媒体!</li>
+            </ul>
+            <ul class="top-nav">
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="top-down" id="user-login-show">
+                    <div class="top-login fl drop-down">
+                        <a id="blogin_btn" class="login_over" href="">登录</a>
+                        <form onsubmit="return false;">
+                            <ul class="t_list1 drop-downcont">
+                                <li>
+                                        <span>
+                                            <input type="text" class="top-login-text text_user" value=""
+                                                   placeholder="用户名/邮箱">
+                                        </span>
+                                </li>
+                                <li>
+                                    <span><input type="password" class="top-login-text text_paddword"></span>
+                                </li>
+                                <li>
+                                        <span>
+                                            <input type="checkbox" id="forver" class="topbutton" value="" name="forver"> 自动登录
+                                        </span>
+                                    <span>
+                                            <a class="gray" target="_blank" href="">密码找回</a>
+                                        </span>
+                                </li>
+                                <li><input type="submit" class="top-login-button f14" value="登 录"
+                                           onclick="javascript:LoginSubmit();">
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="top-down" id="user-register-show">
+                    <div class="top-nav-grid">
+                        <a title="还没有账号，现在就注册！" target="_blank" href=""><em>注册</em></a>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name" id="user-info-show">
+                    <div class="top-nav-grid"><a target="_blank" href=""><em class="red">约克管家</em> <i
+                            class="topspeak1 dong"></i></a></div>
+                    <dl class="nav-cont nav-my">
+                        <dt></dt>
+                        <dd><a target="_blank" href="">我的帖子</a></dd>
+                        <dd><a target="_blank" href="">我的收藏</a></dd>
+                        <dd><a target="_blank" href="">个人资料</a></dd>
+                        <dd><a target="_blank" href="">我的关注</a></dd>
+                        <dd><a target="_blank" href="">设置中心</a></dd>
+                        <dd><a href="">退出</a></dd>
+                    </dl>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name" style="" id="user-pm-show">
+                    <div class="top-nav-grid"><a href="javascript:;"><em> <img alt="消息" src="img/topmess.gif"
+                                                                               id="icon_pm"> 消息</em> <i
+                            class="topspeak1 dong"></i> </a>
+                    </div>
+                    <dl class="nav-cont nav-my">
+                        <dd><a target="_blank" href=""> 新私信 </a></dd>
+                        <dd><a target="_blank" href="">新通知 </a></dd>
+                    </dl>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <a title="点击进入约克银行" target="_blank" href=""><em></em><i class="topspeak2 dong1"></i></a>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <a title="手机约克论坛" target="_blank" href=""><em></em><i class="topspeak3 dong1"></i></a>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <em></em><i title="约克论坛新浪微博" class="topspeak4 dong1"></i>
+                    </div>
+                    <div class="nav-cont top-down5 weiimg">
+                            <span>
+                                <font><label>官方微博</label> <br>@约克论坛<br>随时了解我们的最新动态</font>
+                                <s><img alt="约克论坛微信" src="img/yorkbbs-weibo.jpg"></s>
+                            </span>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid top-down5">
+                        <em></em><i title="约克论坛微信" class="topspeak5 dong1"></i>
+                    </div>
+                    <div class="nav-cont top-down5 weiimg">
+                            <span>
+                                <font><label class="f14">YorkBBS 微信号</label> <br>yorkbbs2002<br>扫一扫，有惊喜</font>
+                                <s><img alt="约克论坛微信" src="img/er.jpg"></s>
+                            </span>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <a target="_self" title="點擊以繁體中文方式浏覽" id="StranLink" href="javascript:StranBody();"><em>繁体</em></a>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <a title="点击查看全站导航" target="_blank" href=""> <em>导航</em></a>
+                    </div>
+                </li>
+                <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';"
+                    class="nav-name">
+                    <div class="top-nav-grid">
+                        <a title="点击查看广告服务" target="_blank" href=""> <em>广告服务</em></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
