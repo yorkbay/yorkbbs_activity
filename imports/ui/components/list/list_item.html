@@ -6,9 +6,11 @@
         </div>
         <div class="newslist-image-cont">
             <div class="newslist-body">
+                <a href="/{{item._id}}" title="">
                 <time class="newslist-date">{{ item.btime }} 至 {{ item.etime }}</time>
-                <div class="newslist-title"><a href="/{{item._id}}" title="">{{item.ti}}</a></div>
+                <div class="newslist-title">{{item.ti}}</div>
                 <div class="newslist-date newslist-address">{{item.location}}</div>
+                </a>
             </div>
             <div class="newslist-footer">
                 <div class="newslist-tags">

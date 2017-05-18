@@ -33,11 +33,12 @@
             </div>
             -->
             <ul class="imagepost-list">
+                {{#each item in items}}
                 <li>
-                    <div class="imagepost-cover"><a href=""><img src="img/img1.jpg" alt=""></a></div>
+                    <div class="imagepost-cover"><a href="{{item._id}}"><img src="{{item.img}}" alt=""></a></div>
                     <div class="imagepost-cont">
                         <p class="imagepost-summary">
-                            <a href="">旺市近Steeles 三房三卫镇屋出租</a>
+                            <a href="{{item._id}}">{{item.ti}}</a>
                         </p>
                         <div class="imagepost-highlight">
                             <em>$4200</em>
@@ -45,54 +46,7 @@
                         </div>
                     </div>
                 </li>
-                <li>
-                    <div class="imagepost-cover"><a href=""><img src="img/img1.jpg" alt=""></a></div>
-                    <div class="imagepost-cont">
-                        <p class="imagepost-summary">
-                            <a href="">旺市近Steeles 三房三卫镇屋出租</a>
-                        </p>
-                        <div class="imagepost-highlight">
-                            <em>$4200</em>
-                            <i>/月</i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="imagepost-cover"><a href=""><img src="img/img1.jpg" alt=""></a></div>
-                    <div class="imagepost-cont">
-                        <p class="imagepost-summary">
-                            <a href="">旺市近Steeles 三房三卫镇屋出租</a>
-                        </p>
-                        <div class="imagepost-highlight">
-                            <em>$4200</em>
-                            <i>/月</i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="imagepost-cover"><a href=""><img src="img/img1.jpg" alt=""></a></div>
-                    <div class="imagepost-cont">
-                        <p class="imagepost-summary">
-                            <a href="">旺市近Steeles 三房三卫镇屋出租</a>
-                        </p>
-                        <div class="imagepost-highlight">
-                            <em>$4200</em>
-                            <i>/月</i>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="imagepost-cover"><a href=""><img src="img/img1.jpg" alt=""></a></div>
-                    <div class="imagepost-cont">
-                        <p class="imagepost-summary">
-                            <a href="">旺市近Steeles 三房三卫镇屋出租</a>
-                        </p>
-                        <div class="imagepost-highlight">
-                            <em>$4200</em>
-                            <i>/月</i>
-                        </div>
-                    </div>
-                </li>
+                {{/each}}
             </ul>
         </section>
     </div>
