@@ -1,20 +1,27 @@
 <template name="topbar_mobile">
-    <div class="layer" style="display: none;">
-        <div class="layer-large layer-content">
-            <h1>登录
-                <a class="layer-close" href=""><img src="assets/img/icon-close-l.png" alt="" /></a>
-            </h1>
-            <ul>
-                <li><span class="layer-cate">用户名</span><em><input type="text" class="layer-input-large" value="" /></em></li>
-                <li><span class="layer-cate">密码</span><em><input type="text" class="layer-input-large" value="" /></em></li>
-                <li><span class="layer-cate">&nbsp;</span>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>保持登录状态</label></em>
-                </li>
-                <li class="layer-button layer-button-left">
-                    <span class="layer-cate">&nbsp;</span>
-                    <input type="button" class="layer-yes"  value="确定" />
-                </li>
-            </ul>
+    <div class="row topbar-mobile-box">
+        <div class="topbar-mobile">
+            <div class="topbar-mobile-menu"><a href="javascript:void(0)" class="topbar-mobile-menu-back"><img src="/img/icon-menu.png" alt="" /></a> </div>
+            <div class="topbar-mobile-title">
+                <h1>活动</h1>
+            </div>
+            <div class="topbar-mobile-meta">
+                <a class="J-min-screen-search" href="javascript:void(0)"><img src="/img/icon-search.png" alt="" /></a>
+                <a href="javascript:void(0)"><img src="/img/icon-home.png" alt="" /></a>
+            </div>
         </div>
+        <div class="form-search-M" style="display: none;">
+            <div class="form-input-group">
+                <input class="form-filter-search-input" name="keyword" value="" placeholder="搜索客户名称、联系电话 " type="text">
+                <input class="form-filter-search-button" type="button" value="搜索" />
+            </div>
+        </div>
+        <ul class="topbar-mobile-list">
+            <li><a href="">首页</a></li>
+            <li><a href="">新闻</a></li>
+            <li><a href="">论坛</a></li>
+            <li><a href="">美食</a></li>
+            <li><a href="">黄页</a></li>
+        </ul>
     </div>
 </template>

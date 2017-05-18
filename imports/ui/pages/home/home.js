@@ -84,7 +84,7 @@ Template.App_home.helpers({
     ],
     "list_items": [
         {
-            "_id":"66666",
+            "_id":"1111",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"1111111",
@@ -95,7 +95,7 @@ Template.App_home.helpers({
             "tg":["周末好去处1","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"2222",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"2222222",
@@ -106,7 +106,7 @@ Template.App_home.helpers({
             "tg":["周末好去处2","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"3333",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"333333",
@@ -117,7 +117,7 @@ Template.App_home.helpers({
             "tg":["周末好去处3","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"4444",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"1111111",
@@ -128,7 +128,7 @@ Template.App_home.helpers({
             "tg":["周末好去处4","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"5555",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"4444",
@@ -139,7 +139,7 @@ Template.App_home.helpers({
             "tg":["周末好去处","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"666",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"5555",
@@ -150,7 +150,7 @@ Template.App_home.helpers({
             "tg":["周末好去处","公益讲座"]
         },
         {
-            "_id":"66666",
+            "_id":"777",
             "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
             "img":"img/img1.jpg",
             "sub":"66666",

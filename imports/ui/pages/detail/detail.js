@@ -12,6 +12,13 @@ import '../../components/googlemap/rightmap.js';
 import '../../components/layer/error.js';
 import '../../components/layer/share.js';
 
+
+Template.detail.onRendered(function () {
+    var instance = this;
+    instance.$('html,body').scrollTop();
+
+});
+
 Template.detail.helpers({
     "item":{
         "ti":"2017加拿大国家电影节免费看电影111",
@@ -47,6 +54,48 @@ Template.detail.helpers({
                 "etime":"11月23日",
                 "tg":["周末好去处3","公益讲座"]
             },
+        ],
+        "simples":[
+            {
+                "_id":"1111",
+                "img":"img/img1.jpg",
+                "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+                "pr":"1111111",
+                "hot":true,
+                "btime":"11月20日",
+                "etime":"11月23日",
+                "tg":["周末好去处1","公益讲座"]
+            },
+            {
+                "_id":"2222",
+                "img":"img/img1.jpg",
+                "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+                "pr":"2222222",
+                "hot":false,
+                "btime":"11月20日",
+                "etime":"11月23日",
+                "tg":["周末好去处2","公益讲座"]
+            },
+            {
+                "_id":"3333",
+                "img":"img/img1.jpg",
+                "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+                "pr":"333333",
+                "hot":true,
+                "btime":"11月20日",
+                "etime":"11月23日",
+                "tg":["周末好去处3","公益讲座"]
+            },
+            {
+                "_id":"33333",
+                "img":"img/img1.jpg",
+                "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+                "pr":"1111111",
+                "hot":true,
+                "btime":"11月20日",
+                "etime":"11月23日",
+                "tg":["周末好去处4","公益讲座"]
+            }
         ]
     }
 });
