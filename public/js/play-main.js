@@ -1,4 +1,6 @@
 (function(){
+
+
 	$.fn.showCase = function(optioins){
 		return new ShowCase($(this),optioins)
 	}
@@ -60,6 +62,36 @@
 	}
 })();
 $(function(){
+
+	if($('#startDate').content) {
+        $('#startDate').datetimepicker({
+            format: 'yyyy-mm-dd',
+            startView: 2,
+            minView: 2,
+            bootcssVer: 3
+        });
+        $('#startTime').datetimepicker({
+            format: 'hh:ii',
+            startView: 1,
+            minView: 1,
+            maxView: 1,
+            bootcssVer: 3
+        });
+        $('#endDate').datetimepicker({
+            format: 'yyyy-mm-dd',
+            startView: 2,
+            minView: 2,
+            bootcssVer: 3
+        });
+        $('#endTime').datetimepicker({
+            format: 'hh:ii',
+            startView: 1,
+            minView: 1,
+            maxView: 1,
+            bootcssVer: 3
+        });
+    }
+
 	/*窄屏菜单*/
 	$('.topbar-mobile-menu-back').click(function(){
 		$('.topbar-mobile-list').toggle();

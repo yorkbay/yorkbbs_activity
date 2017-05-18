@@ -5,6 +5,7 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import '../../ui/layouts/body/body.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/detail/detail.js';
+import '../../ui/pages/release/release.js';
 import '../../ui/pages/not-found/not-found.js';
 
 // Set up all routes in the app
@@ -16,12 +17,21 @@ FlowRouter.route('/', {
   },
 });
 
+FlowRouter.route('/release', {
+    name: 'App.home',
+    action() {
+        BlazeLayout.render('App_body', { main: 'release' });
+    },
+});
+
 FlowRouter.route('/:id', {
     name: 'App.home',
     action() {
         BlazeLayout.render('App_body', { main: 'detail' });
     },
 });
+
+
 
 FlowRouter.notFound = {
   action() {

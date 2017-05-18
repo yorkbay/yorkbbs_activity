@@ -1,34 +1,56 @@
 // Fill the DB with example data on startup
 
 import { Meteor } from 'meteor/meteor';
-import { Links } from '../../api/links/links.js';
+import { Activity } from '../../api/activity/activity.js';
+
 
 Meteor.startup(() => {
-  // if the Links collection is empty
-  if (Links.find().count() === 0) {
+  if (Activity.find().count() === 0) {
     const data = [
-      {
-        title: 'Do the Tutorial',
-        url: 'https://www.meteor.com/try',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Follow the Guide',
-        url: 'http://guide.meteor.com',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Read the Docs',
-        url: 'https://docs.meteor.com',
-        createdAt: new Date(),
-      },
-      {
-        title: 'Discussions',
-        url: 'https://forums.meteor.com',
-        createdAt: new Date(),
-      },
+        {
+            "img":"img/img1.jpg",
+            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+            "pr":"1111111",
+            "btime":{
+                'date':new Date(),
+                'time':"11pm"
+            },
+            "etime":{
+                'date':new Date(),
+                'time':"11am"
+            },
+            "tg":["周末好去处1","公益讲座"]
+        },
+        {
+            "img":"img/img1.jpg",
+            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+            "pr":"2222222",
+            "btime":{
+                'date':new Date(),
+                'time':"11pm"
+            },
+            "etime":{
+                'date':new Date(),
+                'time':"11am"
+            },
+            "tg":["周末好去处2","公益讲座"]
+        },
+        {
+            "pic":"img/img1.jpg",
+            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
+            "pr":"333333",
+            "btime":{
+                'date':new Date(),
+                'time':"11pm"
+            },
+            "etime":{
+                'date':new Date(),
+                'time':"11am"
+            },
+            "tg":["周末好去处3","公益讲座"]
+        }
     ];
 
-    data.forEach(link => Links.insert(link));
+    data.forEach(act => Activity.insert(act));
   }
 });
