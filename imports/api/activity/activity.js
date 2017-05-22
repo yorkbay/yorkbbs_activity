@@ -12,18 +12,25 @@ export const Activity = new ActivityCollection('activities');
 // Deny all client-side updates since we will be using methods to manage this collection
 
 
-Activity.allow({
-    insert:function(){
-        return true;
-    },
-    update:function (userId,doc) {
-        return !!userId;
-    }
+//Activity.allow({
+//    insert:function(){
+//        return true;
+//    },
+//    update:function (userId,doc) {
+//        return !!userId;
+//    }
+//});
+
+Activity.deny({
+    insert() { return true; },
+    update() { return true; },
+    remove() { return true; },
 });
 
 Activity.schema = new SimpleSchema({
     _id: {
         type: String,
+        optional:false,
         regEx: SimpleSchema.RegEx.Id,
     },
     ti: {
@@ -40,6 +47,15 @@ Activity.schema = new SimpleSchema({
     istop: {
         type: String,
         label: "istop",
+        optional:true,
+        autoValue:function(){
+            return ""
+        }
+    },
+    color: {
+        type: String,
+        label: "color",
+        optional:true,
         autoValue:function(){
             return ""
         }
@@ -47,8 +63,16 @@ Activity.schema = new SimpleSchema({
     sort: {
         type: Number,
         label: "sort",
+        optional:true,
         autoValue:function(){
             return 1
+        }
+    },
+    isonline: {
+        type: Boolean,
+        label: "isonline",
+        autoValue:function(){
+            return false
         }
     },
     location: {
@@ -77,6 +101,32 @@ Activity.schema = new SimpleSchema({
         label: "code",
         autoValue:function(){
             return ""
+        }
+    },
+    lat: {
+        type: String,
+        label: "code",
+        autoValue:function(){
+            if(this.code){
+                var hills = Zipcodes.lookup(this.code);
+                console.log(hills);
+                return hills.latitude;
+            }else {
+                return "";
+            }
+
+        }
+    },
+    lng: {
+        type: String,
+        label: "code",
+        autoValue:function(){
+            if(this.code){
+                var hills = Zipcodes.lookup(this.code);
+                return hills.longitude;
+            }else {
+                return "";
+            }
         }
     },
     'btime.date': {
@@ -130,7 +180,7 @@ Activity.schema = new SimpleSchema({
             return ""
         }
     },
-    tag: {
+    tags: {
         type: [String],
         label: "tag",
         autoValue:function(){
@@ -140,6 +190,7 @@ Activity.schema = new SimpleSchema({
     'meta.uid': {
         type: String,
         label: "user id",
+        optional:true,
         autoValue:function(){
             return ""
         }
@@ -147,6 +198,7 @@ Activity.schema = new SimpleSchema({
     'meta.usr': {
         type: String,
         label: "user",
+        optional:true,
         autoValue:function(){
             return ""
         }
@@ -168,6 +220,7 @@ Activity.schema = new SimpleSchema({
 
 });
 
+
 Activity.attachSchema(Activity.schema);
 
 Activity.publicFields = {
@@ -179,7 +232,3 @@ Activity.publicFields = {
     pic: 1,
     pr: 1
 };
-
-Activity.helpers({
-
-});

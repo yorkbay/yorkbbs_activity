@@ -22,7 +22,7 @@
                     <ul>
                         <li>
                             <div class="views-content-title">时间</div>
-                            <div class="views-content-meta">{{item.btime}} – {{item.etime}}</div>
+                            <div class="views-content-meta">{{ formatDate_MD item.btime.date }} {{ item.btime.time }}  – {{ formatDate_MD item.etime.date }} {{ item.etime.time }}</div>
                         </li>
                         <li>
                             <div class="views-content-title">费用</div>
@@ -30,7 +30,7 @@
                         </li>
                         <li>
                             <div class="views-content-title">地址</div>
-                            <div class="views-content-meta">{{item.location}}</div>
+                            <div class="views-content-meta">{{item.location}}{{item.address}}{{item.city}}</div>
                         </li>
                     </ul>
                     <div class="views-content-go">

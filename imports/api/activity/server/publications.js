@@ -6,6 +6,20 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 
 import {Activity} from '../activity.js';
 
-Meteor.publish('activities', function () {
+Meteor.publish('activitiesrecommend', function () {
+    return Activity.find({},{limit:8,sort:{'meta.dt':-1}});
+});
+
+Meteor.publish('activitieslist', function (search) {
     return Activity.find();
+});
+
+Meteor.publish('activitiesbytag', function (tag) {
+    check(tag,String);
+    return Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
+});
+
+Meteor.publish('activitybyid', function (id) {
+    check(id,String);
+    return Activity.find({_id:id});
 });

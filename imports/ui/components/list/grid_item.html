@@ -10,7 +10,7 @@
             {{/if}}
         </div>
         <div class="newslist-body">
-            <a href="/{{item._id}}" title="/{{item._id}}"><div class="newslist-date">{{ item.btime }} 至 {{ item.etime }}</div>
+            <a href="/{{item._id}}" title="/{{item._id}}"><div class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</div>
             <div class="newslist-title newslist-trend-title">{{ item.ti }}</div></a>
         </div>
         <div class="newslist-footer">

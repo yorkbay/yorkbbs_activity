@@ -10,16 +10,30 @@ import '../../components/list/grid.js';
 import { Activity } from '../../../api/activity/activity.js';
 
 
+
 Template.App_home.onCreated(function(){
-    var self=this;
-    self.autorun(function () {
-        self.subscribe('activities');
+
+    let template = Template.instance();
+    template.searchQuery = new ReactiveVar();
+    template.searching   = new ReactiveVar( false );
+//https://themeteorchef.com/tutorials/simple-search
+    template.autorun(function () {
+        template.subscribe('activitiesrecommend');
+        template.subscribe('activitieslist', template.searchQuery.get(), () => {
+            setTimeout( () => {
+                template.searching.set( false );
+            }, 300 );
+        });
+        template.subscribe('activitiesbaytag','周末好去处');
     });
+
+
 });
 
 Template.App_home.helpers({
     "grid_items": function () {
         return Activity.find({});
+
     },
     "list_items": [
         {

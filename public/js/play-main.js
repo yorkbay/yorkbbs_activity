@@ -7,12 +7,12 @@
 	function ShowCase (dom,option){
 		this.scrolCount = 4;
 		this.dom = dom;
-		this.set = option;	
+		this.set = option;
 		this.totalElm = 0;
 		this.indent = 0;
-		this.calcul();	
-		
-		
+		this.calcul();
+
+
 		this.bindEve();
 	}
 	ShowCase.prototype.calcul = function(){

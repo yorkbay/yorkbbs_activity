@@ -12,7 +12,9 @@ import '../../ui/pages/not-found/not-found.js';
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-    BlazeLayout.reset();
+      if(FlowRouter.subsReady()) {
+          BlazeLayout.reset();
+      }
     BlazeLayout.render('App_body', { main: 'App_home' });
   },
 });

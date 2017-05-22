@@ -8,20 +8,53 @@ import './release.html';
 import '../../components/release/mobile_menu.js';
 import {Activity} from '../../../api/activity/activity.js'
 
+import {
+    insert
+} from '../../../api/activity/methods.js';
 
+Template.release.onCreated(function () {
+
+});
 
 Template.release.events({
     "click #sub":()=>{
-        // Prevent default browser form submit
-        event.preventDefault();
+        var pr="free";
+        if(!$("#isfree").is(':checked')){
+            pr=$("#pr").val();
+        }
+        var isonline=$("#isonline").is(':checked');
 
-        // Get value from form element
-        const target = event.target;
-        var doc={
-                "ti":$("#ti").val()
-            }
-        // Insert a task into the collection
-        Activity.insert(doc,{validate: false});
+        var doc= {
+            "ti":"2222",
+            "st":"normal",
+            "isonline":isonline,
+            "location":"111",
+            "city":"",
+            "address":"111",
+            "code":"111",
+            "lat":"111",
+            "lng":"111",
+            "btime":{
+                "date":new Date($("#bdate").val()),
+                "time":$("#btime").val()
+            },
+            "etime":{
+                "date":new Date($("#edate").val()),
+                "time":$("#etime").val()
+            },
+            "pic":[],
+            "ct":"content",
+            "pr":pr,
+            "site":"111",
+            "tel":"111",
+            "tags":["周末好去处","亲子活动"]
+        };
+
+        //console.log(doc);
+        var Id = insert.call(doc);
+
+
+        //Activity.insert(doc,,{ validate: false, filter: false });
 
         FlowRouter.go('/');
     }
