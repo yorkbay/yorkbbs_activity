@@ -1,5 +1,7 @@
 <template name="App_home">
+    {{> search_top }}
     {{> grid items=grid_items}}
+
     <div class="row">
         <aside class="l-aside">
             {{> leftmap }}
@@ -7,6 +9,6 @@
             {{> newsletter }}
             {{> simple items=grid_items }}
         </aside>
-        {{> list items=list_items }}
+        {{> list }}
     </div>
 </template>

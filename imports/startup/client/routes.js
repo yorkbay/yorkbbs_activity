@@ -2,11 +2,14 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 
 // Import needed templates
-import '../../ui/layouts/body/body.js';
+import '../../ui/layouts/body/home.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/detail/detail.js';
 import '../../ui/pages/release/release.js';
+import '../../ui/pages/user/user.js';
 import '../../ui/pages/not-found/not-found.js';
+
+import '../../ui/layouts/admin/body.js'
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -15,28 +18,102 @@ FlowRouter.route('/', {
       if(FlowRouter.subsReady()) {
           BlazeLayout.reset();
       }
-    BlazeLayout.render('App_body', { main: 'App_home' });
+    BlazeLayout.render('home', { main: 'App_home' });
   },
 });
 
 FlowRouter.route('/release', {
-    name: 'App.home',
+    name: 'App.release',
     action() {
-        BlazeLayout.render('App_body', { main: 'release' });
+        BlazeLayout.render('home', { main: 'release' });
     },
 });
 
-FlowRouter.route('/:id', {
-    name: 'App.home',
+FlowRouter.route('/user', {
+    name: 'App.user',
     action() {
-        BlazeLayout.render('App_body', { main: 'detail' });
+        BlazeLayout.render('home', { main: 'usercenter' });
     },
 });
+
+FlowRouter.route('/activity/:id', {
+    name: 'App.detail',
+    action() {
+        BlazeLayout.render('home', { main: 'detail' });
+    },
+});
+
+FlowRouter.route('/admin', {
+    name: 'App.admin',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_activity_list' });
+    },
+});
+
+FlowRouter.route('/admin/activity', {
+    name: 'App.activity',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_activity_list' });
+    },
+});
+
+FlowRouter.route('/admin/comment', {
+    name: 'App.comment',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_comment_list' });
+    },
+});
+
+FlowRouter.route('/admin/feedback', {
+    name: 'App.feedback',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_feedback_list' });
+    },
+});
+
+FlowRouter.route('/admin/log', {
+    name: 'App.log',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_log_list' });
+    },
+});
+
+FlowRouter.route('/admin/sys', {
+    name: 'App.sys',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_sys_right' });
+    },
+});
+
+FlowRouter.route('/admin/tag', {
+    name: 'App.tag',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_tag_list' });
+    },
+});
+
+FlowRouter.route('/admin/newsletter', {
+    name: 'App.newsletter',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_newsletter_email' });
+    },
+});
+
+FlowRouter.route('/admin/newslettermsg', {
+    name: 'App.newslettermsg',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_newsletter_msg' });
+    },
+});
+
+
+
+
 
 
 
 FlowRouter.notFound = {
   action() {
-    BlazeLayout.render('App_body', { main: 'App_notFound' });
+    BlazeLayout.render('home', { main: 'App_notFound' });
   },
 };

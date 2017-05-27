@@ -16,6 +16,13 @@ Template.release.onCreated(function () {
 
 });
 
+
+Template.release.onRendered(function releaseOnRendered() {
+
+
+
+});
+
 Template.release.events({
     "click #sub":()=>{
         var pr="free";
@@ -25,15 +32,13 @@ Template.release.events({
         var isonline=$("#isonline").is(':checked');
 
         var doc= {
-            "ti":"2222",
+            "ti":$("#ti").val(),
             "st":"normal",
             "isonline":isonline,
-            "location":"111",
-            "city":"",
-            "address":"111",
-            "code":"111",
-            "lat":"111",
-            "lng":"111",
+            "location":$("#location").val(),
+            "city":$("#city").val(),
+            "address":$("#address").val(),
+            "code":$("#code").val(),
             "btime":{
                 "date":new Date($("#bdate").val()),
                 "time":$("#btime").val()
@@ -42,11 +47,11 @@ Template.release.events({
                 "date":new Date($("#edate").val()),
                 "time":$("#etime").val()
             },
-            "pic":[],
-            "ct":"content",
+            "pic":['/img/img1.jpg'],
+            "ct":$("#ct").val(),
             "pr":pr,
-            "site":"111",
-            "tel":"111",
+            "site":$("#site").val(),
+            "tel":$("#tel").val(),
             "tags":["周末好去处","亲子活动"]
         };
 

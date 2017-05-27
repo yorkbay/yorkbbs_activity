@@ -1,0 +1,17 @@
+<template name="home">
+    <link rel="stylesheet" href="/css/active.css">
+    <link rel="stylesheet" href="/js/datetimepicker/css/bootstrap-datetimepicker.min.css">
+    <script src="/js/layer/layer.js"></script>
+    <script src="/js/datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="/js/play-main.js"></script>
+    {{> login_layer }}
+    {{> share_layer }}
+    {{> header }}
+    <div id="mainbody">
+        {{> Template.dynamic template=main}}
+    </div>
+
+    {{> footer }}
+
+
+</template>

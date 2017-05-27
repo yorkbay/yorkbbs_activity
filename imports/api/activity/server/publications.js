@@ -10,9 +10,6 @@ Meteor.publish('activitiesrecommend', function () {
     return Activity.find({},{limit:8,sort:{'meta.dt':-1}});
 });
 
-Meteor.publish('activitieslist', function (search) {
-    return Activity.find();
-});
 
 Meteor.publish('activitiesbytag', function (tag) {
     check(tag,String);

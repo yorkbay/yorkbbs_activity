@@ -11,6 +11,7 @@ import '../../components/detail/user.js';
 import '../../components/googlemap/rightmap.js';
 import '../../components/layer/error.js';
 import '../../components/layer/share.js';
+import '../../components/layer/weixin.js'
 import {Activity} from '../../../api/activity/activity.js'
 
 

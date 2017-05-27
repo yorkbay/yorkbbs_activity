@@ -1,0 +1,160 @@
+<template name="admin_newsletter_email">
+    <div class="contacts">
+        <div class="contacts-box">
+            <div id="crms-filter">
+                <div>
+                    <div class="form-group-box">
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="startdate" placeholder="2017-03-22">
+                            </div>
+                        </div>
+                        &nbsp; 至
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="enddate" placeholder="2017-04-22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input class="form-control" type="text" id="startdate"> 至 <input type="text" id="enddate" class="form-control"> -->
+            </div>
+
+            <div class="title-caption">
+                <div class="contacts-opera-button">
+                    <ul class="contacts-opera-button-choose">
+                        <li><a class="button-choose-right button-gray-line">批量删除</a>
+                        </li>
+                        <li>
+                            <a class="button-choose-borderno button-choose-left button-gray-line"> 批量推送</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-box">
+            <div class="table-box">
+                <table width="100%" border="0">
+
+                    <tbody><tr>
+                        <th width="2%"><input class="J-select-all" type="checkbox" value=""></th>
+                        <th width="15%">提交时间</th>
+                        <th width="12%">提交人</th>
+                        <th>E-mail</th>
+                        <th width="15%">E-mail状态</th>
+                        <th width="15%">操作</th>
+                    </tr>
+
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>admin@yorkbbs.ca</em>
+                        </td>
+                        <td>
+                            <em>未推送</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue">推送到sendgrid</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>admin@yorkbbs.ca</em>
+                        </td>
+                        <td>
+                            <em>已推送</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue">推送到sendgrid</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>admin@yorkbbs.ca</em>
+                        </td>
+                        <td>
+                            <em>未推送</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue">推送到sendgrid</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em></em>
+                        </td>
+                        <td>
+                            <em>admin@yorkbbs.ca</em>
+                        </td>
+                        <td>
+                            <em>已推送</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue">推送到sendgrid</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+
+                    </tbody></table>
+            </div>
+            <div class="listpage">
+                <div class="pagination">
+                    <div class="anpager" id="main_content_pgFollowServer">
+                        <div class="pagination-grid" style="width:60%;float:left;">
+                            <a>首页</a>
+                            <a>上一页</a>
+                            <span class="pactive">1</span>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                            <a href="">下一页</a>
+                            <a href="">尾页</a>
+                        </div>
+                        <div class="pagination-total" style="width:40%;float:left;">
+                            共885条，每页50条
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

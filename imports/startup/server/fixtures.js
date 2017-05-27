@@ -22,9 +22,15 @@ Meteor.startup(() => {
             "tg":["周末好去处1","公益讲座"]
         },
         {
-            "img":"img/img1.jpg",
-            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
-            "pr":"2222222",
+            "ti":"2222",
+            "st":"normal",
+            "isonline":true,
+            "location":"111",
+            "city":"",
+            "address":"111",
+            "code":"111",
+            "lat":"111",
+            "lng":"111",
             "btime":{
                 'date':new Date(),
                 'time':"11pm"
@@ -33,7 +39,12 @@ Meteor.startup(() => {
                 'date':new Date(),
                 'time':"11am"
             },
-            "tg":["周末好去处2","公益讲座"]
+            "pic":[],
+            "ct":"content",
+            "pr":"free",
+            "site":"111",
+            "tel":"111",
+            "tags":["周末好去处","亲子活动"]
         },
         {
             "pic":"img/img1.jpg",

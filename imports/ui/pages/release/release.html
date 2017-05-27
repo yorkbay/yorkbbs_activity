@@ -100,7 +100,7 @@
                 <div class="release-row">
                     <label class="release-label"><b>活动详情</b> <i></i></label>
                     <div class="release-edit">
-                        我是编辑器
+                        <textarea id="ct"></textarea>
                     </div>
                 </div>
                 <h1 class="release-caption">
@@ -164,4 +164,37 @@
         </div>
         </form>
     </div>
+    <script>
+
+        $(function() {
+            $('#startDate').datetimepicker({
+                format: 'yyyy-mm-dd',
+                startView: 2,
+                minView: 2,
+                bootcssVer: 3
+            });
+            $('#startTime').datetimepicker({
+                format: 'hh:ii',
+                startView: 1,
+                minView: 1,
+                maxView: 1,
+                bootcssVer: 3
+            });
+            $('#endDate').datetimepicker({
+                format: 'yyyy-mm-dd',
+                startView: 2,
+                minView: 2,
+                bootcssVer: 3
+            });
+            $('#endTime').datetimepicker({
+                format: 'hh:ii',
+                startView: 1,
+                minView: 1,
+                maxView: 1,
+                bootcssVer: 3
+            });
+        });
+
+
+    </script>
 </template>

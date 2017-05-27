@@ -1,18 +1,16 @@
 (function(){
-
-
 	$.fn.showCase = function(optioins){
 		return new ShowCase($(this),optioins)
 	}
 	function ShowCase (dom,option){
 		this.scrolCount = 4;
 		this.dom = dom;
-		this.set = option;
+		this.set = option;	
 		this.totalElm = 0;
 		this.indent = 0;
-		this.calcul();
-
-
+		this.calcul();	
+		
+		
 		this.bindEve();
 	}
 	ShowCase.prototype.calcul = function(){
@@ -29,11 +27,11 @@
 	ShowCase.prototype.bindEve = function(){
 		var _this = this;
 		this.dom.find(this.set.prv).click(function(){
-			_this.indent --;
+			_this.indent -= _this.scrolCount;
 			_this.checkLg();
 		});
 		this.dom.find(this.set.next).click(function(){
-			_this.indent ++;
+			_this.indent += _this.scrolCount;
 			_this.checkLg();
 		});
 	}
@@ -62,36 +60,6 @@
 	}
 })();
 $(function(){
-
-	if($('#startDate').content) {
-        $('#startDate').datetimepicker({
-            format: 'yyyy-mm-dd',
-            startView: 2,
-            minView: 2,
-            bootcssVer: 3
-        });
-        $('#startTime').datetimepicker({
-            format: 'hh:ii',
-            startView: 1,
-            minView: 1,
-            maxView: 1,
-            bootcssVer: 3
-        });
-        $('#endDate').datetimepicker({
-            format: 'yyyy-mm-dd',
-            startView: 2,
-            minView: 2,
-            bootcssVer: 3
-        });
-        $('#endTime').datetimepicker({
-            format: 'hh:ii',
-            startView: 1,
-            minView: 1,
-            maxView: 1,
-            bootcssVer: 3
-        });
-    }
-
 	/*窄屏菜单*/
 	$('.topbar-mobile-menu-back').click(function(){
 		$('.topbar-mobile-list').toggle();
@@ -205,21 +173,22 @@ $(function(){
 	});
 	/*google map*/
 	function initialize(lat,lng)
-            {
-                var mapProp = {
-                    center:new google.maps.LatLng(lat,lng),
-                    zoom:10,
-                    mapTypeId:google.maps.MapTypeId.ROADMAP
-                };
-                var map=new google.maps.Map(document.getElementById('google-map'), mapProp);
-            }
+    {
+        var mapProp = {
+            center:new google.maps.LatLng(lat,lng),
+            zoom:10,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map=new google.maps.Map(document.getElementById('google-map'), mapProp);
+    }
             
            
 	$('.J-map').keyup(function(){
+		var zone = $('.J-change-zone').val();
 		var keyval = $(this).val();
 		$.ajax({
 			url:'https://maps.googleapis.com/maps/api/geocode/json',
-			data:{address:keyval,key:'AIzaSyD0uzSeEzo4VtiYz9nIxFsRN2AWLa6s-vA'},
+			data:{address:zone+keyval,key:'AIzaSyD0uzSeEzo4VtiYz9nIxFsRN2AWLa6s-vA'},
 			success:function(msg){
 				if(msg.status == 'OK'){
 					var location = msg.results[0].geometry.location;

@@ -1,0 +1,218 @@
+<template name="admin_feedback_list">
+    <div class="contacts">
+        <div class="contacts-box">
+            <div id="crms-filter">
+                <div>
+                    <select class="form-control" name="habit" id="habit">
+                        <option value="">处理状态</option>
+                        <option value="42">未处理</option>
+                        <option value="43">已处理</option>
+                    </select>
+                    <select class="form-control" name="managerid" id="managerid">
+                        <option value="">举报类型</option>
+                        <option value="46">信息过期</option>
+                        <option value="88">信息错误</option>
+                        <option value="89">信息错误</option>
+                        <option value="92">价格欺诈</option>
+                        <option value="92">广告</option>
+                        <option value="92">其它</option>
+                    </select>
+                    <div class="form-filter-search">
+                        <div class="input-group">
+                            <input type="text" id="keyword" class="serch-keyword form-control form-filter-search-input"
+                                   name="keyword" value="" placeholder="搜索举报内容或信息信息标题">
+                            <div class="input-group-addon btn-keyword-search">搜索</div>
+                        </div>
+                    </div>
+                    <div class="form-group-box">
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="startdate" placeholder="2017-03-22">
+                            </div>
+                        </div>
+                        &nbsp; 至
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="enddate" placeholder="2017-04-22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input class="form-control" type="text" id="startdate"> 至 <input type="text" id="enddate" class="form-control"> -->
+            </div>
+
+            <div class="title-caption">
+                <div class="contacts-opera-button">
+                    <ul class="contacts-opera-button-choose">
+                        <li>
+                            <a class="button-choose-borderno button-gray-line button-marginl" onclick="ChangeHistory()">
+                                批量删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-box">
+            <div class="table-box">
+                <table width="100%" border="0">
+                    <tbody>
+                    <tr>
+                        <th width="2%"><input class="J-select-all" type="checkbox" value=""></th>
+                        <th width="10%">提交时间</th>
+                        <th width="6%">举报类型</th>
+                        <th width="25%">举报内容</th>
+                        <th>信息标题</th>
+                        <th width="10%">提交人</th>
+                        <th width="7%">处理人</th>
+                        <th width="7%">处理状态</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-05-01 12:30</em>
+                        </td>
+                        <td>
+                            <em>信息过期</em>
+                        </td>
+                        <td>
+                            <em>这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>多伦多臭妞</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>已处理</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-process">处理</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-05-01 12:30</em>
+                        </td>
+                        <td>
+                            <em>信息过期</em>
+                        </td>
+                        <td>
+                            <em>这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>多伦多臭妞</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>已处理</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-process">处理</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-05-01 12:30</em>
+                        </td>
+                        <td>
+                            <em>信息过期</em>
+                        </td>
+                        <td>
+                            <em>这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>多伦多臭妞</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>已处理</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-process">处理</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2017-05-01 12:30</em>
+                        </td>
+                        <td>
+                            <em>信息过期</em>
+                        </td>
+                        <td>
+                            <em>这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>多伦多臭妞</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>已处理</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-process">处理</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="listpage">
+                <div class="pagination">
+                    <div class="anpager" id="main_content_pgFollowServer">
+                        <div class="pagination-grid" style="width:60%;float:left;">
+                            <a>首页</a>
+                            <a>上一页</a>
+                            <span class="pactive">1</span>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                            <a href="">下一页</a>
+                            <a href="">尾页</a>
+                        </div>
+                        <div class="pagination-total" style="width:40%;float:left;">
+                            共885条，每页50条
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

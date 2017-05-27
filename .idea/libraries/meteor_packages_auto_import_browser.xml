@@ -624,7 +624,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/create/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/editor/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/session/main.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/web.browser/packages/mrt:zipcodes.js" />
         <item url="file://$USER_HOME$/.meteor/packages/zimme_active-route/2.3.2/web.browser/packages/zimme_active-route.js" />
         <item url="file://$USER_HOME$/.meteor/packages/callback-hook/1.0.10/web.browser/hook.js" />
         <item url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict-tests.js" />
@@ -1257,7 +1256,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/create/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/editor/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/msavin_jetsetter/2.0.0/web.browser/client/dirtySession/session/main.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/web.browser/packages/mrt:zipcodes.js" />
       <root url="file://$USER_HOME$/.meteor/packages/zimme_active-route/2.3.2/web.browser/packages/zimme_active-route.js" />
       <root url="file://$USER_HOME$/.meteor/packages/callback-hook/1.0.10/web.browser/hook.js" />
       <root url="file://$USER_HOME$/.meteor/packages/reactive-dict/1.1.8/web.browser/reactive-dict-tests.js" />

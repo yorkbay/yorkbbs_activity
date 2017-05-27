@@ -1,0 +1,217 @@
+<template name="admin_activity_list">
+    <div class="contacts">
+        <div class="contacts-box">
+            <div id="crms-filter">
+                <div>
+                    <select class="form-control" name="habit" id="habit">
+                        <option value="">所属类别</option>
+                        <option value="42">周末好去处</option>
+                        <option value="43">社区活动</option>
+                        <option value="46">亲子活动</option>
+                    </select>
+                    <select class="form-control" name="managerid" id="managerid">
+                        <option value="">信息状态</option>
+                        <option value="46">显示</option>
+                        <option value="88">隐藏</option>
+                        <option value="89">过期</option>
+                    </select>
+                    <div class="form-filter-search">
+                        <div class="input-group">
+                            <input type="text" id="keyword" class="serch-keyword form-control form-filter-search-input"
+                                   name="keyword" value="" placeholder="输入信息标题或发布人">
+                            <div class="input-group-addon btn-keyword-search">搜索</div>
+                        </div>
+                    </div>
+                    <div class="form-group-box">
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="startdate" placeholder="2017-03-22">
+                            </div>
+                        </div>
+                        &nbsp; 至
+                        <div class="form-group-custom">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="enddate" placeholder="2017-04-22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input class="form-control" type="text" id="startdate"> 至 <input type="text" id="enddate" class="form-control"> -->
+            </div>
+
+            <div class="title-caption">
+                <div class="contacts-opera-button">
+                    <ul class="contacts-opera-button-choose">
+                        <li><a class="button-choose-right button-gray-line" onclick="Transfer()">
+                            前台查看</a>
+                        </li>
+                        <li>
+                            <a class="button-choose-borderno button-gray-line" onclick="ChangeHistory()"> 批量删除</a>
+                        </li>
+                        <li>
+                            <a class="button-choose-left button-gray-line" onclick="ChangeHistory()"> 批量推送</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="title-caption-add">
+                    <a class="button-record" onclick="add_ad()"><i><img src="/admin/img/button-add.png" alt="新增广告位">
+                    </i> 发布信息</a>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-box">
+            <div class="table-box">
+                <table width="100%" border="0">
+                    <tr>
+                        <th width="2%"><input type="checkbox" value=""/></th>
+                        <th width="5%">信息ID</th>
+                        <th>信息标题</th>
+                        <th width="9%">所属类别</th>
+                        <th width="7%">发布人</th>
+                        <th width="10%">发布时间</th>
+                        <th width="7%">信息状态</th>
+                        <th width="15%">操作</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""/></td>
+                        <td>
+                            <em>161037</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>周末好去处</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em class="table-blue">待审核</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">编辑</a>
+                                <a href="" class="table-blue">推送</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""/></td>
+                        <td>
+                            <em>161037</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>周末好去处</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em><span class="contacts-paypal-total-highlight">置顶</span></em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">编辑</a>
+                                <a href="" class="table-blue">推送</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""/></td>
+                        <td>
+                            <em>161037</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>周末好去处</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em>显示</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">编辑</a>
+                                <a href="" class="table-blue">推送</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""/></td>
+                        <td>
+                            <em>161037</em>
+                        </td>
+                        <td>
+                            <em><a href="" class="table-blue">周六Oshawa 及 Whitby 集体看房</a></em>
+                        </td>
+                        <td>
+                            <em>周末好去处</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em><span class="contacts-paypal-total-highlight">推荐</span></em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">编辑</a>
+                                <a href="" class="table-blue">推送</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="listpage">
+                <div class="pagination">
+                    <div class="anpager" id="main_content_pgFollowServer">
+                        <div class="pagination-grid" style="width:60%;float:left;">
+                            <a>首页</a>
+                            <a>上一页</a>
+                            <span class="pactive">1</span>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                            <a href="">下一页</a>
+                            <a href="">尾页</a>
+                        </div>
+                        <div class="pagination-total" style="width:40%;float:left;">
+                            共885条，每页50条
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

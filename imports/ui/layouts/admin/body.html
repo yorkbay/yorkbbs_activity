@@ -1,3 +1,193 @@
-<template name="App_body">
-    {{> Template.dynamic template=main}}
+<template name="admin">
+    <link rel="stylesheet" type="text/css" href="/admin/css/backstage.css" />
+    <link rel="stylesheet" type="text/css" href="/admin/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/admin/time/daterangepicker.css">
+    <div class="layer J-review-pop" style="display: none;">
+        <div class="layer-large layer-content">
+            <h1>信息审核
+                <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt=""/></a>
+            </h1>
+            <div id="crms-filter">
+                <ul>
+                    <li><span class="layer-cate">显示状态</span>
+                        <em class="contacts-detail-radio"><input type="radio" value=""/><label>显示</label></em>
+                        <em class="contacts-detail-radio"><input type="radio" value=""/><label>隐藏</label></em>
+                    </li>
+                    <li><span class="layer-cate">设为置顶</span>
+                        <em class="contacts-detail-radio">
+                            <div class="form-group-custom layer-calendar">
+                                <div class="input-group">
+                                    <input type="text" style="width: 120px" class="form-control" id="stick-top-date"
+                                           placeholder="置顶结束时间">
+                                </div>
+                            </div>
+                            <select class="form-control" name="habit">
+                                <option value="">置顶权限</option>
+                                <option value="42">月交</option>
+                                <option value="43">交长期</option>
+                                <option value="46">其他</option>
+                            </select>
+                        </em>
+                    </li>
+                    <li><span class="layer-cate">设为推荐</span>
+                        <em class="contacts-detail-radio">
+                            <div class="form-group-custom layer-calendar">
+                                <div class="input-group">
+                                    <input type="text" style="width: 120px" class="form-control" id="recommed-date"
+                                           placeholder="推荐结束时间">
+                                </div>
+                            </div>
+                        </em>
+                    </li>
+                    <li><span class="layer-cate">图片标签</span>
+                        <em class="contact-detail-inputext"><input type="text" class="layer-input-middle" value=""></em>
+                        <em class="contacts-detail-radio">
+                            <select class="form-control" name="habit" id="habit">
+                                <option value="">默认</option>
+                                <option class="red" value="42"></option>
+                                <option class="green" value="43"></option>
+                                <option class="blue" value="46"></option>
+                            </select>
+                        </em>
+
+                    </li>
+                    <li class="layer-button layer-button-left">
+                        <span class="layer-cate">&nbsp;</span>
+                        <input type="button" class="layer-yes" value="确定"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <section id="topbar">
+        <header class="topbar-caption">
+            <h1>YorkBBS管理后台</h1>
+            <div class="topbar-box">
+                <div class="topbar-content">
+                    <div class="topbar-list">
+                        <ul>
+                            <li class="topbar-list-current">
+                                <a href="">活动优惠</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="topbar-meta">
+                        <ul>
+                            <li>
+                                <a href="">你好，ken</a>
+                            </li>
+                            <li>
+                                <a href=""><i><img alt="" src="/admin/img/icon-quit.png"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </section>
+    <aside id="nav">
+        <div class="nav-list">
+            <div class="nav-list-lit">
+                <p class="nav-title current">
+                        <span class="nav-icon nav-icon-gai">
+                            <i></i>
+                            <a href="/admin/activity">信息管理</a>
+                            <em></em>
+                        </span>
+                </p>
+
+            </div>
+            <div class="nav-list-lit">
+                <p class="nav-title">
+                        <span class="nav-icon nav-icon-yun">
+                            <i></i>
+                            <a href="/admin/comment">评论管理</a>
+                            <em></em>
+                        </span>
+                </p>
+
+            </div>
+            <div class="nav-list-lit">
+                <p class="nav-title">
+                        <span class="nav-icon nav-icon-contact">
+                            <i></i>
+                            <a href="/admin/feedback">举报管理</a>
+                            <em></em>
+                        </span>
+                </p>
+
+            </div>
+            <div class="nav-list-lit">
+                <p class="nav-title">
+                        <span class="nav-icon nav-icon-date">
+                            <i></i>
+                            日志管理
+                            <em></em>
+                        </span>
+                </p>
+                <div style="display:none" class="nav-sublist">
+                    <a href="/admin/log">前台日志</a>
+                    <a href="#">后台日志</a>
+                </div>
+            </div>
+            <div class="nav-list-lit">
+                <p class="nav-title">
+                        <span class="nav-icon nav-icon-set">
+                            <i></i>
+                            系统设置
+                            <em></em>
+                        </span>
+                </p>
+                <div style="display:none" class="nav-sublist">
+                    <a href="/admin/sys">权限管理</a>
+                    <a href="/admin/tag">标签管理</a>
+                </div>
+            </div>
+            <div class="nav-list-lit">
+                <p class="nav-title">
+                        <span class="nav-icon nav-icon-table">
+                            <i></i>
+                            Newsletter
+                            <em></em>
+                        </span>
+                </p>
+                <div style="display:none" class="nav-sublist">
+                    <a href="/admin/newsletter">E-mail管理</a>
+                    <a href="/admin/newslettermsg">信息池</a>
+                </div>
+            </div>
+        </div>
+    </aside>
+    <section class="l-wrap">
+        <div class="l-wrap-main">
+            {{> Template.dynamic template=main}}
+        </div>
+    </section>
+
+    <script type=text/javascript src="/admin/js/nav.js"></script>
+    <script type=text/javascript src="/admin/js/drop.js"></script>
+    <script src="/admin/time/moment.min.js"></script>
+    <script src="/admin/time/daterangepicker.js"></script>
+    <script>
+        var stickTop = $('#stick-top-date').val();
+        var recommed = $('#recommed-date').val();
+
+        $('#stick-top-date').daterangepicker({
+            language: 'zh-CN',
+            singleDatePicker: true,
+            startDate: stickTop ? stickTop : moment().subtract(30, 'days'),
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+        });
+
+        $('#recommed-date').daterangepicker({
+            language: 'zh-CN',
+            singleDatePicker: true,
+            startDate: recommed ? recommed : (stickTop ? stickTop : moment()),
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+        });
+    </script>
 </template>

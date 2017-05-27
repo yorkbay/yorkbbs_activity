@@ -9226,10 +9226,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/readable-stream/lib/_stream_readable.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/cookie-signature/index.js" />
         <item url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/basic-auth-connect/index.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/codes.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/index.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/states.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/scripts/process.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/padEnd.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/nth.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/bind.js" />
@@ -23595,10 +23591,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/readable-stream/lib/_stream_readable.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/cookie-signature/index.js" />
       <root url="file://$USER_HOME$/.meteor/packages/webapp/1.3.15/npm/node_modules/basic-auth-connect/index.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/codes.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/index.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/lib/states.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/mrt_zipcodes/0.0.1/npm/node_modules/zipcodes/scripts/process.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/padEnd.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/nth.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/npm/node_modules/lodash/fp/bind.js" />

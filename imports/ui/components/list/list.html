@@ -5,7 +5,7 @@
                 <h2><a href="" class="newslist-images-current">推荐活动</a></h2>
                 <h2><a href="">最新活动</a></h2>
                 <div class="newslist-image-filter J-newslist-filter">
-                    <a href="">筛选 <i><img src="img/icon-filter.png" alt="" /></i></a>
+                    <a href="">筛选 <i><img src="/img/icon-filter.png" alt="" /></i></a>
                 </div>
             </div>
             <div class="newslist-caption-conent">
@@ -13,61 +13,35 @@
                     <div class="formTable-tags-recommend">
                         <span>今天</span>
                         <a href="#" class="tags-close">
-                            <img src="img/close.jpg">
+                            <img src="/img/close.jpg" alt="" />
                         </a>
                     </div>
                     <div class="formTable-tags-recommend">
                         <span>免费活动</span>
                         <a href="#" class="tags-close">
-                            <img src="img/close.jpg">
+                            <img src="/img/close.jpg" alt="" />
                         </a>
                     </div>
                     <div class="formTable-tags-recommend">
                         <span>周末好去处</span>
                         <a href="#" class="tags-close">
-                            <img src="img/close.jpg">
+                            <img src="/img/close.jpg" alt="" />
                         </a>
                     </div>
                 </div>
                 <ul>
-                    {{#each item in items}}
-                    <li>
-                    {{> list_item item=item}}
-                    </li>
+                    {{#each item in recommond_list }}
+                        <li>
+                            {{> list_item item=item }}
+                        </li>
                     {{/each}}
                 </ul>
                 <ul>
-                    <li>
-                        <div class="newslist-content">
-                            <div class="newslist-cover newslist-image-cover">
-                                <a href="" title=""><img src="img/img1.jpg" alt=""></a>
-                                <p class="newslist-channel"><a href="" title="">$5，12岁以下儿童免费1111</a></p>
-                            </div>
-                            <div class="newslist-image-cont">
-                                <div class="newslist-body">
-                                    <time class="newslist-date">11月20日 至 11月20日</time>
-                                    <div class="newslist-title"><a href="" title="">最新Prima Academy盛大开张——音乐、绘画、舞蹈</a></div>
-                                    <div class="newslist-date newslist-address">Langstaff Community Centre Gym A – 155 Red Maple Road, L4B 4P9</div>
-                                </div>
-                                <div class="newslist-footer">
-                                    <div class="newslist-tags">
-                                        <a href="">#周末好去处 </a>
-                                        <a href="">#公益讲座</a>
-                                    </div>
-                                    <div class="newslist-bookmark">
-                                        <a href="">
-                                            <img src="img/icon-share.png" alt="">
-                                            <img src="img/icon-share-red.png" alt="">
-                                        </a>
-                                        <a href="">
-                                            <img src="img/icon-heard.png" alt="">
-                                            <img src="img/icon-heard-red.png" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                    {{#each item in news_list }}
+                        <li>
+                            {{> list_item item=item }}
+                        </li>
+                    {{/each}}
                 </ul>
             </div>
             <div class="listpage">

@@ -30,82 +30,83 @@ Activity.deny({
 Activity.schema = new SimpleSchema({
     _id: {
         type: String,
-        optional:false,
         regEx: SimpleSchema.RegEx.Id,
     },
     ti: {
         type: String,
+        optional:true,
         label: "title"
     },
     st: {
         type: String,
-        label: "status",
-        autoValue:function(){
-            return ""
-        }
+        optional:true,
+        label: "status|waiting:normal:top:commond:del"
+    },
+    imgtag: {
+        type: String,
+        label: "imgtag",
+        optional:true
+    },
+    imgtagcl: {
+        type: String,
+        label: "img tag color",
+        optional:true
     },
     istop: {
         type: String,
         label: "istop",
-        optional:true,
-        autoValue:function(){
-            return ""
-        }
+        optional:true
+    },
+    toptime:{
+        type: Date,
+        label: "toptime",
+        optional:true
+    },
+
+    cmdtime:{
+        type: Date,
+        label: "commond time",
+        optional:true
     },
     color: {
         type: String,
         label: "color",
-        optional:true,
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     sort: {
         type: Number,
         label: "sort",
-        optional:true,
-        autoValue:function(){
-            return 1
-        }
+        optional:true
     },
     isonline: {
         type: Boolean,
         label: "isonline",
-        autoValue:function(){
-            return false
-        }
+        optional:true
     },
     location: {
         type: String,
         label: "location",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     city: {
         type: String,
         label: "city",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     address: {
         type: String,
         label: "address",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     code: {
         type: String,
         label: "code",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     lat: {
         type: String,
         label: "code",
+        optional:true,
         autoValue:function(){
             if(this.code){
                 var hills = Zipcodes.lookup(this.code);
@@ -120,6 +121,7 @@ Activity.schema = new SimpleSchema({
     lng: {
         type: String,
         label: "code",
+        optional:true,
         autoValue:function(){
             if(this.code){
                 var hills = Zipcodes.lookup(this.code);
@@ -131,91 +133,76 @@ Activity.schema = new SimpleSchema({
     },
     'btime.date': {
         type: Date,
-        label: "begin date"
+        label: "begin date",
+        optional:true
     },
     'btime.time': {
         type: String,
-        label: "begin time"
+        label: "begin time",
+        optional:true
     },
     'etime.date': {
         type: Date,
-        label: "end date"
+        label: "end date",
+        optional:true
     },
     'etime.time': {
         type: String,
-        label: "end time"
+        label: "end time",
+        optional:true
     },
     pic: {
         type: [String],
         label: "pic",
-        autoValue:function(){
-            return []
-        }
+        optional:true
     },
     ct: {
         type: String,
         label: "content",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     pr: {
         type: String,
         label: "price:free:$..",
-        autoValue:function(){
-            return "free"
-        }
+        optional:true
     },
     site: {
         type: String,
         label: "site",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     tel: {
         type: String,
         label: "tel",
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     tags: {
         type: [String],
         label: "tag",
-        autoValue:function(){
-            return []
-        }
+        optional:true
     },
     'meta.uid': {
         type: String,
         label: "user id",
-        optional:true,
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     'meta.usr': {
         type: String,
         label: "user",
-        optional:true,
-        autoValue:function(){
-            return ""
-        }
+        optional:true
     },
     'meta.dt': {
         type: Date,
         label: "create date",
-        autoValue:function(){
-            return new Date()
-        }
+        optional:true
     },
     "meta.lm": {
         type: Date,
         label: "Last Modified",
         autoValue:function(){
             return new Date()
-        }
+        },
+        optional:true
     }
 
 });

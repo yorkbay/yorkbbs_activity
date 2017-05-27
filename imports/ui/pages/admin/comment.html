@@ -1,0 +1,188 @@
+<template name="admin_comment_list">
+    <div class="contacts">
+        <div class="contacts-box">
+            <div id="crms-filter">
+                <div>
+                    <select class="form-control" name="habit" id="habit">
+                        <option value="">显示状态</option>
+                        <option value="42">显示</option>
+                        <option value="43">隐藏</option>
+                    </select>
+                    <select class="form-control" name="habit" id="habit">
+                        <option value="">审核状态</option>
+                        <option value="42">未审核</option>
+                        <option value="43">已审核</option>
+                    </select>
+                    <div class="form-filter-search">
+                        <div class="input-group">
+                            <input type="text" id="keyword" class="serch-keyword form-control form-filter-search-input"
+                                   name="keyword" value="" placeholder="输入信息标题、评论内容或评论人 ">
+                            <div class="input-group-addon btn-keyword-search">搜索</div>
+                        </div>
+                    </div>
+                    <div class="form-group-box">
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="startdate" placeholder="2017-03-22">
+                            </div>
+                        </div>
+                        &nbsp; 至
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="enddate" placeholder="2017-04-22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input class="form-control" type="text" id="startdate"> 至 <input type="text" id="enddate" class="form-control"> -->
+            </div>
+
+
+            <div class="title-caption">
+                <div class="contacts-opera-button">
+                    <ul class="contacts-opera-button-choose">
+                        <li>
+                            <a class="button-choose-borderno button-gray-line"> 批量删除</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="contacts-box">
+            <div class="table-box">
+                <table width="100%" border="0">
+                    <tbody>
+                    <tr>
+                        <th width="2%"><input type="checkbox" class="J-select-all" value=""></th>
+                        <th width="10%">评论时间</th>
+                        <th>评论内容</th>
+                        <th>信息标题</th>
+                        <th width="8%">评论人</th>
+                        <th width="6%">显示状态</th>
+                        <th width="8%">操作</th>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em>周六Oshawa 及 Whitby 集体看房</em>
+                        </td>
+                        <td>
+                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>显示</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em>周六Oshawa 及 Whitby 集体看房</em>
+                        </td>
+                        <td>
+                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>显示</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em>周六Oshawa 及 Whitby 集体看房</em>
+                        </td>
+                        <td>
+                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>显示</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" value=""></td>
+                        <td>
+                            <em>2016-12-30 18:13</em>
+                        </td>
+                        <td>
+                            <em>周六Oshawa 及 Whitby 集体看房</em>
+                        </td>
+                        <td>
+                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
+                        </td>
+                        <td>
+                            <em>欧阳迎迎</em>
+                        </td>
+                        <td>
+                            <em>显示</em>
+                        </td>
+                        <td>
+                            <em>
+                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue">删除</a>
+                            </em>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="listpage">
+                <div class="pagination">
+                    <div class="anpager" id="main_content_pgFollowServer">
+                        <div class="pagination-grid" style="width:60%;float:left;">
+                            <a>首页</a>
+                            <a>上一页</a>
+                            <span class="pactive">1</span>
+                            <a href="">2</a>
+                            <a href="">3</a>
+                            <a href="">4</a>
+                            <a href="">5</a>
+                            <a href="">...</a>
+                            <a href="">下一页</a>
+                            <a href="">尾页</a>
+                        </div>
+                        <div class="pagination-total" style="width:40%;float:left;">
+                            共885条，每页50条
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
