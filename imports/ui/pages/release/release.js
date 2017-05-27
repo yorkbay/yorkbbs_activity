@@ -18,34 +18,7 @@ Template.release.onCreated(function () {
 
 
 Template.release.onRendered(function releaseOnRendered() {
-    $(function() {
-        $('#startDate').datetimepicker({
-            format: 'yyyy-mm-dd',
-            startView: 2,
-            minView: 2,
-            bootcssVer: 3
-        });
-        $('#startTime').datetimepicker({
-            format: 'hh:ii',
-            startView: 1,
-            minView: 1,
-            maxView: 1,
-            bootcssVer: 3
-        });
-        $('#endDate').datetimepicker({
-            format: 'yyyy-mm-dd',
-            startView: 2,
-            minView: 2,
-            bootcssVer: 3
-        });
-        $('#endTime').datetimepicker({
-            format: 'hh:ii',
-            startView: 1,
-            minView: 1,
-            maxView: 1,
-            bootcssVer: 3
-        });
-    });
+
 
 
 
@@ -59,6 +32,8 @@ Template.release.events({
         }
         var isonline=$("#isonline").is(':checked');
 
+        var tags=$("#tags").val().split(",");
+        tags.pop();
         var doc= {
             "ti":$("#ti").val(),
             "st":"normal",
@@ -80,7 +55,7 @@ Template.release.events({
             "pr":pr,
             "site":$("#site").val(),
             "tel":$("#tel").val(),
-            "tags":["周末好去处","亲子活动"]
+            "tags":tags
         };
 
         //console.log(doc);

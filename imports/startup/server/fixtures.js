@@ -8,9 +8,15 @@ Meteor.startup(() => {
   if (Activity.find().count() === 0) {
     const data = [
         {
-            "img":"img/img1.jpg",
-            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
-            "pr":"1111111",
+            "ti":"11111",
+            "st":"normal",
+            "isonline":true,
+            "location":"111",
+            "city":"",
+            "address":"111",
+            "code":"111",
+            "lat":"111",
+            "lng":"111",
             "btime":{
                 'date':new Date(),
                 'time':"11pm"
@@ -19,7 +25,13 @@ Meteor.startup(() => {
                 'date':new Date(),
                 'time':"11am"
             },
-            "tg":["周末好去处1","公益讲座"]
+            "logo":"/img/img4.jpg",
+            "pic":[],
+            "ct":"content",
+            "pr":"free",
+            "site":"111",
+            "tel":"111",
+            "tags":["周末好去处","社区活动"]
         },
         {
             "ti":"2222",
@@ -39,17 +51,24 @@ Meteor.startup(() => {
                 'date':new Date(),
                 'time':"11am"
             },
+            "logo":"/img/img4.jpg",
             "pic":[],
             "ct":"content",
             "pr":"free",
             "site":"111",
             "tel":"111",
-            "tags":["周末好去处","亲子活动"]
+            "tags":["公益讲座","亲子活动"]
         },
         {
-            "pic":"img/img1.jpg",
-            "ti":"Prima Academy盛大开张——音乐、绘画、舞蹈",
-            "pr":"333333",
+            "ti":"333333",
+            "st":"normal",
+            "isonline":true,
+            "location":"111",
+            "city":"",
+            "address":"111",
+            "code":"111",
+            "lat":"111",
+            "lng":"111",
             "btime":{
                 'date':new Date(),
                 'time':"11pm"
@@ -58,7 +77,13 @@ Meteor.startup(() => {
                 'date':new Date(),
                 'time':"11am"
             },
-            "tg":["周末好去处3","公益讲座"]
+            "logo":"/img/img4.jpg",
+            "pic":[],
+            "ct":"content",
+            "pr":"free",
+            "site":"111",
+            "tel":"111",
+            "tags":["节日活动","公益讲座"]
         }
     ];
 

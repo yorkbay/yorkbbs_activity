@@ -1,30 +1,31 @@
 import './home.html';
 
 
-import '../../components/googlemap/leftmap.js';
+import '../../components/googlemap/leftmap.js';;
 import '../../components/newsletter/newsletter.js';
 import '../../components/search/search.js';
-import '../../components/list/list.js'
-import '../../components/list/simple.js'
+import '../../components/list/list.js';
+import '../../components/list/simple.js';
 import '../../components/list/grid.js';
 import { Activity } from '../../../api/activity/activity.js';
-
+import { listbytag } from '../../../api/activity/methods.js'
 
 
 Template.App_home.onCreated(function(){
 
-    let template = Template.instance();
-    template.searchQuery = new ReactiveVar();
-    template.searching   = new ReactiveVar( false );
-//https://themeteorchef.com/tutorials/simple-search
-    template.autorun(function () {
-        template.subscribe('activitiesrecommend');
-        template.subscribe('activitieslist', template.searchQuery.get(), () => {
-            setTimeout( () => {
-                template.searching.set( false );
-            }, 300 );
-        });
-        template.subscribe('activitiesbaytag','周末好去处');
+    let instance = this;
+    //template.searchQuery = new ReactiveVar();
+    //template.searching   = new ReactiveVar( false );
+    //https://themeteorchef.com/tutorials/simple-search
+    instance.autorun(function () {
+        instance.subscribe('activitiesrecommend');
+        instance.subscribe('activitiesbytag','周末好去处');
+        //template.subscribe('activitieslist', template.searchQuery.get(), () => {
+        //    setTimeout( () => {
+        //        template.searching.set( false );
+        //    }, 300 );
+        //});
+
     });
 
 
@@ -33,6 +34,12 @@ Template.App_home.onCreated(function(){
 Template.App_home.helpers({
     "grid_items": function () {
         return Activity.find({});
+
+    },
+    "listbytag": function (tag) {
+        //var list= Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
+        //var list=listbytag.call({tag});
+        return listbytag.call({tag});
 
     },
     "recommond_list": [

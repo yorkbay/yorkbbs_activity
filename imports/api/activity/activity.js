@@ -42,6 +42,11 @@ Activity.schema = new SimpleSchema({
         optional:true,
         label: "status|waiting:normal:top:commond:del"
     },
+    logo: {
+        type: String,
+        label: "logo",
+        optional:true
+    },
     imgtag: {
         type: String,
         label: "imgtag",
@@ -53,7 +58,7 @@ Activity.schema = new SimpleSchema({
         optional:true
     },
     istop: {
-        type: String,
+        type: Boolean,
         label: "istop",
         optional:true
     },
@@ -62,7 +67,6 @@ Activity.schema = new SimpleSchema({
         label: "toptime",
         optional:true
     },
-
     cmdtime:{
         type: Date,
         label: "commond time",

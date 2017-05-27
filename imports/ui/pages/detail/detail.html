@@ -17,7 +17,7 @@
         <div class="views">
             <div class="views-box">
                 <div class="views-cover">
-                    <img src="{{item.img}}" alt="" />
+                    <img src="{{item.logo}}" alt="" />
                 </div>
                 <div class="views-content">
                     <h2>{{item.ti}}</h2>
@@ -32,7 +32,7 @@
                         </li>
                         <li>
                             <div class="views-content-title">地址</div>
-                            <div class="views-content-meta">{{item.location}}{{item.address}}{{item.city}}</div>
+                            <div class="views-content-meta">{{item.location}},{{item.city}},{{item.address}}</div>
                         </li>
                     </ul>
                     <div class="views-content-go">
@@ -65,12 +65,12 @@
                     <h1>活动详情</h1>
                 </header>
                 <article class="article-cont">
-                    {{{item.content}}}
+                    {{{item.ct}}}
                 </article>
                 <dl class="article-tags">
                     <dt>标签：</dt>
                     <dd>
-                        {{#each tg in item.tg}}
+                        {{#each tg in item.tags}}
                         <a href="">{{tg}}</a>
                         <span> | </span>
                         {{/each}}
@@ -83,7 +83,7 @@
         </div>
         <aside class="l-aside-widget">
             {{> rightmap }}
-            {{> simple item=item.simples}}
+            {{> simple items=(listbytag '周末好去处') }}
             <div class="active-aside-wechat">
                 <img src="/img/share-wechat.jpg" alt="约克论坛">
             </div>

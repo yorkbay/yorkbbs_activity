@@ -60,6 +60,8 @@
 	}
 })();
 $(function(){
+
+
 	/*窄屏菜单*/
 	$('.topbar-mobile-menu-back').click(function(){
 		$('.topbar-mobile-list').toggle();
@@ -164,11 +166,23 @@ $(function(){
 		}
 	});
 	$('.J-change-tags a').click(function(){
+
+
+        var tag=$(this).attr("tag")+",";
+        var val=$("#tags").val();
 		if($(this).hasClass('release-tags-current')){
+			val=val.replace(tag,'');
 			$(this).removeClass('release-tags-current');
 		}else{
+            var current=$(".release-tags-current");
+            if(current.length>=2){
+                return false;
+            }
+            val=val+tag;
 			$(this).addClass('release-tags-current');
 		}
+        $("#tags").val(val);
+
 		return false;
 	});
 	/*google map*/

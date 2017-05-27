@@ -13,7 +13,7 @@ import '../../components/layer/error.js';
 import '../../components/layer/share.js';
 import '../../components/layer/weixin.js'
 import {Activity} from '../../../api/activity/activity.js'
-
+import { listbytag } from '../../../api/activity/methods.js'
 
 Template.detail.onRendered(function () {
     var self=this;
@@ -28,5 +28,8 @@ Template.detail.helpers({
     item:function () {
         var id=FlowRouter.getParam('id');
         return Activity.findOne({_id:id});
+    },
+    "listbytag": function (tag) {
+        return listbytag.call({tag});
     }
 });

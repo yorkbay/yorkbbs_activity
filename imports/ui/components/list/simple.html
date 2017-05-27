@@ -5,10 +5,10 @@
             <ul class="imagepost-list">
                 {{#each item in items}}
                 <li>
-                    <div class="imagepost-cover"><a href="{{item._id}}"><img src="{{item.img}}" alt=""></a></div>
+                    <div class="imagepost-cover"><a href="/activity/{{item._id}}"><img src="{{item.logo}}" alt=""></a></div>
                     <div class="imagepost-cont">
                         <p class="imagepost-summary">
-                            <a href="{{item._id}}">{{item.ti}}</a>
+                            <a href="/activity/{{item._id}}">{{item.ti}}</a>
                         </p>
                     </div>
                 </li>
