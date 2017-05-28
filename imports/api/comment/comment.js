@@ -1,22 +1,29 @@
-/**
- * Created by jack on 5/26/17.
- */
-/**
- * Created by jack on 5/17/17.
- */
+
 import {Mongo} from 'meteor/mongo';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-
 
 class CommentCollection extends Mongo.Collection {}
 
 export const Comment = new CommentCollection('comments');
+
+/*
+ Comment.allow({
+    insert:function(){
+        return true;
+    },
+    update:function (userId,doc) {
+        return !!userId;
+    }
+});
+*/
+
 
 Comment.deny({
     insert() { return true; },
     update() { return true; },
     remove() { return true; },
 });
+
 
 Comment.schema = new SimpleSchema({
     _id: {
@@ -33,6 +40,11 @@ Comment.schema = new SimpleSchema({
         optional:true,
         label: "status|normal:del"
     },
+    refid: {
+        type: String,
+        optional:true,
+        label: "activity id"
+    },
     'meta.uid': {
         type: String,
         label: "user id",
@@ -46,9 +58,13 @@ Comment.schema = new SimpleSchema({
     'meta.dt': {
         type: Date,
         label: "create date",
-        optional:true
+        optional:true,
+        autoValue:function () {
+            return new Date();
+        }
     }
 });
 
 
 Comment.attachSchema(Comment.schema);
+

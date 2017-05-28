@@ -71,7 +71,7 @@
                     <dt>标签：</dt>
                     <dd>
                         {{#each tg in item.tags}}
-                        <a href="">{{tg}}</a>
+                        <a href="/?tag={{tg}}">{{tg}}</a>
                         <span> | </span>
                         {{/each}}
                     </dd>
@@ -79,7 +79,7 @@
                 {{> share }}
             </section>
             {{> recommend items=item.recommends}}
-            {{> comment }}
+            {{> comment comments=item.comments}}
         </div>
         <aside class="l-aside-widget">
             {{> rightmap }}

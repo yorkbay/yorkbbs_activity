@@ -3,15 +3,33 @@
         <div class="newslist newslist-grid J-showcase">
             <div class="playlist-btn playlist-prev"><span></span></div>
             <div class="playlist-btn palylist-next"><span></span></div>
-            <div class="hot-playlist-content">
-                <ul>
+            <div class="hot-playlist-content swiper-container">
+                <ul class="swiper-wrapper">
                     {{#each item in items}}
-                        <li>
+                        <li class="swiper-slide">
                             {{> grid_item item=item}}
                         </li>
                     {{/each}}
                 </ul>
             </div>
         </div>
+    </div>
+
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+            <div class="swiper-slide">Slide 10</div>
+        </div>
+
+        <div class="swiper-pagination"></div>
     </div>
 </template>

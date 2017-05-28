@@ -3,7 +3,7 @@
  */
 import {Mongo} from 'meteor/mongo';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
-
+import {Comment} from '../comment/comment.js';
 
 class ActivityCollection extends Mongo.Collection {}
 
@@ -214,12 +214,12 @@ Activity.schema = new SimpleSchema({
 
 Activity.attachSchema(Activity.schema);
 
-Activity.publicFields = {
-    _id: 1,
-    ti: 1,
-    istop: 1,
-    'btime.date': 1,
-    'etime.date': 1,
-    pic: 1,
-    pr: 1
-};
+
+Activity.helpers({
+    comments() {
+        return {
+            itemid:this._id,
+            comments:Comment.find({refid: this._id}, {sort: {'meta.dt': -1}})
+        }
+    }
+});

@@ -12,5 +12,10 @@ Template.registerHelper('formatDate_MD', function(date) {
 
 //xx月xx日
 Template.registerHelper('formatDate_HS', function(date) {
-    return moment(date).format("H:SS");
+    return moment(date).format("H:mm");
+});
+
+//xx月xx日
+Template.registerHelper('formatDate_YMDHS', function(date) {
+    return moment(date).format("YYYY-MM-DD HH:mm");
 });

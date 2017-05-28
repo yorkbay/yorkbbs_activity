@@ -1,6 +1,5 @@
 <template name="release">
     {{> mobile_menu }}
-
     <div class="row">
         <form class="sub_activity">
         <div class="l-release-main">
@@ -29,17 +28,17 @@
                                 <span class="dropdown-label">Toronto</span>
                                 <span class="dropdown-icon"></span>
                                 <select class="J-online-or" id="city" name="city">
-                                    <option selected="" value="">Toronto</option>
-                                    <option value="">Downtown</option>
-                                    <option value="">Scarborough</option>
-                                    <option value="">North York</option>
-                                    <option value="">Richmond Hill</option>
-                                    <option value="">Thornhill</option>
-                                    <option value="">Mississauga</option>
-                                    <option value="">East York</option>
-                                    <option value="">Etobicoke</option>
-                                    <option value="">Vaughan</option>
-                                    <option value="">Other GTA Area</option>
+                                    <option selected="" value="Toronto">Toronto</option>
+                                    <option value="Downtown">Downtown</option>
+                                    <option value="Scarborough">Scarborough</option>
+                                    <option value="North York">North York</option>
+                                    <option value="Richmond Hill">Richmond Hill</option>
+                                    <option value="Thornhill">Thornhill</option>
+                                    <option value="Mississauga">Mississauga</option>
+                                    <option value="East York">East York</option>
+                                    <option value="Etobicoke">Etobicoke</option>
+                                    <option value="Vaughan">Vaughan</option>
+                                    <option value="Other GTA Area">Other GTA Area</option>
                                 </select>
                             </div>
                             <div class="release-adress-map">
@@ -88,20 +87,13 @@
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动图片</b> <i></i></label>
-                    <div class="release-camera">
-                        <a href="javascript:void(0)" class="release-camera-box">
-                            <img src="/img/icon-camera.png" alt="" />
-                            <p>添加活动图片</p>
-                        </a>
-                    </div>
-                    <div class="release-pic"><a href=""><img src="/img/img1.jpg" alt="" /></a></div>
+                    <a name="dropzoneDiv" id="dropzoneDiv" class="dz-clickable"><i class="fa fa-upload fa-2x" aria-hidden="true"></i>点击上传本地图]</a>
                     <div class="release-camera-tips"><i>注：</i> 图片最小尺寸为2160x1080px (2:1 比例) 图片大小不能超出 10MB</div>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动详情</b> <i></i></label>
-                    <div class="release-edit">
-                        <textarea id="ct"></textarea>
-                    </div>
+                    <textarea id="ct" style="height: 400px;"></textarea>
+
                 </div>
                 <h1 class="release-caption">
                     <i>2</i>
@@ -165,9 +157,5 @@
         </div>
         </form>
     </div>
-    <script>
 
-
-
-    </script>
 </template>

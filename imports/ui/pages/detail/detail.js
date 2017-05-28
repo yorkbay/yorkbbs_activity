@@ -13,13 +13,16 @@ import '../../components/layer/error.js';
 import '../../components/layer/share.js';
 import '../../components/layer/weixin.js'
 import {Activity} from '../../../api/activity/activity.js'
+import {Comment} from '../../../api/comment/comment.js';
 import { listbytag } from '../../../api/activity/methods.js'
 
 Template.detail.onRendered(function () {
     var self=this;
+
     self.autorun(function () {
         var id=FlowRouter.getParam('id');
         self.subscribe('activitybyid',id);
+        self.subscribe('activitiesbytag','周末好去处');
     });
 
 });
@@ -27,7 +30,8 @@ Template.detail.onRendered(function () {
 Template.detail.helpers({
     item:function () {
         var id=FlowRouter.getParam('id');
-        return Activity.findOne({_id:id});
+
+        return Activity.findOne({_id: id});;
     },
     "listbytag": function (tag) {
         return listbytag.call({tag});

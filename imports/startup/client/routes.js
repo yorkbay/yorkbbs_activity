@@ -15,9 +15,7 @@ import '../../ui/layouts/admin/body.js'
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
-      if(FlowRouter.subsReady()) {
-          BlazeLayout.reset();
-      }
+    //BlazeLayout.reset();
     BlazeLayout.render('home', { main: 'App_home' });
   },
 });
@@ -39,6 +37,7 @@ FlowRouter.route('/user', {
 FlowRouter.route('/activity/:id', {
     name: 'App.detail',
     action() {
+        $('html,body').scrollTop(0);
         BlazeLayout.render('home', { main: 'detail' });
     },
 });
