@@ -101,7 +101,7 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        //{pr:{$eq:"free"},tags:{$in:[tag]}}
+
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
 });

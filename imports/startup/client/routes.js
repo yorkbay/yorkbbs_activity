@@ -38,7 +38,7 @@ FlowRouter.route('/release', {
     },
 });
 
-FlowRouter.route('/user', {
+FlowRouter.route('/usr', {
     name: 'App.user',
     action() {
         BlazeLayout.render('home', { main: 'usercenter' });

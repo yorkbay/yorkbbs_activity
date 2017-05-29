@@ -2,7 +2,7 @@
  * Created by shunxiangchen on 5/12/17.
  */
 import './comment.html';
-import { Session } from 'meteor/session'
+import { Session } from 'meteor/session';
 
 import {Comment} from '../../../api/comment/comment.js';
 
@@ -13,7 +13,7 @@ import {
 Template.comment.events({
     "click #sub":()=>{
         let usr=Session.get('usr');
-        console.log(usr);
+
         var val=$("#ct").val();
         if($.trim(val)==""){
             return;

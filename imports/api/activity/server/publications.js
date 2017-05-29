@@ -45,12 +45,14 @@ Meteor.publish('activitiesbytag', function (tag) {
     return Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
 });
 
-/*
-Meteor.publish('activitybyid', function (id) {
-    check(id,String);
-    return Activity.find({_id:id});
+Meteor.publish('activitiesbyusr', function (uid,limit) {
+    check(uid,String);
+    check(limit,Number);
+
+    return Activity.find({"meta.uid":uid},{limit:limit,sort:{'meta.dt':-1}});
 });
-*/
+
+
 
 Meteor.publishComposite('activitybyid', function (id) {
     check(id,String);
