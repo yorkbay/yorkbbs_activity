@@ -1,6 +1,6 @@
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-
+import { Session } from 'meteor/session'
 // Import needed templates
 import '../../ui/layouts/body/home.js';
 import '../../ui/pages/home/home.js';
@@ -16,6 +16,17 @@ FlowRouter.route('/', {
   name: 'App.home',
   action() {
     //BlazeLayout.reset();
+      var usr=Session.get('usr');
+
+      if(!usr || !usr.id){
+          usr={
+            id:"11111",
+            uname:"约克管家"
+          }
+
+          Session.set("usr",usr);
+      }
+
     BlazeLayout.render('home', { main: 'App_home' });
   },
 });

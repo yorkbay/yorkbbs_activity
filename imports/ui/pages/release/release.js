@@ -3,6 +3,7 @@
  */
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
+import { Session } from 'meteor/session'
 import './release.html';
 
 import '../../components/release/mobile_menu.js';
@@ -20,7 +21,7 @@ Template.release.onCreated(function () {
 
 Template.release.onRendered(function releaseOnRendered() {
 
-    $("a#dropzoneDiv").dropzone({ url: "/file/post" });
+    //$("a#dropzoneDiv").dropzone({ url: "/file/post" });
 
     tinymce.init({
         selector: '#ct',
@@ -46,6 +47,7 @@ Template.release.onRendered(function releaseOnRendered() {
 
         return false;
     });
+
 
     /*
     $('#bdate').datetimepicker({
@@ -80,6 +82,7 @@ Template.release.onRendered(function releaseOnRendered() {
 
 Template.release.events({
     "click #sub":()=>{
+        let usr=Session.get('usr');
         var pr="free";
         if(!$("#isfree").is(':checked')){
             pr=$("#pr").val();
@@ -109,7 +112,12 @@ Template.release.events({
             "pr":pr,
             "site":$("#site").val(),
             "tel":$("#tel").val(),
-            "tags":tags
+            "tags":tags,
+            "meta":{
+                "uid":usr.id,
+                "usr":usr.uname,
+                "dt":new Date()
+            }
         };
         //console.log(doc);
         var Id = insert.call(doc);
