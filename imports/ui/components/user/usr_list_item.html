@@ -1,0 +1,35 @@
+<template name="usr_list_item">
+    <div class="newslist-content">
+        <div class="newslist-cover newslist-image-cover">
+            <a href="/activity/{{item.refid}}" title=""><img src="{{item.logo}}" alt=""></a>
+            <p class="newslist-channel"><a href="/activity/{{item.refid}}" title="">{{item.pr}}</a></p>
+        </div>
+        <div class="newslist-image-cont">
+            <div class="newslist-body">
+                <a href="/activity/{{item.refid}}" title="">
+                    <time class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</time>
+                    <div class="newslist-title">{{item.ti}}</div>
+                    <div class="newslist-date newslist-address">{{item.location}}</div>
+                </a>
+            </div>
+            <div class="newslist-footer">
+                <div class="newslist-tags">
+                    {{#each tg in item.tags}}
+                        <a href="/?tag={{tg}}">#{{tg}} </a>
+                    {{/each}}
+                </div>
+                <div class="newslist-bookmark">
+                    <a class="J-share" href="http://fenxianglujing.com">
+                        <img src="img/icon-share.png" alt="">
+                        <img src="img/icon-share-red.png" alt="">
+                    </a>
+                    <a href="">
+                        <img src="img/icon-heard.png" alt="">
+                        <img src="img/icon-heard-red.png" alt="">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</template>
