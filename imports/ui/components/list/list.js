@@ -67,3 +67,28 @@ Template.list.helpers({
     ]
 
 });
+
+
+function ChangeParam(name,value)
+{
+    var url=window.location.search ;
+    var newUrl="";
+    var reg = new RegExp("(^|)"+ name +"=([^&]*)(|$)");
+    var tmp = name + "=" + value;
+    if(url.match(reg) != null)
+    {
+        newUrl= url.replace(eval(reg),tmp);
+    }
+    else
+    {
+        if(url.match("[\?]"))
+        {
+            newUrl= url + "&" + tmp;
+        }
+        else
+        {
+            newUrl= url + "?" + tmp;
+        }
+    }
+    return newUrl;
+}

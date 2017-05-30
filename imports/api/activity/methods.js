@@ -8,7 +8,7 @@ import { Activity } from './activity.js';
 
 export const insert = new ValidatedMethod({
     name: 'Activity.insert',
-    validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'pic','pic.$','ct','pr','site','tel','tags','tags.$']).validator({ clean: true, filter: false }),
+    validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'pic','pic.$','ct','pr','site','tel','tags','tags.$',"meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
     run(obj) {
         return Activity.insert(obj);
     }
@@ -24,5 +24,34 @@ export const listbytag = new ValidatedMethod({
     }).validator(),
     run({tag}) {
         return Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
+    }
+});
+
+
+
+export const tagnum = new ValidatedMethod({
+    name: 'Activity.tagnum',
+    validate: new SimpleSchema({}).validator(),
+    run() {
+        let query={
+            $facet: {
+                "categorizedByTags": [
+                    {$unwind: "$tags"},
+                    {$sortByCount: "$tags"}
+                ]
+            }
+        };
+
+
+        const results ="";//Activity.aggregate(query).shift() || {};
+
+        // post processing facet values
+        for (let facet in results) {
+            results[facet] && results[facet].forEach(obj => {
+                obj.id = obj._id;
+                delete obj._id;
+            });
+        }
+        return results;
     }
 });

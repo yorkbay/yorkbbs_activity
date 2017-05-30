@@ -4,12 +4,12 @@
             <h2>活动时间</h2>
             <div class="active-tags active-tags-3">
                 <ul>
-                    <li><a href="" class="active-tags-on release-tags-current search_left_time">今天</a></li>
-                    <li><a href="" class="active-tags-over search_left_time">明天</a></li>
-                    <li><a href="" class="active-tags-over search_left_time">本周</a></li>
-                    <li><a href="" class="active-tags-over search_left_time">本周末</a></li>
-                    <li><a href="" class="active-tags-over search_left_time">下周末</a></li>
-                    <li><a href="" class="active-tags-over search_left_time">本月</a></li>
+                    <li><a href="" class="active-tags-on release-tags-current search_left_time" time="today">今天</a></li>
+                    <li><a href="" class="active-tags-over search_left_time" time="tomorrow">明天</a></li>
+                    <li><a href="" class="active-tags-over search_left_time" time="week">本周</a></li>
+                    <li><a href="" class="active-tags-over search_left_time" time="weekend">本周末</a></li>
+                    <li><a href="" class="active-tags-over search_left_time" time="nextweekend">下周末</a></li>
+                    <li><a href="" class="active-tags-over search_left_time" time="month">本月</a></li>
                 </ul>
             </div>
         </section>
@@ -26,6 +26,9 @@
             <h2>活动类型</h2>
             <div class="active-tags active-tags-2">
                 <ul>
+                    {{#each tag in tags}}
+                        {{tag}}
+                    {{/each}}
                     <li><a href="" class="active-tags-on search_left_tag" tag="周末好去处"><i><img src="/img/icon-arrow-bottom.png" alt=""></i>周末好去处(20)</a></li>
                     <li><a href="" class="active-tags-over search_left_tag" tag="亲子活动">亲子活动(20)</a></li>
                     <li><a href="" class="active-tags-over search_left_tag" tag="公益活动">公益活动(20)</a></li>

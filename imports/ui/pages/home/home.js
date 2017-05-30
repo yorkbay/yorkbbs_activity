@@ -10,7 +10,7 @@ import '../../components/list/list.js';
 import '../../components/list/simple.js';
 import '../../components/list/grid.js';
 import { Activity } from '../../../api/activity/activity.js';
-import { listbytag } from '../../../api/activity/methods.js'
+import { listbytag,tagnum } from '../../../api/activity/methods.js'
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions
@@ -26,6 +26,10 @@ Template.App_home.onCreated(function(){
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
+
+    instance.key = () => {
+        return FlowRouter.getQueryParam('key')||"";
+    };
 
     instance.time = () => {
         return FlowRouter.getQueryParam('time')||"";
@@ -44,8 +48,11 @@ Template.App_home.onCreated(function(){
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
         instance.subscribe('activitiesrecommend');
+        instance.subscribe('activitiestags');
         instance.subscribe('activitiesbytag','周末好去处');
 
+
+        const key = instance.key();
         const time = instance.time();
         const isfree = instance.isfree();
         const tag = instance.tag();
@@ -53,7 +60,7 @@ Template.App_home.onCreated(function(){
         const limit = instance.limit.get();
 
         instance.subscribe('activitieslist', {
-            time,isfree,tag,isrmd,limit
+            key,time,isfree,tag,isrmd,limit
         });
 
         instance.ready.set(PostSubs.ready());
@@ -81,12 +88,29 @@ Template.App_home.helpers({
     "list_item": function () {
 
         const instance = Template.instance();
+        const key = instance.key();
+        const time = instance.time();
         const isfree = instance.isfree();
         const tag = instance.tag();
 
         const limit = instance.limit.get();
 
         var query={};
+        if(key){
+            let regex = new RegExp( key, 'i' );
+            query={
+                ti:regex
+            }
+        }
+        if(time){
+            var start = moment().startOf('day');
+            var end = moment().endOf('day');
+
+
+            query.btime={
+                date:{$gte:start}
+            }
+        }
         if(isfree === "1"){
             query.pr={
                 $eq: "free"
@@ -101,9 +125,9 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        //{pr:{$eq:"free"},tags:{$in:[tag]}}
+        console.log(query);
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
-    },
+    }
 });
 
 
@@ -125,6 +149,12 @@ Template.App_home.events({
         var url=ChangeParam("tag",tag);
         FlowRouter.go("/"+url);
     },
+    'click .search_left_time'(event, instance) {
+        instance.limit.set(numOfRecords);
+        var time=$(event.currentTarget).attr("time");
+        var url=ChangeParam("time",time);
+        FlowRouter.go("/"+url);
+    },
     'click .tag_close'(event, instance) {
         var url=ChangeParam("tag",'');
         FlowRouter.go("/"+url);
@@ -134,8 +164,20 @@ Template.App_home.events({
         FlowRouter.go("/"+url);
     },
     'click .time_close'(event, instance) {
-
         FlowRouter.go("/"+url);
+    },
+    'keyup .subnav-search-input'(event, instance) {
+        let value = $.trim($(".subnav-search-input").val());
+        if (event.keyCode === 13) {
+            var url=ChangeParam("key",value);
+            FlowRouter.go("/"+url);
+        }
+    },
+    'click .subnav-submit'(event, instance) {
+        let value = $.trim($(".subnav-search-input").val());
+        var url=ChangeParam("key",value);
+        FlowRouter.go("/"+url);
+
     },
 });
 
@@ -163,3 +205,25 @@ function ChangeParam(name,value)
     }
     return newUrl;
 }
+
+
+
+function getdate(time) {
+    var condition={};
+    var searchtime;
+    if(time==="today"){
+        searchtime=moment(new Date()).format("YYYY-MM-DD");
+        condition={
+            //btime:{date:{$eq:searchtime}},
+            btime:{date:searchtime},
+            //etime:{date:{$eq: searchtime}}
+            etime:{date:searchtime}
+        }
+    }
+    return condition;
+}
+
+//console.log(getdate('today') );
+
+
+

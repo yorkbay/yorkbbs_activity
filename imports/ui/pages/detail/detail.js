@@ -2,7 +2,7 @@
  * Created by shunxiangchen on 5/12/17.
  */
 import './detail.html';
-
+import { Session } from 'meteor/session';
 
 import '../../components/detail/share.js';
 import '../../components/detail/comment.js';
@@ -14,13 +14,24 @@ import '../../components/layer/share.js';
 import '../../components/layer/weixin.js'
 import {Activity} from '../../../api/activity/activity.js'
 import {Comment} from '../../../api/comment/comment.js';
-import { listbytag } from '../../../api/activity/methods.js'
+import { listbytag } from '../../../api/activity/methods.js';
+import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 
 Template.detail.onRendered(function () {
     var self=this;
-
+    const usr=Session.get("usr");
+    var id=FlowRouter.getParam('id');
+    var doc= {
+        "ty":"log",
+        "refid":id,
+        "st":"normal",
+        "meta":{
+            "uid":usr.id,
+            "usr":usr.uname
+        }
+    };
+    usrCenterInsert.call(doc);
     self.autorun(function () {
-        var id=FlowRouter.getParam('id');
         self.subscribe('activitybyid',id);
         self.subscribe('activitiesbytag','周末好去处');
     });
@@ -29,9 +40,37 @@ Template.detail.onRendered(function () {
 
 Template.detail.helpers({
     item:function () {
-        var id=FlowRouter.getParam('id');
 
-        return Activity.findOne({_id: id});;
+        var id=FlowRouter.getParam('id');
+        var item=Activity.findOne({_id: id});
+        /*
+        var doc= {
+            "ti":item.ti,
+            "st":"normal",
+            "logo":item.logo,
+            "location":item.location,
+            "city":item.city,
+            "address":item.address,
+            "code":item.code,
+            "btime":{
+                "date":item.btime.date,
+                "time":item.btime.time,
+            },
+            "etime":{
+                "date":item.etime.date,
+                "time":item.etime.time,
+            },
+            "ty":"log",
+            "refid":id,
+            "tags":item.tags,
+            "meta":{
+                "uid":usr.id,
+                "usr":usr.uname
+            }
+        };
+        usrCenterInsert.call(doc);
+        */
+        return item;
     },
     "listbytag": function (tag) {
         return listbytag.call({tag});

@@ -31,6 +31,7 @@ reywood:publish-composite
 mdg:validated-method
 mdg:validation-error
 meteorhacks:subs-manager
+meteorhacks:aggregate
 
 nimble:restivus
 
@@ -88,4 +89,4 @@ meteortoys:allthings
 teamon:tinymce
 nolimits4web:swiper
 dbarrett:dropzonejs
-froatsnook:request
+session

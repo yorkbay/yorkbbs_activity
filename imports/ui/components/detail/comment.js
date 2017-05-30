@@ -2,6 +2,7 @@
  * Created by shunxiangchen on 5/12/17.
  */
 import './comment.html';
+import { Session } from 'meteor/session';
 
 import {Comment} from '../../../api/comment/comment.js';
 
@@ -11,6 +12,8 @@ import {
 
 Template.comment.events({
     "click #sub":()=>{
+        let usr=Session.get('usr');
+
         var val=$("#ct").val();
         if($.trim(val)==""){
             return;
@@ -20,8 +23,8 @@ Template.comment.events({
             "st":"normal",
             "refid":$("#refid").val(),
             "meta":{
-                "uid":"",
-                "usr":""
+                "uid":usr.id,
+                "usr":usr.uname,
             }
 
         };

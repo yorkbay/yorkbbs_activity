@@ -15,17 +15,33 @@ Meteor.publish('activitiesrecommend', function () {
 
 Meteor.publish('activitieslist', function (params) {
     check(params,{
+        key:String,
         time:String,
         isfree:String,
         tag:String,
         isrmd:String,
         limit:Number
     });
-    const {time, isfree,tag,isrmd,limit} = params;
+    const {key,time, isfree,tag,isrmd,limit} = params;
 
     var query={};
+
     if(time){
-        query.time=time;
+        //var condition=getdate(time);
+
+        var start = moment().startOf('day');
+        var end = moment().endOf('day');
+
+        query.btime={
+            date:{$gte:start}
+        }
+
+    }
+    if(key){
+        let regex = new RegExp( key, 'i' );
+        query={
+            ti:regex
+        }
     }
     if(isfree ==="1"){
         query.pr={ $eq: "free"};
@@ -37,20 +53,23 @@ Meteor.publish('activitieslist', function (params) {
             "$in": [tag]
         }
     }
+
     return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
 });
 
 Meteor.publish('activitiesbytag', function (tag) {
     check(tag,String);
-    return Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
+    return Activity.find({tags:{ "$in": [tag] }},{limit:5,sort:{'meta.dt':-1}});
 });
 
-/*
-Meteor.publish('activitybyid', function (id) {
-    check(id,String);
-    return Activity.find({_id:id});
+Meteor.publish('activitiesbyusr', function (uid,limit) {
+    check(uid,String);
+    check(limit,Number);
+
+    return Activity.find({"meta.uid":uid},{limit:limit,sort:{'meta.dt':-1}});
 });
-*/
+
+
 
 Meteor.publishComposite('activitybyid', function (id) {
     check(id,String);
@@ -68,4 +87,41 @@ Meteor.publishComposite('activitybyid', function (id) {
     };
 });
 
+Meteor.publish('activitiestags', function () {
+    const results ="";
+    /*
+    let query={
+        $facet: {
+            "categorizedByTags": [
+                {$unwind: "$tags"},
+                {$sortByCount: "$tags"}
+            ]
+        }
+    };
 
+
+    const results =Activity.aggregate(query).shift() || {};
+
+    // post processing facet values
+    for (let facet in results) {
+        results[facet] && results[facet].forEach(obj => {
+            obj.id = obj._id;
+            delete obj._id;
+        });
+    }
+    */
+    return results;
+});
+
+function getdate(time) {
+    var condition={};
+    var searchtime;
+    if(time==="today"){
+        searchtime=moment(new Date()).format("YYYY-MM-DD");
+        condition={
+            btime:{date:{$eq:searchtime}},
+            etime:{date:{$eq: searchtime}}
+        }
+    }
+    return condition;
+}

@@ -8,67 +8,15 @@
                 </div>
                 <div class="newslist-caption-conent">
                     <ul>
-                        {{#each item in list }}
+                        {{#each list }}
                             <li>
-                                {{> list_item item=item }}
+                                {{> usr_list_item item=findActivitybyid}}
                             </li>
                         {{/each}}
                     </ul>
                 </div>
-                <div class="listpage">
-                    <div class="pagination">
-                        <div class="pagination-page">
-                            <!--
-                            <div class="page-wrap">
-                                <a href="#" class="page-next icon-disable">
-                                    <span class="page-icon-next"></span> 第一页
-                                </a>
-                            </div>
-                            -->
-                            <div class="page-wrap">
-                                <a href="#" class="page-next icon-disable">
-                                    <span class="page-icon-next"></span> 上一页
-                                </a>
-                            </div>
-                            <div class="page-wrap page-wrap-hover">
-                                <div class="page-bg"></div>
-                                <a class="page">1</a>
-                            </div>
-                            <div class="page-wrap">
-                                <div class="page-bg"></div>
-                                <a class="page">2</a>
-                            </div>
-                            <div class="page-wrap">
-                                <div class="page-bg"></div>
-                                <a class="page">3</a>
-                            </div>
-                            <div class="page-wrap">
-                                <div class="page-bg"></div>
-                                <a class="page">4</a>
-                            </div>
-                            <div class="page-wrap">
-                                <div class="page-bg"></div>
-                                <a class="page">5</a>
-                            </div>
-                            <div class="page-wrap">
-                                <a href="#" class="page-next icon-disable">
-                                    <span class="page-icon-next"></span> 下一页
-                                </a>
-                            </div>
-                            <!--
-                            <div class="page-wrap">
-                                <a href="#" class="page-next icon-disable">
-                                    <span class="page-icon-next"></span> 最后页
-                                </a>
-                            </div>
-                            -->
-                        </div>
-                        <div class="pagination-count">
-                            <span>共</span>
-                            <span>100</span>
-                            <span>页</span>
-                        </div>
-                    </div>
+                <div class="release-button">
+                    <a href="javascript:;" id="more" class="release-button-yes"><img src="/img/icon-yes.png" alt="加载更多" />加载更多</a>
                 </div>
             </div>
         </div>
