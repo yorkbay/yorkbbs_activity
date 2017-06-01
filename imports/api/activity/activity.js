@@ -110,30 +110,12 @@ Activity.schema = new SimpleSchema({
     lat: {
         type: String,
         label: "code",
-        optional:true,
-        autoValue:function(){
-            if(this.code){
-                var hills = Zipcodes.lookup(this.code);
-                console.log(hills);
-                return hills.latitude;
-            }else {
-                return "";
-            }
-
-        }
+        optional:true
     },
     lng: {
         type: String,
         label: "code",
-        optional:true,
-        autoValue:function(){
-            if(this.code){
-                var hills = Zipcodes.lookup(this.code);
-                return hills.longitude;
-            }else {
-                return "";
-            }
-        }
+        optional:true
     },
     'btime.date': {
         type: Date,

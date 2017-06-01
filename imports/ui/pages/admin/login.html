@@ -1,0 +1,22 @@
+<template name="admin_login">
+    <div class="connect-signup">
+        <h1><a href=""><img src="/admin/img/logo-active.jpg" alt="" /></a></h1>
+            <input type="hidden" name="token" />
+            <div class="row">
+                <label>用户名：</label>
+                <input type="text" placeholder="邮箱" autocomplete="off" name="uname" id="uname" value="" />
+            </div>
+            <div class="row">
+                <label>密码：</label>
+                <input type="password" placeholder="请输入密码" name="pwd" id="pwd"/>
+            </div>
+
+            <div class="row">
+                <input class="button connect-login" type="submit" value="" />
+                <!--<label class="checkbox">
+                    <span><input type="checkbox" name="remember_me" />下次自动登录</span>
+                    <a href="/forgotpassword" class="connect-forgot">忘记密码?</a>
+                </label> -->
+            </div>
+    </div>
+</template>

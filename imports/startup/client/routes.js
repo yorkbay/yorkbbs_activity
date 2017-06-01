@@ -9,7 +9,9 @@ import '../../ui/pages/release/release.js';
 import '../../ui/pages/user/user.js';
 import '../../ui/pages/not-found/not-found.js';
 
-import '../../ui/layouts/admin/body.js'
+import '../../ui/layouts/admin/body.js';
+import '../../ui/layouts/admin/login.js'
+
 
 var usr=Session.get('usr');
 
@@ -21,6 +23,8 @@ if(!usr || !usr.id){
 
     Session.set("usr",usr);
 }
+var manager=Session.get('manager');
+
 
 
 // Set up all routes in the app
@@ -30,6 +34,15 @@ FlowRouter.route('/', {
     //BlazeLayout.reset();
     BlazeLayout.render('home', { main: 'App_home' });
   },
+});
+
+FlowRouter.route('/upload', {
+    name: 'App.upload',
+    action(params, queryParams) {
+        console.log(params);
+        console.log(queryParams);
+        return "111111";
+    },
 });
 
 FlowRouter.route('/release', {
@@ -51,6 +64,13 @@ FlowRouter.route('/activity/:id', {
     action() {
         $('html,body').scrollTop(0);
         BlazeLayout.render('home', { main: 'detail' });
+    },
+});
+
+FlowRouter.route('/admin/login', {
+    name: 'App.admin.login',
+    action() {
+        BlazeLayout.render('admin_login_layout', { main: 'admin_login' });
     },
 });
 
@@ -116,12 +136,6 @@ FlowRouter.route('/admin/newslettermsg', {
         BlazeLayout.render('admin', { main: 'admin_newsletter_msg' });
     },
 });
-
-
-
-
-
-
 
 FlowRouter.notFound = {
   action() {

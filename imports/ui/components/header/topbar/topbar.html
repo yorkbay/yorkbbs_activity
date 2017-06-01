@@ -6,7 +6,8 @@
             </ul>
             <ul class="top-nav">
                 <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';" class="top-down" id="user-login-show" >
-                    <div class="top-login fl drop-down">
+                    {{> loginButtons}}
+                    <!--<div class="top-login fl drop-down">
                         <a id="blogin_btn" class="login_over" href="">登录</a>
                         <form onsubmit="return false;">
                             <ul class="t_list1 drop-downcont">
@@ -30,7 +31,7 @@
                                 </li>
                             </ul>
                         </form>
-                    </div>
+                    </div>-->
                 </li>
                 <li onmouseout="this.className = 'nav-name';" onmouseover="this.className = 'nav-name menu-hover';" class="top-down" id="user-register-show" >
                     <div class="top-nav-grid">

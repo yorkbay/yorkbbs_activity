@@ -50,6 +50,7 @@ useraccounts:core
 useraccounts:unstyled
 useraccounts:flow-routing
 softwarerero:accounts-t9n
+accounts-ui
 
 alanning:roles
 
@@ -90,3 +91,5 @@ teamon:tinymce
 nolimits4web:swiper
 dbarrett:dropzonejs
 session
+tomi:upload-server
+http

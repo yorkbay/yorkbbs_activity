@@ -41,7 +41,10 @@ Manager.schema = new SimpleSchema({
     dt: {
         type: Date,
         label: "create date",
-        optional:true
+        optional:true,
+        autoValue:function () {
+            return new Date();
+        }
     },
     lm: {
         type: Date,

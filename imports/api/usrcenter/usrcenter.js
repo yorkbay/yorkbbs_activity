@@ -35,66 +35,6 @@ UsrCenter.schema = new SimpleSchema({
         optional:true,
         label: "activity id"
     },
-    ti: {
-        type: String,
-        optional:true,
-        label: "title"
-    },
-    logo: {
-        type: String,
-        label: "logo",
-        optional:true
-    },
-    'btime.date': {
-        type: Date,
-        label: "begin date",
-        optional:true
-    },
-    'btime.time': {
-        type: String,
-        label: "begin time",
-        optional:true
-    },
-    'etime.date': {
-        type: Date,
-        label: "end date",
-        optional:true
-    },
-    'etime.time': {
-        type: String,
-        label: "end time",
-        optional:true
-    },
-    location: {
-        type: String,
-        label: "location",
-        optional:true
-    },
-    city: {
-        type: String,
-        label: "city",
-        optional:true
-    },
-    address: {
-        type: String,
-        label: "address",
-        optional:true
-    },
-    code: {
-        type: String,
-        label: "code",
-        optional:true
-    },
-    pr: {
-        type: String,
-        label: "price:free:$..",
-        optional:true
-    },
-    tags: {
-        type: [String],
-        label: "tag",
-        optional:true
-    },
     'meta.uid': {
         type: String,
         label: "user id",

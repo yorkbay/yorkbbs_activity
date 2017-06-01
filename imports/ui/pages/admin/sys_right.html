@@ -21,15 +21,16 @@
                         <th>最后登录时间</th>
                         <th width="15%">权限配置</th>
                     </tr>
+                    {{#each item in items}}
                     <tr>
                         <td>
-                            <em>admin</em>
+                            <em>{{item.uname}}</em>
                         </td>
                         <td>
-                            <em>正常</em>
+                            <em>{{item.st}}</em>
                         </td>
                         <td>
-                            <em>2016-12-30  18:13</em>
+                            <em>{{item.meta.lm}}</em>
                         </td>
                         <td>
                             <em>
@@ -38,57 +39,7 @@
                             </em>
                         </td>
                     </tr>
-                    <tr>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>正常</em>
-                        </td>
-                        <td>
-                            <em>2016-12-30  18:13</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-change-start">更改状态</a>
-                                <a href="" class="table-blue J-change-authority">配置权限</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>正常</em>
-                        </td>
-                        <td>
-                            <em>2016-12-30  18:13</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-change-start">更改状态</a>
-                                <a href="" class="table-blue J-change-authority">配置权限</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>正常</em>
-                        </td>
-                        <td>
-                            <em>2016-12-30  18:13</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-change-start">更改状态</a>
-                                <a href="" class="table-blue J-change-authority">配置权限</a>
-                            </em>
-                        </td>
-                    </tr>
+                    {{/each}}
                     </tbody></table>
             </div>
             <div class="listpage">

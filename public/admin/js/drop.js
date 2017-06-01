@@ -147,11 +147,7 @@ $(function(){
          return false;
     });
     /*权限管理*/
-    $('.J-add-admin').click(function(){
-        $('.J-authority-pop').show();
-        $('.add-authority-pop').show().siblings().hide();
-        return false;
-    });
+
     $('.J-authority-pop').find('.layer-close').click(function(){
         $('.J-authority-pop').hide();
         return false;    

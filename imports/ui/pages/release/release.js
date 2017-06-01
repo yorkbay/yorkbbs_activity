@@ -7,7 +7,6 @@ import { Session } from 'meteor/session'
 import './release.html';
 
 import '../../components/release/mobile_menu.js';
-import '../../components/release/imgupload.js';
 import {Activity} from '../../../api/activity/activity.js'
 
 import {
@@ -23,7 +22,18 @@ Template.release.onCreated(function () {
 
 Template.release.onRendered(function releaseOnRendered() {
 
-    //$("a#dropzoneDiv").dropzone({ url: "/file/post" });
+    $("a#dropzoneDiv").dropzone({
+        url: "/upload" ,
+        acceptedFiles:"image/*",
+        success: function(file, response){
+            $(".dz-preview").hide();
+            var files=JSON.parse(response).files;
+            files.forEach(function(file){
+                var img="<img src='/upload/"+file.name+"' />";
+                tinymce.activeEditor.insertContent(img);
+            })
+        }
+    });
 
     tinymce.init({
         selector: '#ct',
@@ -82,6 +92,15 @@ Template.release.onRendered(function releaseOnRendered() {
 
 });
 
+Template.release.helpers({
+    myCallbacks: function() {
+        return "";
+    },
+    specificFormData: function() {
+        return "";
+    }
+})
+
 Template.release.events({
     "click #sub":()=>{
         let usr=Session.get('usr');
@@ -93,9 +112,11 @@ Template.release.events({
 
         var tags=$("#tags").val().split(",");
         tags.pop();
+        var ct=tinymce.activeEditor.getContent();
         var doc= {
             "ti":$("#ti").val(),
             "st":"normal",
+            "logo":getlogo(ct),
             "isonline":isonline,
             "location":$("#location").val(),
             "city":$("#city").val(),
@@ -110,7 +131,7 @@ Template.release.events({
                 "time":$("#etime").val()
             },
             "pic":['/img/img1.jpg'],
-            "ct":tinymce.activeEditor.getContent(),
+            "ct":ct,
             "pr":pr,
             "site":$("#site").val(),
             "tel":$("#tel").val(),
@@ -138,9 +159,8 @@ Template.release.events({
 
         FlowRouter.go('/');
     },
-    'dropped #dropzoneDiv': function(e,template){
-        e.preventDefault();
-        console.log("hurra");
-        console.log(e.originalEvent.dataTransfer.files); // this will contain the list of files that were dropped
-    }
 });
+
+function getlogo(content){
+    return "/"+$(content).find('img:first').attr('src');
+}

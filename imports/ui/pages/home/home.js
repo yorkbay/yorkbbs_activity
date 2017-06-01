@@ -44,6 +44,10 @@ Template.App_home.onCreated(function(){
         return FlowRouter.getQueryParam('rmd')||"";
     };
 
+    instance.st = () => {
+        return FlowRouter.getQueryParam('st')||"";
+    };
+
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
@@ -57,10 +61,11 @@ Template.App_home.onCreated(function(){
         const isfree = instance.isfree();
         const tag = instance.tag();
         const isrmd = instance.isrmd();
+        const st = instance.st();
         const limit = instance.limit.get();
 
         instance.subscribe('activitieslist', {
-            key,time,isfree,tag,isrmd,limit
+            key,time,isfree,tag,isrmd,limit,st
         });
 
         instance.ready.set(PostSubs.ready());
@@ -125,7 +130,7 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        console.log(query);
+        //console.log(query);
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });

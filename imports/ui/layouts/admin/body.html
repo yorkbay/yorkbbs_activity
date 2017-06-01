@@ -74,10 +74,10 @@
                     <div class="topbar-meta">
                         <ul>
                             <li>
-                                <a href="">你好，ken</a>
+                                <a href="">你好，{{manager.uname}}</a>
                             </li>
                             <li>
-                                <a href=""><i><img alt="" src="/admin/img/icon-quit.png"></i></a>
+                                <a href="javascript:;" id="logout"><i><img alt="" src="/admin/img/icon-quit.png"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -168,26 +168,5 @@
     <script type=text/javascript src="/admin/js/drop.js"></script>
     <script src="/admin/time/moment.min.js"></script>
     <script src="/admin/time/daterangepicker.js"></script>
-    <script>
-        var stickTop = $('#stick-top-date').val();
-        var recommed = $('#recommed-date').val();
 
-        $('#stick-top-date').daterangepicker({
-            language: 'zh-CN',
-            singleDatePicker: true,
-            startDate: stickTop ? stickTop : moment().subtract(30, 'days'),
-            locale: {
-                format: 'YYYY-MM-DD'
-            },
-        });
-
-        $('#recommed-date').daterangepicker({
-            language: 'zh-CN',
-            singleDatePicker: true,
-            startDate: recommed ? recommed : (stickTop ? stickTop : moment()),
-            locale: {
-                format: 'YYYY-MM-DD'
-            },
-        });
-    </script>
 </template>

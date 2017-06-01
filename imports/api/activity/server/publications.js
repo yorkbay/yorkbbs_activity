@@ -13,6 +13,8 @@ Meteor.publish('activitiesrecommend', function () {
 });
 
 
+
+
 Meteor.publish('activitieslist', function (params) {
     check(params,{
         key:String,
@@ -20,9 +22,10 @@ Meteor.publish('activitieslist', function (params) {
         isfree:String,
         tag:String,
         isrmd:String,
-        limit:Number
+        limit:Number,
+        st:String
     });
-    const {key,time, isfree,tag,isrmd,limit} = params;
+    const {key,time, isfree,tag,isrmd,limit,st} = params;
 
     var query={};
 
