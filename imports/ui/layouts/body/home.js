@@ -7,15 +7,15 @@ import '../../components/layer/share.js';
 
 //xx月xx日
 Template.registerHelper('formatDate_MD', function(date) {
-    return moment(date).format("MM月DD日");
+    return moment.utc(date).format("MM月DD日");
 });
 
 //xx月xx日
 Template.registerHelper('formatDate_HS', function(date) {
-    return moment(date).format("H:mm");
+    return moment.utc(date).format("H:mm");
 });
 
 //xx月xx日
 Template.registerHelper('formatDate_YMDHS', function(date) {
-    return moment(date).format("YYYY-MM-DD HH:mm");
+    return moment.utc(date).format("YYYY-MM-DD HH:mm");
 });

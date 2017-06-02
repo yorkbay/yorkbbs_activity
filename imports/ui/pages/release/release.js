@@ -22,6 +22,17 @@ Template.release.onCreated(function () {
 
 Template.release.onRendered(function releaseOnRendered() {
 
+    /*
+    $('#bdate').datepicker();
+    $('#btime').datepicker();
+    $('#edate').datepicker();
+    $('#etime').datepicker();
+    */
+    $('#bdate').datetimepicker();
+    $('#edate').datetimepicker();
+
+
+
     $("a#dropzoneDiv").dropzone({
         url: "/upload" ,
         acceptedFiles:"image/*",
@@ -60,45 +71,10 @@ Template.release.onRendered(function releaseOnRendered() {
         return false;
     });
 
-
-    /*
-    $('#bdate').datetimepicker({
-        format: 'yyyy-mm-dd',
-        startView: 2,
-        minView: 2,
-        bootcssVer:3
-    });
-    $('#btime').datetimepicker({
-        format: 'hh:ii',
-        startView: 1,
-        minView:1,
-        maxView: 1,
-        bootcssVer:3
-    });
-    $('#edate').datetimepicker({
-        format: 'yyyy-mm-dd',
-        startView: 2,
-        minView: 2,
-        bootcssVer:3
-    });
-    $('#etime').datetimepicker({
-        format: 'hh:ii',
-        startView: 1,
-        minView:1,
-        maxView: 1,
-        bootcssVer:3
-    });
-    */
-
 });
 
 Template.release.helpers({
-    myCallbacks: function() {
-        return "";
-    },
-    specificFormData: function() {
-        return "";
-    }
+
 })
 
 Template.release.events({
@@ -124,11 +100,11 @@ Template.release.events({
             "code":$("#code").val(),
             "btime":{
                 "date":new Date($("#bdate").val()),
-                "time":$("#btime").val()
+                "time":""
             },
             "etime":{
                 "date":new Date($("#edate").val()),
-                "time":$("#etime").val()
+                "time":""
             },
             "pic":['/img/img1.jpg'],
             "ct":ct,

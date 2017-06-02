@@ -108,12 +108,23 @@ Template.App_home.helpers({
             }
         }
         if(time){
-            var start = moment().startOf('day');
-            var end = moment().endOf('day');
+            let startOfDay = moment.utc().startOf('day').toDate();
+            let endOfDay = moment.utc().endOf('day').toDate();
+            const date = moment.utc().toDate();
 
+            console.log(startOfDay+'----------'+endOfDay+"---------"+date);
 
             query.btime={
-                date:{$gte:start}
+                date:{
+                    $lte: new Date(date)
+
+                }
+            }
+
+            query.etime={
+                date:{
+                    $gte: new Date(date)
+                }
             }
         }
         if(isfree === "1"){
@@ -130,7 +141,7 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        //console.log(query);
+        console.log(query);
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });
@@ -169,6 +180,7 @@ Template.App_home.events({
         FlowRouter.go("/"+url);
     },
     'click .time_close'(event, instance) {
+        var url=ChangeParam("time",'');
         FlowRouter.go("/"+url);
     },
     'keyup .subnav-search-input'(event, instance) {
@@ -212,23 +224,6 @@ function ChangeParam(name,value)
 }
 
 
-
-function getdate(time) {
-    var condition={};
-    var searchtime;
-    if(time==="today"){
-        searchtime=moment(new Date()).format("YYYY-MM-DD");
-        condition={
-            //btime:{date:{$eq:searchtime}},
-            btime:{date:searchtime},
-            //etime:{date:{$eq: searchtime}}
-            etime:{date:searchtime}
-        }
-    }
-    return condition;
-}
-
-//console.log(getdate('today') );
 
 
 

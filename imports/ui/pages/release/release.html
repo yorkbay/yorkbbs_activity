@@ -1,7 +1,6 @@
 <template name="release">
     {{> mobile_menu }}
     <div class="row">
-        <form class="sub_activity">
         <div class="l-release-main">
             <section class="release">
                 <h1 class="release-caption">
@@ -61,11 +60,11 @@
                         <label class="release-label"><b>开始时间 </b> <i>*</i></label>
                         <div class="release-date">
                             <div class="release-date-box">
-                                <div class="release-date-choose">
+                                <div class="release-date-choose ">
                                     <i><img src="/img/icon-date.jpg" alt="" /></i>
-                                    <input type="text" value=""  placeholder="2017/01/26" id="bdate" name="bdate"/>
+                                    <input type="text" value=""  placeholder="2017/01/26" id="bdate" name="bdate"  />
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" placeholder="07:00AM" id="btime" name="btime"/>
+                                <!--<input class="release-date-input-time" type="text" value="" placeholder="07:00AM" id="btime" name="btime" />-->
                             </div>
                         </div>
                     </div>
@@ -80,7 +79,7 @@
                                     <i><img src="/img/icon-date.jpg" alt="" /></i>
                                     <input type="text" value="" placeholder="2017/01/26" id="edate" name="edate" />
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" id="etime" name="etime" placeholder="07:00AM" />
+                                <!--<input class="release-date-input-time" type="text" value="" id="etime" name="etime" placeholder="07:00AM" />-->
                             </div>
                         </div>
                     </div>
@@ -156,7 +155,5 @@
             <a href="javascript:;" id="sub" class="release-button-yes"><img src="/img/icon-yes.png" alt="发布" /> 发布</a>
             <!--<a href="" class="release-button-no">取消</a>-->
         </div>
-        </form>
     </div>
-
 </template>
