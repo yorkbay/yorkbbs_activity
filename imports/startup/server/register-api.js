@@ -7,7 +7,8 @@ import '../../api/usrcenter/methods.js';
 
 import '../../api/activity/server/publications.js';
 import '../../api/usrcenter/server/publications.js';
-
+import '../../api/newsletter/methods.js';
+import '../../api/newsletter/server/publications.js';
 
 //backend
 import '../../api/manager/methods.js';

@@ -263,7 +263,9 @@
         <item url="file://$USER_HOME$/.meteor/packages/msavin_mongol/2.0.1/web.browser/client/row_subscriptions/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/lib/dropzonejs.js" />
         <item url="file://$USER_HOME$/.meteor/packages/retry/1.0.9/web.browser/retry.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/tsega_bootstrap3-datetimepicker/4.17.37_1/web.browser/lib/js/bootstrap-datetimepicker.js" />
         <item url="file://$USER_HOME$/.meteor/packages/msavin_mongol/2.0.1/web.browser/client/row_collection_notFound/notFound.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/tsega_bootstrap3-datetimepicker/4.17.37_1/web.browser/lib/css/bootstrap-datetimepicker.css" />
         <item url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/basic.css" />
         <item url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/dropzone.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/dropzone.css" />
@@ -317,8 +319,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.8.2/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/modules/0.8.2/web.browser/buffer.js" />
         <item url="file://$USER_HOME$/.meteor/packages/session/1.1.7/web.browser/session.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/drewy_datetimepicker/1.0.3/web.browser/packages/drewy_datetimepicker/jquery.datetimepicker.css" />
-        <item url="file://$USER_HOME$/.meteor/packages/drewy_datetimepicker/1.0.3/web.browser/packages/drewy_datetimepicker.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/cleanup.js" />
@@ -961,7 +961,9 @@
       <root url="file://$USER_HOME$/.meteor/packages/msavin_mongol/2.0.1/web.browser/client/row_subscriptions/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/lib/dropzonejs.js" />
       <root url="file://$USER_HOME$/.meteor/packages/retry/1.0.9/web.browser/retry.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/tsega_bootstrap3-datetimepicker/4.17.37_1/web.browser/lib/js/bootstrap-datetimepicker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/msavin_mongol/2.0.1/web.browser/client/row_collection_notFound/notFound.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/tsega_bootstrap3-datetimepicker/4.17.37_1/web.browser/lib/css/bootstrap-datetimepicker.css" />
       <root url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/basic.css" />
       <root url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/dropzone.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dbarrett_dropzonejs/4.2.1/web.browser/.npm/package/node_modules/dropzone/dist/dropzone.css" />
@@ -1015,8 +1017,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.8.2/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/modules/0.8.2/web.browser/buffer.js" />
       <root url="file://$USER_HOME$/.meteor/packages/session/1.1.7/web.browser/session.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/drewy_datetimepicker/1.0.3/web.browser/packages/drewy_datetimepicker/jquery.datetimepicker.css" />
-      <root url="file://$USER_HOME$/.meteor/packages/drewy_datetimepicker/1.0.3/web.browser/packages/drewy_datetimepicker.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/server.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha-core/1.0.1/web.browser/cleanup.js" />

@@ -19,10 +19,10 @@ Template.admin_comment_list.onCreated(function(){
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
+    instance.review = new ReactiveVar("");
+    instance.key = new ReactiveVar("");
 
-    instance.key = () => {
-        return FlowRouter.getQueryParam('key')||"";
-    };
+
     instance.btime = () => {
         return FlowRouter.getQueryParam('btime')||"";
     };
@@ -34,15 +34,17 @@ Template.admin_comment_list.onCreated(function(){
     };
 
 
+
     instance.autorun(function () {
-        const key = instance.key();
+        const key = instance.key.get();
         const btime = new Date(instance.btime());
         const etime = new Date(instance.etime());
         const st = instance.st();
+        const review = instance.review.get();
         const limit = instance.limit.get();
 
         instance.subscribe('commentslist', {
-            key,btime, etime,limit,st
+            key,btime, etime,limit,st,review
         });
 
         instance.ready.set(PostSubs.ready());
@@ -52,6 +54,7 @@ Template.admin_comment_list.onCreated(function(){
 
 Template.admin_comment_list.onRendered(function releaseOnRendered() {
 
+    /*
     $('#startdate').datetimepicker({
         format:'Y/m/d',
         onShow:function( ct ){
@@ -70,18 +73,24 @@ Template.admin_comment_list.onRendered(function releaseOnRendered() {
         },
         timepicker:false
     });
-
+    */
+    $('#startdate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#enddate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
 });
 
 Template.admin_comment_list.helpers({
     "list_item": function () {
 
         const instance = Template.instance();
-        const key = instance.key();
+        const key = instance.key.get();
         const btime = instance.btime();
         const etime = instance.etime();
         const st = instance.st();
-
+        const review = instance.review.get();
         const limit = instance.limit.get();
 
         var query={};
@@ -97,6 +106,14 @@ Template.admin_comment_list.helpers({
         }
         if(st){
             query.st=st;
+        }
+
+        if(review){
+            if(review =="true"){
+                query.review=true;
+            }else{
+                query.review=false;
+            }
         }
 
 
@@ -127,6 +144,14 @@ Template.admin_comment_list.events({
         }
         console.log(obj);
         commentmodifyreview.call(obj);
+    },
+    'change #review'(event,instance){
+        var val= $(event.currentTarget).val();
+        instance.review.set(val);
+    },
+    'click #search'(event,instance){
+        var val= $("#keyword").val();
+        instance.key.set(val);
     }
 
 });

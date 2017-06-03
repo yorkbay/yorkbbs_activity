@@ -28,20 +28,29 @@ Newsletter.schema = new SimpleSchema({
         optional:true,
         label: "status|normal:del"
     },
+    issend: {
+        type: Boolean,
+        optional:true,
+        label: "issend"
+    },
     uid: {
         type: String,
         optional:true,
-        label: "tag name"
+        label: "user id"
     },
     uname: {
         type: String,
         optional:true,
-        label: "tag name"
+        label: "user name"
     },
     dt: {
         type: Date,
         label: "create date",
-        optional:true
+        optional:true,
+        autoValue:function(){
+            return new Date()
+        }
+
     }
 });
 

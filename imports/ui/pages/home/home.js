@@ -112,7 +112,7 @@ Template.App_home.helpers({
             let endOfDay = moment.utc().endOf('day').toDate();
             const date = moment.utc().toDate();
 
-            console.log(startOfDay+'----------'+endOfDay+"---------"+date);
+            //console.log(startOfDay+'----------'+endOfDay+"---------"+date);
 
             query.btime={
                 date:{
@@ -141,7 +141,7 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        console.log(query);
+        //console.log(query);
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });

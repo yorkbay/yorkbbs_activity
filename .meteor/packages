@@ -92,4 +92,5 @@ nolimits4web:swiper
 dbarrett:dropzonejs
 session
 tomi:upload-server
-drewy:datetimepicker
+#drewy:datetimepicker
+tsega:bootstrap3-datetimepicker

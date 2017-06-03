@@ -46,114 +46,33 @@
                         <th width="15%">E-mail状态</th>
                         <th width="15%">操作</th>
                     </tr>
-
+                    {{#each item in list_item}}
                     <tr>
                         <td><input type="checkbox" value=""></td>
                         <td>
-                            <em>2017-04-28 18:13</em>
+                            <em>{{formatDate_YMDHS item.dt}}</em>
                         </td>
                         <td>
-                            <em>admin</em>
+                            <em>{{item.uname}}</em>
                         </td>
                         <td>
-                            <em>admin@yorkbbs.ca</em>
+                            <em>{{item.email}}</em>
                         </td>
                         <td>
-                            <em>未推送</em>
+                            <em>{{display_issend item.issend}}</em>
                         </td>
                         <td>
                             <em>
                                 <a href="" class="table-blue">推送到sendgrid</a>
-                                <a href="" class="table-blue">删除</a>
+                                <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>
                         </td>
                     </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>admin@yorkbbs.ca</em>
-                        </td>
-                        <td>
-                            <em>已推送</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue">推送到sendgrid</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>admin@yorkbbs.ca</em>
-                        </td>
-                        <td>
-                            <em>未推送</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue">推送到sendgrid</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em></em>
-                        </td>
-                        <td>
-                            <em>admin@yorkbbs.ca</em>
-                        </td>
-                        <td>
-                            <em>已推送</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue">推送到sendgrid</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
-
+                    {{/each}}
                     </tbody></table>
             </div>
-            <div class="listpage">
-                <div class="pagination">
-                    <div class="anpager" id="main_content_pgFollowServer">
-                        <div class="pagination-grid" style="width:60%;float:left;">
-                            <a>首页</a>
-                            <a>上一页</a>
-                            <span class="pactive">1</span>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href="">4</a>
-                            <a href="">5</a>
-                            <a href="">...</a>
-                            <a href="">下一页</a>
-                            <a href="">尾页</a>
-                        </div>
-                        <div class="pagination-total" style="width:40%;float:left;">
-                            共885条，每页50条
-                        </div>
-                    </div>
-                </div>
+            <div class="contacts-table-more">
+                <a href="" id="more">加载更多</a>
             </div>
         </div>
     </div>
