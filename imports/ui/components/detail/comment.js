@@ -21,10 +21,13 @@ Template.comment.events({
         var doc= {
             "ct":$("#ct").val(),
             "st":"normal",
+            "ti":$("#ti").val(),
+            "review":false,
             "refid":$("#refid").val(),
             "meta":{
                 "uid":usr.id,
                 "usr":usr.uname,
+                "dt":new Date()
             }
 
         };

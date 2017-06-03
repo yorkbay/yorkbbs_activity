@@ -1,9 +1,10 @@
 <template name="admin_comment_list">
+    {{> admin_checkManager}}
     <div class="contacts">
         <div class="contacts-box">
             <div id="crms-filter">
                 <div>
-                    <select class="form-control" name="habit" id="habit">
+                    <select class="form-control" name="st" id="st">
                         <option value="">显示状态</option>
                         <option value="42">显示</option>
                         <option value="43">隐藏</option>
@@ -63,125 +64,37 @@
                         <th width="6%">显示状态</th>
                         <th width="8%">操作</th>
                     </tr>
+                    {{#each item in list_item}}
                     <tr>
                         <td><input type="checkbox" value=""></td>
                         <td>
-                            <em>2016-12-30 18:13</em>
+                            <em>{{formatDate_YMDHS item.meta.dt}}</em>
                         </td>
                         <td>
-                            <em>周六Oshawa 及 Whitby 集体看房</em>
+                            <em>{{item.ct}}</em>
                         </td>
                         <td>
-                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
+                            <em class="table-blue">{{item.ti}}</em>
                         </td>
                         <td>
-                            <em>欧阳迎迎</em>
+                            <em>{{item.meta.usr}}</em>
                         </td>
                         <td>
-                            <em>显示</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-review">审核</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2016-12-30 18:13</em>
-                        </td>
-                        <td>
-                            <em>周六Oshawa 及 Whitby 集体看房</em>
-                        </td>
-                        <td>
-                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
-                        </td>
-                        <td>
-                            <em>欧阳迎迎</em>
-                        </td>
-                        <td>
-                            <em>显示</em>
+                            <em>{{display_review item.review}}</em>
                         </td>
                         <td>
                             <em>
-                                <a href="" class="table-blue J-review">审核</a>
-                                <a href="" class="table-blue">删除</a>
+                                <a href="" class="table-blue J-review review" itemid="{{item._id}}">审核</a>
+                                <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>
                         </td>
                     </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2016-12-30 18:13</em>
-                        </td>
-                        <td>
-                            <em>周六Oshawa 及 Whitby 集体看房</em>
-                        </td>
-                        <td>
-                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
-                        </td>
-                        <td>
-                            <em>欧阳迎迎</em>
-                        </td>
-                        <td>
-                            <em>显示</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-review">审核</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" value=""></td>
-                        <td>
-                            <em>2016-12-30 18:13</em>
-                        </td>
-                        <td>
-                            <em>周六Oshawa 及 Whitby 集体看房</em>
-                        </td>
-                        <td>
-                            <em class="table-blue">这个优惠套餐内容不错，值得使用</em>
-                        </td>
-                        <td>
-                            <em>欧阳迎迎</em>
-                        </td>
-                        <td>
-                            <em>显示</em>
-                        </td>
-                        <td>
-                            <em>
-                                <a href="" class="table-blue J-review">审核</a>
-                                <a href="" class="table-blue">删除</a>
-                            </em>
-                        </td>
-                    </tr>
+                    {{/each}}
                     </tbody>
                 </table>
             </div>
-            <div class="listpage">
-                <div class="pagination">
-                    <div class="anpager" id="main_content_pgFollowServer">
-                        <div class="pagination-grid" style="width:60%;float:left;">
-                            <a>首页</a>
-                            <a>上一页</a>
-                            <span class="pactive">1</span>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href="">4</a>
-                            <a href="">5</a>
-                            <a href="">...</a>
-                            <a href="">下一页</a>
-                            <a href="">尾页</a>
-                        </div>
-                        <div class="pagination-total" style="width:40%;float:left;">
-                            共885条，每页50条
-                        </div>
-                    </div>
-                </div>
+            <div class="contacts-table-more">
+                <a href="" id="more">加载更多</a>
             </div>
         </div>
     </div>

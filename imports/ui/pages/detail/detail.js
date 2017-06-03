@@ -40,36 +40,9 @@ Template.detail.onRendered(function () {
 
 Template.detail.helpers({
     item:function () {
-
         var id=FlowRouter.getParam('id');
         var item=Activity.findOne({_id: id});
-        /*
-        var doc= {
-            "ti":item.ti,
-            "st":"normal",
-            "logo":item.logo,
-            "location":item.location,
-            "city":item.city,
-            "address":item.address,
-            "code":item.code,
-            "btime":{
-                "date":item.btime.date,
-                "time":item.btime.time,
-            },
-            "etime":{
-                "date":item.etime.date,
-                "time":item.etime.time,
-            },
-            "ty":"log",
-            "refid":id,
-            "tags":item.tags,
-            "meta":{
-                "uid":usr.id,
-                "usr":usr.uname
-            }
-        };
-        usrCenterInsert.call(doc);
-        */
+
         return item;
     },
     "listbytag": function (tag) {

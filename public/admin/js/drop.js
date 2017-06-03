@@ -147,7 +147,11 @@ $(function(){
          return false;
     });
     /*权限管理*/
-
+    $('.J-add-admin').click(function(){
+        $('.J-authority-pop').show();
+        $('.add-authority-pop').show().siblings().hide();
+        return false;
+    });
     $('.J-authority-pop').find('.layer-close').click(function(){
         $('.J-authority-pop').hide();
         return false;    
@@ -222,29 +226,31 @@ $(function(){
     });
 
     /*时间插件*/
+    /*
     var start = null;
     var end = null;
-    //if($('#startdate').length>0){
-     //   start = $('#startdate').val();
-    //    $('#startdate').daterangepicker({
-    //        language: 'zh-CN',
-     //       singleDatePicker: true,
-     //       startDate: start.length>0 ? start : moment().subtract(30, 'days'),
-     //       locale: {
-     //           format: 'YYYY-MM-DD'
-     //       },
-     //   });
-    //}
-    //if($('#enddate').length>0){
-     //   end = $('#enddate').val();
-     //   $('#enddate').daterangepicker({
-     //       language: 'zh-CN',
-     //       singleDatePicker: true,
-     //       startDate: end ? end : (start ? start : moment()),
-     //       locale: {
-    //            format: 'YYYY-MM-DD'
-     //       },
-     //   });
-  //  }
+    if($('#startdate').length>0){
+        start = $('#startdate').val();
+        $('#startdate').daterangepicker({
+            language: 'zh-CN',
+            singleDatePicker: true,
+            startDate: start.length>0 ? start : moment().subtract(30, 'days'),
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+        });
+    }
+    if($('#enddate').length>0){
+        end = $('#enddate').val();
+        $('#enddate').daterangepicker({
+            language: 'zh-CN',
+            singleDatePicker: true,
+            startDate: end ? end : (start ? start : moment()),
+            locale: {
+                format: 'YYYY-MM-DD'
+            },
+        });
+    }
+    */
     
 });

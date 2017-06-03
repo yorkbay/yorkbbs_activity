@@ -44,7 +44,7 @@
             <div class="title-caption">
                 <div class="contacts-opera-button">
                     <ul class="contacts-opera-button-choose">
-                        <li><a class="button-choose-right button-gray-line" onclick="Transfer()">
+                        <li><a class="button-choose-right button-gray-line" href="/">
                             前台查看</a>
                         </li>
                         <li>
@@ -90,43 +90,25 @@
                             <em>{{item.meta.usr}}</em>
                         </td>
                         <td>
-                            <em>{{item.meta.dt}}</em>
+                            <em>{{formatDate_YMDHS item.meta.dt}}</em>
                         </td>
                         <td>
-                            <em class="table-blue">待审核</em>
+                            <em class="table-blue">{{display_st item.st}}</em>
                         </td>
                         <td>
                             <em>
                                 <a href="" class="table-blue J-review">审核</a>
                                 <a href="" class="table-blue">编辑</a>
                                 <a href="" class="table-blue">推送</a>
-                                <a href="" class="table-blue">删除</a>
+                                <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>
                         </td>
                     </tr>
                     {{/each}}
                 </table>
             </div>
-            <div class="listpage">
-                <div class="pagination">
-                    <div class="anpager" id="main_content_pgFollowServer">
-                        <div class="pagination-grid" style="width:60%;float:left;">
-                            <a>首页</a>
-                            <a>上一页</a>
-                            <span class="pactive">1</span>
-                            <a href="">2</a>
-                            <a href="">3</a>
-                            <a href="">4</a>
-                            <a href="">5</a>
-                            <a href="">...</a>
-                            <a href="">下一页</a>
-                            <a href="">尾页</a>
-                        </div>
-                        <div class="pagination-total" style="width:40%;float:left;">
-                            共885条，每页50条
-                        </div>
-                    </div>
-                </div>
+            <div class="contacts-table-more">
+                <a href="" id="more">加载更多</a>
             </div>
         </div>
     </div>

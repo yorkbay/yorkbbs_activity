@@ -27,3 +27,19 @@ Template.admin.events({
         FlowRouter.go('/admin/login');
     }
 });
+
+
+//xx月xx日
+Template.registerHelper('formatDate_MD', function(date) {
+    return moment.utc(date).format("MM月DD日");
+});
+
+//xx月xx日
+Template.registerHelper('formatDate_HS', function(date) {
+    return moment.utc(date).format("H:mm");
+});
+
+//xx月xx日
+Template.registerHelper('formatDate_YMDHS', function(date) {
+    return moment.utc(date).format("YYYY-MM-DD HH:mm");
+});

@@ -21,20 +21,20 @@ export const managerLogin = new ValidatedMethod({
     name: 'Manager.managerLogin',
     validate: Manager.simpleSchema().pick(["uname","pwd"]).validator({ clean: true, filter: false }),
     run(obj) {
-        if(Meteor.isServer()){
 
-        }
         var result=true;
         //https://forums.meteor.com/t/solved-findone-executed-in-meteor-methods-dosent-works/28784/12
-        //const m = Manager.find({uname: obj.uname,st:"normal"}).fetch()[0];
-        //console.log(m.uname);
-        //if(m && obj.pwd===m.pwd){
-        //    result=true;
-        //    console.log("aaaaaaaaaaaaaaaaaaaa");
-        //    Manager.update(m, {
-        //        $set: { lm: new Date() },
-        //    });
-        //}
+        /*
+        const m = Manager.find({uname: obj.uname,st:"normal"}).fetch()[0];
+        console.log(m.uname);
+        if(m && obj.pwd===m.pwd){
+            result=true;
+            console.log("aaaaaaaaaaaaaaaaaaaa");
+            Manager.update(m, {
+                $set: { lm: new Date() },
+           });
+        }
+        */
         return result;
     }
 });

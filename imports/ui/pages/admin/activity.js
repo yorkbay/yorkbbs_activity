@@ -8,7 +8,9 @@ import {ReactiveVar} from 'meteor/reactive-var';
 import { Activity } from '../../../api/activity/activity.js';
 import '../../components/manager/checkManager.js';
 
-const numOfRecords = 2;
+import { activitymodifyst } from '../../../api/activity/methods.js';
+
+const numOfRecords = 5;
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions
@@ -61,7 +63,29 @@ Template.admin_activity_list.onCreated(function(){
 
         instance.ready.set(PostSubs.ready());
     });
+});
 
+
+Template.admin_activity_list.onRendered(function releaseOnRendered() {
+
+    $('#startdate').datetimepicker({
+        format:'Y/m/d',
+        onShow:function( ct ){
+            this.setOptions({
+                maxDate:jQuery('#enddate').val()?jQuery('#enddate').val():false
+            })
+        },
+        timepicker:false
+    });
+    $('#enddate').datetimepicker({
+        format:'Y/m/d',
+        onShow:function( ct ){
+            this.setOptions({
+                minDate:jQuery('#startdate').val()?jQuery('#startdate').val():false
+            })
+        },
+        timepicker:false
+    });
 
 });
 
@@ -108,5 +132,32 @@ Template.admin_activity_list.helpers({
         }
         //console.log(query);
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
+    },
+    "display_st":function (st) {
+        let val="正常";
+        switch (st){
+            case "del":
+                val="已删除";
+                break;
+            case "normal":
+                val="正常";
+                break;
+        }
+        return val;
     }
+});
+
+
+Template.admin_activity_list.events({
+    'click #more'(event, instance) {
+        instance.limit.set(instance.limit.get() + numOfRecords);
+    },
+    'click .del'(event, instance) {
+        var obj={
+            _id:$(event.currentTarget).attr("itemid"),
+            st:"del"
+        }
+        activitymodifyst.call(obj);
+    }
+
 });

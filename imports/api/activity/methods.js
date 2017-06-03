@@ -56,3 +56,21 @@ export const tagnum = new ValidatedMethod({
         return results;
     }
 });
+
+
+export const activitymodifyst = new ValidatedMethod({
+    name: 'Activity.activitymodifyst',
+    validate: new SimpleSchema({
+        _id: {
+            type: String,
+        },
+        st:{
+            type:String
+        }
+    }).validator(),
+    run({_id,st}) {
+        return Activity.update(_id, {
+            $set:{st:st}
+        });
+    }
+});

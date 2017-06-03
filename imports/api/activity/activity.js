@@ -201,6 +201,7 @@ Activity.helpers({
     comments() {
         return {
             itemid:this._id,
+            ti:this.ti,
             comments:Comment.find({refid: this._id}, {sort: {'meta.dt': -1}})
         }
     }

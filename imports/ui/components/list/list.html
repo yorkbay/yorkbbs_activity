@@ -3,32 +3,32 @@
         <div class="newslist newslist-image">
             <div class="newslist-image-caption">
                 <h2><a href="" class="newslist-images-current">推荐活动</a></h2>
-                <h2><a href="">最新活动</a></h2>
+                <h2><a href="javascript:void(0)" >最新活动</a></h2>
                 <div class="newslist-image-filter J-newslist-filter">
-                    <a href="">筛选 <i><img src="/img/icon-filter.png" alt="" /></i></a>
+                    <a href="javascript:void(0)" >筛选 <i><img src="/img/icon-filter.png" alt="" /></i></a>
+                </div>
+            </div>
+            <div class="newslist-filter J-newslist-filter-tag">
+                <div class="formTable-tags-recommend J-recommend-times">
+                    <span>今天</span>
+                    <a data-types="times" href="#" class="tags-close time_close">
+                        <img src="/img/close.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="formTable-tags-recommend J-recommend-money">
+                    <span>免费活动</span>
+                    <a data-types="money" href="#" class="tags-close free_close">
+                        <img src="/img/close.jpg" alt="" />
+                    </a>
+                </div>
+                <div class="formTable-tags-recommend J-recommend-types">
+                    <span>周末好去处</span>
+                    <a data-types="types" href="#" class="tags-close tag_close">
+                        <img src="/img/close.jpg" alt="" />
+                    </a>
                 </div>
             </div>
             <div class="newslist-caption-conent">
-                <div class="newslist-filter">
-                    <div class="formTable-tags-recommend">
-                        <span>今天</span>
-                        <a href="#" class="tags-close time_close">
-                            <img src="/img/close.jpg" alt="" />
-                        </a>
-                    </div>
-                    <div class="formTable-tags-recommend">
-                        <span>免费活动</span>
-                        <a href="#" class="tags-close free_close">
-                            <img src="/img/close.jpg" alt="" />
-                        </a>
-                    </div>
-                    <div class="formTable-tags-recommend">
-                        <span>周末好去处</span>
-                        <a href="#" class="tags-close tag_close">
-                            <img src="/img/close.jpg" alt="" />
-                        </a>
-                    </div>
-                </div>
                 <ul>
                     {{#each item in items }}
                         <li>
@@ -36,9 +36,44 @@
                         </li>
                     {{/each}}
                 </ul>
+                <ul>
+                    <li>
+                        <div class="newslist-content">
+                            <div class="newslist-cover newslist-image-cover">
+                                <a href="" title=""><img src="/img/img1.jpg" alt=""></a>
+                                <p class="newslist-channel"><a href="" title="">$5，12岁以下儿童免费</a></p>
+                            </div>
+                            <div class="newslist-image-cont">
+                                <div class="newslist-body">
+                                    <div class="newslist-date">最11月20日 至 11月20日</div>
+                                    <div class="newslist-title"><a href="" title="">最新Prima Academy盛大开张——音乐、绘画、舞蹈</a></div>
+                                    <div class="newslist-date newslist-address">Langstaff Community Centre Gym A – 155 Red Maple Road, L4B 4P9</div>
+                                </div>
+                                <div class="newslist-footer">
+                                    <div class="newslist-tags">
+                                        <a href="javascript:void(0)">#周末好去处 </a>
+                                        <a href="javascript:void(0)">#公益讲座</a>
+                                    </div>
+                                    <div class="newslist-bookmark">
+                                        <a href="javascript:void(0)">
+                                            <img src="/img/icon-share.png" alt="">
+                                            <img src="/img/icon-share-red.png" alt="">
+                                        </a>
+                                        <a href="javascript:void(0)">
+                                            <img src="/img/icon-heard.png" alt="">
+                                            <img src="/img/icon-heard-red.png" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+
+                </ul>
+
             </div>
-            <div class="release-button">
-                <a href="javascript:;" id="more" class="release-button-yes"><img src="/img/icon-yes.png" alt="加载更多" />加载更多</a>
+            <div class="newslist-more">
+                <a href="javascript:void(0)" id="more">加载更多</a>
             </div>
         </div>
     </div>

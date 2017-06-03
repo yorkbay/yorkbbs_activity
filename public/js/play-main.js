@@ -1,64 +1,4 @@
-(function(){
-	$.fn.showCase = function(optioins){
-		return new ShowCase($(this),optioins)
-	}
-	function ShowCase (dom,option){
-		this.scrolCount = 4;
-		this.dom = dom;
-		this.set = option;	
-		this.totalElm = 0;
-		this.indent = 0;
-		this.calcul();	
-		
-		
-		this.bindEve();
-	}
-	ShowCase.prototype.calcul = function(){
-		this.totalElm =this.dom.find(this.set.scrollDom).find('li').length;
-		this.dom.find(this.set.scrollDom).css('width',this.totalElm*25+'%');
-		this.dom.find(this.set.scrollDom).find('li').css('width',100/this.totalElm+'%');
-		/*this.dom.find(this.set.prv).hide();
-		this.dom.find(this.set.next).hide();
-		if(this.totalElm>this.scrolCount){
-			this.dom.find(this.set.next).show();
-		}*/
-		this.checkLg();
-	}
-	ShowCase.prototype.bindEve = function(){
-		var _this = this;
-		this.dom.find(this.set.prv).click(function(){
-			_this.indent -= _this.scrolCount;
-			_this.checkLg();
-		});
-		this.dom.find(this.set.next).click(function(){
-			_this.indent += _this.scrolCount;
-			_this.checkLg();
-		});
-	}
-	ShowCase.prototype.checkLg = function(){
-		if(this.indent<0){
-			this.indent = 0;
-		}else if(this.indent>this.totalElm-this.scrolCount){
-			this.indent = this.totalElm-this.scrolCount
-		}
-		this.play();
-		/*if(this.totalElm>this.scrolCount){
-			if(this.indent == 0 ){
-				this.dom.find(this.set.prv).hide();
-				this.dom.find(this.set.next).show();
-			}else if (this.indent ==this.totalElm-this.scrolCount){
-				this.dom.find(this.set.next).hide();
-				this.dom.find(this.set.prv).show();
-			}else{
-				this.dom.find(this.set.prv).show();
-				this.dom.find(this.set.next).show();
-			}
-		}*/
-	}
-	ShowCase.prototype.play = function(){
-		this.dom.find(this.set.scrollDom).css('left',-this.indent*25+'%');
-	}
-})();
+
 $(function(){
 
 
@@ -145,11 +85,7 @@ $(function(){
 			})
 		}
 	});
-	$('.J-showcase').showCase({
-		scrollDom:'.hot-playlist-content ul',
-		prv:'.playlist-prev',
-		next:'.palylist-next'
-	});
+
 
 	/*发布页*/
 	$('.J-free-check').click(function(){

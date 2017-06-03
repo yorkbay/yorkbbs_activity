@@ -13,4 +13,6 @@ import '../../api/usrcenter/server/publications.js';
 import '../../api/manager/methods.js';
 import '../../api/manager/server/publications.js';
 
+import '../../api/comment/methods.js';
+import '../../api/comment/server/publications.js';
 

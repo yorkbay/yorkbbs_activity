@@ -1,35 +1,46 @@
 <template name="grid">
     <div class="row">
-        <div class="newslist newslist-grid J-showcase">
-            <div class="playlist-btn playlist-prev"><span></span></div>
-            <div class="playlist-btn palylist-next"><span></span></div>
-            <div class="hot-playlist-content swiper-container">
-                <ul class="swiper-wrapper">
-                    {{#each item in items}}
-                        <li class="swiper-slide">
-                            {{> grid_item item=item}}
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+            {{#each item in items}}
+                <div class="swiper-slide">
+                    <ul>
+                        <li>
+                            <div class="newslist-content">
+                                <div class="newslist-cover">
+                                    <a href="/activity/{{item._id}}" title=""><img src="{{item.logo}}" alt=""></a>
+                                    <p class="newslist-channel"><a href="/activity/{{item._id}}" title="">{{ item.pr }}</a></p>
+                                    <span class="newslist-label">热门</span>
+                                </div>
+                                <div class="newslist-body">
+                                    <div class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</div>
+                                    <div class="newslist-title newslist-trend-title"><a href="/activity/{{item._id}}" title="">{{ item.ti }}</a></div>
+                                </div>
+                                <div class="newslist-footer">
+                                    <div class="newslist-tags">
+                                        {{#each tg in item.tags}}
+                                            <a href="/?tag={{tg}}">#{{tg}} </a>
+                                        {{/each}}
+                                    </div>
+                                    <div class="newslist-bookmark">
+                                        <a class="J-share" href="http://fenxianglujing.com">
+                                            <img src="/img/icon-share.png" alt="" />
+                                            <img src="/img/icon-share-red.png" alt="" />
+                                        </a>
+                                        <a href="" class="fav" itemid="{{item._id}}">
+                                            <img src="/img/icon-heard.png" alt="" />
+                                            <img src="/img/icon-heard-red.png" alt="" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
-                    {{/each}}
-                </ul>
+                    </ul>
+                </div>
+            {{/each}}
             </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
-    </div>
-
-
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-            <div class="swiper-slide">Slide 4</div>
-            <div class="swiper-slide">Slide 5</div>
-            <div class="swiper-slide">Slide 6</div>
-            <div class="swiper-slide">Slide 7</div>
-            <div class="swiper-slide">Slide 8</div>
-            <div class="swiper-slide">Slide 9</div>
-            <div class="swiper-slide">Slide 10</div>
-        </div>
-
-        <div class="swiper-pagination"></div>
     </div>
 </template>

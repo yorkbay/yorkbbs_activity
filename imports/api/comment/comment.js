@@ -40,10 +40,20 @@ Comment.schema = new SimpleSchema({
         optional:true,
         label: "status|normal:del"
     },
+    review: {
+        type: Boolean,
+        optional:true,
+        label: "status|normal:del"
+    },
     refid: {
         type: String,
         optional:true,
         label: "activity id"
+    },
+    ti:{
+        type: String,
+        optional:true,
+        label: "activity ti"
     },
     'meta.uid': {
         type: String,
@@ -58,10 +68,7 @@ Comment.schema = new SimpleSchema({
     'meta.dt': {
         type: Date,
         label: "create date",
-        optional:true,
-        autoValue:function () {
-            return new Date();
-        }
+        optional:true
     }
 });
 
