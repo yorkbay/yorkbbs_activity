@@ -9,7 +9,7 @@
   "env": {
     "PORT": 4000,
     "ROOT_URL": "http://events.yorkbbs.ca",
-    "MONGO_URL": "mongodb://yorkmongo:27017/meteor"
+    "MONGO_URL": "mongodb://yorkmongo:27017/yorkbbs_activity"
   },
   "server": {
     "host": "yorknodejs",
