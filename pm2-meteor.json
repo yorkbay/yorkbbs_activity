@@ -1,19 +1,19 @@
 {
   "appName": "events",
   "appLocation": {
-    "local": "/var/www/yorkbbs_activity"
+    "local": "/var/www/yorkbbs/activity/activity"
   },
   "meteorSettingsInRepo": false,
   "prebuildScript": "",
   "meteorBuildFlags": "--architecture os.linux.x86_64",
   "env": {
-    "PORT": 4000,
+    "PORT": 5000,
     "ROOT_URL": "http://events.yorkbbs.ca",
-    "MONGO_URL": "mongodb://yorkmongo:27017/yorkbbs_activity"
+    "MONGO_URL": "mongodb://localhost:27017/activity"
   },
   "server": {
-    "host": "yorknodejs",
-    "username": "meteor",
+    "host": "ezbot",
+    "username": "jack",
     "deploymentDir": "/var/www",
     "loadProfile": "",
     "nvm": {
@@ -22,6 +22,6 @@
     },
     "exec_mode": "cluster_mode",
     "instances": 1,
-    "pem": "~/.ssh/id_rsa_meteor"
+    "pem": "~/.ssh/id_rsa"
   }
 }

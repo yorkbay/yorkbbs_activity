@@ -10,10 +10,16 @@ import '../../api/usrcenter/server/publications.js';
 import '../../api/newsletter/methods.js';
 import '../../api/newsletter/server/publications.js';
 
+import '../../api/feedback/methods.js';
+import '../../api/feedback/server/publications.js';
+
 //backend
 import '../../api/manager/methods.js';
 import '../../api/manager/server/publications.js';
 
 import '../../api/comment/methods.js';
 import '../../api/comment/server/publications.js';
+
+import '../../api/tag/methods.js';
+import '../../api/tag/server/publications.js';
 

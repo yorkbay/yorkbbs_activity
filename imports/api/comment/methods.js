@@ -43,3 +43,22 @@ export const commentmodifyreview = new ValidatedMethod({
         });
     }
 });
+
+export const commentmodifystbyid = new ValidatedMethod({
+    name: 'Comment.commentmodifystbyid',
+    validate: new SimpleSchema({
+        _id: {
+            type: [String],
+        },
+        st:{
+            type:String
+        }
+    }).validator(),
+    run({_id,st}) {
+        return Comment.update(
+            {_id:{$in:_id}},
+            {$set:{st:st}},
+            {multi: true}
+        );
+    }
+});

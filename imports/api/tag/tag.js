@@ -23,6 +23,11 @@ Tag.schema = new SimpleSchema({
         optional:true,
         label: "tag name"
     },
+    isshow: {
+        type: Boolean,
+        optional:true,
+        label: "is show"
+    },
     st: {
         type: String,
         optional:true,

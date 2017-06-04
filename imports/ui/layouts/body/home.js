@@ -19,3 +19,8 @@ Template.registerHelper('formatDate_HS', function(date) {
 Template.registerHelper('formatDate_YMDHS', function(date) {
     return moment.utc(date).format("YYYY-MM-DD HH:mm");
 });
+
+//xx月xx日
+Template.registerHelper('formatDate_YMD', function(date) {
+    return moment.utc(date).format("YYYY-MM-DD");
+});

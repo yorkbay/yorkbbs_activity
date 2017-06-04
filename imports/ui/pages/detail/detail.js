@@ -17,8 +17,18 @@ import {Comment} from '../../../api/comment/comment.js';
 import { listbytag } from '../../../api/activity/methods.js';
 import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 
-Template.detail.onRendered(function () {
+Template.detail.onCreated(function(){
+
     var self=this;
+    var id=FlowRouter.getParam('id');
+    self.autorun(function () {
+        self.subscribe('activitybyid',id);
+        self.subscribe('activitiesbytag','周末好去处');
+    });
+
+});
+
+Template.detail.onRendered(function () {
     const usr=Session.get("usr");
     var id=FlowRouter.getParam('id');
     var doc= {
@@ -31,11 +41,12 @@ Template.detail.onRendered(function () {
         }
     };
     usrCenterInsert.call(doc);
-    self.autorun(function () {
-        self.subscribe('activitybyid',id);
-        self.subscribe('activitiesbytag','周末好去处');
-    });
 
+    $('.J-error-submit').click(function(){
+        $('.J-error-layer').show()
+        $('.J-error-layer').find('.layer-content').addClass('animate-down-show');
+        return false;
+    });
 });
 
 Template.detail.helpers({

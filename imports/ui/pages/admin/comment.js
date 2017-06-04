@@ -3,7 +3,7 @@
  */
 import './comment.html';
 import {Comment} from '../../../api/comment/comment.js';
-import {commentmodifyst,commentmodifyreview} from '../../../api/comment/methods.js';
+import {commentmodifyst,commentmodifyreview,commentmodifystbyid} from '../../../api/comment/methods.js';
 
 const numOfRecords = 5;
 
@@ -152,6 +152,17 @@ Template.admin_comment_list.events({
     'click #search'(event,instance){
         var val= $("#keyword").val();
         instance.key.set(val);
+    },
+    'click #delall'(event,instance){
+        var itemid=[];
+        $('input[name="delcheckbox"]:checked').each(function() {
+            itemid.push(this.value);
+        });
+        var obj={
+            _id:itemid,
+            st:"del"
+        }
+        commentmodifystbyid.call(obj);
     }
 
 });

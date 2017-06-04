@@ -45,7 +45,7 @@
                 <div class="contacts-opera-button">
                     <ul class="contacts-opera-button-choose">
                         <li>
-                            <a class="button-choose-borderno button-gray-line"> 批量删除</a>
+                            <a class="button-choose-borderno button-gray-line" id="delall"> 批量删除</a>
                         </li>
                     </ul>
                 </div>
@@ -66,7 +66,7 @@
                     </tr>
                     {{#each item in list_item}}
                     <tr>
-                        <td><input type="checkbox" value=""></td>
+                        <td><input type="checkbox" name="delcheckbox" value="{{item._id}}" itemid="{{item._id}}"></td>
                         <td>
                             <em>{{formatDate_YMDHS item.meta.dt}}</em>
                         </td>

@@ -13,5 +13,5 @@ Meteor.publish('tagslist', function (params) {
     query.st={$ne:"del"};
 
 
-    return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
+    return Tag.find(query,{limit:limit,sort:{'meta.dt':-1}});
 });

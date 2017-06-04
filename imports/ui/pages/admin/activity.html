@@ -48,7 +48,7 @@
                             前台查看</a>
                         </li>
                         <li>
-                            <a class="button-choose-borderno button-gray-line" onclick="ChangeHistory()"> 批量删除</a>
+                            <a class="button-choose-borderno button-gray-line" id="delall"> 批量删除</a>
                         </li>
                         <li>
                             <a class="button-choose-left button-gray-line" onclick="ChangeHistory()"> 批量推送</a>
@@ -76,7 +76,7 @@
                     </tr>
                     {{#each item in list_item}}
                     <tr>
-                        <td><input type="checkbox" value=""/></td>
+                        <td><input type="checkbox" name="delcheckbox" value="{{item._id}}" itemid="{{item._id}}"></td>
                         <td>
                             <em>{{item._id}}</em>
                         </td>

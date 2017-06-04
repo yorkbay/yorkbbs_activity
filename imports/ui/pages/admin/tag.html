@@ -1,4 +1,5 @@
 <template name="admin_tag_list">
+    {{> admin_checkManager}}
     {{> admin_tag_add }}
     <div class="contacts">
         <div class="contacts-box">
@@ -17,23 +18,25 @@
                         <th>显示状态</th>
                         <th width="10%">操作</th>
                     </tr>
+                    {{#each item in list_item}}
                     <tr>
                         <td>
-                            <em>周末好去处</em>
+                            <em>{{item.tg}}</em>
                         </td>
                         <td>
                             <em>12,235</em>
                         </td>
                         <td>
-                            <em>显示</em>
+                            <em>{{display_isshow item.isshow}}</em>
                         </td>
                         <td>
                             <em>
                                 <a href="" class="table-blue J-edite-label">编辑</a>
-                                <a href="" class="table-blue">删除</a>
+                                <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>
                         </td>
                     </tr>
+                    {{/each}}
                     </tbody></table>
             </div>
             <div class="contacts-table-more">

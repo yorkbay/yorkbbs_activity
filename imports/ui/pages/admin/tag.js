@@ -6,9 +6,9 @@ import './tag.html';
 import '../../components/layer/tagadd.js';
 import './comment.html';
 import {Tag} from '../../../api/tag/tag.js';
-import {tagInsert} from '../../../api/tag/methods.js';
+import {tagInsert,tagmodifyst} from '../../../api/tag/methods.js';
 
-const numOfRecords = 5;
+const numOfRecords = 10;
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions
@@ -49,8 +49,8 @@ Template.admin_tag_list.helpers({
 
         return Tag.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
-    "display_review":function (review) {
-        return review?"审核":"未审核";
+    "display_isshow":function (isshow) {
+        return isshow?"显示":"隐藏";
     }
 });
 
@@ -65,6 +65,6 @@ Template.admin_tag_list.events({
             st:"del"
         }
 
-        //commentmodifyst.call(obj);
+        tagmodifyst.call(obj);
     }
 });

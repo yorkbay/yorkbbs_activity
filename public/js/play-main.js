@@ -187,11 +187,7 @@ $(function(){
 		return false;
 	});
 	/*错误报告*/
-	$('.J-error-submit').click(function(){
-		$('.J-error-layer').show()
-		$('.J-error-layer').find('.layer-content').addClass('animate-down-show');
-		return false;
-	});
+
 	$('.J-error-layer').find('.layer-close').click(function(){
 		$('.J-error-layer').hide().find('input').prop('checked',false)
 		$('.J-error-layer').find('.layer-content').removeClass('animate-down-show');

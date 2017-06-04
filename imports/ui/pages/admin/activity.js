@@ -8,7 +8,7 @@ import {ReactiveVar} from 'meteor/reactive-var';
 import { Activity } from '../../../api/activity/activity.js';
 import '../../components/manager/checkManager.js';
 
-import { activitymodifyst } from '../../../api/activity/methods.js';
+import { activitymodifyst,activitymodifystbyid } from '../../../api/activity/methods.js';
 
 const numOfRecords = 5;
 
@@ -68,6 +68,7 @@ Template.admin_activity_list.onCreated(function(){
 
 Template.admin_activity_list.onRendered(function releaseOnRendered() {
 
+    /*
     $('#startdate').datetimepicker({
         format:'Y/m/d',
         onShow:function( ct ){
@@ -86,6 +87,7 @@ Template.admin_activity_list.onRendered(function releaseOnRendered() {
         },
         timepicker:false
     });
+    */
 
 });
 
@@ -158,6 +160,17 @@ Template.admin_activity_list.events({
             st:"del"
         }
         activitymodifyst.call(obj);
+    },
+    'click #delall'(event,instance){
+        var itemid=[];
+        $('input[name="delcheckbox"]:checked').each(function() {
+            itemid.push(this.value);
+        });
+        var obj={
+            _id:itemid,
+            st:"del"
+        }
+        activitymodifystbyid.call(obj);
     }
 
 });

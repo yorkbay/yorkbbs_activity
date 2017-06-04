@@ -74,3 +74,22 @@ export const activitymodifyst = new ValidatedMethod({
         });
     }
 });
+
+export const activitymodifystbyid = new ValidatedMethod({
+    name: 'Activity.activitymodifystbyid',
+    validate: new SimpleSchema({
+        _id: {
+            type: [String],
+        },
+        st:{
+            type:String
+        }
+    }).validator(),
+    run({_id,st}) {
+        return Activity.update(
+            {_id:{$in:_id}},
+            {$set:{st:st}},
+            {multi: true}
+        );
+    }
+});

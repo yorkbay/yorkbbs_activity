@@ -120,17 +120,7 @@ $(function(){
          $('.J-sort-pop').find('textarea').val('');
          return false;
     });
-    /*举报处理*/    
-    $('.J-process').click(function(){
-        $('.J-report-pop').show();
-        return false;
-    });
-    $('.J-report-pop').find('.layer-close').click(function(){
-        $('.J-report-pop').hide();
-        $('.J-report-pop').find('input[type=text]').val('');
-    
-         return false;
-    });
+
     /*添加标签和编辑标签*/
     $('.J-edite-label').click(function(){
         $('.J-label-pop').show();

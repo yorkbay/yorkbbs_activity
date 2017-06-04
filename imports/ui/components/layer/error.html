@@ -1,19 +1,28 @@
 <template name="error">
     <div class="layer J-error-layer"  style="display: none;">
         <div class="layer-large layer-content">
+            <input type="hidden" id="refid" value="{{item._id}}">
+            <input type="hidden" id="refti" value="{{item.ti}}">
             <h1>错误报告
-                <a class="layer-close" href="#"><img src="assets/img/icon-close-l.png" alt="" /></a>
+                <a class="layer-close" href="#"><img src="/img/icon-close-l.png" alt="" /></a>
             </h1>
             <ul class="layer-em">
                 <li>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>信息过期</label></em>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>信息错误</label></em>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>价格欺骗</label></em>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>广告</label></em>
-                    <em class="contacts-detail-radio"><input type="checkbox" value="" /><label>其它</label></em>
+                    <!--
+                    <em class="contacts-detail-radio"><input type="checkbox" value="信息过期" name="errortype"/><label>信息过期</label></em>
+                    <em class="contacts-detail-radio"><input type="checkbox" value="信息错误" name="errortype"/><label>信息错误</label></em>
+                    <em class="contacts-detail-radio"><input type="checkbox" value="价格欺骗" name="errortype"/><label>价格欺骗</label></em>
+                    <em class="contacts-detail-radio"><input type="checkbox" value="广告" name="errortype"/><label>广告</label></em>
+                    <em class="contacts-detail-radio"><input type="checkbox" value="其它" name="errortype"/><label>其它</label></em>
+                    -->
+                    <input type="checkbox" value="信息过期" name="errortype"/><label>信息过期</label>
+                    <input type="checkbox" value="信息错误" name="errortype"/><label>信息错误</label>
+                    <input type="checkbox" value="价格欺骗" name="errortype"/><label>价格欺骗</label>
+                    <input type="checkbox" value="广告" name="errortype"/><label>广告</label>
+                    <input type="checkbox" value="其它" name="errortype"/><label>其它</label>
                 </li>
                 <li>
-                    <em><textarea class="layer-report-textarea" placeholder="请填写错误说明"></textarea></em>
+                    <em><textarea class="layer-report-textarea" placeholder="请填写错误说明" id="ct"></textarea></em>
                 </li>
                 <li class="layer-button layer-button-left">
                     <span class="layer-cate">&nbsp;</span>

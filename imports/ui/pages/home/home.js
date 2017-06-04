@@ -75,10 +75,6 @@ Template.App_home.onCreated(function(){
 });
 
 
-Template.App_home.onRendered(function App_homeOnRendered() {
-    const instance = this;
-
-});
 
 
 
