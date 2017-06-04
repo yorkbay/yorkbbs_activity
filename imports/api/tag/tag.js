@@ -28,6 +28,16 @@ Tag.schema = new SimpleSchema({
         optional:true,
         label: "status|normal:del"
     },
+    uid: {
+        type: String,
+        optional:true,
+        label: "user id"
+    },
+    uname: {
+        type: String,
+        optional:true,
+        label: "user name"
+    },
     dt: {
         type: Date,
         label: "create date",
