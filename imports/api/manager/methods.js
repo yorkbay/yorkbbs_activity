@@ -22,19 +22,20 @@ export const managerLogin = new ValidatedMethod({
     validate: Manager.simpleSchema().pick(["uname","pwd"]).validator({ clean: true, filter: false }),
     run(obj) {
 
-        var result=true;
-        //https://forums.meteor.com/t/solved-findone-executed-in-meteor-methods-dosent-works/28784/12
-        /*
-        const m = Manager.find({uname: obj.uname,st:"normal"}).fetch()[0];
-        console.log(m.uname);
-        if(m && obj.pwd===m.pwd){
-            result=true;
-            console.log("aaaaaaaaaaaaaaaaaaaa");
-            Manager.update(m, {
-                $set: { lm: new Date() },
-           });
+        if(Meteor.isServer){
+            //https://forums.meteor.com/t/solved-findone-executed-in-meteor-methods-dosent-works/28784/12
+             const m = Manager.find({uname: obj.uname,st:"normal"}).fetch()[0];
+            console.log(m.uname);
+            if(m && obj.pwd===m.pwd){
+                Manager.update(m, {
+                    $set: { lm: new Date() },
+               });
+                return m;
+
+            }else {
+                return "";
+            }
         }
-        */
-        return result;
+
     }
 });

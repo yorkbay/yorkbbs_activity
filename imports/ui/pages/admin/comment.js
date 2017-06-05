@@ -138,14 +138,17 @@ Template.admin_comment_list.events({
         commentmodifyst.call(obj);
     },
     'click .review'(event, instance) {
+        $("#J-review-pop").show();
+        /*
         var obj={
             _id:$(event.currentTarget).attr("itemid"),
             review:true
         }
-        console.log(obj);
         commentmodifyreview.call(obj);
+        */
     },
     'change #review'(event,instance){
+
         var val= $(event.currentTarget).val();
         instance.review.set(val);
     },

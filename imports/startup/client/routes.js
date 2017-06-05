@@ -31,23 +31,17 @@ var manager=Session.get('manager');
 FlowRouter.route('/', {
   name: 'App.home',
   action() {
+    require('../../ui/stylesheets/front/active.css');
     //BlazeLayout.reset();
     BlazeLayout.render('home', { main: 'App_home' });
   },
 });
 
-FlowRouter.route('/upload', {
-    name: 'App.upload',
-    action(params, queryParams) {
-        console.log(params);
-        console.log(queryParams);
-        return "111111";
-    },
-});
 
 FlowRouter.route('/release', {
     name: 'App.release',
     action() {
+        require('../../ui/stylesheets/front/active.css');
         BlazeLayout.render('home', { main: 'release' });
     },
 });
@@ -55,6 +49,7 @@ FlowRouter.route('/release', {
 FlowRouter.route('/usr', {
     name: 'App.user',
     action() {
+        require('../../ui/stylesheets/front/active.css');
         BlazeLayout.render('home', { main: 'usercenter' });
     },
 });
@@ -62,75 +57,86 @@ FlowRouter.route('/usr', {
 FlowRouter.route('/activity/:id', {
     name: 'App.detail',
     action() {
+        require('../../ui/stylesheets/front/active.css');
         $('html,body').scrollTop(0);
         BlazeLayout.render('home', { main: 'detail' });
     },
 });
 
-FlowRouter.route('/admin/login', {
+var adminRoutes = FlowRouter.group({
+    prefix: "/admin",
+    name: "admin",
+    triggersEnter: [function(context, redirect) {
+        require('../../ui/stylesheets/backend/backstage.css');
+    }]
+});
+
+adminRoutes.route('/login', {
     name: 'App.admin.login',
     action() {
         BlazeLayout.render('admin_login_layout', { main: 'admin_login' });
     },
 });
 
-FlowRouter.route('/admin', {
+adminRoutes.route('/admin', {
     name: 'App.admin',
     action() {
+        require('../../ui/stylesheets/backend/backstage.css');
         BlazeLayout.render('admin', { main: 'admin_activity_list' });
     },
 });
 
-FlowRouter.route('/admin/activity', {
+adminRoutes.route('/activity', {
     name: 'App.activity',
     action() {
+        require('../../ui/stylesheets/backend/backstage.css');
         BlazeLayout.render('admin', { main: 'admin_activity_list' });
     },
 });
 
-FlowRouter.route('/admin/comment', {
+adminRoutes.route('/comment', {
     name: 'App.comment',
     action() {
         BlazeLayout.render('admin', { main: 'admin_comment_list' });
     },
 });
 
-FlowRouter.route('/admin/feedback', {
+adminRoutes.route('/feedback', {
     name: 'App.feedback',
     action() {
         BlazeLayout.render('admin', { main: 'admin_feedback_list' });
     },
 });
 
-FlowRouter.route('/admin/log', {
+adminRoutes.route('/log', {
     name: 'App.log',
     action() {
         BlazeLayout.render('admin', { main: 'admin_log_list' });
     },
 });
 
-FlowRouter.route('/admin/sys', {
+adminRoutes.route('/sys', {
     name: 'App.sys',
     action() {
         BlazeLayout.render('admin', { main: 'admin_sys_right' });
     },
 });
 
-FlowRouter.route('/admin/tag', {
+adminRoutes.route('/tag', {
     name: 'App.tag',
     action() {
         BlazeLayout.render('admin', { main: 'admin_tag_list' });
     },
 });
 
-FlowRouter.route('/admin/newsletter', {
+adminRoutes.route('/newsletter', {
     name: 'App.newsletter',
     action() {
         BlazeLayout.render('admin', { main: 'admin_newsletter_email' });
     },
 });
 
-FlowRouter.route('/admin/newslettermsg', {
+adminRoutes.route('/newslettermsg', {
     name: 'App.newslettermsg',
     action() {
         BlazeLayout.render('admin', { main: 'admin_newsletter_msg' });

@@ -22,10 +22,6 @@ Template.admin_login.onCreated(function(){
         const uname = instance.uname.get();
         const pwd = instance.pwd.get();
 
-        instance.subscribe('managerfindbyname', {
-            uname
-        });
-
     });
 });
 
@@ -35,22 +31,12 @@ Template.admin_login.events({
             "uname":$("#uname").val(),
             "pwd":$("#pwd").val()
         }
-        instance.uname.set(manager.uname);
-       var m=Manager.findOne({uname: uname});
-        console.log(m);
-        /*
-        var islogin=managerLogin.call(manager);
-        //console.log(islogin);
-        if(islogin){
-            //Session.set("manager",manager);
-            var manager={
-                _id:"ibiSfc4DeNQC6nQmG",
-                uname:'jack'
-            }
-            Session.set("manager",manager);
-            FlowRouter.go('/admin/');
-        }
-        */
 
+        managerLogin.call(manager,function (err,result) {
+            if(result){
+                Session.set("manager",result);
+                FlowRouter.go('/admin/activity');
+            }
+        });
     }
 });

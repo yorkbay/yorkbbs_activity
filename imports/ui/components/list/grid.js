@@ -10,9 +10,6 @@ import './grid_item.js';
 Template.grid.onCreated(function(){
     const instance = this;
 
-
-
-
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
 
@@ -22,7 +19,7 @@ Template.grid.onCreated(function(){
 });
 
 Template.grid.onRendered(function gridOnRendered() {
-    var swiper = new Swiper('.swiper-container', {
+    var mySwiper = new Swiper('.swiper-container', {
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         slidesPerView: 4,
@@ -32,5 +29,6 @@ Template.grid.onRendered(function gridOnRendered() {
         paginationClickable: true,
         spaceBetween: 30,
     });
+
 
 });

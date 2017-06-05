@@ -7,15 +7,32 @@ import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Comment} from '../../comment/comment.js'
 
 import {Activity} from '../activity.js';
+import {ActivityImages} from '../image.js';
 
-Meteor.publish('activitiesrecommend', function () {
-    return Activity.find({},{limit:8,sort:{'meta.dt':-1}});
+Meteor.publishComposite('activitiesrecommend', function () {
+    return {
+        find() {
+           return Activity.find({},{limit:8,sort:{'meta.dt':-1}});
+        },
+
+        children: [
+            {
+                find(post) {
+                    return ActivityImages.find({
+                        _id: {
+                            $in: post._images || []
+                        }
+                    });
+                },
+            }
+        ],
+    };
 });
 
 
 
 
-Meteor.publish('activitieslist', function (params) {
+Meteor.publishComposite('activitieslist', function (params) {
     check(params,{
         key:String,
         time:String,
@@ -25,44 +42,77 @@ Meteor.publish('activitieslist', function (params) {
         limit:Number,
         st:String
     });
-    const {key,time, isfree,tag,isrmd,limit,st} = params;
 
-    var query={};
 
-    if(time){
-        //var condition=getdate(time);
+    return {
+        find() {
+            const {key,time, isfree,tag,isrmd,limit,st} = params;
 
-        var start = moment().startOf('day');
-        var end = moment().endOf('day');
+            var query={};
 
-        query.btime={
-            date:{$gte:start}
-        }
+            if(time){
+                //var condition=getdate(time);
 
-    }
-    if(key){
-        let regex = new RegExp( key, 'i' );
-        query={
-            ti:regex
-        }
-    }
-    if(isfree ==="1"){
-        query.pr={ $eq: "free"};
-    }else if(isfree ==="0"){
-        query.pr={ $ne: "free"};
-    }
-    if(tag){
-        query.tags={
-            "$in": [tag]
-        }
-    }
+                var start = moment().startOf('day');
+                var end = moment().endOf('day');
 
-    return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
+                query.btime={
+                    date:{$gte:start}
+                }
+
+            }
+            if(key){
+                let regex = new RegExp( key, 'i' );
+                query={
+                    ti:regex
+                }
+            }
+            if(isfree ==="1"){
+                query.pr={ $eq: "free"};
+            }else if(isfree ==="0"){
+                query.pr={ $ne: "free"};
+            }
+            if(tag){
+                query.tags={
+                    "$in": [tag]
+                }
+            }
+
+            return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
+        },
+
+        children: [
+            {
+                find(post) {
+                    return ActivityImages.find({
+                        _id: {
+                            $in: post._images || []
+                        }
+                    });
+                },
+            }
+        ],
+    };
 });
 
-Meteor.publish('activitiesbytag', function (tag) {
+Meteor.publishComposite('activitiesbytag', function (tag) {
     check(tag,String);
-    return Activity.find({tags:{ "$in": [tag] }},{limit:5,sort:{'meta.dt':-1}});
+    return {
+        find() {
+            return Activity.find({tags:{ "$in": [tag] }},{limit:5,sort:{'meta.dt':-1}});
+        },
+        children: [
+            {
+                find(post) {
+                    return ActivityImages.find({
+                        _id: {
+                            $in: post._images || []
+                        }
+                    });
+                },
+            }
+        ],
+    };
 });
 
 Meteor.publish('activitiesbyusr', function (uid,limit) {

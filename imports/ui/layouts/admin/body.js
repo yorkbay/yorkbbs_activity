@@ -12,6 +12,7 @@ import '../../pages/admin/nl_email.js';
 import '../../pages/admin/nl_msg.js';
 import '../../pages/admin/login.js';
 
+
 Template.admin.helpers({
     "manager":function(){
         var manager=Session.get("manager");

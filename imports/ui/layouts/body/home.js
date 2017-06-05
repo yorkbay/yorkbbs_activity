@@ -5,6 +5,9 @@ import '../../components/footer/footer.js';
 import '../../components/layer/login.js';
 import '../../components/layer/share.js';
 
+
+
+
 //xx月xx日
 Template.registerHelper('formatDate_MD', function(date) {
     return moment.utc(date).format("MM月DD日");

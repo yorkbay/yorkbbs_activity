@@ -22,6 +22,7 @@ reactive-dict@1.1.8
 reactive-var@1.0.11
 aldeed:template-extension
 percolate:momentum
+mrt:bootstrap-3
 
 # data
 mongo@1.1.17
@@ -40,6 +41,7 @@ kadira:flow-router
 kadira:blaze-layout
 arillo:flow-router-helpers
 zimme:active-route
+meteorhacks:picker
 
 # i18n
 tap:i18n

@@ -4,6 +4,8 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Activity } from './activity.js';
+import {ActivityImages} from './image.js';
+import {ActivityImageSpec} from './specs.js';
 
 
 export const insert = new ValidatedMethod({
@@ -91,5 +93,22 @@ export const activitymodifystbyid = new ValidatedMethod({
             {$set:{st:st}},
             {multi: true}
         );
+    }
+});
+
+export const ActivityImageInsert = new ValidatedMethod({
+    name: 'Activity.image.insert',
+    validate: ActivityImages.simpleSchema().validator({ clean: true, filter: false }),
+    run(obj) {
+        //console.log(obj);
+        return ActivityImages.insert(obj);
+    }
+});
+
+export const ActivityImageSpecInsert = new ValidatedMethod({
+    name: 'Activity.image.spec.insert',
+    validate: ActivityImageSpec.simpleSchema().pick(["ri"]).validator({ clean: true, filter: false }),
+    run(obj) {
+        return ActivityImageSpec.insert(obj);
     }
 });

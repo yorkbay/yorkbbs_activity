@@ -4,6 +4,7 @@
 import {Mongo} from 'meteor/mongo';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Comment} from '../comment/comment.js';
+import {ActivityImages} from './image';
 
 class ActivityCollection extends Mongo.Collection {}
 
@@ -167,6 +168,11 @@ Activity.schema = new SimpleSchema({
         label: "tag",
         optional:true
     },
+    _images:{
+        type: [String],
+        label: "_images",
+        optional:true
+    },
     'meta.uid': {
         type: String,
         label: "user id",
@@ -204,5 +210,12 @@ Activity.helpers({
             ti:this.ti,
             comments:Comment.find({refid: this._id}, {sort: {'meta.dt': -1}})
         }
-    }
+    },
+    images() {
+        return ActivityImages.find({
+            _id: {
+                $in: this._images || []
+            }
+        });
+    },
 });

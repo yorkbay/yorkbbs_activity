@@ -36,11 +36,13 @@ Template.release.onRendered(function releaseOnRendered() {
     $("a#dropzoneDiv").dropzone({
         url: "/upload" ,
         acceptedFiles:"image/*",
+        uploadMultiple:true,
         success: function(file, response){
             $(".dz-preview").hide();
+
             var files=JSON.parse(response).files;
             files.forEach(function(file){
-                var img="<img src='/upload/"+file.name+"' />";
+                var img="<img src='"+file.path+"' />";
                 tinymce.activeEditor.insertContent(img);
             })
         }
@@ -118,7 +120,7 @@ Template.release.events({
                 "dt":new Date()
             }
         };
-        //console.log(doc);
+
         var Id = insert.call(doc);
         doc= {
             "ty":"relea",
@@ -131,7 +133,6 @@ Template.release.events({
         };
         console.log(doc);
         usrCenterInsert.call(doc);
-        //Activity.insert(doc,,{ validate: false, filter: false });
 
         FlowRouter.go('/');
     },

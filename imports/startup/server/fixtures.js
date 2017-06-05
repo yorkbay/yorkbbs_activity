@@ -5,17 +5,6 @@ import { Activity } from '../../api/activity/activity.js';
 import { HTTP } from 'meteor/http';
 
 Meteor.startup(() => {
-    //https://github.com/devonbarrett/meteor-dropzone
-    //https://github.com/tomitrescak/meteor-uploads
-    UploadServer.init({
-        tmpDir: process.env.PWD + '/.uploads/tmp',
-        uploadDir: process.env.PWD + '/.uploads/',
-        checkCreateDirectories: true,
-        uploadUrl: '/upload/',
-        getFileName: function(file, formData) {
-            return new Date().getTime() + '-' + Math.floor((Math.random() * 10000) + 1) + '-' + file.name;
-        }
-    });
   if (Activity.find().count() === 0) {
     const data = [
         {

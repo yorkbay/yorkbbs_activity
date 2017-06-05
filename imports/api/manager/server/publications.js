@@ -9,8 +9,10 @@ Meteor.publish('managerlist', function (limit) {
 });
 
 
+/*
 Meteor.publish('managerfindbyname', function (uname) {
     check(uname,String);
     if(!uname)return "";
     return Manager.findOne({uname: uname,st:"normal"});
 });
+*/
