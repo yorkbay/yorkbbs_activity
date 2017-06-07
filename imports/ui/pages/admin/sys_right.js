@@ -16,14 +16,14 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
-const numOfRecords = 2;
+const numOfRecords = 10;
 
 Template.admin_sys_right.onCreated(function(){
     const instance = this;
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
-
+    instance.id = new ReactiveVar("");
 
 
     //https://themeteorchef.com/tutorials/simple-search
@@ -32,6 +32,10 @@ Template.admin_sys_right.onCreated(function(){
         const limit = instance.limit.get();
 
         instance.subscribe('managerlist', limit);
+
+
+        const id = instance.id.get();
+        instance.subscribe('managerfindbyid',id);
 
         instance.ready.set(PostSubs.ready());
     });
@@ -52,6 +56,40 @@ Template.admin_sys_right.helpers({
     "items":function(){
         const instance = Template.instance();
         const limit = instance.limit.get();
-        return Manager.find({},{limit:limit,sort:{'meta.dt':-1}});
+        return Manager.find({},{limit:limit,sort:{dt:-1}});
+    },
+    "display_st":function (st) {
+        let s="正常";
+        if(st==="normal"){
+            s="正常";
+        }else if(st==="forbidden"){
+            s="禁止登录";
+        }
+        return s;
+    },
+    'manager':function () {
+        const instance = Template.instance();
+        const id = instance.id.get();
+        return Manager.findOne({_id:id});
     }
+});
+
+Template.admin_sys_right.events({
+    'click #more'(event, instance) {
+        instance.limit.set(instance.limit.get() + numOfRecords);
+    },
+    'click .J-add-admin'(event, instance) {
+        $('.J-authority-pop').show();
+        $('.add-authority-pop').show().siblings().hide();
+    },
+    'click .J-change-start'(event, instance) {
+        instance.id.set($(event.currentTarget).attr("itemid"));
+        $('.J-authority-pop').show();
+        $('.change-start-pop').show().siblings().hide();
+    },
+    'click .J-change-authority'(event, instance) {
+        instance.id.set($(event.currentTarget).attr("itemid"));
+        $('.J-authority-pop').show();
+        $('.change-authority-pop').show().siblings().hide();
+    },
 });

@@ -5,7 +5,8 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import '../../pages/admin/activity.js';
 import '../../pages/admin/comment.js';
 import '../../pages/admin/feedback.js';
-import '../../pages/admin/log.js';
+import '../../pages/admin/frontlog.js';
+import '../../pages/admin/backendlog.js';
 import '../../pages/admin/sys_right.js';
 import '../../pages/admin/tag.js';
 import '../../pages/admin/nl_email.js';
@@ -25,8 +26,8 @@ Template.admin.helpers({
 
 
 Template.admin.events({
-    "click .logout":function(event,instance){
-        Session.get("manager",null);
+    "click #logout":function(event,instance){
+        Session.set("manager",null);
         FlowRouter.go('/admin/login');
     }
 });
@@ -45,4 +46,9 @@ Template.registerHelper('formatDate_HS', function(date) {
 //xx月xx日
 Template.registerHelper('formatDate_YMDHS', function(date) {
     return moment.utc(date).format("YYYY-MM-DD HH:mm");
+});
+
+//xx月xx日
+Template.registerHelper('formatDate_YMD', function(date) {
+    return moment.utc(date).format("YYYY-MM-DD");
 });

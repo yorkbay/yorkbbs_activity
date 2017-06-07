@@ -14,7 +14,7 @@ Meteor.publishComposite('usrcenterinfo', function (ty,uid,limit) {
     check(ty,String);
     return {
         find(){
-            return UsrCenter.find({"meta.uid":uid,ty:ty},{limit:limit,sort:{'meta.dt':-1}});
+            return UsrCenter.find({"meta.uid":uid,ty:ty,st:"normal"},{limit:limit,sort:{'meta.dt':-1}});
         },
         children: [{
             find(item) {

@@ -150,19 +150,24 @@ Template.App_home.events({
     },
     'click .search_left_isfree'(event, instance) {
         instance.limit.set(numOfRecords);
-
+        $(".search_isfree li").removeClass("active-tags-on");
+        $(event.currentTarget).parent('li').addClass("active-tags-on");
         var free=$(event.currentTarget).attr("free");
         var url=ChangeParam("free",free);
         FlowRouter.go("/"+url);
     },
     'click .search_left_tag'(event, instance) {
         instance.limit.set(numOfRecords);
+        $(".search_tag li").removeClass("active-tags-on");
+        $(event.currentTarget).parent('li').addClass("active-tags-on");
         var tag=$(event.currentTarget).attr("tag");
         var url=ChangeParam("tag",tag);
         FlowRouter.go("/"+url);
     },
     'click .search_left_time'(event, instance) {
         instance.limit.set(numOfRecords);
+        $(".search_time li").removeClass("active-tags-on");
+        $(event.currentTarget).parent('li').addClass("active-tags-on");
         var time=$(event.currentTarget).attr("time");
         var url=ChangeParam("time",time);
         FlowRouter.go("/"+url);

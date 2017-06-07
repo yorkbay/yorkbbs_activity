@@ -25,3 +25,24 @@ export const newslettermodifyst = new ValidatedMethod({
         });
     }
 });
+
+
+export const newslettermodifystbyid = new ValidatedMethod({
+    name: 'Newsletter.newslettermodifystbyid',
+    validate: new SimpleSchema({
+        _id: {
+            type: [String],
+        },
+        st:{
+            type:String
+        }
+    }).validator(),
+    run({_id,st}) {
+        console.log(_id);
+        return Newsletter.update(
+            {_id:{$in:_id}},
+            {$set:{st:st}},
+            {multi: true}
+        );
+    }
+});

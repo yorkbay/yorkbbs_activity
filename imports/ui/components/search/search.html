@@ -3,40 +3,32 @@
         <section class="active-blk active-time">
             <h2>活动时间</h2>
             <div class="active-tags active-tags-3">
-                <ul>
-                    <li><a href="" class="active-tags-on release-tags-current search_left_time" time="today">今天</a></li>
-                    <li><a href="" class="active-tags-over search_left_time" time="tomorrow">明天</a></li>
-                    <li><a href="" class="active-tags-over search_left_time" time="week">本周</a></li>
-                    <li><a href="" class="active-tags-over search_left_time" time="weekend">本周末</a></li>
-                    <li><a href="" class="active-tags-over search_left_time" time="nextweekend">下周末</a></li>
-                    <li><a href="" class="active-tags-over search_left_time" time="month">本月</a></li>
+                <ul data-type="times" class="search_time">
+                    <li><a href="javascript:void(0)" time="today" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>今天</em></a></li>
+                    <li><a href="javascript:void(0)" time="tomorrow" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>明天</em></a></li>
+                    <li><a href="javascript:void(0)" time="week" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>本周</em></a></li>
+                    <li><a href="javascript:void(0)" time="weekend" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>本周末</em></a></li>
+                    <li><a href="javascript:void(0)" time="nextweekend" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>下周末</em></a></li>
+                    <li><a href="javascript:void(0)" time="month" class="search_left_time"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>本月</em></a></li>
                 </ul>
             </div>
         </section>
         <section class="active-blk active-money">
             <h2>活动费用</h2>
             <div class="active-tags active-tags-2">
-                <ul>
-                    <li><a href="" class="active-tags-on search_left_isfree" free="1"><i><img src="/img/icon-arrow-bottom.png" alt=""></i>免费活动</a></li>
-                    <li><a href="" class="active-tags-over search_left_isfree" free="0">付费活动</a></li>
+                <ul data-type="money" class="search_isfree">
+                    <li><a href="javascript:void(0)" class="search_left_isfree" free="1"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>免费活动</em></a></li>
+                    <li><a href="javascript:void(0)" class="search_left_isfree" free="0"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>付费活动</em></a></li>
                 </ul>
             </div>
         </section>
         <section class="active-blk active-cate">
             <h2>活动类型</h2>
             <div class="active-tags active-tags-2">
-                <ul>
+                <ul data-type="types" class="search_tag">
                     {{#each tag in tags}}
-                        {{tag}}
+                        <li><a href="javascript:void(0)" class="search_left_tag" tag="{{tag.tg}}"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>{{tag.tg}}</em></a></li>
                     {{/each}}
-                    <li><a href="" class="active-tags-on search_left_tag" tag="周末好去处"><i><img src="/img/icon-arrow-bottom.png" alt=""></i>周末好去处(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="亲子活动">亲子活动(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="公益活动">公益活动(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="演出活动">演出活动(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="社区活动">社区活动(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="节日活动">节日活动(20)</a></li>
-                    <li><a href="" class="active-tags-over search_left_tag" tag="其他活动">其他活动(20)</a></li>
-
                 </ul>
             </div>
         </section>

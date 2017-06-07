@@ -19,17 +19,13 @@ import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 Template.release.onCreated(function () {
     const instance = this;
 
-
     const id=FlowRouter.getParam('id');
-
     let manager=Session.get('manager');
     console.log(manager);
 
     instance.autorun(function () {
         instance.subscribe('tagslist');
-        if(id) {
-            instance.subscribe('activitybyid', id);
-        }
+        instance.subscribe('activitybyid',id);
     });
 });
 
@@ -81,11 +77,6 @@ Template.release.onRendered(function releaseOnRendered() {
 Template.release.helpers({
     'tags':function () {
         return Tag.find({});
-    },
-    'Activity':function () {
-        const id=FlowRouter.getParam('id');
-
-        return Activity.findOne({_id:id});
     }
 })
 

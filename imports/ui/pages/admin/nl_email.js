@@ -4,7 +4,7 @@
 import './nl_email.html';
 
 import {Newsletter} from '../../../api/newsletter/newsletter.js';
-import {newslettermodifyst} from '../../../api/newsletter/methods.js';
+import {newslettermodifyst,newslettermodifystbyid} from '../../../api/newsletter/methods.js';
 
 const numOfRecords = 5;
 
@@ -82,6 +82,19 @@ Template.admin_newsletter_email.events({
         }
 
         newslettermodifyst.call(obj);
-    }
+    },
+    'click #delall'(event,instance){
+
+        var itemid=[];
+        $('input[name="delcheckbox"]:checked').each(function() {
+            itemid.push(this.value);
+        });
+        var obj={
+            _id:itemid,
+            st:"del"
+        }
+        console.log(obj);
+        newslettermodifystbyid.call(obj);
+    },
 
 });

@@ -2,7 +2,7 @@
     {{> admin_checkManager }}
     <div class="layer J-review-pop" style="display: none;">
         <div class="layer-large layer-content">
-            <h1>信息审核{{Activity.ti}}
+            <h1>信息审核
                 <input type="hidden" id="activityid" value="{{Activity._id}}"/>
                 <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt=""/></a>
             </h1>
@@ -16,7 +16,7 @@
                         <em class="contacts-detail-radio">
                             <div class="form-group-custom layer-calendar">
                                 <div class="input-group">
-                                    <input type="text" style="width: 120px" class="form-control" id="toptime" value="{{Activity.toptime}}"
+                                    <input type="text" style="width: 120px" class="form-control" id="toptime" value="{{formatDate_YMD Activity.toptime}}"
                                            placeholder="置顶结束时间">
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                         <em class="contacts-detail-radio">
                             <div class="form-group-custom layer-calendar">
                                 <div class="input-group">
-                                    <input type="text" style="width: 120px" class="form-control" id="cmdtime" value="{{Activity.cmdtime}}"
+                                    <input type="text" style="width: 120px" class="form-control" id="cmdtime" value="{{formatDate_YMD Activity.cmdtime}}"
                                            placeholder="推荐结束时间">
                                 </div>
                             </div>
@@ -113,7 +113,7 @@
                     </ul>
                 </div>
                 <div class="title-caption-add">
-                    <a class="button-record" onclick="add_ad()"><i><img src="/admin/img/button-add.png" alt="新增广告位">
+                    <a class="button-record" href="/release" target="_blank"><i><img src="/admin/img/button-add.png" alt="新增广告位">
                     </i> 发布信息</a>
                 </div>
             </div>
@@ -155,7 +155,7 @@
                         <td>
                             <em>
                                 <a href="" class="table-blue J-review" itemid="{{item._id}}">审核</a>
-                                <a href="" class="table-blue">编辑</a>
+                                <a href="/release/{{item._id}}" class="table-blue" target="_blank">编辑</a>
                                 <a href="" class="table-blue">推送</a>
                                 <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>

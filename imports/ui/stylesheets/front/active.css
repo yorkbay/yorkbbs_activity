@@ -3532,7 +3532,7 @@ th {
   overflow: hidden;
   width: 100%; }
   .newslist-caption-conent ul:last-child {
-    display: none; }
+     }
   .newslist-caption-conent ul li {
     overflow: hidden; }
 

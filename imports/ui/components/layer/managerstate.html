@@ -1,12 +1,13 @@
 <template name="admin_manager_state_layer">
     <div class="layer-large layer-content change-start-pop" style="display: none;">
         <h1>更改状态
-            <a class="layer-close" href=""><img src="assets/img/icon-close-l.png" alt="" /></a>
+            <input type="hidden" id="managerid" value="{{manager._id}}"/>
+            <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt="" /></a>
         </h1>
         <ul>
             <li><span class="layer-cate">更改状态</span>
-                <em class="contacts-detail-radio"><input type="radio" value="" /><label>正常状态</label></em>
-                <em class="contacts-detail-radio"><input type="radio" value="" /><label>禁止登录</label></em>
+                <em class="contacts-detail-radio"><input type="radio" value="normal" name="st" {{display_st_true manager.st}}/><label>正常状态</label></em>
+                <em class="contacts-detail-radio"><input type="radio" value="forbidden" name="st" {{display_st_false manager.st}}/><label>禁止登录</label></em>
             </li>
             <li class="layer-button layer-button-left">
                 <span class="layer-cate">&nbsp;</span>

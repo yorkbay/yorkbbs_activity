@@ -67,6 +67,14 @@ Template.admin_activity_list.onRendered(function releaseOnRendered() {
         format: 'YYYY-MM-DD'
     });
 
+    $('#toptime').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
+    $('#cmdtime').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+
 
 });
 

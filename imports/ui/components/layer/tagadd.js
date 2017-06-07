@@ -26,6 +26,8 @@ Template.admin_tag_add.events({
             });
 
         }else {
+            let tg=$("#tagname").val();
+            if(!tg)return;
             var tag={
                 "tg":$("#tagname").val(),
                 "isshow":$("[name='isshow']:checked").val()=="true"?true:false,

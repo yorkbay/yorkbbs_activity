@@ -6,13 +6,15 @@ import {Meteor} from 'meteor/meteor'
 
 export const insert = new ValidatedMethod({
     name: 'Manager.insert',
-    validate: Manager.simpleSchema().pick(["uname","pwd","st"]).validator({ clean: true, filter: false }),
+    validate: Manager.simpleSchema().pick(["uname","pwd","st","dt"]).validator({ clean: true, filter: false }),
     run(obj) {
-        var m = Manager.findOne({uname: obj.uname});
-        if (!m || !m._id) {
-            return Manager.insert(obj);
-        }else{
-            return m;
+        if(Meteor.isServer) {
+            var m = Manager.findOne({uname: obj.uname});
+            if (!m || !m._id) {
+                return Manager.insert(obj);
+            } else {
+                return "";
+            }
         }
     }
 });
@@ -25,7 +27,6 @@ export const managerLogin = new ValidatedMethod({
         if(Meteor.isServer){
             //https://forums.meteor.com/t/solved-findone-executed-in-meteor-methods-dosent-works/28784/12
              const m = Manager.find({uname: obj.uname,st:"normal"}).fetch()[0];
-            console.log(m.uname);
             if(m && obj.pwd===m.pwd){
                 Manager.update(m, {
                     $set: { lm: new Date() },
@@ -37,5 +38,40 @@ export const managerLogin = new ValidatedMethod({
             }
         }
 
+    }
+});
+
+
+export const managerModifyst = new ValidatedMethod({
+    name: 'Manager.managerModifyst',
+    validate: new SimpleSchema({
+        _id: {
+            type: String,
+        },
+        st:{
+            type:String
+        }
+    }).validator(),
+    run({_id,st}) {
+        return Manager.update(_id,{
+            $set:{st:st}
+        });
+    }
+});
+
+export const managerModifyrole = new ValidatedMethod({
+    name: 'Manager.managerModifyrole',
+    validate: new SimpleSchema({
+        _id: {
+            type: String,
+        },
+        role:{
+            type:String
+        }
+    }).validator(),
+    run({_id,role}) {
+        return Manager.update(_id,{
+            $set:{role:role}
+        });
     }
 });

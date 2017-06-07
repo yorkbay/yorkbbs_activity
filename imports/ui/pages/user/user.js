@@ -34,33 +34,15 @@ Template.usercenter.onCreated(function(){
     const uid=Session.get("usr").id;
 
     instance.ready = new ReactiveVar();
+    instance.ty = new ReactiveVar("relea");
     instance.limit = new ReactiveVar(numOfRecords);
-
-    instance.ty = () => {
-        return FlowRouter.getQueryParam('ty')||"relea";
-    };
-
 
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
 
-        const ty = instance.ty();
-
+        const ty = instance.ty.get();
         const limit = instance.limit.get();
-        /*
-        instance.subscribe('activitiesbyusr',
-            uid,limit
-        );
-
-        instance.subscribe('activitiesbyfav',
-            uid,limit
-        );
-
-        instance.subscribe('activitiesbylog',
-            uid,limit
-        );
-        */
 
         instance.subscribe('usrcenterinfo',
             ty,uid,limit
@@ -71,18 +53,7 @@ Template.usercenter.onCreated(function(){
 });
 
 Template.usercenter.onRendered(function App_homeOnRendered() {
-    const instance = Template.instance();
-    /*
-    const ty = instance.ty();
-    $(".aside-nav li").removeClass("aside-nav-current")
-    if(ty==="relea"){
-        $(".aside-nav li:eq(1)").addClass("aside-nav-current")
-    }else if(ty==="fav"){
-        $(".aside-nav li:first").addClass("aside-nav-current")
-    }else if(ty==="log"){
-        $(".aside-nav li:last").addClass("aside-nav-current")
-    }
-    */
+
 
 });
 
@@ -91,7 +62,7 @@ Template.usercenter.onRendered(function App_homeOnRendered() {
 Template.usercenter.helpers({
     "list":function () {
         const instance = Template.instance();
-        const ty = instance.ty();
+        const ty = instance.ty.get();
         const limit = instance.limit.get();
 
         var uid=Session.get("usr").id;
@@ -104,8 +75,18 @@ Template.usercenter.events({
     'click #more'(event, instance) {
         instance.limit.set(instance.limit.get() + numOfRecords);
     },
-    '.aside-nav li a'(event, instance) {
+    'click .usr_nav'(event, instance) {
 
-
+        let ty=$(event.currentTarget).attr("ty");
+        $(".aside-nav li").removeClass("aside-nav-current")
+        if(ty==="relea"){
+            $(".aside-nav li:eq(1)").addClass("aside-nav-current")
+        }else if(ty==="fav"){
+            $(".aside-nav li:first").addClass("aside-nav-current")
+        }else if(ty==="log"){
+            $(".aside-nav li:last").addClass("aside-nav-current")
+        }
+        instance.limit.set(numOfRecords);
+        instance.ty.set(ty);
     }
 });

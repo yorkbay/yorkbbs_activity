@@ -29,7 +29,7 @@ Manager.schema = new SimpleSchema({
         label: "content"
     },
     role: {
-        type: [String],
+        type: String,
         optional:true,
         label: "role"
     },
@@ -41,10 +41,7 @@ Manager.schema = new SimpleSchema({
     dt: {
         type: Date,
         label: "create date",
-        optional:true,
-        autoValue:function () {
-            return new Date();
-        }
+        optional:true
     },
     lm: {
         type: Date,

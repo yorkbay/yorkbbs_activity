@@ -1,0 +1,167 @@
+<template name="admin_backendlog">
+    <div class="contacts">
+        <div class="contacts-box">
+            <div id="crms-filter">
+                <div>
+                    <select class="form-control" name="habit" id="habit">
+                        <option value="">操作类型</option>
+                        <option value="42">登录后台</option>
+                        <option value="43">审核信息</option>
+                        <option value="46">审核评论</option>
+                        <option value="46">处理举报</option>
+                        <option value="46">设置权限</option>
+                        <option value="46">删除信息</option>
+                        <option value="46">删除评论</option>
+                        <option value="46">删除举报</option>
+                    </select>
+                    <div class="form-filter-search">
+                        <div class="input-group">
+                            <input type="text" id="keyword" class="serch-keyword form-control form-filter-search-input" name="keyword" value="" placeholder="搜索操作人或操作说明">
+                            <div class="input-group-addon btn-keyword-search">搜索</div>
+                        </div>
+                    </div>
+                    <div class="form-group-box">
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="startdate" placeholder="2017-03-22">
+                            </div>
+                        </div>
+                        &nbsp; 至
+                        <div class="form-group-custom">
+                            <div class="input-group">
+
+                                <input type="text" class="form-control" id="enddate" placeholder="2017-04-22">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <input class="form-control" type="text" id="startdate"> 至 <input type="text" id="enddate" class="form-control"> -->
+            </div>
+            <script src="../pageCommonModul/infoFilter/InfoFilter.js"></script>
+            <script>
+                var hrefObj = getQueryObject(window.location.href);
+                var filtDom = new InfoFilter($('#crms-filter'), {
+                    pageType: 'cjkh',
+                    dateTime: true,
+                    manage: [{id: 46, name: "Admin", initsel: 46}, {id: 88, name: "Jane", initsel: 46}, {id: 89, name: "Edward", initsel: 46}, {id: 92, name: "Andy", initsel: 46}, {id: 94, name: "Allen", initsel: 46}, {id: 95, name: "Ava", initsel: 46}, {id: 96, name: "Bruce", initsel: 46}, {id: 97, name: "Gill", initsel: 46}, {id: 98, name: "Ken", initsel: 46}, {id: 99, name: "Mike", initsel: 46}, {id: 100, name: "Olivia", initsel: 46}, {id: 101, name: "Tina", initsel: 46}, {id: 102, name: "Vicky", initsel: 46}, {id: 103, name: "Annie", initsel: 46}, {id: 109, name: "Alice", initsel: 46}, {id: 110, name: "Tim", initsel: 46}, {id: 111, name: "Amy", initsel: 46}, {id: 112, name: "Kitty", initsel: 46}, {id: 113, name: "Connie", initsel: 46}, {id: 114, name: "Lynn", initsel: 46}, {id: 118, name: "Bill", initsel: 46}, {id: 119, name: "Snow", initsel: 46}, {id: 120, name: "Wangli", initsel: 46}, {id: 121, name: "Smith's", initsel: 46}, {id: 122, name: "Wang", initsel: 46}, {id: 123, name: "Lili", initsel: 46}, {id: 124, name: "Test", initsel: 46}, {id: 125, name: "Newtest", initsel: 46}]
+                }, function() {
+                    var start = $('#startdate').val();
+                    var end = $('#enddate').val();
+
+                    $('#startdate').daterangepicker({
+                        language: 'zh-CN',
+                        singleDatePicker: true,
+                        startDate: start ? start : moment().subtract(30, 'days'),
+                        locale: {
+                            format: 'YYYY-MM-DD'
+                        },
+                    });
+
+                    $('#enddate').daterangepicker({
+                        language: 'zh-CN',
+                        singleDatePicker: true,
+                        startDate: end ? end : (start ? start : moment()),
+                        locale: {
+                            format: 'YYYY-MM-DD'
+                        },
+                    });
+                    $('#startdate').on('apply.daterangepicker', function() {
+                        filtDom.search();
+
+                    });
+                    $('#enddate').on('apply.daterangepicker', function() {
+                        filtDom.search();
+
+                    });
+
+                });
+
+            </script>
+        </div>
+        <div class="contacts-box">
+            <div class="table-box">
+                <table width="100%" border="0">
+                    <tbody><tr>
+                        <th width="15%">时间</th>
+                        <th width="12%">用户</th>
+                        <th width="15%">操作类型</th>
+                        <th width="15%">IP地址</th>
+                        <th>信息标题</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>查看信息</em>
+                        </td>
+                        <td>
+                            <em>192.168.70.224</em>
+                        </td>
+                        <td>
+                            <em>功夫煮麻辣烫</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>查看信息</em>
+                        </td>
+                        <td>
+                            <em>192.168.70.224</em>
+                        </td>
+                        <td>
+                            <em>功夫煮麻辣烫</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>查看信息</em>
+                        </td>
+                        <td>
+                            <em>192.168.70.224</em>
+                        </td>
+                        <td>
+                            <em>功夫煮麻辣烫</em>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <em>2017-04-28 18:13</em>
+                        </td>
+                        <td>
+                            <em>admin</em>
+                        </td>
+                        <td>
+                            <em>查看信息</em>
+                        </td>
+                        <td>
+                            <em>192.168.70.224</em>
+                        </td>
+                        <td>
+                            <em>功夫煮麻辣烫</em>
+                        </td>
+                    </tr>
+                    </tbody></table>
+            </div>
+            <div class="contacts-table-more">
+                <a href="">加载更多</a>
+            </div>
+        </div>
+    </div>
+</template>

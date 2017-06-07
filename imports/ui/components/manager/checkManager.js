@@ -9,11 +9,13 @@ Template.admin_checkManager.onCreated(function () {
     if(!manager || !manager.uname){
         FlowRouter.go('/admin/login');
     }
-    /*
+
+
     var page=FlowRouter.current().path.replace('/admin/','');
-    if(manager.role.indexOf(page)<0){
+    if(!manager.role || manager.role.indexOf(page)<0){
         FlowRouter.go('/admin/login');
     }
-    */
+
+
 
 });

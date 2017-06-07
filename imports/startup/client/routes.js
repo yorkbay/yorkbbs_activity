@@ -46,6 +46,15 @@ FlowRouter.route('/release', {
     },
 });
 
+FlowRouter.route('/release/:id', {
+    name: 'App.admin.release',
+    action() {
+        require('../../ui/stylesheets/front/active.css');
+        BlazeLayout.render('home', { main: 'release' });
+    },
+});
+
+
 FlowRouter.route('/usr', {
     name: 'App.user',
     action() {
@@ -73,6 +82,7 @@ var adminRoutes = FlowRouter.group({
         BlazeLayout.render('admin', { main: 'admin_login' });
     }
 });
+
 
 adminRoutes.route('/login', {
     name: 'App.admin.login',
@@ -109,10 +119,17 @@ adminRoutes.route('/feedback', {
     },
 });
 
-adminRoutes.route('/log', {
+adminRoutes.route('/frontlog', {
     name: 'App.log',
     action() {
-        BlazeLayout.render('admin', { main: 'admin_log_list' });
+        BlazeLayout.render('admin', { main: 'admin_frontlog' });
+    },
+});
+
+adminRoutes.route('/backendlog', {
+    name: 'App.log',
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_backendlog' });
     },
 });
 

@@ -14,6 +14,7 @@ import '../../components/layer/share.js';
 import '../../components/layer/weixin.js'
 import {Activity} from '../../../api/activity/activity.js'
 import {Comment} from '../../../api/comment/comment.js';
+
 import { listbytag } from '../../../api/activity/methods.js';
 import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 
@@ -23,6 +24,7 @@ Template.detail.onCreated(function(){
     var id=FlowRouter.getParam('id');
     self.autorun(function () {
         self.subscribe('activitybyid',id);
+
         self.subscribe('activitiesbytag','周末好去处');
     });
 

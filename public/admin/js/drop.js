@@ -112,26 +112,7 @@ $(function(){
     });
 
 
-    /*权限管理*/
-    $('.J-add-admin').click(function(){
-        $('.J-authority-pop').show();
-        $('.add-authority-pop').show().siblings().hide();
-        return false;
-    });
-    $('.J-authority-pop').find('.layer-close').click(function(){
-        $('.J-authority-pop').hide();
-        return false;    
-    });
-    $('.J-change-start').click(function(){
-        $('.J-authority-pop').show();
-        $('.change-start-pop').show().siblings().hide();
-        return false;
-    });
-    $('.J-change-authority').click(function(){
-        $('.J-authority-pop').show();
-        $('.change-authority-pop').show().siblings().hide();
-        return false;
-    });
+
     /*批量相关   全选*/
 	if($('.J-select-all').length>0){
 		var onlineSelect = $('.J-select-all').parents('tr').siblings();
