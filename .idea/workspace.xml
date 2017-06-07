@@ -2,44 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="993fd92d-12b2-423b-b7d2-3543a6cb1185" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/log.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/log.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/manager/manager.js" afterPath="$PROJECT_DIR$/imports/api/manager/manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/manager/methods.js" afterPath="$PROJECT_DIR$/imports/api/manager/methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/manager/server/publications.js" afterPath="$PROJECT_DIR$/imports/api/manager/server/publications.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/newsletter/methods.js" afterPath="$PROJECT_DIR$/imports/api/newsletter/methods.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/usrcenter/server/publications.js" afterPath="$PROJECT_DIR$/imports/api/usrcenter/server/publications.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/packages" afterPath="$PROJECT_DIR$/.meteor/packages" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.meteor/versions" afterPath="$PROJECT_DIR$/.meteor/versions" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/api/activity/methods.js" afterPath="$PROJECT_DIR$/imports/api/activity/methods.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/startup/client/routes.js" afterPath="$PROJECT_DIR$/imports/startup/client/routes.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/header/search/search.html" afterPath="$PROJECT_DIR$/imports/ui/components/header/search/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/manager.js" afterPath="$PROJECT_DIR$/imports/ui/components/layer/manager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/managerright.html" afterPath="$PROJECT_DIR$/imports/ui/components/layer/managerright.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/managerright.js" afterPath="$PROJECT_DIR$/imports/ui/components/layer/managerright.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/managerstate.html" afterPath="$PROJECT_DIR$/imports/ui/components/layer/managerstate.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/managerstate.js" afterPath="$PROJECT_DIR$/imports/ui/components/layer/managerstate.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/tagadd.html" afterPath="$PROJECT_DIR$/imports/ui/components/layer/tagadd.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/layer/tagadd.js" afterPath="$PROJECT_DIR$/imports/ui/components/layer/tagadd.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/manager/checkManager.js" afterPath="$PROJECT_DIR$/imports/ui/components/manager/checkManager.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/search/search.html" afterPath="$PROJECT_DIR$/imports/ui/components/search/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/search/search.js" afterPath="$PROJECT_DIR$/imports/ui/components/search/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/user/left.html" afterPath="$PROJECT_DIR$/imports/ui/components/user/left.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/components/user/usr_list_item.js" afterPath="$PROJECT_DIR$/imports/ui/components/user/usr_list_item.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/layouts/admin/body.html" afterPath="$PROJECT_DIR$/imports/ui/layouts/admin/body.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/layouts/admin/body.js" afterPath="$PROJECT_DIR$/imports/ui/layouts/admin/body.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/activity.html" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/activity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/activity.js" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/activity.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/nl_email.html" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/nl_email.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/nl_email.js" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/nl_email.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/sys_right.html" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/sys_right.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/sys_right.js" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/sys_right.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/detail/detail.js" afterPath="$PROJECT_DIR$/imports/ui/pages/detail/detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/home/home.js" afterPath="$PROJECT_DIR$/imports/ui/pages/home/home.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/admin/login.js" afterPath="$PROJECT_DIR$/imports/ui/pages/admin/login.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/release/release.html" afterPath="$PROJECT_DIR$/imports/ui/pages/release/release.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/release/release.js" afterPath="$PROJECT_DIR$/imports/ui/pages/release/release.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/user/user.html" afterPath="$PROJECT_DIR$/imports/ui/pages/user/user.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/pages/user/user.js" afterPath="$PROJECT_DIR$/imports/ui/pages/user/user.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/imports/ui/stylesheets/front/active.css" afterPath="$PROJECT_DIR$/imports/ui/stylesheets/front/active.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/admin/js/drop.js" afterPath="$PROJECT_DIR$/public/admin/js/drop.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -57,33 +30,45 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/pages/home/home.js">
+      <file leaf-file-name="edit.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/edit.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="168" column="23" lean-forward="false" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/imports/ui/components/list/list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+            <state relative-caret-position="90">
+              <caret line="6" column="63" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/imports/ui/components/search/search.html">
+      <file leaf-file-name="methods.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/api/activity/methods.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="56" lean-forward="false" selection-start-line="5" selection-start-column="45" selection-end-line="5" selection-end-column="56" />
+            <state relative-caret-position="270">
+              <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="edit.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/edit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="785">
+              <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+              <folding>
+                <element signature="e#40#95#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="release.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/release.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-384">
+              <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -103,11 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>J-error-submit</find>
-      <find>J-process</find>
-      <find>fourseven:scss</find>
-      <find>front/active.s</find>
-      <find>body</find>
       <find>/admin</find>
       <find>swiper</find>
       <find>swiper-container</find>
@@ -133,6 +113,11 @@
       <find>logout</find>
       <find>newslist-caption-conent</find>
       <find>.active-tags a &gt; i</find>
+      <find>Session</find>
+      <find>manager</find>
+      <find>Activity</find>
+      <find>insertContent</find>
+      <find>Id</find>
     </findStrings>
     <replaceStrings>
       <replace>admin</replace>
@@ -149,11 +134,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/imports/ui/pages/admin/feedback.js" />
-        <option value="$PROJECT_DIR$/imports/api/comment/comment.js" />
-        <option value="$PROJECT_DIR$/imports/ui/components/detail/comment.js" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/admin/tag.js" />
-        <option value="$PROJECT_DIR$/imports/api/comment/methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/layer/admin_comment_check.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/layer/admin_comment_check.js" />
         <option value="$PROJECT_DIR$/imports/api/comment/server/publications.js" />
@@ -173,7 +153,6 @@
         <option value="$PROJECT_DIR$/imports/ui/pages/admin/backendlog.html" />
         <option value="$PROJECT_DIR$/imports/api/manager/methods.js" />
         <option value="$PROJECT_DIR$/imports/ui/layouts/admin/body.html" />
-        <option value="$PROJECT_DIR$/imports/ui/components/manager/checkManager.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/layer/managerright.html" />
         <option value="$PROJECT_DIR$/imports/ui/components/layer/managerright.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/admin/nl_email.js" />
@@ -183,10 +162,6 @@
         <option value="$PROJECT_DIR$/imports/ui/layouts/admin/body.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/admin/release.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/admin/release.js" />
-        <option value="$PROJECT_DIR$/imports/startup/client/routes.js" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/admin/activity.html" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/release/release.html" />
-        <option value="$PROJECT_DIR$/imports/ui/pages/release/release.js" />
         <option value="$PROJECT_DIR$/imports/ui/pages/detail/detail.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/search/search.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/layer/tagadd.html" />
@@ -200,6 +175,16 @@
         <option value="$PROJECT_DIR$/imports/ui/pages/user/user.js" />
         <option value="$PROJECT_DIR$/imports/ui/components/search/search.html" />
         <option value="$PROJECT_DIR$/imports/ui/pages/home/home.js" />
+        <option value="$PROJECT_DIR$/.meteor/packages" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/admin/login.js" />
+        <option value="$PROJECT_DIR$/imports/ui/components/manager/checkManager.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/admin/activity.html" />
+        <option value="$PROJECT_DIR$/imports/startup/client/routes.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/release/release.html" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/release/edit.html" />
+        <option value="$PROJECT_DIR$/imports/api/activity/methods.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/release/edit.js" />
+        <option value="$PROJECT_DIR$/imports/ui/pages/release/release.js" />
       </list>
     </option>
   </component>
@@ -260,15 +245,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
+              <option name="myItemId" value="private" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -287,14 +264,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="front" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -342,7 +311,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="home" />
+              <option name="myItemId" value="release" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,7 +433,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="search" />
+              <option name="myItemId" value="manager" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="activity" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="imports" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -456,15 +465,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="list" />
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -482,29 +483,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ui" />
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="components" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="header" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="activity" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="imports" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -619,12 +602,12 @@
       <workItem from="1496545353402" duration="6000" />
       <workItem from="1496547367519" duration="40000" />
       <workItem from="1496547500156" duration="11000" />
-      <workItem from="1496547840482" duration="77036000" />
+      <workItem from="1496547840482" duration="84806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246062000" />
+    <option name="totallyTimeSpent" value="253832000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="2495" height="1416" extended-state="6" />
@@ -657,82 +640,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/backendlog.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/sys_right.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="20" lean-forward="false" selection-start-line="7" selection-start-column="20" selection-end-line="7" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/backendlog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="32" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="32" />
-          <folding>
-            <element signature="e#1550#1556#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/frontlog.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="30" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/api/manager/methods.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="61" column="30" lean-forward="false" selection-start-line="61" selection-start-column="13" selection-end-line="61" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/layer/managerstate.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="11" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="27" selection-end-column="11" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-            <element signature="e#39#68#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/layouts/admin/body.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="21" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/components/manager/checkManager.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="4" lean-forward="false" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#53#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/layer/managerright.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -818,16 +730,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/layouts/admin/body.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#21#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/layer/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -840,16 +742,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="36" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
@@ -874,36 +766,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/startup/client/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
-          <caret line="48" column="21" lean-forward="false" selection-start-line="48" selection-start-column="21" selection-end-line="48" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#55#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/layer/managerstate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="9" column="86" lean-forward="false" selection-start-line="9" selection-start-column="77" selection-end-line="9" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/activity.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/release.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="71" lean-forward="true" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
           <folding />
         </state>
       </provider>
@@ -943,16 +809,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/release.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="28" column="8" lean-forward="true" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="e#40#95#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/layer/tagadd.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
@@ -985,16 +841,6 @@
           <caret line="10" column="38" lean-forward="false" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="38" />
           <folding>
             <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/activity.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="954">
-          <caret line="158" column="38" lean-forward="false" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="38" />
-          <folding>
-            <element signature="e#39#64#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1097,16 +943,148 @@
         <state relative-caret-position="630">
           <caret line="168" column="23" lean-forward="false" selection-start-line="168" selection-start-column="23" selection-end-line="168" selection-end-column="23" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#0#21#0" expanded="false" />
+            <marker date="1496822408106" expanded="true" signature="3769:5782" ph="{...}" />
+            <marker date="1496822408106" expanded="true" signature="4316:4620" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/private/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imports/ui/components/list/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+        <state relative-caret-position="270">
+          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/activity.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="78" selection-end-column="3" />
+          <folding>
+            <element signature="e#39#64#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/layouts/admin/body.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="570">
+          <caret line="53" column="3" lean-forward="false" selection-start-line="53" selection-start-column="3" selection-end-line="53" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.meteor/packages">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="44" column="18" lean-forward="false" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="36" column="37" lean-forward="false" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/components/manager/checkManager.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/admin/activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="987">
+          <caret line="157" column="46" lean-forward="false" selection-start-line="157" selection-start-column="46" selection-end-line="157" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/startup/client/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#55#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/release.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1320">
+          <caret line="88" column="117" lean-forward="false" selection-start-line="88" selection-start-column="117" selection-end-line="88" selection-end-column="117" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/layouts/body/home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="39" lean-forward="false" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/edit.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="63" lean-forward="false" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/api/activity/methods.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="50" lean-forward="false" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/release.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-384">
+          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imports/ui/pages/release/edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="785">
+          <caret line="96" column="29" lean-forward="true" selection-start-line="96" selection-start-column="29" selection-end-line="96" selection-end-column="29" />
+          <folding>
+            <element signature="e#40#95#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

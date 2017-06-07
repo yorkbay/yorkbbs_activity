@@ -94,6 +94,7 @@ teamon:tinymce
 nolimits4web:swiper
 dbarrett:dropzonejs
 session
+u2622:persistent-session
 tomi:upload-server
 tsega:bootstrap3-datetimepicker
 fongandrew:find-and-modify

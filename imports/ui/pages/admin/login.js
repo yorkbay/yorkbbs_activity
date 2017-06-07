@@ -34,7 +34,7 @@ Template.admin_login.events({
 
         managerLogin.call(manager,function (err,result) {
             if(result){
-                Session.set("manager",result);
+                Session.setPersistent("manager",result);
                 FlowRouter.go('/admin/activity');
             }
         });

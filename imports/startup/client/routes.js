@@ -6,13 +6,14 @@ import '../../ui/layouts/body/home.js';
 import '../../ui/pages/home/home.js';
 import '../../ui/pages/detail/detail.js';
 import '../../ui/pages/release/release.js';
+import '../../ui/pages/release/edit.js';
 import '../../ui/pages/user/user.js';
 import '../../ui/pages/not-found/not-found.js';
 
 import '../../ui/layouts/admin/body.js';
 import '../../ui/layouts/admin/login.js'
 
-
+//https://stackoverflow.com/questions/13371324/meteor-session-and-browser-refreshes
 var usr=Session.get('usr');
 
 if(!usr || !usr.id){
@@ -23,9 +24,6 @@ if(!usr || !usr.id){
 
     Session.set("usr",usr);
 }
-var manager=Session.get('manager');
-
-
 
 // Set up all routes in the app
 FlowRouter.route('/', {
@@ -51,6 +49,14 @@ FlowRouter.route('/release/:id', {
     action() {
         require('../../ui/stylesheets/front/active.css');
         BlazeLayout.render('home', { main: 'release' });
+    },
+});
+
+FlowRouter.route('/edit/:id', {
+    name: 'App.admin.release',
+    action() {
+        require('../../ui/stylesheets/front/active.css');
+        BlazeLayout.render('home', { main: 'edit' });
     },
 });
 

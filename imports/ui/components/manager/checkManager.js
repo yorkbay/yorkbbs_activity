@@ -12,9 +12,15 @@ Template.admin_checkManager.onCreated(function () {
 
 
     var page=FlowRouter.current().path.replace('/admin/','');
+
     if(!manager.role || manager.role.indexOf(page)<0){
         FlowRouter.go('/admin/login');
     }
+
+});
+
+
+Template.admin_checkManager.onRendered(function releaseOnRendered() {
 
 
 

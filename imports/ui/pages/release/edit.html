@@ -1,11 +1,10 @@
-<template name="release">
-    {{> mobile_menu }}
+<template name="edit">
     <div class="row">
         <div class="l-release-main">
             <section class="release">
                 <h1 class="release-caption">
                     <i>1</i>
-                    <em>活动详情</em>
+                    <em>活动详情<input type="hidden" id="activityid" value="{{Activity._id}}"/></em>
                 </h1>
                 <div class="release-row">
                     <label class="release-label"><b>活动地点 </b> <i>*</i></label>
@@ -26,7 +25,7 @@
                                 <span class="dropdown-label-icon"></span>
                                 <span class="dropdown-label">Toronto</span>
                                 <span class="dropdown-icon"></span>
-                                <select class="J-online-or" id="city" name="city">
+                                <select class="J-online-or" id="city" name="city" {{display_city Activity.city}}>
                                     <option selected="" value="Toronto">Toronto</option>
                                     <option value="Downtown">Downtown</option>
                                     <option value="Scarborough">Scarborough</option>
@@ -41,7 +40,7 @@
                                 </select>
                             </div>
                             <div class="release-adress-map">
-                                <input type="text" value="{{Activity.adress}}" id="address" name="adress" class="release-adress-input-row release-input-text J-map J-online-or" placeholder="请输入详细地址" />
+                                <input type="text" value="{{Activity.address}}" id="address" name="address" class="release-adress-input-row release-input-text J-map J-online-or" placeholder="请输入详细地址" />
                                 <a href="" class="release-adress-map-button"><img src="/img/icon-map.jpg" alt="" /></a>
                                 <div id="google-map" class="release-map-layer" style="display: none; height: 500px;"></div>
                             </div>
@@ -51,20 +50,20 @@
                             <input type="text" value="{{Activity.code}}" id="code" name="code" class="release-adress-small release-input-text J-online-or J-zip-code" placeholder="" />   格式： M2J 1P9    <i class="release-tips J-zip-code-error">请输入正确格式</i>
                         </div>
                         <div class="release-adress-checkbox">
-                            <input class="J-online-check" type="checkbox" value="" id="isonline" name="isonline"/> 这是一个线上活动
+                            <input class="J-online-check" type="checkbox" value="" id="isonline" name="isonline" {{display_isonline Activity.isonline}}/> 这是一个线上活动
                         </div>
                     </div>
                 </div>
                 <div class="release-row">
                     <div class="release-column">
-                        <label class="release-label"><b>开始时间 </b> <i>*</i></label>
+                        <label class="release-label"><b>开始时间</b> <i>*</i></label>
                         <div class="release-date">
                             <div class="release-date-box">
                                 <div class="release-date-choose ">
                                     <i><img src="/img/icon-date.jpg" alt="" /></i>
-                                    <input type="text" value=""  placeholder="2017/01/26" id="bdate" name="bdate"  />
+                                    <input type="text" value="{{formatDate_YMD Activity.btime.date}}"   id="bdate" name="bdate"  />
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" placeholder="07:00AM" id="btime" name="btime" />
+                                <input class="release-date-input-time" type="text" value="{{Activity.btime.time}}"  id="btime" name="btime" />
                             </div>
                         </div>
                     </div>
@@ -77,9 +76,9 @@
                             <div class="release-date-box">
                                 <div class="release-date-choose">
                                     <i><img src="/img/icon-date.jpg" alt="" /></i>
-                                    <input type="text" value="" placeholder="2017/01/26" id="edate" name="edate" />
+                                    <input type="text" value="{{formatDate_YMD Activity.etime.date}}"  id="edate" name="edate" />
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" id="etime" name="etime" placeholder="07:00AM" />
+                                <input class="release-date-input-time" type="text" value="{{Activity.etime.time}}" id="etime" name="etime"  />
                             </div>
                         </div>
                     </div>
@@ -92,7 +91,7 @@
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动详情</b> <i></i></label>
-                    <textarea id="ct" style="height: 400px;"></textarea>
+                    <textarea id="ct" style="height: 400px;">{{display_ct Activity.ct}}</textarea>
                     <input type="hidden" id="imageurl" value="">
                 </div>
                 <h1 class="release-caption">
@@ -101,28 +100,28 @@
                 </h1>
                 <div class="release-row">
                     <label class="release-label"><b>活动费用 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text J-free-or" placeholder="例：$50" id="pr" name="pr"/>
+                    <input type="text" value="{{Activity.pr}}" class="release-input release-input-text J-free-or" placeholder="例：$50" id="pr" name="pr"/>
                     <div class="release-adress-checkbox">
-                        <input class="J-free-check" type="checkbox" value="" id="isfree" name="isfree">这是一个免费的活动
+                        <input class="J-free-check" type="checkbox" value="" id="isfree" name="isfree" {{display_isfree Activity.pr}}>这是一个免费的活动
                     </div>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动网址 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="site" name="site"/>
+                    <input type="text" value="{{Activity.site}}" class="release-input release-input-text" placeholder="" id="site" name="site"/>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>联系电话 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="tel" name="tel"/>
+                    <input type="text" value="{{Activity.tel}}" class="release-input release-input-text" placeholder="" id="tel" name="tel"/>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动标签 </b> <i></i></label>
                     <div class="release-tags J-change-tags">
-                        <input type="hidden" name="tags" id="tags" value=""/>
+                        <input type="hidden" name="tags" id="tags" value="{{Activity.tags}},"/>
                         {{#each tag in tags}}
-                        <a href="" class="" tag="{{tag.tg}}">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>{{tag.tg}}</em>
-                        </a>
+                            <a href="" class="{{display_tag tag.tg Activity.tags}}" tag="{{tag.tg}}">
+                                <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
+                                <em>{{tag.tg}}</em>
+                            </a>
                         {{/each}}
                     </div>
                 </div>

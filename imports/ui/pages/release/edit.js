@@ -4,29 +4,41 @@
 
 import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Session } from 'meteor/session'
-import './release.html';
+import './edit.html';
 
 import '../../components/release/mobile_menu.js';
 import {Activity} from '../../../api/activity/activity.js';
 import {Tag} from '../../../api/tag/tag.js';
 
 import {
-    insert
+    modify
 } from '../../../api/activity/methods.js';
 
-import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 
-Template.release.onCreated(function () {
+
+Template.edit.onCreated(function () {
     const instance = this;
+
+
+    const id=FlowRouter.getParam('id');
+
+    let manager=Session.get('manager');
+    if(!manager || !manager._id){
+        FlowRouter.go('/');
+    }
+    if(!id){
+        FlowRouter.go('/');
+    }
 
     instance.autorun(function () {
         instance.subscribe('tagslist');
 
+        instance.subscribe('activitybyid', id);
     });
 });
 
 
-Template.release.onRendered(function releaseOnRendered() {
+Template.edit.onRendered(function releaseOnRendered() {
 
     $('#bdate').datetimepicker({
         format: 'YYYY-MM-DD'
@@ -67,16 +79,47 @@ Template.release.onRendered(function releaseOnRendered() {
         skin_url: '/packages/teamon_tinymce/skins/lightgray'
 
     });
-
 });
 
-Template.release.helpers({
+Template.edit.helpers({
     'tags':function () {
         return Tag.find({});
+    },
+    'Activity':function () {
+        const id=FlowRouter.getParam('id');
+        let activity=Activity.findOne({_id:id});
+
+        return activity;
+    },
+    'display_isonline':function (isonline) {
+        if(isonline){
+            $('.J-online-or').parents().find('.J-online-or').attr('disabled','disabled');
+            return "checked";
+        }
+        return isonline?"checked":"";
+    },
+    'display_isfree':function (isfree) {
+        if(isfree=="free"){
+            $('.J-free-or').attr('disabled','disabled');
+            return "checked";
+        }
+    },
+    'display_ct':function (ct) {
+        if(tinymce.activeEditor) {
+            tinymce.activeEditor.insertContent(ct);
+        }
+    },
+    'display_tag':function (tag,tags) {
+        if(tags && tags.indexOf(tag)>=0){
+            return "release-tags-current";
+        }
+    },
+    'display_city':function (city) {
+        $("#city").val(city);
     }
 })
 
-Template.release.events({
+Template.edit.events({
     'change #isonline':function (event,instance) {
         let ischeck=event.target.checked;
         if(ischeck){
@@ -94,14 +137,6 @@ Template.release.events({
         }
     },
     "click #sub":()=>{
-        let usr=Session.get('usr');
-        let manager=Session.get('manager');
-        if(manager && manager._id){
-            usr={
-                id:manager._id,
-                uname:manager.uname
-            }
-        }
 
         var pr="free";
         if(!$("#isfree").is(':checked')){
@@ -121,11 +156,13 @@ Template.release.events({
         imageurl.forEach(function (i) {
             let o_n=i.split(':');
             ct=ct.replace(o_n[0],o_n[1]);
+
         });
 
+        let Id=$("#activityid").val();
         var doc= {
+            "_id":Id,
             "ti":$("#ti").val(),
-            "st":"normal",
             "logo":getlogo(ct),
             "isonline":isonline,
             "location":$("#location").val(),
@@ -144,27 +181,10 @@ Template.release.events({
             "pr":pr,
             "site":$("#site").val(),
             "tel":$("#tel").val(),
-            "tags":tags,
-            "meta":{
-                "uid":usr.id,
-                "usr":usr.uname,
-                "dt":new Date()
-            }
         };
 
 
-        var Id = insert.call(doc);
-        doc= {
-            "ty":"relea",
-            "refid":Id,
-            "st":"normal",
-            "meta":{
-                "uid":usr.id,
-                "usr":usr.uname
-            }
-        };
-
-        usrCenterInsert.call(doc);
+        modify.call(doc);
 
         FlowRouter.go('/activity/'+Id);
 

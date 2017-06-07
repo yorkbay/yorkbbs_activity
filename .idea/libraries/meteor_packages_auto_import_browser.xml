@@ -50,10 +50,12 @@
         <item url="file://$USER_HOME$/.meteor/packages/mdg_validation-error/0.5.1/web.browser/validation-error.js" />
         <item url="file://$USER_HOME$/.meteor/packages/mdg_validated-method/1.1.0/web.browser/validated-method-tests.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/lib/main.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteorhacks_subs-manager/1.6.4/web.browser/lib/sub_manager.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/ToyKit/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/ToyKit/main.css" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/client/main.css" />
+        <item url="file://$USER_HOME$/.meteor/packages/u2622_persistent-session/0.4.4/web.browser/lib/persistent_session.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteorspark_util/0.2.0/web.browser/packages/meteorspark_util.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/ordered-dict/1.0.9/web.browser/ordered_dict.js" />
@@ -753,10 +755,12 @@
       <root url="file://$USER_HOME$/.meteor/packages/mdg_validation-error/0.5.1/web.browser/validation-error.js" />
       <root url="file://$USER_HOME$/.meteor/packages/mdg_validated-method/1.1.0/web.browser/validated-method-tests.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/lib/main.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/amplify/1.0.0/web.browser/packages/amplify.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteorhacks_subs-manager/1.6.4/web.browser/lib/sub_manager.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/ToyKit/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/ToyKit/main.css" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/client/main.css" />
+      <root url="file://$USER_HOME$/.meteor/packages/u2622_persistent-session/0.4.4/web.browser/lib/persistent_session.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteorspark_util/0.2.0/web.browser/packages/meteorspark_util.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_method/3.0.4/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/ordered-dict/1.0.9/web.browser/ordered_dict.js" />
