@@ -27,14 +27,18 @@ Template.release.onCreated(function () {
 
 Template.release.onRendered(function releaseOnRendered() {
 
-    /*
-    $('#bdate').datepicker();
-    $('#btime').datepicker();
-    $('#edate').datepicker();
-    $('#etime').datepicker();
-    */
-    $('#bdate').datetimepicker();
-    $('#edate').datetimepicker();
+    $('#bdate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#edate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#btime').datetimepicker({
+        format: 'LT'
+    });
+    $('#etime').datetimepicker({
+        format: 'LT'
+    });
 
 
 
@@ -48,12 +52,12 @@ Template.release.onRendered(function releaseOnRendered() {
             var files=JSON.parse(response).files;
 
             files.forEach(function(file){
-                var imageurl='/upload/'+file.name+':'+file._path+',';
+                var imageurl='upload/'+file.name+':'+file._path+',';
                 let hdnimagurl=$("#imageurl").val();
                 hdnimagurl=hdnimagurl+imageurl;
                 $("#imageurl").val(hdnimagurl);
                 //var img="<img src='"+file.path+"' />";
-                var img="<img src='/upload/"+file.name+"'  data-src='"+file._path+"'/>";
+                var img="<img src='/upload/"+file.name+"'  refsrc='"+file._path+"'/>";
                 tinymce.activeEditor.insertContent(img);
             })
         }
@@ -74,6 +78,22 @@ Template.release.helpers({
 })
 
 Template.release.events({
+    'change #isonline':function (event,instance) {
+        let ischeck=event.target.checked;
+        if(ischeck){
+            $('.J-online-or').parents().find('.J-online-or').attr('disabled','disabled');
+        }else{
+            $('.J-online-or').parents().find('.J-online-or').attr('disabled',false);
+        }
+    },
+    'change #isfree':function (event,instance) {
+        let ischeck=event.target.checked;
+        if(ischeck){
+            $('.J-free-or').attr('disabled','disabled');
+        }else{
+            $('.J-free-or').attr('disabled',false);
+        }
+    },
     "click #sub":()=>{
         let usr=Session.get('usr');
         var pr="free";
@@ -87,13 +107,21 @@ Template.release.events({
 
         var ct=tinymce.activeEditor.getContent();
 
-        ct=replaceContent(ct);
 
+        var imageurl=$("#imageurl").val().split(',');
+        imageurl.pop();
+
+        imageurl.forEach(function (i) {
+            let o_n=i.split(':');
+            console.log(o_n[0]);
+            console.log(o_n[1]);
+            ct=ct.replace(o_n[0],o_n[1]);
+
+        });
 
         var doc= {
             "ti":$("#ti").val(),
             "st":"normal",
-            "isshow":true,
             "logo":getlogo(ct),
             "isonline":isonline,
             "location":$("#location").val(),
@@ -102,13 +130,12 @@ Template.release.events({
             "code":$("#code").val(),
             "btime":{
                 "date":new Date($("#bdate").val()),
-                "time":""
+                "time":$('#btime').val()
             },
             "etime":{
                 "date":new Date($("#edate").val()),
-                "time":""
+                "time":$('#etime').val()
             },
-            "pic":['/img/img1.jpg'],
             "ct":ct,
             "pr":pr,
             "site":$("#site").val(),
@@ -159,17 +186,14 @@ Template.release.events({
 
 
 function getlogo(content){
-    return "/"+$(content).find('img:first').attr('src');
+    return $(content).find('img:first').attr('src');
 }
 
 
 function replaceContent(content){
-    var ct=content;
-   $(ct).find('img').each(function () {
-        const data_src=$(this).attr("data-src");
+
+    return $(content).find('img').each(function () {
+        const data_src=$(this).attr("refsrc");
         $(this).attr("src",data_src);
     });
-    return ct;
-
-
 }

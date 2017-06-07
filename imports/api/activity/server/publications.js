@@ -172,17 +172,21 @@ Meteor.publish('admin_activitieslist', function (params) {
     check(params,{
         key:String,
         time:String,
-        isfree:String,
         tag:String,
-        isrmd:String,
         limit:Number,
         st:String
     });
 
-    const {key,time, isfree,tag,isrmd,limit,st} = params;
+    const {key,time,tag,limit,st} = params;
 
     var query={};
-    query.st={$ne:"del"};
+
+    if(st){
+        query.st=st
+    }else {
+        query.st = {$ne: "del"};
+    }
+
     if(time){
         //var condition=getdate(time);
 
@@ -200,11 +204,7 @@ Meteor.publish('admin_activitieslist', function (params) {
             ti:regex
         }
     }
-    if(isfree ==="1"){
-        query.pr={ $eq: "free"};
-    }else if(isfree ==="0"){
-        query.pr={ $ne: "free"};
-    }
+
     if(tag){
         query.tags={
             "$in": [tag]

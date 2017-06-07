@@ -32,7 +32,13 @@
                         </li>
                         <li>
                             <div class="views-content-title">地址</div>
-                            <div class="views-content-meta">{{item.location}},{{item.city}},{{item.address}}</div>
+                            <div class="views-content-meta">
+                                {{#if item.isonline}}
+                                这是一个线上活动
+                                {{else}}
+                                {{item.location}},{{item.city}},{{item.address}}
+                                {{/if}}
+                            </div>
                         </li>
                     </ul>
                     <div class="views-content-go">

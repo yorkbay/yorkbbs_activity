@@ -26,6 +26,7 @@ Template.admin_activity_list.onCreated(function(){
     instance.limit = new ReactiveVar(numOfRecords);
     instance.tag = new ReactiveVar("");
     instance.key = new ReactiveVar("");
+    instance.st = new ReactiveVar("");
 
     instance.activityid = new ReactiveVar("");
 
@@ -33,31 +34,19 @@ Template.admin_activity_list.onCreated(function(){
     instance.time = () => {
         return FlowRouter.getQueryParam('time')||"";
     };
-    instance.isfree = () => {
-        return FlowRouter.getQueryParam('free')||"";
-    };
 
-    instance.st = () => {
-        return FlowRouter.getQueryParam('st')||"";
-    };
-
-    instance.isrmd = () => {
-        return FlowRouter.getQueryParam('rmd')||"";
-    };
 
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
         const key = instance.key.get();
         const time = instance.time();
-        const isfree = instance.isfree();
         const tag = instance.tag.get();
-        const st = instance.st();
-        const isrmd = instance.isrmd();
+        const st = instance.st.get();
         const limit = instance.limit.get();
 
         instance.subscribe('admin_activitieslist', {
-            key,time,isfree,tag,isrmd,limit,st
+            key,time,tag,limit,st
         });
 
         instance.subscribe('tagslist');
@@ -87,8 +76,8 @@ Template.admin_activity_list.helpers({
         const instance = Template.instance();
         const key = instance.key.get();
         const time = instance.time();
-        const isfree = instance.isfree();
         const tag = instance.tag.get();
+        const st = instance.st.get();
 
         const limit = instance.limit.get();
 
@@ -108,15 +97,11 @@ Template.admin_activity_list.helpers({
                 date:{$gte:start}
             }
         }
-        if(isfree === "1"){
-            query.pr={
-                $eq: "free"
-            };
-        }else if(isfree === "0"){
-            query.pr={
-                $ne: "free"
-            };
+
+        if(st){
+            query.st=st;
         }
+
         if(tag){
             query.tags={
                 $in:[tag]
@@ -223,6 +208,10 @@ Template.admin_activity_list.events({
     "click .layer-close":function (event,instance) {
 
         $('.J-review-pop').hide();
-    }
+    },
+    'change #st'(event,instance){
+        var val= $(event.currentTarget).val();
+        instance.st.set(val);
+    },
 
 });

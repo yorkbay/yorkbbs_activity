@@ -21,7 +21,8 @@ Template.admin_comment_list.onCreated(function(){
     instance.limit = new ReactiveVar(numOfRecords);
     instance.review = new ReactiveVar("");
     instance.key = new ReactiveVar("");
-
+    instance.id = new ReactiveVar("");
+    instance.isshow = new ReactiveVar("");
 
     instance.btime = () => {
         return FlowRouter.getQueryParam('btime')||"";
@@ -29,23 +30,21 @@ Template.admin_comment_list.onCreated(function(){
     instance.etime = () => {
         return FlowRouter.getQueryParam('etime')||"";
     };
-    instance.st = () => {
-        return FlowRouter.getQueryParam('st')||"";
-    };
-
-
 
     instance.autorun(function () {
         const key = instance.key.get();
         const btime = new Date(instance.btime());
         const etime = new Date(instance.etime());
-        const st = instance.st();
+        const isshow = instance.isshow.get();
         const review = instance.review.get();
         const limit = instance.limit.get();
 
-        instance.subscribe('commentslist', {
-            key,btime, etime,limit,st,review
+        instance.subscribe('admin_commentslist', {
+            key,btime, etime,limit,isshow,review
         });
+
+        const id = instance.id.get();
+        instance.subscribe('commentfindbyid',id);
 
         instance.ready.set(PostSubs.ready());
     });
@@ -69,12 +68,11 @@ Template.admin_comment_list.helpers({
         const key = instance.key.get();
         const btime = instance.btime();
         const etime = instance.etime();
-        const st = instance.st();
+        const isshow = instance.isshow.get();
         const review = instance.review.get();
         const limit = instance.limit.get();
 
         var query={};
-
 
         if(key){
 
@@ -84,8 +82,13 @@ Template.admin_comment_list.helpers({
             }
 
         }
-        if(st){
-            query.st=st;
+
+        if(isshow){
+            if(isshow =="true"){
+                query.isshow=true;
+            }else{
+                query.isshow=false;
+            }
         }
 
         if(review){
@@ -99,8 +102,17 @@ Template.admin_comment_list.helpers({
 
         return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
+    "display_isshow":function (review) {
+      return review?"显示":"隐藏";
+    },
     "display_review":function (review) {
-      return review?"审核":"未审核";
+        return review?"已审核":"未审核";
+    },
+    "comment":function () {
+        const instance = Template.instance();
+        var query={_id:instance.id.get()};
+
+        return Comment.findOne(query);
     }
 });
 
@@ -118,19 +130,16 @@ Template.admin_comment_list.events({
         commentmodifyst.call(obj);
     },
     'click .review'(event, instance) {
-        $("#J-review-pop").show();
-        /*
-        var obj={
-            _id:$(event.currentTarget).attr("itemid"),
-            review:true
-        }
-        commentmodifyreview.call(obj);
-        */
+        instance.id.set($(event.currentTarget).attr("itemid"));
+        $(".J-review-pop").show();
     },
     'change #review'(event,instance){
-
         var val= $(event.currentTarget).val();
         instance.review.set(val);
+    },
+    'change #isshow'(event,instance){
+        var val= $(event.currentTarget).val();
+        instance.isshow.set(val);
     },
     'click #search'(event,instance){
         var val= $("#keyword").val();
@@ -146,6 +155,6 @@ Template.admin_comment_list.events({
             st:"del"
         }
         commentmodifystbyid.call(obj);
-    }
+    },
 
 });

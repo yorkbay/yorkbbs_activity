@@ -1,37 +1,15 @@
 <template name="admin_comment_list">
     {{> admin_checkManager}}
-
-    <div class="layer J-review-pop" style="display: none;">
-        <div class="layer-large layer-content">
-            <h1>评论审核
-                <a class="layer-close" href=""><img src="assets/img/icon-close-l.png" alt="" /></a>
-            </h1>
-            <ul>
-                <li><span class="layer-cate">显示状态</span>
-                    <em class="contacts-detail-radio"><input type="radio" value="" /><label>显示</label></em>
-                    <em class="contacts-detail-radio"><input type="radio" value="" /><label>隐藏</label></em>
-                </li>
-                <li><span class="layer-cate">审核状态</span>
-                    <em class="contacts-detail-radio"><input type="radio" value="" /><label>未审核</label></em>
-                    <em class="contacts-detail-radio"><input type="radio" value="" /><label>审核通过</label></em>
-                </li>
-                <li><span class="layer-cate">评论内容</span><em><textarea class="layer-report-textarea" placeholder="评论内容，管理员可二次编辑"></textarea></em></li>
-                <li class="layer-button layer-button-left">
-                    <span class="layer-cate">&nbsp;</span>
-                    <input type="button" class="layer-yes"  value="确定" />
-                </li>
-            </ul>
-        </div>
-    </div>
+    {{> admin_comment_check item=comment}}
 
     <div class="contacts">
         <div class="contacts-box">
             <div id="crms-filter">
                 <div>
-                    <select class="form-control" name="st" id="st">
+                    <select class="form-control" name="isshow" id="isshow">
                         <option value="">显示状态</option>
-                        <option value="42">显示</option>
-                        <option value="43">隐藏</option>
+                        <option value="true">显示</option>
+                        <option value="false">隐藏</option>
                     </select>
                     <select class="form-control" name="review" id="review">
                         <option value="">审核状态</option>
@@ -86,6 +64,7 @@
                         <th>信息标题</th>
                         <th width="8%">评论人</th>
                         <th width="6%">显示状态</th>
+                        <th width="6%">审核状态</th>
                         <th width="8%">操作</th>
                     </tr>
                     {{#each item in list_item}}
@@ -102,6 +81,9 @@
                         </td>
                         <td>
                             <em>{{item.meta.usr}}</em>
+                        </td>
+                        <td>
+                            <em>{{display_isshow item.isshow}}</em>
                         </td>
                         <td>
                             <em>{{display_review item.review}}</em>

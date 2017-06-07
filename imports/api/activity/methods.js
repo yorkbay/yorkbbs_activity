@@ -10,7 +10,7 @@ import {ActivityImageSpec} from './specs.js';
 
 export const insert = new ValidatedMethod({
     name: 'Activity.insert',
-    validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'pic','pic.$','ct','pr','site','tel','tags','tags.$',"meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
+    validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'ct','pr','site','tel','tags','tags.$',"meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
     run(obj) {
         /*
         var imageurl=$("#imageurl").val().split(',');

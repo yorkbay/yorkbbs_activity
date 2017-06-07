@@ -1,0 +1,24 @@
+<template name="admin_comment_check">
+    <div class="layer J-review-pop" style="display: none;">
+        <div class="layer-large layer-content">
+            <h1>评论审核<input type="hidden" id="commentid" value="{{item._id}}"/>
+                <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt="" /></a>
+            </h1>
+            <ul>
+                <li><span class="layer-cate">显示状态</span>
+                    <em class="contacts-detail-radio"><input type="radio" value="true" name="isshow" {{display_isshow_show item.isshow}}/><label>显示</label></em>
+                    <em class="contacts-detail-radio"><input type="radio" value="false" name="isshow" {{display_isshow_hidden item.isshow}}/><label>隐藏</label></em>
+                </li>
+                <li><span class="layer-cate">审核状态</span>
+                    <em class="contacts-detail-radio"><input type="radio" value="false" name="review" {{display_review_hidden item.review}}/><label>未审核</label></em>
+                    <em class="contacts-detail-radio"><input type="radio" value="true" name="review" {{display_review_show item.review}}/><label>审核通过</label></em>
+                </li>
+                <li><span class="layer-cate">评论内容</span><em><textarea id="ct" class="layer-report-textarea" placeholder="评论内容，管理员可二次编辑">{{item.ct}}</textarea></em></li>
+                <li class="layer-button layer-button-left">
+                    <span class="layer-cate">&nbsp;</span>
+                    <input type="button" class="layer-yes"  value="确定" />
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>

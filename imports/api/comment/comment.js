@@ -40,10 +40,15 @@ Comment.schema = new SimpleSchema({
         optional:true,
         label: "status|normal:del"
     },
+    isshow: {
+        type: Boolean,
+        optional:true,
+        label: "review"
+    },
     review: {
         type: Boolean,
         optional:true,
-        label: "status|normal:del"
+        label: "review"
     },
     refid: {
         type: String,

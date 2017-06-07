@@ -14,13 +14,14 @@ Template.comment.events({
     "click #sub":()=>{
         let usr=Session.get('usr');
 
-        var val=$("#ct").val();
+        var val=$("#commentct").val();
         if($.trim(val)==""){
             return;
         }
         var doc= {
-            "ct":$("#ct").val(),
+            "ct":val,
             "st":"normal",
+            "isshow":true,
             "ti":$("#ti").val(),
             "review":false,
             "refid":$("#refid").val(),
@@ -33,6 +34,6 @@ Template.comment.events({
         };
 
         commentInsert.call(doc);
-        $("#ct").val('');
+        $("#commentct").val('');
     }
 });

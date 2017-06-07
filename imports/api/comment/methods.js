@@ -3,7 +3,7 @@ import {Comment} from './comment.js';
 
 export const commentInsert = new ValidatedMethod({
     name: 'commentInsert',
-    validate: Comment.simpleSchema().pick(['ct','st','review','refid','ti','meta.uid','meta.usr','meta.dt']).validator({ clean: true, filter: false }),
+    validate: Comment.simpleSchema().pick(['ct','st','isshow','review','refid','ti','meta.uid','meta.usr','meta.dt']).validator({ clean: true, filter: false }),
     run(obj) {
         return Comment.insert(obj);
     }
@@ -60,5 +60,17 @@ export const commentmodifystbyid = new ValidatedMethod({
             {$set:{st:st}},
             {multi: true}
         );
+    }
+});
+
+export const commentcheck = new ValidatedMethod({
+    name: 'Comment.commentcheck',
+    validate: Comment.simpleSchema().pick(['_id','ct','isshow','review']).validator({ clean: true, filter: false }),
+    run(obj) {
+        let _id=obj._id;
+        delete obj._id;
+        return Comment.update(_id, {
+            $set:obj
+        });
     }
 });

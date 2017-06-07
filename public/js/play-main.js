@@ -87,22 +87,6 @@ $(function(){
 	});
 
 
-	/*发布页*/
-	$('.J-free-check').click(function(){
-		if($(this).prop('checked')){
-			$('.J-free-or').attr('disabled','disabled');
-		}else{
-			$('.J-free-or').attr('disabled',false);
-		}
-	});
-	$('.J-online-check').click(function(){
-		if($(this).prop('checked')){
-			$('.J-online-or').parents().find('.J-online-or').attr('disabled','disabled');
-		}else{
-			$('.J-online-or').parents().find('.J-online-or').attr('disabled',false);
-		}
-	});
-
 	/*google map*/
 	function initialize(lat,lng)
     {

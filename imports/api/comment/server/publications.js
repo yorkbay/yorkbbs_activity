@@ -10,24 +10,59 @@ Meteor.publish('commentslist', function (params) {
         btime:Date,
         etime:Date,
         limit:Number,
-        st:String,
         review:String
     });
-    const {key,btime, etime,limit,st,review} = params;
+    const {key,btime, etime,limit,review} = params;
 
     var query={};
-    //query.$or = [];
-    query.st={$ne:"del"};
-    if(key){
 
+    query.st={$ne:"del"};
+    query.isshow=true;
+    if(key){
         let regex = new RegExp( key, 'i' );
         query={
             ct:regex
         }
-
     }
-    if(st){
-        query.st=st;
+
+
+    if(review){
+        if(review =="true"){
+            query.review=true;
+        }else{
+            query.review=false;
+        }
+    }
+
+    return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
+});
+
+Meteor.publish('admin_commentslist', function (params) {
+    check(params,{
+        key:String,
+        btime:Date,
+        etime:Date,
+        limit:Number,
+        isshow:String,
+        review:String
+    });
+    const {key,btime, etime,limit,isshow,review} = params;
+
+    var query={};
+    query.st={$ne:"del"};
+
+    if(key){
+        let regex = new RegExp( key, 'i' );
+        query={
+            ct:regex
+        }
+    }
+    if(isshow){
+        if(isshow =="true"){
+            query.isshow=true;
+        }else{
+            query.isshow=false;
+        }
     }
     if(review){
         if(review =="true"){
@@ -38,4 +73,11 @@ Meteor.publish('commentslist', function (params) {
     }
 
     return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
+});
+
+Meteor.publish('commentfindbyid', function (id) {
+    check(id,String);
+
+    var query={_id:id};
+    return Comment.find(query);
 });

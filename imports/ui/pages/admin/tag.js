@@ -82,7 +82,7 @@ Template.admin_tag_list.events({
     },
     'click .J-edite-label'(event, instance) {
         $('.J-label-pop').show();
-        instance.id.set($(event.currentTarget).attr("itemid"),);
+        instance.id.set($(event.currentTarget).attr("itemid"));
     },
 
 });

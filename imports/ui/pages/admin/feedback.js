@@ -74,7 +74,7 @@ Template.admin_feedback_list.helpers({
             }
         }
 
-        return Feedback.find(query,{limit:limit,sort:{'meta.dt':-1}});
+        return Feedback.find(query,{limit:limit,sort:{fddt:-1}});
     },
     "display_ismanage":function (ismanage) {
         return ismanage?"已处理":"未处理";

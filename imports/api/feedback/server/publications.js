@@ -30,5 +30,5 @@ Meteor.publish('feedbackslist', function (params) {
             query.ismanage=false;
         }
     }
-    return Feedback.find(query,{limit:limit,sort:{'meta.dt':-1}});
+    return Feedback.find(query,{limit:limit,sort:{fddt:-1}});
 });
