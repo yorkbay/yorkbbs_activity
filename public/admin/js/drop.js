@@ -97,17 +97,7 @@ $(document).click(function() {
 });
 
 $(function(){
-    /*审核弹窗*/
-    $('.J-review').click(function(){
-        $('.J-review-pop').show();
-        return false;
-    });
-    $('.J-review-pop').find('.layer-close').click(function(){
-         $('.J-review-pop').hide();
-         $('.J-review-pop').find('input[type=text]').val('');
-         $('.J-review-pop').find('textarea').val('');
-         return false;
-    });
+
     /*排序弹窗*/
     
     $('.J-sort').click(function(){
@@ -121,21 +111,7 @@ $(function(){
          return false;
     });
 
-    /*添加标签和编辑标签*/
-    $('.J-edite-label').click(function(){
-        $('.J-label-pop').show();
-        return false;
-    });
-    $('.J-add-label').click(function(){
-        $('.J-label-pop').show();
-        return false;
-    });
-    $('.J-label-pop').find('.layer-close').click(function(){
-         $('.J-label-pop').hide();
-         $('.J-label-pop').find('input[type=text]').val('');
-         $('.J-label-pop').find('textarea').val('');
-         return false;
-    });
+
     /*权限管理*/
     $('.J-add-admin').click(function(){
         $('.J-authority-pop').show();

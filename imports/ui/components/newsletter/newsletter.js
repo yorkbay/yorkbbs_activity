@@ -8,8 +8,10 @@ import {newsletterInsert} from '../../../api/newsletter/methods.js';
 Template.newsletter.events({
     'click #submitnewsletter':function () {
         const usr=Session.get("usr");
+        var reg = /^[A-Z][0-9][A-Z]\s[0-9][A-Z][0-9]$/;
         let email=$.trim($("#newsletter-email").val());
-        if(email){
+        var check = reg.test(email);
+        if(!check){
             let doc={
                 email:email,
                 st:"normal",
@@ -18,9 +20,14 @@ Template.newsletter.events({
                 uname:usr.uname
             }
             newsletterInsert.call(doc);
-            $(".emailsuccess").show();
-            $(".emailinput").hide();
+
             $("#newsletter-email").val("");
+
+            $('.J-zip-code-error').show();
+            $(this).addClass('release-hints')
+        }else{
+            $('.J-zip-code-error').hide();
+            $(this).removeClass('release-hints')
         }
     }
 });

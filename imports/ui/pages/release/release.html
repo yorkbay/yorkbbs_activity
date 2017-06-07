@@ -93,7 +93,7 @@
                 <div class="release-row">
                     <label class="release-label"><b>活动详情</b> <i></i></label>
                     <textarea id="ct" style="height: 400px;"></textarea>
-
+                    <input type="hidden" id="imageurl" value="">
                 </div>
                 <h1 class="release-caption">
                     <i>2</i>
@@ -118,34 +118,12 @@
                     <label class="release-label"><b>活动标签 </b> <i></i></label>
                     <div class="release-tags J-change-tags">
                         <input type="hidden" name="tags" id="tags" value=""/>
-                        <a href="" class="" tag="周末好去处">
+                        {{#each tag in tags}}
+                        <a href="" class="" tag="{{tag.tg}}">
                             <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>周末好去处</em>
+                            <em>{{tag.tg}}</em>
                         </a>
-                        <a href="" class="" tag="亲子活动">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>亲子活动</em>
-                        </a>
-                        <a href="" class="" tag="演出活动">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>演出活动</em>
-                        </a>
-                        <a href="" class="" tag="公益讲座">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>公益讲座</em>
-                        </a>
-                        <a href="" class="" tag="社区活动">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>社区活动</em>
-                        </a>
-                        <a href="" class="" tag="节日活动">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>节日活动</em>
-                        </a>
-                        <a href="" class="" tag="其他活动">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>其他活动</em>
-                        </a>
+                        {{/each}}
                     </div>
                 </div>
 

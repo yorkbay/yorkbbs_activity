@@ -12,11 +12,24 @@ export const insert = new ValidatedMethod({
     name: 'Activity.insert',
     validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'pic','pic.$','ct','pr','site','tel','tags','tags.$',"meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
     run(obj) {
+        /*
+        var imageurl=$("#imageurl").val().split(',');
+        imageurl.pop();
+        console.log(imageurl);
 
+        imageurl.forEach(function (i) {
+            let o_n=i.split(':');
+            console.log(o_n[0]);
+            console.log(o_n[1]);
+            ct=ct.replace(o_n[0],o_n[1]);
+            console.log(ct);
+        });
+
+        console.log(ct);
+        */
         return Activity.insert(obj);
     }
 });
-
 
 export const listbytag = new ValidatedMethod({
     name: 'Activity.listbytag',
@@ -29,8 +42,6 @@ export const listbytag = new ValidatedMethod({
         return Activity.find({tags:{ "$in": [tag] }},{limit:8,sort:{'meta.dt':-1}});
     }
 });
-
-
 
 export const tagnum = new ValidatedMethod({
     name: 'Activity.tagnum',
@@ -58,7 +69,6 @@ export const tagnum = new ValidatedMethod({
         return results;
     }
 });
-
 
 export const activitymodifyst = new ValidatedMethod({
     name: 'Activity.activitymodifyst',
@@ -110,5 +120,18 @@ export const ActivityImageSpecInsert = new ValidatedMethod({
     validate: ActivityImageSpec.simpleSchema().pick(["ri"]).validator({ clean: true, filter: false }),
     run(obj) {
         return ActivityImageSpec.insert(obj);
+    }
+});
+
+export const activityCheckModify=new ValidatedMethod({
+    name:'Activity.check',
+    validate: Activity.simpleSchema().pick(["_id","st","istop","toptime","iscmd","cmdtime","topsort","imgtagcl","imgtag"]).validator({ clean: true, filter: false }),
+    run(obj) {
+        let _id=obj._id;
+        delete obj._id;
+
+        return Activity.update(_id,{
+            $set:obj
+        });
     }
 });

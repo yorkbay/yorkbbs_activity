@@ -3,7 +3,7 @@
  */
 import {Tag} from '../tag.js'
 
-Meteor.publish('tagslist', function (params) {
+Meteor.publish('admin_tagslist', function (params) {
     check(params,{
         limit:Number
     });
@@ -13,5 +13,23 @@ Meteor.publish('tagslist', function (params) {
     query.st={$ne:"del"};
 
 
-    return Tag.find(query,{limit:limit,sort:{'meta.dt':-1}});
+    return Tag.find(query,{limit:limit,sort:{'dt':-1}});
+});
+
+
+Meteor.publish('tagfindbyid', function (id) {
+    check(id,String);
+
+    var query={_id:id};
+    return Tag.find(query);
+});
+
+
+Meteor.publish('tagslist', function () {
+
+    var query={};
+    query.st={$ne:"del"};
+    query.isshow=true;
+
+    return Tag.find(query,{sort:{'dt':-1}});
 });

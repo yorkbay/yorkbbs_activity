@@ -32,6 +32,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.css" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/fongandrew_find-and-modify/1.0.0/web.browser/find_and_modify.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/client/main.css" />
         <item url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.7/web.browser/diff.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/config/config.css" />
@@ -734,6 +735,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.css" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/fongandrew_find-and-modify/1.0.0/web.browser/find_and_modify.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/client/main.css" />
       <root url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.7/web.browser/diff.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/config/config.css" />

@@ -54,26 +54,6 @@ Template.admin_comment_list.onCreated(function(){
 
 Template.admin_comment_list.onRendered(function releaseOnRendered() {
 
-    /*
-    $('#startdate').datetimepicker({
-        format:'Y/m/d',
-        onShow:function( ct ){
-            this.setOptions({
-                maxDate:jQuery('#enddate').val()?jQuery('#enddate').val():false
-            })
-        },
-        timepicker:false
-    });
-    $('#enddate').datetimepicker({
-        format:'Y/m/d',
-        onShow:function( ct ){
-            this.setOptions({
-                minDate:jQuery('#startdate').val()?jQuery('#startdate').val():false
-            })
-        },
-        timepicker:false
-    });
-    */
     $('#startdate').datetimepicker({
         format: 'YYYY-MM-DD'
     });

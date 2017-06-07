@@ -17,8 +17,8 @@ Meteor.startup(() => {
     //https://github.com/tomitrescak/meteor-uploads
 
     UploadServer.init({
-        tmpDir: '/tmp/.uploads/tmp',
-        uploadDir:'/tmp/.uploads/',
+        tmpDir: '/tmp',
+        uploadDir:'/tmp/uploads',
         checkCreateDirectories: true,
         uploadUrl: '/upload/',
         getFileName: function(file, formData) {
@@ -28,9 +28,10 @@ Meteor.startup(() => {
 
             const imageId=Random.id();
 
-            fileInfo.path="/images/activity/"+imageId;
+            fileInfo.imageId=imageId;
+            fileInfo._path="/images/activity/"+imageId;
 
-            const filepath= '/tmp/.uploads/'+fileInfo.name;
+            const filepath= '/tmp/uploads/'+fileInfo.name;
 
             const fsCreateAsync=Meteor.wrapAsync(fs.readFile);
 

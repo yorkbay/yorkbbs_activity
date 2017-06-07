@@ -7,7 +7,8 @@ import { Session } from 'meteor/session'
 import './release.html';
 
 import '../../components/release/mobile_menu.js';
-import {Activity} from '../../../api/activity/activity.js'
+import {Activity} from '../../../api/activity/activity.js';
+import {Tag} from '../../../api/tag/tag.js';
 
 import {
     insert
@@ -16,7 +17,11 @@ import {
 import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 
 Template.release.onCreated(function () {
+    const instance = this;
 
+    instance.autorun(function () {
+        instance.subscribe('tagslist');
+    });
 });
 
 
@@ -41,8 +46,14 @@ Template.release.onRendered(function releaseOnRendered() {
             $(".dz-preview").hide();
 
             var files=JSON.parse(response).files;
+
             files.forEach(function(file){
-                var img="<img src='"+file.path+"' />";
+                var imageurl='/upload/'+file.name+':'+file._path+',';
+                let hdnimagurl=$("#imageurl").val();
+                hdnimagurl=hdnimagurl+imageurl;
+                $("#imageurl").val(hdnimagurl);
+                //var img="<img src='"+file.path+"' />";
+                var img="<img src='/upload/"+file.name+"'  data-src='"+file._path+"'/>";
                 tinymce.activeEditor.insertContent(img);
             })
         }
@@ -54,29 +65,12 @@ Template.release.onRendered(function releaseOnRendered() {
 
     });
 
-    $('.J-change-tags a').click(function(){
-        var tag=$(this).attr("tag")+",";
-        var val=$("#tags").val();
-        if($(this).hasClass('release-tags-current')){
-            val=val.replace(tag,'');
-            $(this).removeClass('release-tags-current');
-        }else{
-            var current=$(".release-tags-current");
-            if(current.length>=2){
-                return false;
-            }
-            val=val+tag;
-            $(this).addClass('release-tags-current');
-        }
-        $("#tags").val(val);
-
-        return false;
-    });
-
 });
 
 Template.release.helpers({
-
+    'tags':function () {
+        return Tag.find({});
+    }
 })
 
 Template.release.events({
@@ -90,10 +84,16 @@ Template.release.events({
 
         var tags=$("#tags").val().split(",");
         tags.pop();
+
         var ct=tinymce.activeEditor.getContent();
+
+        ct=replaceContent(ct);
+
+
         var doc= {
             "ti":$("#ti").val(),
             "st":"normal",
+            "isshow":true,
             "logo":getlogo(ct),
             "isonline":isonline,
             "location":$("#location").val(),
@@ -121,6 +121,7 @@ Template.release.events({
             }
         };
 
+
         var Id = insert.call(doc);
         doc= {
             "ty":"relea",
@@ -131,13 +132,44 @@ Template.release.events({
                 "usr":usr.uname
             }
         };
-        console.log(doc);
+
         usrCenterInsert.call(doc);
 
         FlowRouter.go('/');
+
     },
+    'click .J-change-tags a':(event,instance)=>{
+        var tag=$(event.currentTarget).attr("tag")+",";
+        var val=$("#tags").val();
+        if($(event.currentTarget).hasClass('release-tags-current')){
+            val=val.replace(tag,'');
+            $(event.currentTarget).removeClass('release-tags-current');
+        }else{
+            var current=$(".release-tags-current");
+            if(current.length>=2){
+                return false;
+            }
+            val=val+tag;
+            $(event.currentTarget).addClass('release-tags-current');
+        }
+        $("#tags").val(val);
+    }
 });
+
+
 
 function getlogo(content){
     return "/"+$(content).find('img:first').attr('src');
+}
+
+
+function replaceContent(content){
+    var ct=content;
+   $(ct).find('img').each(function () {
+        const data_src=$(this).attr("data-src");
+        $(this).attr("src",data_src);
+    });
+    return ct;
+
+
 }

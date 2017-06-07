@@ -7,8 +7,8 @@ import {SubsManager} from 'meteor/meteorhacks:subs-manager';
 import {ReactiveVar} from 'meteor/reactive-var';
 import { Activity } from '../../../api/activity/activity.js';
 import '../../components/manager/checkManager.js';
-
-import { activitymodifyst,activitymodifystbyid } from '../../../api/activity/methods.js';
+import { Tag } from '../../../api/tag/tag.js';
+import { activitymodifyst,activitymodifystbyid,activityCheckModify} from '../../../api/activity/methods.js';
 
 const numOfRecords = 5;
 
@@ -24,10 +24,11 @@ Template.admin_activity_list.onCreated(function(){
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
+    instance.tag = new ReactiveVar("");
+    instance.key = new ReactiveVar("");
 
-    instance.key = () => {
-        return FlowRouter.getQueryParam('key')||"";
-    };
+    instance.activityid = new ReactiveVar("");
+
 
     instance.time = () => {
         return FlowRouter.getQueryParam('time')||"";
@@ -35,9 +36,7 @@ Template.admin_activity_list.onCreated(function(){
     instance.isfree = () => {
         return FlowRouter.getQueryParam('free')||"";
     };
-    instance.tag = () => {
-        return FlowRouter.getQueryParam('tag')||"";
-    };
+
     instance.st = () => {
         return FlowRouter.getQueryParam('st')||"";
     };
@@ -49,17 +48,22 @@ Template.admin_activity_list.onCreated(function(){
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
-        const key = instance.key();
+        const key = instance.key.get();
         const time = instance.time();
         const isfree = instance.isfree();
-        const tag = instance.tag();
+        const tag = instance.tag.get();
         const st = instance.st();
         const isrmd = instance.isrmd();
         const limit = instance.limit.get();
 
-        instance.subscribe('activitieslist', {
+        instance.subscribe('admin_activitieslist', {
             key,time,isfree,tag,isrmd,limit,st
         });
+
+        instance.subscribe('tagslist');
+
+        const activityid = instance.activityid.get();
+        instance.subscribe('activitybyid',activityid);
 
         instance.ready.set(PostSubs.ready());
     });
@@ -67,27 +71,13 @@ Template.admin_activity_list.onCreated(function(){
 
 
 Template.admin_activity_list.onRendered(function releaseOnRendered() {
-
-    /*
     $('#startdate').datetimepicker({
-        format:'Y/m/d',
-        onShow:function( ct ){
-            this.setOptions({
-                maxDate:jQuery('#enddate').val()?jQuery('#enddate').val():false
-            })
-        },
-        timepicker:false
+        format: 'YYYY-MM-DD'
     });
     $('#enddate').datetimepicker({
-        format:'Y/m/d',
-        onShow:function( ct ){
-            this.setOptions({
-                minDate:jQuery('#startdate').val()?jQuery('#startdate').val():false
-            })
-        },
-        timepicker:false
+        format: 'YYYY-MM-DD'
     });
-    */
+
 
 });
 
@@ -95,10 +85,10 @@ Template.admin_activity_list.helpers({
     "list_item": function () {
 
         const instance = Template.instance();
-        const key = instance.key();
+        const key = instance.key.get();
         const time = instance.time();
         const isfree = instance.isfree();
-        const tag = instance.tag();
+        const tag = instance.tag.get();
 
         const limit = instance.limit.get();
 
@@ -132,7 +122,7 @@ Template.admin_activity_list.helpers({
                 $in:[tag]
             }
         }
-        //console.log(query);
+
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
     "display_st":function (st) {
@@ -141,11 +131,28 @@ Template.admin_activity_list.helpers({
             case "del":
                 val="已删除";
                 break;
+            case "hidden":
+                val="隐藏";
+                break;
             case "normal":
                 val="正常";
                 break;
         }
         return val;
+    },
+    "display_show":function (st) {
+        return st==="normal"?"checked":"";
+    },
+    "display_hidden":function (st) {
+        return st==="hidden"?"checked":"";
+    },
+    'tags':function () {
+        return Tag.find({});
+    },
+    'Activity':function () {
+        const instance = Template.instance();
+        const _id=instance.activityid.get();
+        return Activity.findOne({_id:_id});
     }
 });
 
@@ -171,6 +178,51 @@ Template.admin_activity_list.events({
             st:"del"
         }
         activitymodifystbyid.call(obj);
+    },
+    'change #tags'(event,instance){
+        var val= $(event.currentTarget).val();
+        instance.tag.set(val);
+    },
+    'click .btn-keyword-search'(event,instance){
+        var val= $.trim($("#keyword").val());
+        instance.key.set(val);
+    },
+    'click .J-review'(event,instance){
+        var val= $(event.currentTarget).attr("itemid");
+        instance.activityid.set(val);
+        $('.J-review-pop').show();
+    },
+    "click .layer-yes":function (event,instance) {
+        let toptime=$.trim($("#toptime").val());
+        let cmdtime=$.trim($("#cmdtime").val());
+        let istop=false,iscmd=false;
+        if(toptime){
+            istop=true;
+        }
+        if(cmdtime){
+            iscmd=true;
+        }
+        let id=$("#activityid").val();
+
+        let activity={
+            _id:id,
+            st:$("[name='isshow']:checked").val()=="true"?"normal":"hidden",
+            istop:istop,
+            toptime:toptime,
+            iscmd:iscmd,
+            cmdtime:cmdtime,
+            topsort:$("#topsort").val(),
+            imgtagcl:$("#imgtagcl").val(),
+            imgtag:$("#imgtag").val()
+
+        }
+
+        activityCheckModify.call(activity);
+        $('.J-review-pop').hide();
+    },
+    "click .layer-close":function (event,instance) {
+
+        $('.J-review-pop').hide();
     }
 
 });

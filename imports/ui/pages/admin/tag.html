@@ -1,6 +1,6 @@
 <template name="admin_tag_list">
     {{> admin_checkManager}}
-    {{> admin_tag_add }}
+    {{> admin_tag_add item=tag}}
     <div class="contacts">
         <div class="contacts-box">
             <div class="title-caption">
@@ -31,7 +31,7 @@
                         </td>
                         <td>
                             <em>
-                                <a href="" class="table-blue J-edite-label">编辑</a>
+                                <a href="" class="table-blue J-edite-label" itemid="{{item._id}}">编辑</a>
                                 <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>
                             </em>
                         </td>

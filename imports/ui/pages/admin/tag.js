@@ -8,7 +8,7 @@ import './comment.html';
 import {Tag} from '../../../api/tag/tag.js';
 import {tagInsert,tagmodifyst} from '../../../api/tag/methods.js';
 
-const numOfRecords = 10;
+const numOfRecords = 5;
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions
@@ -22,14 +22,18 @@ Template.admin_tag_list.onCreated(function(){
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
+    instance.id = new ReactiveVar("");
 
     instance.autorun(function () {
 
         const limit = instance.limit.get();
+        const id = instance.id.get();
 
-        instance.subscribe('tagslist', {
+        instance.subscribe('admin_tagslist', {
             limit
         });
+
+        instance.subscribe('tagfindbyid',id);
 
         instance.ready.set(PostSubs.ready());
     });
@@ -47,10 +51,16 @@ Template.admin_tag_list.helpers({
         var query={};
 
 
-        return Tag.find(query,{limit:limit,sort:{'meta.dt':-1}});
+        return Tag.find(query,{limit:limit,sort:{'dt':-1}});
     },
     "display_isshow":function (isshow) {
         return isshow?"显示":"隐藏";
+    },
+    "tag":function () {
+        const instance = Template.instance();
+        var query={_id:instance.id.get()};
+
+        return Tag.findOne(query);
     }
 });
 
@@ -66,5 +76,13 @@ Template.admin_tag_list.events({
         }
 
         tagmodifyst.call(obj);
-    }
+    },
+    'click .J-add-label'(event, instance) {
+        $('.J-label-pop').show();
+    },
+    'click .J-edite-label'(event, instance) {
+        $('.J-label-pop').show();
+        instance.id.set($(event.currentTarget).attr("itemid"),);
+    },
+
 });

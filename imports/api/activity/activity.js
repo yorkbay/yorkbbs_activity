@@ -4,7 +4,8 @@
 import {Mongo} from 'meteor/mongo';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Comment} from '../comment/comment.js';
-import {ActivityImages} from './image';
+import {ActivityImages} from './image.js';
+import {Tag} from '../tag/tag.js';
 
 class ActivityCollection extends Mongo.Collection {}
 
@@ -41,7 +42,7 @@ Activity.schema = new SimpleSchema({
     st: {
         type: String,
         optional:true,
-        label: "status|waiting:normal:top:commond:del"
+        label: "status|hidden:normal:del"
     },
     logo: {
         type: String,
@@ -68,14 +69,19 @@ Activity.schema = new SimpleSchema({
         label: "toptime",
         optional:true
     },
+    topsort:{
+        type: Number,
+        label: "topsort",
+        optional:true
+    },
+    iscmd: {
+        type: Boolean,
+        label: "iscmd",
+        optional:true
+    },
     cmdtime:{
         type: Date,
         label: "commond time",
-        optional:true
-    },
-    color: {
-        type: String,
-        label: "color",
         optional:true
     },
     sort: {
@@ -217,5 +223,8 @@ Activity.helpers({
                 $in: this._images || []
             }
         });
+    },
+    tags() {
+        return Tag.find({},{sort:{'dt':-1}});
     },
 });

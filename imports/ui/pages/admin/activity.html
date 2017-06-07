@@ -1,14 +1,71 @@
 <template name="admin_activity_list">
-    {{> admin_checkManager}}
+    {{> admin_checkManager }}
+    <div class="layer J-review-pop" style="display: none;">
+        <div class="layer-large layer-content">
+            <h1>信息审核{{Activity.ti}}
+                <input type="hidden" id="activityid" value="{{Activity._id}}"/>
+                <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt=""/></a>
+            </h1>
+            <div id="crms-filter">
+                <ul>
+                    <li><span class="layer-cate">显示状态</span>
+                        <em class="contacts-detail-radio"><input type="radio" value="true" name="isshow" {{display_show Activity.st}}/><label>显示</label></em>
+                        <em class="contacts-detail-radio"><input type="radio" value="false" name="isshow" {{display_hidden Activity.st}}/><label>隐藏</label></em>
+                    </li>
+                    <li><span class="layer-cate">设为置顶</span>
+                        <em class="contacts-detail-radio">
+                            <div class="form-group-custom layer-calendar">
+                                <div class="input-group">
+                                    <input type="text" style="width: 120px" class="form-control" id="toptime" value="{{Activity.toptime}}"
+                                           placeholder="置顶结束时间">
+                                </div>
+                            </div>
+                            <select class="form-control" name="topsort" id="topsort">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </em>
+                    </li>
+                    <li><span class="layer-cate">设为推荐</span>
+                        <em class="contacts-detail-radio">
+                            <div class="form-group-custom layer-calendar">
+                                <div class="input-group">
+                                    <input type="text" style="width: 120px" class="form-control" id="cmdtime" value="{{Activity.cmdtime}}"
+                                           placeholder="推荐结束时间">
+                                </div>
+                            </div>
+                        </em>
+                    </li>
+                    <li><span class="layer-cate">图片标签</span>
+                        <em class="contact-detail-inputext"><input type="text" class="layer-input-middle" id="imgtag" name="imgtag" value="{{Activity.imgtag}}"></em>
+                        <em class="contacts-detail-radio">
+                            <select class="form-control" name="imgtagcl" id="imgtagcl">
+                                <option value="">默认</option>
+                                <option class="red" value="red"></option>
+                                <option class="green" value="green"></option>
+                                <option class="blue" value="blue"></option>
+                            </select>
+                        </em>
+
+                    </li>
+                    <li class="layer-button layer-button-left">
+                        <span class="layer-cate">&nbsp;</span>
+                        <input type="button" class="layer-yes" value="确定"/>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
     <div class="contacts">
         <div class="contacts-box">
             <div id="crms-filter">
                 <div>
-                    <select class="form-control" name="habit" id="habit">
+                    <select class="form-control" name="tags" id="tags">
                         <option value="">所属类别</option>
-                        <option value="42">周末好去处</option>
-                        <option value="43">社区活动</option>
-                        <option value="46">亲子活动</option>
+                        {{#each tag in tags}}
+                        <option value="{{tag.tg}}">{{tag.tg}}</option>
+                        {{/each}}
                     </select>
                     <select class="form-control" name="managerid" id="managerid">
                         <option value="">信息状态</option>
@@ -51,7 +108,7 @@
                             <a class="button-choose-borderno button-gray-line" id="delall"> 批量删除</a>
                         </li>
                         <li>
-                            <a class="button-choose-left button-gray-line" onclick="ChangeHistory()"> 批量推送</a>
+                            <a class="button-choose-left button-gray-line" > 批量推送</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +154,7 @@
                         </td>
                         <td>
                             <em>
-                                <a href="" class="table-blue J-review">审核</a>
+                                <a href="" class="table-blue J-review" itemid="{{item._id}}">审核</a>
                                 <a href="" class="table-blue">编辑</a>
                                 <a href="" class="table-blue">推送</a>
                                 <a href="" class="table-blue del" itemid="{{item._id}}">删除</a>

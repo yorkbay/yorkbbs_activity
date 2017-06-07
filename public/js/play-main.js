@@ -102,26 +102,7 @@ $(function(){
 			$('.J-online-or').parents().find('.J-online-or').attr('disabled',false);
 		}
 	});
-	$('.J-change-tags a').click(function(){
 
-
-        var tag=$(this).attr("tag")+",";
-        var val=$("#tags").val();
-		if($(this).hasClass('release-tags-current')){
-			val=val.replace(tag,'');
-			$(this).removeClass('release-tags-current');
-		}else{
-            var current=$(".release-tags-current");
-            if(current.length>=2){
-                return false;
-            }
-            val=val+tag;
-			$(this).addClass('release-tags-current');
-		}
-        $("#tags").val(val);
-
-		return false;
-	});
 	/*google map*/
 	function initialize(lat,lng)
     {
@@ -160,19 +141,7 @@ $(function(){
 	$('.release-map-layer').click(function(e){
 		e.stopPropagation();
 	});
-	/*邮编*/
-	var reg = /^[A-Z][0-9][A-Z]\s[0-9][A-Z][0-9]$/;
-	$('.J-zip-code').keyup(function(){
-		var val = $(this).val();
-		var check = reg.test(val);
-		if(!check){
-			$('.J-zip-code-error').show();
-			$(this).addClass('release-hints')
-		}else{
-			$('.J-zip-code-error').hide();
-			$(this).removeClass('release-hints')
-		}
-	});
+
 
 	/*分享*/
 	$('.J-share').click(function(){

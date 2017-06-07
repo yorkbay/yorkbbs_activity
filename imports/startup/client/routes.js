@@ -68,7 +68,10 @@ var adminRoutes = FlowRouter.group({
     name: "admin",
     triggersEnter: [function(context, redirect) {
         require('../../ui/stylesheets/backend/backstage.css');
-    }]
+    }],
+    action() {
+        BlazeLayout.render('admin', { main: 'admin_login' });
+    }
 });
 
 adminRoutes.route('/login', {
@@ -78,10 +81,9 @@ adminRoutes.route('/login', {
     },
 });
 
-adminRoutes.route('/admin', {
+adminRoutes.route('/admin/', {
     name: 'App.admin',
     action() {
-        require('../../ui/stylesheets/backend/backstage.css');
         BlazeLayout.render('admin', { main: 'admin_activity_list' });
     },
 });
@@ -89,7 +91,6 @@ adminRoutes.route('/admin', {
 adminRoutes.route('/activity', {
     name: 'App.activity',
     action() {
-        require('../../ui/stylesheets/backend/backstage.css');
         BlazeLayout.render('admin', { main: 'admin_activity_list' });
     },
 });
