@@ -2,13 +2,11 @@
  * Created by shunxiangchen on 5/12/17.
  */
 import './list_item.html';
-
-
 import {usrCenterInsert} from '../../../api/usrcenter/methods.js'
 
 
 Template.list_item.events({
-    "click .fav"(event, instance) {
+    "click .list_item_fav"(event, instance) {
         const usr=Session.get("usr");
         var id=$(event.currentTarget).attr("itemid");
         var doc= {

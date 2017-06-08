@@ -12,8 +12,18 @@ export const insert = new ValidatedMethod({
     name: 'Activity.insert',
     validate: Activity.simpleSchema().pick(['ti','st','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'ct','pr','site','tel','tags','tags.$',"meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
     run(obj) {
+        if(Meteor.isServer) {
+            if(!obj.isonline) {
+                var geo = new GeoCoder();
+                var result = geo.geocode(obj.address)[0];
+                if(result) {
+                    obj.lat = result.latitude;
+                    obj.lng = result.longitude;
+                }
+            }
+            return Activity.insert(obj);
+        }
 
-        return Activity.insert(obj);
     }
 });
 
@@ -21,11 +31,22 @@ export const modify = new ValidatedMethod({
     name: 'Activity.modify',
     validate: Activity.simpleSchema().pick(["_id",'ti','isonline','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'ct','pr','site','tel','tags','tags.$']).validator({ clean: true, filter: false }),
     run(obj) {
-        let _id=obj._id;
-        delete obj._id;
-        return Activity.update(_id,{
-            $set:obj
-        });
+        if(Meteor.isServer) {
+            if(!obj.isonline) {
+                var geo = new GeoCoder();
+                var result = geo.geocode(obj.address)[0];
+                if(result) {
+                    obj.lat = result.latitude;
+                    obj.lng = result.longitude;
+                }
+            }
+            let _id=obj._id;
+            delete obj._id;
+            return Activity.update(_id,{
+                $set:obj
+            });
+        }
+
     }
 });
 

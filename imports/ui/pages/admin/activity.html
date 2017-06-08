@@ -2,7 +2,7 @@
     {{> admin_checkManager }}
     <div class="layer J-review-pop" style="display: none;">
         <div class="layer-large layer-content">
-            <h1>信息审核
+            <h1>信息审核{{Activity.ti}}
                 <input type="hidden" id="activityid" value="{{Activity._id}}"/>
                 <input type="hidden" id="activityti" value="{{Activity.ti}}"/>
                 <a class="layer-close" href=""><img src="/admin/img/icon-close-l.png" alt=""/></a>
@@ -17,7 +17,7 @@
                         <em class="contacts-detail-radio">
                             <div class="form-group-custom layer-calendar">
                                 <div class="input-group">
-                                    <input type="text" style="width: 120px" class="form-control" id="toptime" value="{{formatDate_YMD Activity.toptime}}"
+                                    <input type="text" style="width: 120px" class="form-control" id="toptime" value="{{display_toptime Activity.istop Activity.toptime}}"
                                            placeholder="置顶结束时间">
                                 </div>
                             </div>
@@ -32,7 +32,7 @@
                         <em class="contacts-detail-radio">
                             <div class="form-group-custom layer-calendar">
                                 <div class="input-group">
-                                    <input type="text" style="width: 120px" class="form-control" id="cmdtime" value="{{formatDate_YMD Activity.cmdtime}}"
+                                    <input type="text" style="width: 120px" class="form-control" id="cmdtime" value="{{display_cmdtime Activity.iscmd Activity.cmdtime}}"
                                            placeholder="推荐结束时间">
                                 </div>
                             </div>

@@ -68,6 +68,23 @@ Template.usercenter.helpers({
         var uid=Session.get("usr").id;
 
         return findbyuid.call({ty,uid,limit});
+    },
+    "display_tab":function () {
+        const instance = Template.instance();
+        const ty = instance.ty.get();
+        let tab="我的发布";
+        switch (ty){
+            case "relea":
+                tab="我的发布";
+                break;
+            case "fav":
+                tab="我的收藏";
+                break;
+            case "log":
+                tab="我的足记";
+                break;
+        }
+        return tab;
     }
 });
 
@@ -76,7 +93,6 @@ Template.usercenter.events({
         instance.limit.set(instance.limit.get() + numOfRecords);
     },
     'click .usr_nav'(event, instance) {
-
         let ty=$(event.currentTarget).attr("ty");
         $(".aside-nav li").removeClass("aside-nav-current")
         if(ty==="relea"){

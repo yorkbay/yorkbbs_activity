@@ -1,8 +1,6 @@
 
 $(function(){
 
-
-
 	/*窄屏菜单*/
 	$('.topbar-mobile-menu-back').click(function(){
 		$('.topbar-mobile-list').toggle();
@@ -80,15 +78,7 @@ $(function(){
 
 
 	/*google map*/
-	function initialize(lat,lng)
-    {
-        var mapProp = {
-            center:new google.maps.LatLng(lat,lng),
-            zoom:10,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-        var map=new google.maps.Map(document.getElementById('google-map'), mapProp);
-    }
+
             
            
 	$('.J-map').keyup(function(){

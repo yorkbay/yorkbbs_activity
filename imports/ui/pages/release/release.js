@@ -154,35 +154,42 @@ Template.release.events({
         };
 
 
-        var Id = insert.call(doc);
-        doc= {
-            "ty":"relea",
-            "refid":Id,
-            "st":"normal",
-            "meta":{
-                "uid":usr.id,
-                "usr":usr.uname
+        insert.call(doc,function (err,result) {
+            if(err){
+                console.log(err);
+                return;
             }
-        };
 
-        usrCenterInsert.call(doc);
+            doc= {
+                "ty":"relea",
+                "refid":result,
+                "st":"normal",
+                "meta":{
+                    "uid":usr.id,
+                    "usr":usr.uname
+                }
+            };
 
-        var log={
-            ty:"front",
-            action:"发布信息",
-            ip:headers.getClientIP(),
-            from:"",
-            refid:Id,
-            ti:$("#ti").val(),
-            meta:{
-                uid:usr.id,
-                usr:usr.uname,
-                dt:new Date()
+            usrCenterInsert.call(doc);
+
+            var log={
+                ty:"front",
+                action:"发布信息",
+                ip:headers.getClientIP(),
+                from:"",
+                refid:result,
+                ti:$("#ti").val(),
+                meta:{
+                    uid:usr.id,
+                    usr:usr.uname,
+                    dt:new Date()
+                }
             }
-        }
-        LogInsert.call(log);
+            LogInsert.call(log);
 
-        FlowRouter.go('/activity/'+Id);
+            FlowRouter.go('/activity/'+result);
+        });
+
 
     },
     'click .J-change-tags a':(event,instance)=>{

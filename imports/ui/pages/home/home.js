@@ -19,7 +19,7 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
-const numOfRecords = 6;
+const numOfRecords = 10;
 
 Template.App_home.onCreated(function(){
     const instance = this;
@@ -62,13 +62,12 @@ Template.App_home.onCreated(function(){
 
 });
 
-
-
-
-
 Template.App_home.helpers({
     "grid_items": function () {
-        return Activity.find({istop:true},{limit:8,sort:{'meta.dt':-1}});
+        let query={};
+        query.istop=true;
+        query.toptime={$gte:moment().toDate()};
+        return Activity.find(query);
     },
     "listbytag": function (tag) {
         return listbytag.call({tag});
@@ -143,6 +142,8 @@ Template.App_home.helpers({
         }
         //db.activities.find({$and:[{'btime.date':{$lte:ISODate('2017-06-07T00:00:00Z')}},{'etime.date':{$gte:ISODate('2017-06-07T00:00:00Z')}}]});
         //db.activities.find({"btime.date":{$lte:ISODate("2017-06-07T23:08:28.166Z")}}).pretty();
+
+
         if(isfree === "1"){
             query.pr={
                 $eq: "free"
@@ -159,14 +160,13 @@ Template.App_home.helpers({
         }
 
         if(isrmd){
-            query.isrmd=true;
+            query.iscmd=true;
+            query.cmdtime={$gte:moment().toDate()};
         }
-        console.log( JSON.stringify(query, null, 4) );
 
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });
-
 
 Template.App_home.events({
     'click #more'(event, instance) {
@@ -236,11 +236,13 @@ Template.App_home.events({
         instance.key.set(value);
     },
     'click #tab_commend'(event, instance) {
+        instance.limit.set(numOfRecords);
         $(event.currentTarget).addClass("newslist-images-current");
         $("#tab_news").removeClass("newslist-images-current")
         instance.isrmd.set("true");
     },
     'click #tab_news'(event, instance) {
+        instance.limit.set(numOfRecords);
         $(event.currentTarget).addClass("newslist-images-current");
         $("#tab_commend").removeClass("newslist-images-current");
         instance.isrmd.set("");
@@ -270,3 +272,4 @@ function ChangeParam(name,value)
     }
     return newUrl;
 }
+

@@ -140,6 +140,12 @@ Template.admin_activity_list.helpers({
     "display_hidden":function (st) {
         return st==="hidden"?"checked":"";
     },
+    "display_toptime":function (istop,time) {
+        return istop?moment.utc(time).format("YYYY-MM-DD"):"";
+    },
+    "display_cmdtime":function (iscmd,time) {
+        return iscmd?moment.utc(time).format("YYYY-MM-DD"):"";
+    },
     'tags':function () {
         return Tag.find({});
     },
@@ -246,6 +252,7 @@ Template.admin_activity_list.events({
             }
             LogInsert.call(log);
         });
+
         $('.J-review-pop').hide();
     },
     "click .layer-close":function (event,instance) {

@@ -2,91 +2,81 @@
 
 import { Meteor } from 'meteor/meteor';
 import { Activity } from '../../api/activity/activity.js';
+import { Tag } from '../../api/tag/tag.js';
+import { Manager } from '../../api/manager/manager.js';
 import { HTTP } from 'meteor/http';
 
 Meteor.startup(() => {
-  if (Activity.find().count() === 0) {
-    const data = [
-        {
-            "ti":"11111",
-            "st":"normal",
-            "isonline":true,
-            "location":"111",
-            "city":"",
-            "address":"111",
-            "code":"111",
-            "lat":"111",
-            "lng":"111",
-            "btime":{
-                'date':new Date(),
-                'time':"11pm"
-            },
-            "etime":{
-                'date':new Date(),
-                'time':"11am"
-            },
-            "logo":"/img/img4.jpg",
-            "pic":[],
-            "ct":"content",
-            "pr":"free",
-            "site":"111",
-            "tel":"111",
-            "tags":["周末好去处","社区活动"]
-        },
-        {
-            "ti":"2222",
-            "st":"normal",
-            "isonline":true,
-            "location":"111",
-            "city":"",
-            "address":"111",
-            "code":"111",
-            "lat":"111",
-            "lng":"111",
-            "btime":{
-                'date':new Date(),
-                'time':"11pm"
-            },
-            "etime":{
-                'date':new Date(),
-                'time':"11am"
-            },
-            "logo":"/img/img4.jpg",
-            "pic":[],
-            "ct":"content",
-            "pr":"free",
-            "site":"111",
-            "tel":"111",
-            "tags":["公益讲座","亲子活动"]
-        },
-        {
-            "ti":"333333",
-            "st":"normal",
-            "isonline":true,
-            "location":"111",
-            "city":"",
-            "address":"111",
-            "code":"111",
-            "lat":"111",
-            "lng":"111",
-            "btime":{
-                'date':new Date(),
-                'time':"11pm"
-            },
-            "etime":{
-                'date':new Date(),
-                'time':"11am"
-            },
-            "logo":"/img/img4.jpg",
-            "pic":[],
-            "ct":"content",
-            "pr":"free",
-            "site":"111",
-            "tel":"111",
-            "tags":["节日活动","公益讲座"]
-        }
-    ];
 
-    data.forEach(act => Activity.insert(act));
-  }
+    if (Manager.find().count() === 0) {
+        let date=[
+            {
+                uname:"jack",
+                pwd:"111222",
+                role:"activity,frontlog,tag,newsletter,backendlog,comment,feedback,newslettermsg,sys,",
+                st:"normal",
+                dt:new Date()
+            }
+        ]
+
+        data.forEach(m => Manager.insert(m));
+    }
+
+    if (Tag.find().count() === 0) {
+        let date=[
+            {
+                tg:"周末好去处",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"亲子活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"节日活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"社区活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"演出活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"公益活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+            {
+                tg:"其他活动",
+                isshow:true,
+                st:"normal",
+                uname:"jack",
+                dt:new Date()
+            },
+        ]
+
+        data.forEach(t => Tag.insert(t));
+    }
+
+
 });

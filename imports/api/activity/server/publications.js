@@ -15,7 +15,8 @@ Meteor.publishComposite('activitiesrecommend', function () {
             var query={};
             query.st={$nin:["del","hidden"]};
             query.istop=true;
-           return Activity.find(query,{limit:8,sort:{topsort:1}});
+            query.toptime={$gte:moment().toDate()};
+           return Activity.find(query,{limit:8,sort:{topsort:1,'meta.dt':-1}});
         },
 
         children: [
@@ -31,9 +32,6 @@ Meteor.publishComposite('activitiesrecommend', function () {
         ],
     };
 });
-
-
-
 
 Meteor.publishComposite('activitieslist', function (params) {
     check(params,{
@@ -74,7 +72,8 @@ Meteor.publishComposite('activitieslist', function (params) {
                 }
             }
             if(isrmd){
-                query.isrmd=true;
+                query.iscmd=true;
+                query.cmdtime={$gte:moment().toDate()};
             }
             return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
         },
@@ -120,8 +119,6 @@ Meteor.publish('activitiesbyusr', function (uid,limit) {
     return Activity.find({"meta.uid":uid},{limit:limit,sort:{'meta.dt':-1}});
 });
 
-
-
 Meteor.publishComposite('activitybyid', function (id) {
     check(id,String);
     return {
@@ -138,8 +135,6 @@ Meteor.publishComposite('activitybyid', function (id) {
         }]
     };
 });
-
-
 
 Meteor.publish('admin_activitieslist', function (params) {
     check(params,{

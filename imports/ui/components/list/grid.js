@@ -25,6 +25,7 @@ Template.grid.onRendered(function gridOnRendered() {
         slidesPerView: 4,
         centeredSlides: false,
         updateOnImagesReady:true,
+        autoResize:true,
         resizeReInit:true,
         paginationClickable: true,
         spaceBetween: 30,

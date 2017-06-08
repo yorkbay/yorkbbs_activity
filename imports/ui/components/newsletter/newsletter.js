@@ -11,7 +11,7 @@ Template.newsletter.events({
         var reg = /^[A-Z][0-9][A-Z]\s[0-9][A-Z][0-9]$/;
         let email=$.trim($("#newsletter-email").val());
         var check = reg.test(email);
-        if(!check){
+        if(email){
             let doc={
                 email:email,
                 st:"normal",
@@ -22,11 +22,11 @@ Template.newsletter.events({
             newsletterInsert.call(doc);
 
             $("#newsletter-email").val("");
-
-            $('.J-zip-code-error').show();
+            $(".emailinput").hide();
+            $('.emailsuccess').show();
             $(this).addClass('release-hints')
         }else{
-            $('.J-zip-code-error').hide();
+            $('.emailsuccess').hide();
             $(this).removeClass('release-hints')
         }
     }

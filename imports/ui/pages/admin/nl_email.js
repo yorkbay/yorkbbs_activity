@@ -93,7 +93,7 @@ Template.admin_newsletter_email.events({
             _id:itemid,
             st:"del"
         }
-        console.log(obj);
+
         newslettermodifystbyid.call(obj);
     },
 

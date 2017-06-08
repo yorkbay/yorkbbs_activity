@@ -38,7 +38,6 @@ export const newslettermodifystbyid = new ValidatedMethod({
         }
     }).validator(),
     run({_id,st}) {
-        console.log(_id);
         return Newsletter.update(
             {_id:{$in:_id}},
             {$set:{st:st}},
