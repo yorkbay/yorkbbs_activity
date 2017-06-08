@@ -3,18 +3,18 @@
         <div class="contacts-box">
             <div id="crms-filter">
                 <div>
-                    <select class="form-control" name="habit" id="habit">
+                    <select class="form-control" name="action" id="action">
                         <option value="">操作类型</option>
-                        <option value="42">查看信息</option>
-                        <option value="43">发布评论</option>
-                        <option value="46">收藏信息</option>
-                        <option value="46">信息纠错</option>
-                        <option value="46">发布信息</option>
+                        <option value="查看信息">查看信息</option>
+                        <option value="发布评论">发布评论</option>
+                        <option value="收藏信息">收藏信息</option>
+                        <option value="信息纠错">信息纠错</option>
+                        <option value="发布信息">发布信息</option>
                     </select>
                     <div class="form-filter-search">
                         <div class="input-group">
                             <input type="text" id="keyword" class="serch-keyword form-control form-filter-search-input" name="keyword" value="" placeholder="搜索操作人或操作说明">
-                            <div class="input-group-addon btn-keyword-search">搜索</div>
+                            <div class="input-group-addon btn-keyword-search" id="search">搜索</div>
                         </div>
                     </div>
                     <div class="form-group-box">
@@ -47,90 +47,32 @@
                         <th>信息标题</th>
                         <th width="8%">操作设备</th>
                     </tr>
-                    <tr>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>查看信息</em>
-                        </td>
-                        <td>
-                            <em>192.168.70.224</em>
-                        </td>
-                        <td>
-                            <em>功夫煮麻辣烫</em>
-                        </td>
-                        <td>
-                            <em> PC </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>查看信息</em>
-                        </td>
-                        <td>
-                            <em>192.168.70.224</em>
-                        </td>
-                        <td>
-                            <em>功夫煮麻辣烫</em>
-                        </td>
-                        <td>
-                            <em> PC </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>查看信息</em>
-                        </td>
-                        <td>
-                            <em>192.168.70.224</em>
-                        </td>
-                        <td>
-                            <em>功夫煮麻辣烫</em>
-                        </td>
-                        <td>
-                            <em> PC </em>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <em>2017-04-28 18:13</em>
-                        </td>
-                        <td>
-                            <em>admin</em>
-                        </td>
-                        <td>
-                            <em>查看信息</em>
-                        </td>
-                        <td>
-                            <em>192.168.70.224</em>
-                        </td>
-                        <td>
-                            <em>功夫煮麻辣烫</em>
-                        </td>
-                        <td>
-                            <em> PC </em>
-                        </td>
-                    </tr>
+                    {{#each item in list_item}}
+                        <tr>
+                            <td>
+                                <em>{{formatDate_YMD item.meta.dt}}</em>
+                            </td>
+                            <td>
+                                <em>{{item.meta.usr}}</em>
+                            </td>
+                            <td>
+                                <em>{{item.action}}</em>
+                            </td>
+                            <td>
+                                <em>{{item.ip}}</em>
+                            </td>
+                            <td>
+                                <em>{{item.ti}}</em>
+                            </td>
+                            <td>
+                                <em>pc</em>
+                            </td>
+                        </tr>
+                    {{/each}}
                     </tbody></table>
             </div>
             <div class="contacts-table-more">
-                <a href="">加载更多</a>
+                <a href="" id="more">加载更多</a>
             </div>
         </div>
     </div>

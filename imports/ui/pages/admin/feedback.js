@@ -7,6 +7,7 @@ import '../../components/layer/tagadd.js';
 import './comment.html';
 import {Feedback} from '../../../api/feedback/feedback.js';
 import {feedbackmodifyst,feedbackmanage,feedbackmodifystbyid} from '../../../api/feedback/methods.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 const numOfRecords = 10;
 
@@ -108,6 +109,21 @@ Template.admin_feedback_list.events({
         }
 
         feedbackmodifyst.call(obj);
+        let manager=Session.get("manager");
+        var log={
+            ty:"backend",
+            action:"删除举报",
+            ip:headers.getClientIP(),
+            from:"",
+            refid:$(event.currentTarget).attr("itemid"),
+            ti:"",
+            meta:{
+                uid:manager._id,
+                usr:manager.uname,
+                dt:new Date()
+            }
+        }
+        LogInsert.call(log);
     },
     'change #ismanage'(event,instance){
         var val= $(event.currentTarget).val();
@@ -132,6 +148,21 @@ Template.admin_feedback_list.events({
             mdt:new Date()
         };
         feedbackmanage.call(obj);
+
+        var log={
+            ty:"backend",
+            action:"处理举报",
+            ip:headers.getClientIP(),
+            from:"",
+            refid:$("#itemid").val(),
+            ti:"",
+            meta:{
+                uid:manager._id,
+                usr:manager.uname,
+                dt:new Date()
+            }
+        }
+        LogInsert.call(log);
         $('.J-report-pop').hide();
         $("#mct").val("");
     },

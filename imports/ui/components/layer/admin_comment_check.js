@@ -4,6 +4,7 @@
 import './admin_comment_check.html';
 import {Comment} from '../../../api/comment/comment.js';
 import {commentcheck} from '../../../api/comment/methods.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 Template.admin_comment_check.events({
     "click .layer-yes":function (event,instance) {
@@ -13,7 +14,24 @@ Template.admin_comment_check.events({
             review:$("[name='review']:checked").val()=="true"?true:false,
             ct:$("#ct").val()
         }
-        commentcheck.call(comment);
+        commentcheck.call(comment,function (err,result) {
+            if(err)return;
+            let manager=Session.get("manager");
+            var log={
+                ty:"backend",
+                action:"审核评论",
+                ip:headers.getClientIP(),
+                from:"",
+                refid:$("#commentid").val(),
+                ti:"",
+                meta:{
+                    uid:manager._id,
+                    usr:manager.uname,
+                    dt:new Date()
+                }
+            }
+            LogInsert.call(log);
+        });
         $('.J-review-pop').hide();
     },
     "click .layer-close":function (event,instance) {

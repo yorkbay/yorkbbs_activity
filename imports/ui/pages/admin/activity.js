@@ -9,6 +9,7 @@ import { Activity } from '../../../api/activity/activity.js';
 import '../../components/manager/checkManager.js';
 import { Tag } from '../../../api/tag/tag.js';
 import { activitymodifyst,activitymodifystbyid,activityCheckModify} from '../../../api/activity/methods.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 const numOfRecords = 5;
 
@@ -159,7 +160,24 @@ Template.admin_activity_list.events({
             _id:$(event.currentTarget).attr("itemid"),
             st:"del"
         }
-        activitymodifyst.call(obj);
+        activitymodifyst.call(obj,function (err,result) {
+            if(err)return;
+            let manager=Session.get("manager");
+            var log={
+                ty:"backend",
+                action:"删除信息",
+                ip:headers.getClientIP(),
+                from:"",
+                refid:$(event.currentTarget).attr("itemid"),
+                ti:"",
+                meta:{
+                    uid:manager._id,
+                    usr:manager.uname,
+                    dt:new Date()
+                }
+            }
+            LogInsert.call(log);
+        });
     },
     'click #delall'(event,instance){
         var itemid=[];
@@ -210,7 +228,24 @@ Template.admin_activity_list.events({
 
         }
 
-        activityCheckModify.call(activity);
+        activityCheckModify.call(activity,function (err,result) {
+            if(err)return;
+            let manager=Session.get("manager");
+            var log={
+                ty:"backend",
+                action:"审核信息",
+                ip:headers.getClientIP(),
+                from:"",
+                refid:$("#activityid").val(),
+                ti:$("#activityti").val(),
+                meta:{
+                    uid:manager._id,
+                    usr:manager.uname,
+                    dt:new Date()
+                }
+            }
+            LogInsert.call(log);
+        });
         $('.J-review-pop').hide();
     },
     "click .layer-close":function (event,instance) {

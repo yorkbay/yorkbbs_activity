@@ -21,15 +21,7 @@ $(function(){
 		$('.J-filter-list').hide().removeClass('animate-slide-to-left');
 		return false;
 	});
-	/*推荐和最新活动切换*/
-	$('.newslist-image-caption').find('h2').click(function(){
-		var indet = $(this).index();
-		$(this).find('a').addClass('newslist-images-current').end().siblings().find('a').removeClass('newslist-images-current');
-		$('.newslist-caption-conent').find('ul').eq(indet).show().siblings().hide();
-	});
-	$('.newslist-image-caption').find('h2').children('a').click(function(e){
-		e.preventDefault();
-	});
+
 
 	/*分类搜索*/
 	$('.J-page-search').hover(function(){

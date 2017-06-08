@@ -19,35 +19,23 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
-const numOfRecords = 2;
+const numOfRecords = 6;
 
 Template.App_home.onCreated(function(){
     const instance = this;
 
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
+    instance.key = new ReactiveVar("");
+    instance.time = new ReactiveVar("");
+    instance.isfree = new ReactiveVar("");
 
-    instance.key = () => {
-        return FlowRouter.getQueryParam('key')||"";
-    };
+    instance.isrmd = new ReactiveVar("true");
+    instance.st = new ReactiveVar("");
 
-    instance.time = () => {
-        return FlowRouter.getQueryParam('time')||"";
-    };
-    instance.isfree = () => {
-        return FlowRouter.getQueryParam('free')||"";
-    };
     instance.tag = () => {
         return FlowRouter.getQueryParam('tag')||"";
     };
-    instance.isrmd = () => {
-        return FlowRouter.getQueryParam('rmd')||"";
-    };
-
-    instance.st = () => {
-        return FlowRouter.getQueryParam('st')||"";
-    };
-
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
@@ -56,12 +44,12 @@ Template.App_home.onCreated(function(){
         instance.subscribe('activitiesbytag','周末好去处');
 
 
-        const key = instance.key();
-        const time = instance.time();
-        const isfree = instance.isfree();
+        const key = instance.key.get();
+        const time = instance.time.get();
+        const isfree = instance.isfree.get();
         const tag = instance.tag();
-        const isrmd = instance.isrmd();
-        const st = instance.st();
+        const isrmd = instance.isrmd.get();
+        const st = instance.st.get();
         const limit = instance.limit.get();
 
         instance.subscribe('activitieslist', {
@@ -80,7 +68,7 @@ Template.App_home.onCreated(function(){
 
 Template.App_home.helpers({
     "grid_items": function () {
-        return Activity.find({});
+        return Activity.find({istop:true},{limit:8,sort:{'meta.dt':-1}});
     },
     "listbytag": function (tag) {
         return listbytag.call({tag});
@@ -89,9 +77,10 @@ Template.App_home.helpers({
     "list_item": function () {
 
         const instance = Template.instance();
-        const key = instance.key();
-        const time = instance.time();
-        const isfree = instance.isfree();
+        const key = instance.key.get();
+        const time = instance.time.get();
+        const isrmd = instance.isrmd.get();
+        const isfree = instance.isfree.get();
         const tag = instance.tag();
 
         const limit = instance.limit.get();
@@ -99,30 +88,61 @@ Template.App_home.helpers({
         var query={};
         if(key){
             let regex = new RegExp( key, 'i' );
-            query={
-                ti:regex
-            }
+            query.ti=regex;
         }
         if(time){
+            let timenow=new Date();
+
             let startOfDay = moment.utc().startOf('day').toDate();
             let endOfDay = moment.utc().endOf('day').toDate();
-            const date = moment.utc().toDate();
+            const date = moment().startOf('day').toDate();
+            const tomorrow = moment().add(1, 'day').toDate();
+            switch (time){
+                case "today":
+                    let today=moment().startOf('day').toDate();
+                    query.$and=[
+                        {'btime.date': {$lte: today}},
+                        {'etime.date': {$gte: today}},
+                    ];
+                    break;
+                case "tomorrow":
+                    query.$and=[
+                        {'btime.date': {$lte: tomorrow}},
+                        {'etime.date': {$gte: tomorrow}},
+                    ];
+                    break;
+                case "week":
 
-            //console.log(startOfDay+'----------'+endOfDay+"---------"+date);
+                    query.$and=[
+                        {'btime.date': {$lte: date}},
+                        {'etime.date': {$gte: date}},
+                    ];
+                    break;
+                case "weekend":
 
-            query.btime={
-                date:{
-                    $lte: new Date(date)
+                    query.$and=[
+                        {'btime.date': {$lte: date}},
+                        {'etime.date': {$gte: date}},
+                    ];
+                    break;
+                case "nextweekend":
 
-                }
-            }
+                    query.$or=[
+                        {'btime.date': {$lte: date}},
+                        {'etime.date': {$gte: date}},
+                    ];
+                    break;
+                case "month":
 
-            query.etime={
-                date:{
-                    $gte: new Date(date)
-                }
+                    query.$and=[
+                        {'btime.date': {$lte: date}},
+                        {'etime.date': {$gte: date}},
+                    ];
+                    break;
             }
         }
+        //db.activities.find({$and:[{'btime.date':{$lte:ISODate('2017-06-07T00:00:00Z')}},{'etime.date':{$gte:ISODate('2017-06-07T00:00:00Z')}}]});
+        //db.activities.find({"btime.date":{$lte:ISODate("2017-06-07T23:08:28.166Z")}}).pretty();
         if(isfree === "1"){
             query.pr={
                 $eq: "free"
@@ -137,7 +157,12 @@ Template.App_home.helpers({
                 $in:[tag]
             }
         }
-        //console.log(query);
+
+        if(isrmd){
+            query.isrmd=true;
+        }
+        console.log( JSON.stringify(query, null, 4) );
+
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });
@@ -149,56 +174,78 @@ Template.App_home.events({
         instance.limit.set(instance.limit.get() + numOfRecords);
     },
     'click .search_left_isfree'(event, instance) {
+        var free=$(event.currentTarget).attr("free");
         instance.limit.set(numOfRecords);
+        instance.isfree.set(free);
+
+        $("#div_isfree").show();
+
+        $("#div_isfree").find('span').html(event.currentTarget.innerText);
         $(".search_isfree li").removeClass("active-tags-on");
         $(event.currentTarget).parent('li').addClass("active-tags-on");
-        var free=$(event.currentTarget).attr("free");
-        var url=ChangeParam("free",free);
-        FlowRouter.go("/"+url);
     },
     'click .search_left_tag'(event, instance) {
-        instance.limit.set(numOfRecords);
+
+        var tag=$(event.currentTarget).attr("tag");
+        $("#div_tag").show();
+        $("#div_tag").find('span').html(tag);
         $(".search_tag li").removeClass("active-tags-on");
         $(event.currentTarget).parent('li').addClass("active-tags-on");
-        var tag=$(event.currentTarget).attr("tag");
+
+        instance.limit.set(numOfRecords);
+
         var url=ChangeParam("tag",tag);
         FlowRouter.go("/"+url);
     },
     'click .search_left_time'(event, instance) {
+        var time=$(event.currentTarget).attr("time");
         instance.limit.set(numOfRecords);
+        instance.time.set(time);
+
+        $("#div_time").show();
+
+        $("#div_time").find('span').html(event.currentTarget.innerText);
         $(".search_time li").removeClass("active-tags-on");
         $(event.currentTarget).parent('li').addClass("active-tags-on");
-        var time=$(event.currentTarget).attr("time");
-        var url=ChangeParam("time",time);
-        FlowRouter.go("/"+url);
     },
     'click .tag_close'(event, instance) {
+
+        $("#div_tag").hide();
+        $(".search_tag li").removeClass("active-tags-on");
         var url=ChangeParam("tag",'');
         FlowRouter.go("/"+url);
     },
     'click .free_close'(event, instance) {
-        var url=ChangeParam("free",'');
-        FlowRouter.go("/"+url);
+        instance.isfree.set("");
+        $("#div_isfree").hide();
+        $(".search_isfree li").removeClass("active-tags-on");
     },
     'click .time_close'(event, instance) {
-        var url=ChangeParam("time",'');
-        FlowRouter.go("/"+url);
+        instance.time.set("");
+        $("#div_time").hide();
+        $(".search_time li").removeClass("active-tags-on");
     },
     'keyup .subnav-search-input'(event, instance) {
         let value = $.trim($(".subnav-search-input").val());
         if (event.keyCode === 13) {
-            var url=ChangeParam("key",value);
-            FlowRouter.go("/"+url);
+            instance.key.set(value);
         }
     },
     'click .subnav-submit'(event, instance) {
         let value = $.trim($(".subnav-search-input").val());
-        var url=ChangeParam("key",value);
-        FlowRouter.go("/"+url);
-
+        instance.key.set(value);
+    },
+    'click #tab_commend'(event, instance) {
+        $(event.currentTarget).addClass("newslist-images-current");
+        $("#tab_news").removeClass("newslist-images-current")
+        instance.isrmd.set("true");
+    },
+    'click #tab_news'(event, instance) {
+        $(event.currentTarget).addClass("newslist-images-current");
+        $("#tab_commend").removeClass("newslist-images-current");
+        instance.isrmd.set("");
     },
 });
-
 
 function ChangeParam(name,value)
 {
@@ -223,8 +270,3 @@ function ChangeParam(name,value)
     }
     return newUrl;
 }
-
-
-
-
-

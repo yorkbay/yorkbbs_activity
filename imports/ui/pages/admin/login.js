@@ -7,6 +7,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { Session } from 'meteor/session'
 import {managerLogin} from '../../../api/manager/methods.js';
 import {Manager} from '../../../api/manager/manager.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 
 
@@ -34,6 +35,21 @@ Template.admin_login.events({
 
         managerLogin.call(manager,function (err,result) {
             if(result){
+                var log={
+                    ty:"backend",
+                    action:"登录后台",
+                    ip:headers.getClientIP(),
+                    from:"",
+                    refid:"",
+                    ti:"",
+                    meta:{
+                        uid:result._id,
+                        usr:result.uname,
+                        dt:new Date()
+                    }
+                }
+                LogInsert.call(log);
+
                 Session.setPersistent("manager",result);
                 FlowRouter.go('/admin/activity');
             }

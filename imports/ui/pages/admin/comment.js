@@ -4,6 +4,7 @@
 import './comment.html';
 import {Comment} from '../../../api/comment/comment.js';
 import {commentmodifyst,commentmodifyreview,commentmodifystbyid} from '../../../api/comment/methods.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 const numOfRecords = 5;
 
@@ -127,7 +128,24 @@ Template.admin_comment_list.events({
             st:"del"
         }
 
-        commentmodifyst.call(obj);
+        commentmodifyst.call(obj,function (err,result) {
+            if(err)return;
+            let manager=Session.get("manager");
+            var log={
+                ty:"backend",
+                action:"删除评论",
+                ip:headers.getClientIP(),
+                from:"",
+                refid:$(event.currentTarget).attr("itemid"),
+                ti:"",
+                meta:{
+                    uid:manager._id,
+                    usr:manager.uname,
+                    dt:new Date()
+                }
+            }
+            LogInsert.call(log);
+        });
     },
     'click .review'(event, instance) {
         instance.id.set($(event.currentTarget).attr("itemid"));
@@ -155,6 +173,21 @@ Template.admin_comment_list.events({
             st:"del"
         }
         commentmodifystbyid.call(obj);
+        let manager=Session.get("manager");
+        var log={
+            ty:"backend",
+            action:"删除评论",
+            ip:headers.getClientIP(),
+            from:"",
+            refid:itemid.toString(),
+            ti:"",
+            meta:{
+                uid:manager._id,
+                usr:manager.uname,
+                dt:new Date()
+            }
+        }
+        LogInsert.call(log);
     },
 
 });

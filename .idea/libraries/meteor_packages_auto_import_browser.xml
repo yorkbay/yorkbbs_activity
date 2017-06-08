@@ -32,7 +32,6 @@
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.css" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.js" />
-        <item url="file://$USER_HOME$/.meteor/packages/fongandrew_find-and-modify/1.0.0/web.browser/find_and_modify.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/client/main.css" />
         <item url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.7/web.browser/diff.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/config/config.css" />
@@ -71,8 +70,10 @@
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_pub/3.0.4/web.browser/client/main.css" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/hooks.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-parent-data-function.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/gadicohen_headers/0.0.31/web.browser/lib/headers-client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/meteortoys_pub/3.0.4/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-inherits-events-from.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/gadicohen_headers/0.0.31/web.browser/lib/headers-common.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-hooks.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-inherits-helpers-from.js" />
         <item url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/web.browser/client.js" />
@@ -300,6 +301,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/domrange.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/backcompat.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/attrs.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/meteorhacks_inject-initial/1.0.4/web.browser/lib/inject-client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/events.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/lookup.js" />
         <item url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/materializer.js" />
@@ -737,7 +739,6 @@
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.css" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_email/3.0.0/web.browser/config/config.js" />
-      <root url="file://$USER_HOME$/.meteor/packages/fongandrew_find-and-modify/1.0.0/web.browser/find_and_modify.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/client/main.css" />
       <root url="file://$USER_HOME$/.meteor/packages/diff-sequence/1.0.7/web.browser/diff.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_hotreload/3.0.0/web.browser/config/config.css" />
@@ -776,8 +777,10 @@
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_pub/3.0.4/web.browser/client/main.css" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/hooks.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-parent-data-function.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/gadicohen_headers/0.0.31/web.browser/lib/headers-client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/meteortoys_pub/3.0.4/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-inherits-events-from.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/gadicohen_headers/0.0.31/web.browser/lib/headers-common.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-hooks.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_template-extension/4.1.0/web.browser/lib/template-inherits-helpers-from.js" />
       <root url="file://$USER_HOME$/.meteor/packages/dispatch_mocha/0.4.1/web.browser/client.js" />
@@ -1005,6 +1008,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/domrange.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/backcompat.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/attrs.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/meteorhacks_inject-initial/1.0.4/web.browser/lib/inject-client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/events.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/lookup.js" />
       <root url="file://$USER_HOME$/.meteor/packages/blaze/2.3.2/web.browser/materializer.js" />

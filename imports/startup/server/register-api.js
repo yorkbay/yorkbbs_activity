@@ -24,3 +24,7 @@ import '../../api/comment/server/publications.js';
 import '../../api/tag/methods.js';
 import '../../api/tag/server/publications.js';
 
+import '../../api/log/methods.js';
+import '../../api/log/server/publications.js';
+
+

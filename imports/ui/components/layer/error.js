@@ -2,7 +2,7 @@
  * Created by shunxiangchen on 5/12/17.
  */
 import './error.html'
-
+import {LogInsert} from '../../../api/log/methods.js';
 import {feedbackInsert} from '../../../api/feedback/methods.js';
 
 Template.error.events({
@@ -26,6 +26,22 @@ Template.error.events({
         };
         var feedback=feedbackInsert.call(tag);
         $('.J-error-layer').hide();
+
+
+        var log={
+            ty:"front",
+            action:"信息纠错",
+            ip:headers.getClientIP(),
+            from:"",
+            refid:$("#refid").val(),
+            ti:$("#refti").val(),
+            meta:{
+                uid:usr.id,
+                usr:usr.uname,
+                dt:new Date()
+            }
+        }
+        LogInsert.call(log);
         return tag;
     }
 });

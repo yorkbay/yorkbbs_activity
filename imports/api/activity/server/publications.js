@@ -13,8 +13,9 @@ Meteor.publishComposite('activitiesrecommend', function () {
     return {
         find() {
             var query={};
-            query.st={$ne:"del"};
-           return Activity.find(query,{limit:8,sort:{'meta.dt':-1}});
+            query.st={$nin:["del","hidden"]};
+            query.istop=true;
+           return Activity.find(query,{limit:8,sort:{topsort:1}});
         },
 
         children: [
@@ -45,22 +46,15 @@ Meteor.publishComposite('activitieslist', function (params) {
         st:String
     });
 
-
     return {
         find() {
             const {key,time, isfree,tag,isrmd,limit,st} = params;
 
             var query={};
-            query.st={$ne:"del"};
+            query.st={$nin:["del","hidden"]};
             if(time){
                 //var condition=getdate(time);
 
-                var start = moment().startOf('day');
-                var end = moment().endOf('day');
-
-                query.btime={
-                    date:{$gte:start}
-                }
 
             }
             if(key){
@@ -79,7 +73,9 @@ Meteor.publishComposite('activitieslist', function (params) {
                     "$in": [tag]
                 }
             }
-
+            if(isrmd){
+                query.isrmd=true;
+            }
             return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
         },
 
@@ -101,7 +97,7 @@ Meteor.publishComposite('activitiesbytag', function (tag) {
     check(tag,String);
     return {
         find() {
-            return Activity.find({tags:{ "$in": [tag] }},{limit:5,sort:{'meta.dt':-1}});
+            return Activity.find({tags:{ "$in": [tag] },st:{$nin:["del","hidden"]}},{limit:5,sort:{'meta.dt':-1}});
         },
         children: [
             {
@@ -135,38 +131,15 @@ Meteor.publishComposite('activitybyid', function (id) {
         children: [{
             find(item) {
                 return Comment.find({
-                    refid: item._id
+                    refid: item._id,
+                    st:"normal"
                 });
             }
         }]
     };
 });
 
-Meteor.publish('activitiestags', function () {
-    const results ="";
-    /*
-    let query={
-        $facet: {
-            "categorizedByTags": [
-                {$unwind: "$tags"},
-                {$sortByCount: "$tags"}
-            ]
-        }
-    };
 
-
-    const results =Activity.aggregate(query).shift() || {};
-
-    // post processing facet values
-    for (let facet in results) {
-        results[facet] && results[facet].forEach(obj => {
-            obj.id = obj._id;
-            delete obj._id;
-        });
-    }
-    */
-    return results;
-});
 
 Meteor.publish('admin_activitieslist', function (params) {
     check(params,{

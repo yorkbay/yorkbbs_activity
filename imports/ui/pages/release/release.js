@@ -15,6 +15,7 @@ import {
 } from '../../../api/activity/methods.js';
 
 import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
+import {LogInsert} from '../../../api/log/methods.js';
 
 Template.release.onCreated(function () {
     const instance = this;
@@ -165,6 +166,21 @@ Template.release.events({
         };
 
         usrCenterInsert.call(doc);
+
+        var log={
+            ty:"front",
+            action:"发布信息",
+            ip:headers.getClientIP(),
+            from:"",
+            refid:Id,
+            ti:$("#ti").val(),
+            meta:{
+                uid:usr.id,
+                usr:usr.uname,
+                dt:new Date()
+            }
+        }
+        LogInsert.call(log);
 
         FlowRouter.go('/activity/'+Id);
 

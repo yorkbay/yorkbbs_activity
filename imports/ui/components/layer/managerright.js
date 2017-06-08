@@ -3,6 +3,7 @@
  */
 import './managerright.html';
 import {managerModifyrole} from '../../../api/manager/methods.js';
+import {LogInsert} from '../../../api/log/methods.js';
 
 Template.admin_manager_right_layer.events({
     "click .layer-yes":function (event,instance) {
@@ -13,6 +14,21 @@ Template.admin_manager_right_layer.events({
         managerModifyrole.call(manager,function (err,result) {
             if(result){
                 $('.J-authority-pop').hide();
+                let manager=Session.get("manager");
+                var log={
+                    ty:"backend",
+                    action:"设置权限",
+                    ip:headers.getClientIP(),
+                    from:"",
+                    refid:$("#managerid").val(),
+                    ti:$("#hdnrole").val(),
+                    meta:{
+                        uid:manager._id,
+                        usr:manager.uname,
+                        dt:new Date()
+                    }
+                }
+                LogInsert.call(log);
             }
         });
 
