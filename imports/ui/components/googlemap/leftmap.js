@@ -24,6 +24,36 @@ Template.leftmap.onCreated(function() {
 
 Template.leftmap.helpers({
     "display_markers":function (items) {
+        //console.log(items.fetch());
+        /*
+        GoogleMaps.ready('leftmap', function(map) {
+            items.forEach(function (item) {
+                if(!item.isonline) {
+                    let marker = new google.maps.Marker({
+                        setMap: map,
+                        position: new google.maps.LatLng(item.lat, item.lng),
+                    });
+
+                    let c='<div class="map-info-content">'+
+                        '<div style="float: left; width: 100px; margin-right: 10px;">'+
+                        '<img style="max-width: 100%" src="'+item.logo+'" alt="">'+
+                        '</div>'+
+                        '<div style="overflow: hidden;">'+item.ti+'</div>'+
+                        '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: c
+                    });
+
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
+
+        });
+        */
+
         if(GoogleMaps.maps.leftmap){
             const map=GoogleMaps.maps.leftmap.instance;
 
@@ -51,6 +81,7 @@ Template.leftmap.helpers({
                 }
             });
         }
+
     },
     mapOptions: function(items) {
         if (GoogleMaps.loaded()) {

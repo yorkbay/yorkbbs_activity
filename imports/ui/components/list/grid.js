@@ -27,11 +27,11 @@ Template.grid.onRendered(function gridOnRendered() {
         centeredSlides: false,
         updateOnImagesReady:true,
         autoResize:true,
+        observer:true,
         resizeReInit:true,
         paginationClickable: true,
         spaceBetween: 30,
     });
-
 
 });
 

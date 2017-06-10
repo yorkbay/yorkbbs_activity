@@ -50,8 +50,6 @@ Template.release.onRendered(function releaseOnRendered() {
         acceptedFiles:"image/*",
         uploadMultiple:true,
         success: function(file, response){
-            $(".dz-preview").hide();
-
             var files=JSON.parse(response).files;
 
             files.forEach(function(file){

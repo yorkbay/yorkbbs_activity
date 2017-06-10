@@ -60,12 +60,6 @@ Template.detail.onCreated(function(){
 
 Template.detail.onRendered(function () {
 
-
-    $('.J-error-submit').click(function(){
-        $('.J-error-layer').show()
-        $('.J-error-layer').find('.layer-content').addClass('animate-down-show');
-        return false;
-    });
 });
 
 Template.detail.helpers({
@@ -96,5 +90,12 @@ Template.detail.events({
             }
         };
         usrCenterInsert.call(doc);
+        //Overlay.show('helloTemplate',{closeable: false, title:'prova'});
+
+    },
+    'click .J-error-submit':function (event,instance) {
+        $('.J-error-layer').show()
+        $('.J-error-layer').find('.layer-content').addClass('animate-down-show');
+        return false;
     }
 });

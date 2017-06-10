@@ -91,7 +91,7 @@ pcel:loading
 momentjs:moment
 meteortoys:allthings
 teamon:tinymce
-nolimits4web:swiper
+swiper:swiper
 dbarrett:dropzonejs
 session
 u2622:persistent-session
@@ -100,3 +100,4 @@ tsega:bootstrap3-datetimepicker
 gadicohen:headers
 aldeed:geocoder
 dburles:google-maps
+#grigio:overlay

@@ -15,7 +15,7 @@ Template.rightmap.onCreated(function() {
 
 Template.rightmap.helpers({
     mapOptions: function(item) {
-        if (GoogleMaps.loaded()) {
+        if (GoogleMaps.loaded() && item) {
             return {
                 center: new google.maps.LatLng(parseFloat(item.lat),parseFloat(item.lng)),
                 zoom: 17,

@@ -51,6 +51,7 @@ Template.admin_login.events({
                 LogInsert.call(log);
 
                 Session.setPersistent("manager",result);
+                //Session.set("manager",result);
                 FlowRouter.go('/admin/activity');
             }
         });
