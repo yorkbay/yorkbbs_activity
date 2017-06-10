@@ -17,6 +17,8 @@ import {
 import { usrCenterInsert } from '../../../api/usrcenter/methods.js'
 import {LogInsert} from '../../../api/log/methods.js';
 
+GoogleMaps.load({ v: '3', key: 'AIzaSyD0uzSeEzo4VtiYz9nIxFsRN2AWLa6s-vA', libraries: 'geometry,places' });
+
 Template.release.onCreated(function () {
     const instance = this;
 
@@ -74,6 +76,14 @@ Template.release.onRendered(function releaseOnRendered() {
 Template.release.helpers({
     'tags':function () {
         return Tag.find({});
+    },
+    mapOptions: function() {
+        if (GoogleMaps.loaded()) {
+            return {
+                center: new google.maps.LatLng(43.7182197, -79.4482687),
+                zoom: 12
+            };
+        }
     }
 })
 
@@ -95,6 +105,102 @@ Template.release.events({
         }
     },
     "click #sub":()=>{
+        let isonline=$("#isonline").is(':checked');
+        let isifree=$("#isfree").is(':checked');
+        let pr=$.trim($("#pr").val());
+        let ti=$.trim($("#ti").val());
+        let location=$.trim($("#location").val());
+        let city=$.trim($("#city").val());
+        let address=$.trim($("#address").val());
+        let code=$.trim($("#code").val());
+        let bdate=$.trim($("#bdate").val());
+        let btime=$.trim($("#btime").val());
+        let edate=$.trim($("#edate").val());
+        let etime=$.trim($("#etime").val());
+        let site=$.trim($("#site").val());
+        let tel=$.trim($("#tel").val());
+        let tags=$.trim($("#tags").val());
+
+        let ct=tinymce.activeEditor.getContent();
+        $(".l-release-main").find("input").removeClass("release-hints");
+        if(!ti){
+            $("#ti").addClass("release-hints");
+            $("#ti").focus();
+            return;
+        }
+        if(!isonline){
+            if(!location){
+                $("#location").addClass("release-hints");
+                $("#location").focus();
+                return;
+            }
+            if(!city){
+                $("#city").addClass("release-hints");
+                $("#city").focus();
+                return;
+            }
+            if(!address){
+                $("#address").addClass("release-hints");
+                $("#address").focus();
+                return;
+            }
+            if(!code){
+                $("#code").addClass("release-hints");
+                $("#code").focus();
+                return;
+            }
+        }
+
+        if(!bdate){
+            $("#bdate").addClass("release-hints");
+            $("#bdate").focus();
+            return;
+        }
+        if(!btime){
+            $("#btime").addClass("release-hints");
+            $("#btime").focus();
+            return;
+        }
+        if(!edate){
+            $("#edate").addClass("release-hints");
+            $("#edate").focus();
+            return;
+        }
+        if(!etime){
+            $("#etime").addClass("release-hints");
+            $("#etime").focus();
+            return;
+        }
+        if(!ct){
+            tinyMCE.get('ct').focus()
+            return;
+        }
+
+        if(!isifree && !pr){
+            $("#pr").addClass("release-hints");
+            $("#pr").focus();
+            return;
+        }
+        if(!site){
+            $("#site").addClass("release-hints");
+            $("#site").focus();
+            return;
+        }
+        if(!tel){
+            $("#tel").addClass("release-hints");
+            $("#tel").focus();
+            return;
+        }
+
+        if(!tags){
+            $("#tag_error").show();
+            $("#tags").focus();
+            return;
+        }else{
+            $("#tag_error").hide();
+        }
+
+
         let usr=Session.get('usr');
         let manager=Session.get('manager');
         if(manager && manager._id){
@@ -104,16 +210,18 @@ Template.release.events({
             }
         }
 
-        var pr="free";
+
         if(!$("#isfree").is(':checked')){
             pr=$("#pr").val();
+        }else{
+            pr="free";
         }
-        var isonline=$("#isonline").is(':checked');
 
-        var tags=$("#tags").val().split(",");
+
+        tags=$("#tags").val().split(",");
         tags.pop();
 
-        var ct=tinymce.activeEditor.getContent();
+
 
 
         var imageurl=$("#imageurl").val().split(',');
@@ -143,6 +251,8 @@ Template.release.events({
             },
             "ct":ct,
             "pr":pr,
+            "lat":$("#hdnlat").val(),
+            "lng":$("#hdnlng").val(),
             "site":$("#site").val(),
             "tel":$("#tel").val(),
             "tags":tags,
@@ -207,6 +317,33 @@ Template.release.events({
             $(event.currentTarget).addClass('release-tags-current');
         }
         $("#tags").val(val);
+    },
+    "keyup #address":function (event,instance) {
+        let address = $.trim($(event.currentTarget).val());
+        if (!address)return;
+
+
+        $("#google-map").css("visibility","visible");
+
+        const map=GoogleMaps.maps.releasemap.instance;
+
+        const geocoder = new google.maps.Geocoder();
+
+        geocoder.geocode({'address': address}, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                $("#hdnlat").val(results[0].geometry.location.lat());
+                $("#hdnlng").val(results[0].geometry.location.lng());
+                map.setCenter(results[0].geometry.location);
+                let marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+            }
+        });
+
+    },
+    "click #closemap":function (event,instance) {
+        $("#google-map").hide();
     }
 });
 

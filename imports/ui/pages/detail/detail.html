@@ -36,7 +36,7 @@
                                 {{#if item.isonline}}
                                 这是一个线上活动
                                 {{else}}
-                                {{item.location}},{{item.city}},{{item.address}}
+                                {{item.location}},{{item.address}},{{item.city}},{{item.code}}
                                 {{/if}}
                             </div>
                         </li>
@@ -48,7 +48,7 @@
                         </a>
                     </div>
                     <div class="views-social">
-                        <a href="">
+                        <a href="javascript:;" id="fav">
                             <img src="/img/icon-heard.png" alt="">
                             <img src="/img/icon-heard-red.png" alt="">
                             收藏
@@ -88,14 +88,15 @@
             {{> comment comments=item.comments}}
         </div>
         <aside class="l-aside-widget">
-            {{> rightmap }}
+            {{#if item.isonline}}
+            {{else}}
+                {{> rightmap item=item}}
+            {{/if}}
+
             {{> simple items=(listbytag '周末好去处') }}
             <div class="active-aside-wechat">
                 <img src="/img/share-wechat.jpg" alt="约克论坛">
             </div>
         </aside>
     </div>
-
-
-
 </template>

@@ -81,3 +81,20 @@ Template.detail.helpers({
         return listbytag.call({tag});
     }
 });
+
+Template.detail.events({
+    'click #fav':function (event,instance) {
+        const usr=Session.get("usr");
+        var id=$(event.currentTarget).attr("itemid");
+        var doc= {
+            "ty":"fav",
+            "refid":id,
+            "st":"normal",
+            "meta":{
+                "uid":usr.id,
+                "usr":usr.uname
+            }
+        };
+        usrCenterInsert.call(doc);
+    }
+});

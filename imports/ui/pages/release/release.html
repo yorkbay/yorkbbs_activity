@@ -11,7 +11,7 @@
                     <label class="release-label"><b>活动地点 </b> <i>*</i></label>
                     <input type="hidden" name="lat" id="lat" value=""/>
                     <input type="hidden" name="lng" id="lng" value=""/>
-                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}" class="release-input release-input-text release-hints" placeholder="介绍一下这是一个什么样的活动" />
+                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}" class="release-input release-input-text" placeholder="介绍一下这是一个什么样的活动" />
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动标题</b> <i>*</i></label>
@@ -41,9 +41,14 @@
                                 </select>
                             </div>
                             <div class="release-adress-map">
-                                <input type="text" value="{{Activity.adress}}" id="address" name="adress" class="release-adress-input-row release-input-text J-map J-online-or" placeholder="请输入详细地址" />
+                                <input type="hidden" id="hdnlat" value="">
+                                <input type="hidden" id="hdnlng" value="">
+                                <input type="text" value="{{Activity.address}}" id="address" name="address" class="release-adress-input-row release-input-text J-map J-online-or" placeholder="请输入详细地址" />
                                 <a href="" class="release-adress-map-button"><img src="/img/icon-map.jpg" alt="" /></a>
-                                <div id="google-map" class="release-map-layer" style="display: none; height: 500px;"></div>
+                                <div id="google-map" class="release-map-layer" style="visibility: hidden; height: 400px;">
+                                    <a href="javascript:;" id="closemap">关闭</a>
+                                    {{> googleMap name="releasemap" options=mapOptions}}
+                                </div>
                             </div>
                         </div>
                         <div class="release-adress-box">
@@ -126,6 +131,7 @@
                         {{/each}}
                     </div>
                 </div>
+                <div style="display: none;" id="tag_error">请选择活动标签</div>
 
             </section>
         </div>

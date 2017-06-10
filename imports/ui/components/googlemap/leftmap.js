@@ -4,37 +4,68 @@
 import './leftmap.html';
 
 Template.leftmap.onCreated(function() {
-    // We can use the `ready` callback to interact with the map API once the map is ready.
-    GoogleMaps.ready('exampleMap', function(map) {
-        // Add a marker to the map once it's ready
-        var marker = new google.maps.Marker({
-            position: map.options.center,
-            map: map.instance
+
+    /*
+    GoogleMaps.ready('leftmap', function(map) {
+        console.log(map.options.items.fetch());
+        map.options.items.forEach(function (item) {
+            //console.log(item.isonline+"----"+item.lat+"-----"+item.lng);
+            if(!item.isonline && item.lat && item.lng) {
+                let marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(item.lat, item.lng),
+                    map: map.instance
+                });
+            }
         });
+
     });
+    */
 });
 
 Template.leftmap.helpers({
-    "display_geo":function (items) {
-        let geos=[];
-        items.forEach(function (item) {
-            var markList={
-                position: {lat: item.lat, lng: item.lng},
-                playingImg: item.logo,
-                playingName: item.ti
-            }
-            geos.push(item);
-        });
-        $("#hdngeo").val(geos);
+    "display_markers":function (items) {
+        if(GoogleMaps.maps.leftmap){
+            const map=GoogleMaps.maps.leftmap.instance;
+
+            items.forEach(function (item) {
+                if(!item.isonline) {
+                    let marker = new google.maps.Marker({
+                        map: map,
+                        position: new google.maps.LatLng(item.lat, item.lng),
+                    });
+
+                    let c='<div class="map-info-content">'+
+                        '<div style="float: left; width: 100px; margin-right: 10px;">'+
+                        '<img style="max-width: 100%" src="'+item.logo+'" alt="">'+
+                        '</div>'+
+                        '<div style="overflow: hidden;">'+item.ti+'</div>'+
+                        '</div>';
+
+                    var infowindow = new google.maps.InfoWindow({
+                        content: c
+                    });
+
+                    marker.addListener('click', function() {
+                        infowindow.open(map, marker);
+                    });
+                }
+            });
+        }
     },
-    exampleMapOptions: function() {
+    mapOptions: function(items) {
         if (GoogleMaps.loaded()) {
             return {
-                center: new google.maps.LatLng(31, 41),
-                zoom: 4
+                center: new google.maps.LatLng(43.7182197, -79.4482687),
+                zoom: 8,
+                items:items
             };
+
         }
     }
 
+});
+
+Template.leftmap.onRendered(function() {
+    GoogleMaps.load({ v: '3', key: 'AIzaSyD0uzSeEzo4VtiYz9nIxFsRN2AWLa6s-vA', libraries: 'geometry,places' });
 });
 

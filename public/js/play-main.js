@@ -76,39 +76,6 @@ $(function(){
 		}
 	});
 
-
-	/*google map*/
-
-            
-           
-	$('.J-map').keyup(function(){
-		var zone = $('.J-change-zone').val();
-		var keyval = $(this).val();
-		$.ajax({
-			url:'https://maps.googleapis.com/maps/api/geocode/json',
-			data:{address:zone+keyval,key:'AIzaSyD0uzSeEzo4VtiYz9nIxFsRN2AWLa6s-vA'},
-			success:function(msg){
-				if(msg.status == 'OK'){
-					var location = msg.results[0].geometry.location;
-					initialize(location.lat,location.lng);
-				}
-				
-			}
-		});
-		$(this).siblings('.release-map-layer').show();
-		
-		$('body').bind('click',function(e){
-			e.stopPropagation();
-			$('.release-map-layer').hide();
-			$('body').unbind('click');
-		});
-	});
-	
-	$('.release-map-layer').click(function(e){
-		e.stopPropagation();
-	});
-
-
 	/*分享*/
 	$('.J-share').click(function(){
 		var shareLink = $(this).attr('href');

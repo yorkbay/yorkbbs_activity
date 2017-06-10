@@ -94,55 +94,40 @@ Template.App_home.helpers({
 
             let startOfDay = moment.utc().startOf('day').toDate();
             let endOfDay = moment.utc().endOf('day').toDate();
-            const date = moment().startOf('day').toDate();
-            const tomorrow = moment().add(1, 'day').toDate();
+
             switch (time){
                 case "today":
-                    let today=moment().startOf('day').toDate();
-                    query.$and=[
-                        {'btime.date': {$lte: today}},
-                        {'etime.date': {$gte: today}},
-                    ];
+                    startOfDay = moment().startOf('day').toDate();
+                    endOfDay = moment().startOf('day').toDate();
                     break;
                 case "tomorrow":
-                    query.$and=[
-                        {'btime.date': {$lte: tomorrow}},
-                        {'etime.date': {$gte: tomorrow}},
-                    ];
+                    startOfDay = moment().add(1, 'day').toDate();
+                    endOfDay = moment().add(1, 'day').toDate();
                     break;
                 case "week":
-
-                    query.$and=[
-                        {'btime.date': {$lte: date}},
-                        {'etime.date': {$gte: date}},
-                    ];
+                    startOfDay =moment().day(0).toDate();
+                    endOfDay = moment().day(7).toDate();
                     break;
                 case "weekend":
-
-                    query.$and=[
-                        {'btime.date': {$lte: date}},
-                        {'etime.date': {$gte: date}},
-                    ];
+                    startOfDay =moment().day(6).toDate();
+                    endOfDay = moment().day(7).toDate();
                     break;
                 case "nextweekend":
-
-                    query.$or=[
-                        {'btime.date': {$lte: date}},
-                        {'etime.date': {$gte: date}},
-                    ];
+                    startOfDay =moment().day(13).toDate();
+                    endOfDay = moment().day(14).toDate();
                     break;
                 case "month":
-
-                    query.$and=[
-                        {'btime.date': {$lte: date}},
-                        {'etime.date': {$gte: date}},
-                    ];
+                    startOfDay =moment().date(1).toDate();
+                    endOfDay = moment().add('months', 1).date(0).toDate();
                     break;
             }
-        }
-        //db.activities.find({$and:[{'btime.date':{$lte:ISODate('2017-06-07T00:00:00Z')}},{'etime.date':{$gte:ISODate('2017-06-07T00:00:00Z')}}]});
-        //db.activities.find({"btime.date":{$lte:ISODate("2017-06-07T23:08:28.166Z")}}).pretty();
 
+            query.$and=[
+                {'btime.date': {$lte: startOfDay}},
+                {'etime.date': {$gte: endOfDay}},
+            ];
+
+        }
 
         if(isfree === "1"){
             query.pr={
@@ -163,7 +148,6 @@ Template.App_home.helpers({
             query.iscmd=true;
             query.cmdtime={$gte:moment().toDate()};
         }
-
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
 });

@@ -43,5 +43,8 @@ Template.error.events({
         }
         LogInsert.call(log);
         return tag;
+    },
+    'click .layer-close':function (event,instance) {
+        $('.J-error-layer').hide();
     }
 });

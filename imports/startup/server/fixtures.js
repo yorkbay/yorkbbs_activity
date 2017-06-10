@@ -9,7 +9,7 @@ import { HTTP } from 'meteor/http';
 Meteor.startup(() => {
 
     if (Manager.find().count() === 0) {
-        let date=[
+        let data=[
             {
                 uname:"jack",
                 pwd:"111222",
@@ -23,7 +23,7 @@ Meteor.startup(() => {
     }
 
     if (Tag.find().count() === 0) {
-        let date=[
+        let data=[
             {
                 tg:"周末好去处",
                 isshow:true,

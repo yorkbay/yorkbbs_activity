@@ -4,10 +4,8 @@
 import './grid_item.html';
 import {usrCenterInsert} from '../../../api/usrcenter/methods.js'
 
-
 Template.grid_item.events({
     "click .fav"(event, instance) {
-        console.log(doc);
         const usr=Session.get("usr");
         var id=$(event.currentTarget).attr("itemid");
         var doc= {
@@ -19,7 +17,6 @@ Template.grid_item.events({
                 "usr":usr.uname
             }
         };
-
         usrCenterInsert.call(doc);
     },
 });

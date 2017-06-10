@@ -2275,10 +2275,10 @@ th {
   width: 11.8125rem; }
 
 .text_user {
-  background: url(../../assets/img/login-all-bg_01.png) no-repeat 10rem; }
+  background: url(/img/login-all-bg_01.png) no-repeat 10rem; }
 
 .text_paddword {
-  background: url(../../assets/img/login-all-bg_02.png) no-repeat 10rem; }
+  background: url(/img/login-all-bg_02.png) no-repeat 10rem; }
 
 .h_weather {
   float: left;
@@ -2328,31 +2328,31 @@ th {
   transition: all 0.3s ease-in 0s; }
 
 .topspeak1 {
-  background: url(../../assets/img/icon1.gif) no-repeat;
+  background: url(/img/icon1.gif) no-repeat;
   height: 0.4375rem;
   margin-top: 1.0625rem;
   width: 0.4375rem; }
 
 .topspeak2 {
-  background: url(../../assets/img/moneyoff.png) no-repeat;
+  background: url(/img/moneyoff.png) no-repeat;
   height: 1.25rem;
   margin-top: 0.625rem;
   width: 1.0625rem; }
 
 .topspeak3 {
-  background: url(../../assets/img/phoneoff.png) no-repeat;
+  background: url(/img/phoneoff.png) no-repeat;
   height: 1.25rem;
   margin-top: 0.625rem;
   width: 1.0625rem; }
 
 .topspeak4 {
-  background: url(../../assets/img/sinatopoff1.png) no-repeat;
+  background: url(/img/sinatopoff1.png) no-repeat;
   height: 1.0625rem;
   margin-top: 0.75rem;
   width: 1.25rem; }
 
 .topspeak5 {
-  background: url(../../assets/img/weioff1.png) no-repeat;
+  background: url(/img/weioff1.png) no-repeat;
   height: 1.0625rem;
   margin-top: 0.8125rem;
   width: 1.125rem; }
@@ -2366,19 +2366,19 @@ th {
 .menu-hover .nav-my dd {
   line-height: 1.75rem !important; }
 .menu-hover .topspeak2 {
-  background: url(../../assets/img/moneyon.png) no-repeat;
+  background: url(/img/moneyon.png) no-repeat;
   height: 1.25rem;
   margin-top: 0.625rem;
   width: 1.0625rem; }
 .menu-hover .topspeak3 {
-  background: url(../../assets/img/phoneon.png) no-repeat;
+  background: url(/img/phoneon.png) no-repeat;
   height: 1.25rem;
   margin-top: 0.625rem;
   width: 1.0625rem; }
 .menu-hover .topspeak4 {
-  background: url(../../assets/img/sinatopon1.png) no-repeat; }
+  background: url(/img/sinatopon1.png) no-repeat; }
 .menu-hover .topspeak5 {
-  background: url(../../assets/img/weion1.png) no-repeat; }
+  background: url(/img/weion1.png) no-repeat; }
 .menu-hover .top-nav-grid {
   background: #fff;
   border: 0.0625rem solid #eaeaea;
@@ -4775,7 +4775,7 @@ and open the template in the editor.
 .subnav-put-cate {
   background: #fff; }
   .subnav-put-cate i {
-    background: url(../../assets/img/icon-arrow-top-bg.jpg) no-repeat center; }
+    background: url(/img/icon-arrow-top-bg.jpg) no-repeat center; }
   .subnav-put-cate span {
     border: 0.0625rem solid #c6c6c6;
     border-top: none;
@@ -5049,7 +5049,7 @@ and open the template in the editor.
     color: #666; }
 
 .filter-arrow {
-  background: url(../../assets/img/arrow.gif) no-repeat; }
+  background: url(/img/arrow.gif) no-repeat; }
 
 .filter-open {
   background-position: 0 0; }
@@ -5269,7 +5269,7 @@ and open the template in the editor.
   font-size: 0.875rem; }
 
 .views-item-arrow {
-  background: url(../../assets/img/arrow.gif) -0.5625rem 0 no-repeat; }
+  background: url(/img/arrow.gif) -0.5625rem 0 no-repeat; }
 
 .views-item-more {
   color: #e4393c;
@@ -5410,24 +5410,24 @@ and open the template in the editor.
   font-weight: bold; }
 
 .flow-step-one .step-one {
-  background: url(../../assets/img/arrow-right.png) no-repeat right #ff363a; }
+  background: url(/img/arrow-right.png) no-repeat right #ff363a; }
   .flow-step-one .step-one i {
-    background: url(../../assets/img/step-1-on.png) no-repeat; }
+    background: url(/img/step-1-on.png) no-repeat; }
 .flow-step-one .step-two {
   background: #e3e3e3; }
   .flow-step-one .step-two i {
-    background: url(../../assets/img/step-2-off.png) no-repeat; }
+    background: url(/img/step-2-off.png) no-repeat; }
 
 .flow-step-two .step-one {
-  background: url(../../assets/img/arrow-right-1.png) no-repeat right #f7eded; }
+  background: url(/img/arrow-right-1.png) no-repeat right #f7eded; }
   .flow-step-two .step-one i {
-    background: url(../../assets/img/step-1-off.png) no-repeat; }
+    background: url(/img/step-1-off.png) no-repeat; }
   .flow-step-two .step-one em {
     color: #d3afaf; }
 .flow-step-two .step-two {
   background: #e4393c; }
   .flow-step-two .step-two i {
-    background: url(../../assets/img/step-2-on.png) no-repeat; }
+    background: url(/img/step-2-on.png) no-repeat; }
 
 .step-on {
   color: #fff; }
@@ -5494,7 +5494,7 @@ and open the template in the editor.
     background: #ebebe4; }
 
 .dropdown-icon {
-  background: url(../../assets/img/select-arrow.png) no-repeat center center;
+  background: url(/img/select-arrow.png) no-repeat center center;
   display: table-cell;
   vertical-align: middle;
   width: 1.75rem; }
@@ -5686,7 +5686,7 @@ and open the template in the editor.
   .newslist-hot h2 font {
     color: #999; }
 .newslist-hot ul li {
-  background: url(../../assets/img/dot-red.gif) no-repeat left; }
+  background: url(/img/dot-red.gif) no-repeat left; }
 .newslist-hot ul a {
   color: #666;
   font-size: 1.25rem;
@@ -5801,7 +5801,7 @@ and open the template in the editor.
     font-size: 0.875rem;
     font-weight: bold; }
   .imgcols-refine dd a {
-    background: url(../../assets/img/dotted.gif) no-repeat left;
+    background: url(/img/dotted.gif) no-repeat left;
     color: #666;
     font-family: arial;
     text-decoration: none; }
@@ -5851,7 +5851,7 @@ and open the template in the editor.
     text-decoration: none; }
 
 .imgcols-yellow-tags dt {
-  background: url(../../assets/img/tags-red.jpg) no-repeat left;
+  background: url(/img/tags-red.jpg) no-repeat left;
   color: #fff;
   font-size: 0.875rem; }
 .imgcols-yellow-tags dd a {
@@ -5894,7 +5894,7 @@ and open the template in the editor.
     text-decoration: none; }
 
 .tabs-current {
-  background: url(../../assets/img/tabs-line.png) no-repeat bottom;
+  background: url(/img/tabs-line.png) no-repeat bottom;
   color: #e4393c !important; }
 
 .imgcols-yellow-tabs-list {
@@ -5910,7 +5910,7 @@ and open the template in the editor.
 .imgcols-grid-cover {
   border: 0.0625rem solid #eee; }
   .imgcols-grid-cover p {
-    background: url(../../assets/img/imgcols-grid-cover-pbg.png) no-repeat;
+    background: url(/img/imgcols-grid-cover-pbg.png) no-repeat;
     color: #fff;
     text-transform: capitalize; }
 
@@ -6092,7 +6092,7 @@ and open the template in the editor.
   width: 1.75rem; }
 
 .contacts-detail-radio input[type="checkbox"] + label {
-  background: transparent url("../../assets/img/icon2.png") no-repeat scroll 0 0;
+  background: transparent url("/img/icon2.png") no-repeat scroll 0 0;
   display: inline-block;
   line-height: 24px;
   margin-left: -2.125rem;
@@ -6100,29 +6100,29 @@ and open the template in the editor.
   padding-left: 1.5rem; }
 
 .contacts-detail-radio input[type="checkbox"]:hover + label {
-  background: transparent url("../../assets/img/icon2.png") no-repeat scroll 0 -51px; }
+  background: transparent url("/img/icon2.png") no-repeat scroll 0 -51px; }
 
 .contacts-detail-radio input[type="checkbox"]:checked + label {
-  background: transparent url("../../assets/img/icon2.png") no-repeat scroll 0 -25px; }
+  background: transparent url("/img/icon2.png") no-repeat scroll 0 -25px; }
 
 .contacts-detail-radio input[type="checkbox"]:checked:hover + label {
-  background: transparent url("../../assets/img/icon2.png") no-repeat scroll 0 -81px; }
+  background: transparent url("/img/icon2.png") no-repeat scroll 0 -81px; }
 
 .contacts-detail-radio input[type="radio"] + label {
-  background: transparent url("../../assets/img/icon1.png") no-repeat scroll 0 -2px;
+  background: transparent url("/img/icon1.png") no-repeat scroll 0 -2px;
   display: inline-block;
   line-height: 24px;
   margin-left: -2.125rem;
   padding-left: 28px; }
 
 .contacts-detail-radio input[type="radio"]:hover + label {
-  background: transparent url("../../assets/img/icon1.png") no-repeat scroll 0 -26px; }
+  background: transparent url("/img/icon1.png") no-repeat scroll 0 -26px; }
 
 .contacts-detail-radio input[type="radio"]:checked + label {
-  background: transparent url("../../assets/img/icon1.png") no-repeat scroll 0 -50px; }
+  background: transparent url("/img/icon1.png") no-repeat scroll 0 -50px; }
 
 .contacts-detail-radio input[type="radio"]:checked:hover + label {
-  background: transparent url("../../assets/img/icon1.png") no-repeat scroll 0 -78px; }
+  background: transparent url("/img/icon1.png") no-repeat scroll 0 -78px; }
 
 .aside-nav > li {
   background: #fff;
@@ -6187,14 +6187,14 @@ and open the template in the editor.
 
 .connect-login {
   background-color: #fff;
-  background-image: url(../../assets/img/email1.png);
+  background-image: url(/img/email1.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: 100%;
   border: none;
   box-shadow: none; }
   .connect-login:hover, .connect-login:focus {
-    background-image: url(../../assets/img/email1.png);
+    background-image: url(/img/email1.png);
     background-position: left;
     background-repeat: no-repeat;
     background-size: 100%; }
@@ -6253,7 +6253,7 @@ and open the template in the editor.
 .connect-tab-on {
   color: #1e9ac2; }
   .connect-tab-on span {
-    background: url(../../assets/img/connect-tabg.png) no-repeat center bottom; }
+    background: url(/img/connect-tabg.png) no-repeat center bottom; }
 
 .pagination-page,
 .pagination-count {

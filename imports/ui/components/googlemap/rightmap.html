@@ -1,5 +1,9 @@
 <template name="rightmap">
-    <div class="map-views">
+   <!-- <div class="map-views">
         <div id="google-map" style="height: 300px;"></div>
+    </div>-->
+
+    <div class="map-container">
+        {{> googleMap name="rightmap" options=(mapOptions item)}}
     </div>
 </template>

@@ -1,9 +1,18 @@
 <template name="leftmap">
 
-    <div class="map">
-       <div id="google-map" style="height: 300px;"></div>
-        {{> googleMap name="exampleMap" options=exampleMapOptions}}
-     </div>
-
-
+    <!-- <div class="map">
+ <div id="google-map" style="height: 300px;"></div>
+     </div>-->
+    <div class="map-container">
+        {{> googleMap name="leftmap" options=(mapOptions items)}}
+        {{display_markers items}}
+    </div>
+    <script type="text/html" id="map-info-tmp">
+        <div class="map-info-content">
+            <div style="float: left; width: 100px; margin-right: 10px;">
+                <img style="max-width: 100%" src="{{img}}" alt="">
+            </div>
+            <div style="overflow: hidden;">{{content}}</div>
+        </div>
+    </script>
 </template>
