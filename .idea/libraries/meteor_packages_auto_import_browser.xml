@@ -438,10 +438,13 @@
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/client.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/console.js" />
         <item url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/server.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.4.0_1/web.browser/upstream/css/font-awesome.css" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/collection2.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/indexing.js" />
         <item url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/deny.js" />
         <item url="file://$USER_HOME$/.meteor/packages/percolate_velocityjs/1.1.0/web.browser/packages/percolate:velocityjs.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.2/web.browser/bert.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.2/web.browser/templates/bert-alert.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/post.js" />
         <item url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/pre.js" />
         <item url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.2.1/web.browser/accounts_ui.js" />
@@ -1146,10 +1149,13 @@
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/client.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/console.js" />
       <root url="file://$USER_HOME$/.meteor/packages/es5-shim/4.6.15/web.browser/server.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/fortawesome_fontawesome/4.4.0_1/web.browser/upstream/css/font-awesome.css" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/collection2.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/indexing.js" />
       <root url="file://$USER_HOME$/.meteor/packages/aldeed_collection2/2.7.1/web.browser/lib/deny.js" />
       <root url="file://$USER_HOME$/.meteor/packages/percolate_velocityjs/1.1.0/web.browser/packages/percolate:velocityjs.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.2/web.browser/bert.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/themeteorchef_bert/2.1.2/web.browser/templates/bert-alert.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/post.js" />
       <root url="file://$USER_HOME$/.meteor/packages/fastclick/1.0.13/web.browser/pre.js" />
       <root url="file://$USER_HOME$/.meteor/packages/accounts-ui-unstyled/1.2.1/web.browser/accounts_ui.js" />

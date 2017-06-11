@@ -127,7 +127,7 @@ Template.App_home.helpers({
             ];
 
         }
-        console.log(JSON.stringify( query));
+        //console.log(JSON.stringify( query));
         if(isfree === "1"){
             query.pr={
                 $eq: "free"

@@ -193,11 +193,8 @@ Template.release.events({
         }
 
         if(!tags){
-            $("#tag_error").show();
-            $("#tags").focus();
+            Bert.alert( '请至少选择一种活动类型', 'danger',"growl-top-right");
             return;
-        }else{
-            $("#tag_error").hide();
         }
 
 

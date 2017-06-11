@@ -10,7 +10,11 @@ Template.newsletter.events({
         const usr=Session.get("usr");
         var reg = /^[A-Z][0-9][A-Z]\s[0-9][A-Z][0-9]$/;
         let email=$.trim($("#newsletter-email").val());
-        var check = reg.test(email);
+         if(!/^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9\._-]+\.)[a-zA-Z-0-9]{2}/.test(email)) {
+             Bert.alert( '请输入正确的邮件地址', 'danger',"growl-top-right");
+             return;
+         }
+
         if(email){
             let doc={
                 email:email,
@@ -29,6 +33,7 @@ Template.newsletter.events({
             $('.emailsuccess').hide();
             $(this).removeClass('release-hints')
         }
+
     }
 });
 
