@@ -51,8 +51,41 @@ Meteor.publishComposite('activitieslist', function (params) {
             var query={};
             query.st={$nin:["del","hidden"]};
             if(time){
-                //var condition=getdate(time);
 
+                let startOfDay = moment.utc().startOf('day').format("YYYY-MM-DD");
+                let endOfDay = moment.utc().endOf('day').format("YYYY-MM-DD");
+
+                switch (time){
+                    case "today":
+                        startOfDay = moment().startOf('day').format("YYYY-MM-DD");
+                        endOfDay = moment().startOf('day').format("YYYY-MM-DD");
+                        break;
+                    case "tomorrow":
+                        startOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
+                        endOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
+                        break;
+                    case "week":
+                        startOfDay =moment().day(0).format("YYYY-MM-DD");
+                        endOfDay = moment().day(7).format("YYYY-MM-DD");
+                        break;
+                    case "weekend":
+                        startOfDay =moment().day(6).format("YYYY-MM-DD");
+                        endOfDay = moment().day(7).format("YYYY-MM-DD");
+                        break;
+                    case "nextweekend":
+                        startOfDay =moment().day(13).format("YYYY-MM-DD");
+                        endOfDay = moment().day(14).format("YYYY-MM-DD");
+                        break;
+                    case "month":
+                        startOfDay =moment().date(1).format("YYYY-MM-DD");
+                        endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD");
+                        break;
+                }
+
+                query.$and=[
+                    {'btime.date': {$lte: new Date(startOfDay)}},
+                    {'etime.date': {$gte: new Date(endOfDay)}},
+                ];
 
             }
             if(key){
@@ -139,13 +172,14 @@ Meteor.publishComposite('activitybyid', function (id) {
 Meteor.publish('admin_activitieslist', function (params) {
     check(params,{
         key:String,
-        time:String,
+        btime:String,
+        etime:String,
         tag:String,
         limit:Number,
         st:String
     });
 
-    const {key,time,tag,limit,st} = params;
+    const {key,btime,etime,tag,limit,st} = params;
 
     var query={};
 
@@ -154,17 +188,12 @@ Meteor.publish('admin_activitieslist', function (params) {
     }else {
         query.st = {$ne: "del"};
     }
+    if(btime){
+        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+    }
 
-    if(time){
-        //var condition=getdate(time);
-
-        var start = moment().startOf('day');
-        var end = moment().endOf('day');
-
-        query.btime={
-            date:{$gte:start}
-        }
-
+    if(etime){
+        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
     }
     if(key){
         let regex = new RegExp( key, 'i' );

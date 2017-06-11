@@ -90,45 +90,44 @@ Template.App_home.helpers({
             query.ti=regex;
         }
         if(time){
-            let timenow=new Date();
 
-            let startOfDay = moment.utc().startOf('day').toDate();
-            let endOfDay = moment.utc().endOf('day').toDate();
+            let startOfDay = moment.utc().startOf('day').format("YYYY-MM-DD");
+            let endOfDay = moment.utc().endOf('day').format("YYYY-MM-DD");
 
             switch (time){
                 case "today":
-                    startOfDay = moment().startOf('day').toDate();
-                    endOfDay = moment().startOf('day').toDate();
+                    startOfDay = moment().startOf('day').format("YYYY-MM-DD");
+                    endOfDay = moment().startOf('day').format("YYYY-MM-DD");
                     break;
                 case "tomorrow":
-                    startOfDay = moment().add(1, 'day').toDate();
-                    endOfDay = moment().add(1, 'day').toDate();
+                    startOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
+                    endOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
                     break;
                 case "week":
-                    startOfDay =moment().day(0).toDate();
-                    endOfDay = moment().day(7).toDate();
+                    startOfDay =moment().day(0).format("YYYY-MM-DD");
+                    endOfDay = moment().day(7).format("YYYY-MM-DD");
                     break;
                 case "weekend":
-                    startOfDay =moment().day(6).toDate();
-                    endOfDay = moment().day(7).toDate();
+                    startOfDay =moment().day(6).format("YYYY-MM-DD");
+                    endOfDay = moment().day(7).format("YYYY-MM-DD");
                     break;
                 case "nextweekend":
-                    startOfDay =moment().day(13).toDate();
-                    endOfDay = moment().day(14).toDate();
+                    startOfDay =moment().day(13).format("YYYY-MM-DD");
+                    endOfDay = moment().day(14).format("YYYY-MM-DD");
                     break;
                 case "month":
-                    startOfDay =moment().date(1).toDate();
-                    endOfDay = moment().add('months', 1).date(0).toDate();
+                    startOfDay =moment().date(1).format("YYYY-MM-DD");
+                    endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD");
                     break;
             }
 
             query.$and=[
-                {'btime.date': {$lte: startOfDay}},
-                {'etime.date': {$gte: endOfDay}},
+                {'btime.date': {$lte: new Date(startOfDay)}},
+                {'etime.date': {$gte: new Date(endOfDay)}},
             ];
 
         }
-
+        console.log(JSON.stringify( query));
         if(isfree === "1"){
             query.pr={
                 $eq: "free"

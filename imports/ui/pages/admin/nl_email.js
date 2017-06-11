@@ -21,17 +21,13 @@ Template.admin_newsletter_email.onCreated(function(){
     instance.ready = new ReactiveVar();
     instance.limit = new ReactiveVar(numOfRecords);
 
-    instance.btime = () => {
-        return FlowRouter.getQueryParam('btime')||"";
-    };
-    instance.etime = () => {
-        return FlowRouter.getQueryParam('etime')||"";
-    };
+    instance.btime = new ReactiveVar("");
+    instance.etime = new ReactiveVar("");
 
     instance.autorun(function () {
 
-        const btime = new Date(instance.btime());
-        const etime = new Date(instance.etime());
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const limit = instance.limit.get();
 
         instance.subscribe('newsletterlist', {
@@ -58,11 +54,18 @@ Template.admin_newsletter_email.helpers({
 
         const instance = Template.instance();
 
-        const btime = instance.btime();
-        const etime = instance.etime();
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const limit = instance.limit.get();
 
         var query={};
+        if(btime){
+            query.dt={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        }
+
+        if(etime){
+            query.dt={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        }
         return Newsletter.find(query,{limit:limit,sort:{dt:-1}});
     },
     "display_issend":function (issend) {
@@ -95,6 +98,16 @@ Template.admin_newsletter_email.events({
         }
 
         newslettermodifystbyid.call(obj);
+    },
+    'blur #startdate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.btime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+    'blur #enddate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.etime.set(val);
+        instance.limit.set(numOfRecords);
     },
 
 });

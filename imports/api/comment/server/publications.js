@@ -40,8 +40,8 @@ Meteor.publish('commentslist', function (params) {
 Meteor.publish('admin_commentslist', function (params) {
     check(params,{
         key:String,
-        btime:Date,
-        etime:Date,
+        btime:String,
+        etime:String,
         limit:Number,
         isshow:String,
         review:String
@@ -56,6 +56,13 @@ Meteor.publish('admin_commentslist', function (params) {
         query={
             ct:regex
         }
+    }
+    if(btime){
+        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+    }
+
+    if(etime){
+        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
     }
     if(isshow){
         if(isshow =="true"){

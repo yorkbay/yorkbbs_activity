@@ -6,8 +6,8 @@ import {Log} from '../log.js';
 Meteor.publish('admin_loglist', function (params) {
     check(params,{
         usr:String,
-        btime:Date,
-        etime:Date,
+        btime:String,
+        etime:String,
         limit:Number,
         action:String,
         ty:String
@@ -25,6 +25,14 @@ Meteor.publish('admin_loglist', function (params) {
     }
     if(action){
         query.action=action;
+    }
+
+    if(btime){
+        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+    }
+
+    if(etime){
+        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
     }
 
     return Log.find(query,{limit:limit,sort:{'meta.dt':-1}});

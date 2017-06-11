@@ -30,24 +30,22 @@ Template.admin_activity_list.onCreated(function(){
     instance.st = new ReactiveVar("");
 
     instance.activityid = new ReactiveVar("");
-
-
-    instance.time = () => {
-        return FlowRouter.getQueryParam('time')||"";
-    };
+    instance.btime = new ReactiveVar("");
+    instance.etime = new ReactiveVar("");
 
 
 
     //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
         const key = instance.key.get();
-        const time = instance.time();
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const tag = instance.tag.get();
         const st = instance.st.get();
         const limit = instance.limit.get();
 
         instance.subscribe('admin_activitieslist', {
-            key,time,tag,limit,st
+            key,btime,etime,tag,limit,st
         });
 
         instance.subscribe('tagslist');
@@ -84,7 +82,8 @@ Template.admin_activity_list.helpers({
 
         const instance = Template.instance();
         const key = instance.key.get();
-        const time = instance.time();
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const tag = instance.tag.get();
         const st = instance.st.get();
 
@@ -97,14 +96,12 @@ Template.admin_activity_list.helpers({
                 ti:regex
             }
         }
-        if(time){
-            var start = moment().startOf('day');
-            var end = moment().endOf('day');
+        if(btime){
+            query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        }
 
-
-            query.btime={
-                date:{$gte:start}
-            }
+        if(etime){
+            query['meta.dt']={$lte:new Date(moment(btime).format("YYYY-MM-DD"))}
         }
 
         if(st){
@@ -186,6 +183,7 @@ Template.admin_activity_list.events({
         });
     },
     'click #delall'(event,instance){
+
         var itemid=[];
         $('input[name="delcheckbox"]:checked').each(function() {
             itemid.push(this.value);
@@ -195,14 +193,17 @@ Template.admin_activity_list.events({
             st:"del"
         }
         activitymodifystbyid.call(obj);
+
     },
     'change #tags'(event,instance){
         var val= $(event.currentTarget).val();
         instance.tag.set(val);
+        instance.limit.set(numOfRecords);
     },
     'click .btn-keyword-search'(event,instance){
         var val= $.trim($("#keyword").val());
         instance.key.set(val);
+        instance.limit.set(numOfRecords);
     },
     'click .J-review'(event,instance){
         var val= $(event.currentTarget).attr("itemid");
@@ -256,12 +257,21 @@ Template.admin_activity_list.events({
         $('.J-review-pop').hide();
     },
     "click .layer-close":function (event,instance) {
-
         $('.J-review-pop').hide();
     },
     'change #st'(event,instance){
         var val= $(event.currentTarget).val();
         instance.st.set(val);
+        instance.limit.set(numOfRecords);
     },
-
+    'blur #startdate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.btime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+    'blur #enddate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.etime.set(val);
+        instance.limit.set(numOfRecords);
+    },
 });

@@ -27,14 +27,19 @@ Template.admin_feedback_list.onCreated(function(){
     instance.ty = new ReactiveVar("");
     instance.limit = new ReactiveVar(numOfRecords);
 
+    instance.btime = new ReactiveVar("");
+    instance.etime = new ReactiveVar("");
+
     instance.autorun(function () {
         const ismanage = instance.ismanage.get();
         const ty = instance.ty.get();
         const key = instance.key.get();
         const limit = instance.limit.get();
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
 
         instance.subscribe('feedbackslist', {
-            key,ty,ismanage,limit
+            key,ty,ismanage,limit,btime, etime
         });
 
         instance.ready.set(PostSubs.ready());
@@ -44,7 +49,12 @@ Template.admin_feedback_list.onCreated(function(){
 
 Template.admin_feedback_list.onRendered(function FeedbackOnRendered() {
 
-
+    $('#startdate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
+    $('#enddate').datetimepicker({
+        format: 'YYYY-MM-DD'
+    });
 });
 
 
@@ -55,7 +65,8 @@ Template.admin_feedback_list.helpers({
         const key = instance.key.get();
         const ismanage = instance.ismanage.get();
         const ty = instance.ty.get();
-
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const limit = instance.limit.get();
 
         var query={};
@@ -67,6 +78,13 @@ Template.admin_feedback_list.helpers({
             query.ty={$in:[ty]}
         }
 
+        if(btime){
+            query.fddt={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        }
+
+        if(etime){
+            query.fddt={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        }
         if(ismanage){
             if(ismanage =="true"){
                 query.ismanage=true;
@@ -177,6 +195,16 @@ Template.admin_feedback_list.events({
         }
         console.log(obj);
         feedbackmodifystbyid.call(obj);
-    }
+    },
+    'blur #startdate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.btime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+    'blur #enddate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.etime.set(val);
+        instance.limit.set(numOfRecords);
+    },
 
 });

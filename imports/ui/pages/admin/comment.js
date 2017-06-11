@@ -25,17 +25,13 @@ Template.admin_comment_list.onCreated(function(){
     instance.id = new ReactiveVar("");
     instance.isshow = new ReactiveVar("");
 
-    instance.btime = () => {
-        return FlowRouter.getQueryParam('btime')||"";
-    };
-    instance.etime = () => {
-        return FlowRouter.getQueryParam('etime')||"";
-    };
+    instance.btime = new ReactiveVar("");
+    instance.etime = new ReactiveVar("");
 
     instance.autorun(function () {
         const key = instance.key.get();
-        const btime = new Date(instance.btime());
-        const etime = new Date(instance.etime());
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const isshow = instance.isshow.get();
         const review = instance.review.get();
         const limit = instance.limit.get();
@@ -67,8 +63,8 @@ Template.admin_comment_list.helpers({
 
         const instance = Template.instance();
         const key = instance.key.get();
-        const btime = instance.btime();
-        const etime = instance.etime();
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const isshow = instance.isshow.get();
         const review = instance.review.get();
         const limit = instance.limit.get();
@@ -82,6 +78,13 @@ Template.admin_comment_list.helpers({
                 ct:regex
             }
 
+        }
+        if(btime){
+            query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        }
+
+        if(etime){
+            query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
         }
 
         if(isshow){
@@ -188,6 +191,16 @@ Template.admin_comment_list.events({
             }
         }
         LogInsert.call(log);
+    },
+    'blur #startdate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.btime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+    'blur #enddate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.etime.set(val);
+        instance.limit.set(numOfRecords);
     },
 
 });

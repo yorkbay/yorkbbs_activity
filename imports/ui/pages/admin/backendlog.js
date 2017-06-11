@@ -22,17 +22,13 @@ Template.admin_backendlog.onCreated(function(){
     instance.usr = new ReactiveVar("");
     instance.ty = new ReactiveVar("backend");
 
-    instance.btime = () => {
-        return FlowRouter.getQueryParam('btime')||"";
-    };
-    instance.etime = () => {
-        return FlowRouter.getQueryParam('etime')||"";
-    };
+    instance.btime = new ReactiveVar("");
+    instance.etime = new ReactiveVar("");
 
     instance.autorun(function () {
         const usr = instance.usr.get();
-        const btime = new Date(instance.btime());
-        const etime = new Date(instance.etime());
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const action = instance.action.get();
         const ty = instance.ty.get();
         const limit = instance.limit.get();
@@ -62,8 +58,8 @@ Template.admin_backendlog.helpers({
 
         const instance = Template.instance();
         const usr = instance.usr.get();
-        const btime = new Date(instance.btime());
-        const etime = new Date(instance.etime());
+        const btime = instance.btime.get();
+        const etime = instance.etime.get();
         const action = instance.action.get();
         const ty = instance.ty.get();
         const limit = instance.limit.get();
@@ -79,6 +75,14 @@ Template.admin_backendlog.helpers({
         }
         if(action){
             query.action=action;
+        }
+
+        if(btime){
+            query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        }
+
+        if(etime){
+            query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
         }
         return Log.find(query,{limit:limit,sort:{'meta.dt':-1}});
     }
@@ -96,6 +100,17 @@ Template.admin_backendlog.events({
     'click #search'(event,instance){
         var val= $("#keyword").val();
         instance.usr.set(val);
-    }
+    },
+    'blur #startdate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.btime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+    'blur #enddate'(event,instance){
+        var val= $.trim($(event.currentTarget).val());
+        instance.etime.set(val);
+        instance.limit.set(numOfRecords);
+    },
+
 
 });

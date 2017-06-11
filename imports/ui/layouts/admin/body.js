@@ -54,5 +54,5 @@ Template.registerHelper('formatDate_YMDHS', function(date) {
 //xx月xx日
 Template.registerHelper('formatDate_YMD', function(date) {
     if(!date)return "";
-    return moment.utc(date).format("YYYY-MM-DD");
+    return moment(date).format("YYYY-MM-DD");
 });
