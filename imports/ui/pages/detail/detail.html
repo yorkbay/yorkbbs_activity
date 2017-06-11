@@ -60,7 +60,7 @@
                         </a>
                     </div>
                 </div>
-                {{> user }}
+                {{> user item=item}}
             </div>
         </div>
     </div>
@@ -82,7 +82,7 @@
                         {{/each}}
                     </dd>
                 </dl>
-                {{> share }}
+                {{> share item=item}}
             </section>
             {{> recommend items=item.recommends}}
             {{> comment comments=item.comments}}

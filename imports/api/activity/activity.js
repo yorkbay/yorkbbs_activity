@@ -179,6 +179,11 @@ Activity.schema = new SimpleSchema({
         label: "_images",
         optional:true
     },
+    joinnum:{
+      type:Number,
+        label: "join num",
+        optional:true
+    },
     'meta.uid': {
         type: String,
         label: "user id",

@@ -2,9 +2,11 @@
     <div class="views-share">
         <div class="views-share-go good">
             <div class="none" id="addshow"> +1</div>
-            <div class="zantext" onclick="document.getElementById('addshow').className = 'zanone';">
+            <div class="zantext" id="join" >
                 <i><img src="/img/icon-map-heart.png" alt="" /></i>
-                <em>想去（20）</em>
+                <input type="hidden" id="refid" value="{{item._id}}">
+                <input type="hidden" id="ti" value="{{item.ti}}">
+                <em>想去（{{display_joinnum item.joinnum}}）</em>
             </div>
         </div>
         <div class="views-share-avatar">

@@ -10,6 +10,7 @@ import {Comment} from '../../comment/comment.js'
 import {Activity} from '../activity.js';
 import {ActivityImages} from '../image.js';
 import {Facets} from '../facets.js';
+import {JoinUsr} from '../joinusr.js';
 
 Meteor.publishComposite('activitiesrecommend', function () {
     return {
@@ -18,7 +19,7 @@ Meteor.publishComposite('activitiesrecommend', function () {
             query.st={$nin:["del","hidden"]};
             query.istop=true;
             query.toptime={$gte:moment().toDate()};
-           return Activity.find(query,{limit:8,sort:{topsort:1,'meta.dt':-1}});
+           return Activity.find(query,{limit:5,sort:{topsort:1,'meta.dt':-1}});
         },
 
         children: [
@@ -165,6 +166,11 @@ Meteor.publishComposite('activitybyid', function (id) {
                 return Comment.find({
                     refid: item._id,
                     st:"normal"
+                });
+            },
+            find(item) {
+                return JoinUsr.find({
+                    refid: item._id
                 });
             }
         }]

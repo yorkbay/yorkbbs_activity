@@ -6,6 +6,7 @@ import { Meteor } from 'meteor/meteor';
 import { Activity } from './activity.js';
 import {ActivityImages} from './image.js';
 import {ActivityImageSpec} from './specs.js';
+import {JoinUsr} from './joinusr.js';
 
 
 export const insert = new ValidatedMethod({
@@ -181,6 +182,26 @@ export const front_activityAggr=new ValidatedMethod({
                 }
             ];
             return Activity.aggregate(pipeline);
+        }
+    }
+});
+
+
+export const joinActivity=new ValidatedMethod({
+    name:'Activity.joinActivity',
+    validate: JoinUsr.simpleSchema().pick(["refid","ti","meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
+    run(params) {
+        if(Meteor.isServer) {
+            let joinusr=JoinUsr.findOne({refid:params.refid,"meta.uid":params.meta.uid});
+            if(!joinusr){
+                let _id=params.refid;
+                Activity.update(_id,{
+                    $inc: {joinnum: 1}
+                });
+                return JoinUsr.insert(params);
+            }else {
+                return "";
+            }
         }
     }
 });

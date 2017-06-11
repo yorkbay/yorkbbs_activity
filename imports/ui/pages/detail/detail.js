@@ -90,6 +90,8 @@ Template.detail.events({
             }
         };
         usrCenterInsert.call(doc);
+        Bert.alert( '收藏成功', 'success',"growl-top-right");
+        return;
 
     },
     'click .J-error-submit':function (event,instance) {

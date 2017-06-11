@@ -1,9 +1,11 @@
 <template name="share">
     <div class="article-social">
         <!-- Go to www.addthis.com/dashboard to customize your tools --> <div class="addthis_inline_share_toolbox_lztf"></div>
-        <div class="views-share-go">
+        <div class="views-share-go" id="join">
+            <input type="hidden" id="refid" value="{{item._id}}">
+            <input type="hidden" id="ti" value="{{item.ti}}">
             <i><img src="/img/icon-map-heart.png" alt=""></i>
-            <em>想去（20）</em>
+            <em>想去（{{display_joinnum item.joinnum}}）</em>
         </div>
         <div class="views-share-error J-error-submit">
             <i><img src="/img/icon-error.png" alt=""></i>

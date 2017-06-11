@@ -250,6 +250,7 @@ Template.release.events({
             },
             "ct":ct,
             "pr":pr,
+            "joinnum":0,
             "lat":$("#hdnlat").val(),
             "lng":$("#hdnlng").val(),
             "site":$("#site").val(),
