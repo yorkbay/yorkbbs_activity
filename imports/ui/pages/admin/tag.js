@@ -7,6 +7,7 @@ import '../../components/layer/tagadd.js';
 import './comment.html';
 import {Tag} from '../../../api/tag/tag.js';
 import {tagInsert,tagmodifyst} from '../../../api/tag/methods.js';
+import {activityAggr} from '../../../api/activity/methods.js';
 
 const numOfRecords = 5;
 
@@ -35,6 +36,8 @@ Template.admin_tag_list.onCreated(function(){
 
         instance.subscribe('tagfindbyid',id);
 
+        //instance.subscribe('admin_activitiestags');
+
         instance.ready.set(PostSubs.ready());
     });
 });
@@ -61,7 +64,15 @@ Template.admin_tag_list.helpers({
         var query={_id:instance.id.get()};
 
         return Tag.findOne(query);
+    },
+    /*
+    "aggr_tag":function () {
+        activityAggr.call({},function (err,result) {
+            console.log("Explain Report:", JSON.stringify(result[0]), null, 2);
+        });
+        return "";
     }
+    */
 });
 
 

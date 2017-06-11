@@ -212,3 +212,21 @@ Meteor.publish('admin_activitieslist', function (params) {
 });
 
 
+Meteor.publish('admin_activitiestags', function () {
+    let query={};
+
+    var pipeline = [
+        {
+            $facet: {
+                "categorizedByTags": [
+                    { $unwind: "$tags" },
+                    { $sortByCount: "$tags" }
+                ]
+            }
+        }
+    ];
+    var result = Activity.aggregate(pipeline, {explain: true}).shift() || {};;
+    console.log(result);
+    return result;
+});
+

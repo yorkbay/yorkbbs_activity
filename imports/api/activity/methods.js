@@ -158,3 +158,33 @@ export const activityCheckModify=new ValidatedMethod({
         });
     }
 });
+
+
+export const activityAggr=new ValidatedMethod({
+    name:'Activity.aggregate',
+    validate: new SimpleSchema({}).validator(),
+    run() {
+
+        if(Meteor.isServer) {
+            /*
+            var pipeline = [
+                {
+                    $facet: {
+                        "categorizedByTags": [
+                            {$unwind: "$tags"}
+                        ]
+                    }
+                }
+            ];
+            var result = Activity.aggregate(pipeline, {explain: true});
+            */
+            var pipeline = [
+                {$group: {_id: null, tags: {$sum: "$tags"}}}
+            ];
+            var result = Activity.aggregate(pipeline, {explain: true});
+
+            //console.log("Explain Report:", JSON.stringify(result[0]));
+            return result;
+        }
+    }
+});
