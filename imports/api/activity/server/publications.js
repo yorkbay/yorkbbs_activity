@@ -3,11 +3,13 @@
  */
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check'
+import {Random} from 'meteor/random';
 import {SimpleSchema} from 'meteor/aldeed:simple-schema';
 import {Comment} from '../../comment/comment.js'
 
 import {Activity} from '../activity.js';
 import {ActivityImages} from '../image.js';
+import {Facets} from '../facets.js';
 
 Meteor.publishComposite('activitiesrecommend', function () {
     return {
@@ -52,39 +54,39 @@ Meteor.publishComposite('activitieslist', function (params) {
             query.st={$nin:["del","hidden"]};
             if(time){
 
-                let startOfDay = moment.utc().startOf('day').format("YYYY-MM-DD");
-                let endOfDay = moment.utc().endOf('day').format("YYYY-MM-DD");
+                let startOfDay;
+                let endOfDay ;
 
                 switch (time){
                     case "today":
-                        startOfDay = moment().startOf('day').format("YYYY-MM-DD");
-                        endOfDay = moment().startOf('day').format("YYYY-MM-DD");
+                        startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+
                         break;
                     case "tomorrow":
-                        startOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
-                        endOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
+                        startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
                         break;
                     case "week":
-                        startOfDay =moment().day(0).format("YYYY-MM-DD");
-                        endOfDay = moment().day(7).format("YYYY-MM-DD");
+                        startOfDay =moment().day("Sunday").format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().day("Saturday").format("YYYY-MM-DD")+" 00:00:00";
                         break;
                     case "weekend":
-                        startOfDay =moment().day(6).format("YYYY-MM-DD");
-                        endOfDay = moment().day(7).format("YYYY-MM-DD");
+                        startOfDay =moment().day(6).format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().day(7).format("YYYY-MM-DD")+" 00:00:00";
                         break;
                     case "nextweekend":
-                        startOfDay =moment().day(13).format("YYYY-MM-DD");
-                        endOfDay = moment().day(14).format("YYYY-MM-DD");
+                        startOfDay =moment().day(13).format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().day(14).format("YYYY-MM-DD")+" 00:00:00";
                         break;
                     case "month":
-                        startOfDay =moment().date(1).format("YYYY-MM-DD");
-                        endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD");
+                        startOfDay =moment().date(1).format("YYYY-MM-DD")+" 00:00:00";
+                        endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD")+" 00:00:00";
                         break;
                 }
-
-                query.$and=[
-                    {'btime.date': {$lte: new Date(startOfDay)}},
-                    {'etime.date': {$gte: new Date(endOfDay)}},
+                query.$or=[
+                    {'btime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
+                    {'etime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
                 ];
 
             }
@@ -212,10 +214,87 @@ Meteor.publish('admin_activitieslist', function (params) {
 });
 
 
-Meteor.publish('admin_activitiestags', function () {
-    let query={};
+
+Meteor.publish('tags.facets', function (params) {
+    check(params,{
+        key:String,
+        time:String,
+        isfree:String,
+        tag:String,
+        isrmd:String
+    });
+
+    const {key,time, isfree,tag,isrmd} = params;
+
+    const self = this;
+
+    var match={};
+    match.st={$nin:["del","hidden"]};
+    if(time){
+
+        let startOfDay;
+        let endOfDay ;
+
+        switch (time){
+            case "today":
+                startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+
+                break;
+            case "tomorrow":
+                startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                break;
+            case "week":
+                startOfDay =moment().day("Sunday").format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().day("Saturday").format("YYYY-MM-DD")+" 00:00:00";
+                break;
+            case "weekend":
+                startOfDay =moment().day(6).format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().day(7).format("YYYY-MM-DD")+" 00:00:00";
+                break;
+            case "nextweekend":
+                startOfDay =moment().day(13).format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().day(14).format("YYYY-MM-DD")+" 00:00:00";
+                break;
+            case "month":
+                startOfDay =moment().date(1).format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD")+" 00:00:00";
+                break;
+        }
+        match.$or=[
+            {'btime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
+            {'etime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
+        ];
+
+    }
+    if(key){
+        let regex = new RegExp( key, 'i' );
+        match={
+            ti:regex
+        }
+    }
+    if(isfree ==="1"){
+        match.pr={ $eq: "free"};
+    }else if(isfree ==="0") {
+        match.pr = {$ne: "free"};
+    }
+
+    if (isrmd) {
+        match.iscmd = true;
+        match.cmdtime = {$gte: moment().toDate()};
+    }
+
+    if(tag){
+        match.tags={
+            "$in": [tag]
+        }
+    }
 
     var pipeline = [
+        {
+            $match:match
+        },
         {
             $facet: {
                 "categorizedByTags": [
@@ -225,8 +304,18 @@ Meteor.publish('admin_activitiestags', function () {
             }
         }
     ];
-    var result = Activity.aggregate(pipeline, {explain: true}).shift() || {};;
-    console.log(result);
-    return result;
+
+    //console.log(JSON.stringify(pipeline));
+    const results= Activity.aggregate(pipeline).shift() || {};
+
+    const token = Facets.getToken(params);
+
+    self.added('facets', Random.id(), {
+        token: token,
+        data:results
+    });
+
+    self.ready();
 });
+
 

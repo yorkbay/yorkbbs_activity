@@ -26,8 +26,8 @@
             <h2>活动类型</h2>
             <div class="active-tags active-tags-2">
                 <ul data-type="types" class="search_tag">
-                    {{#each tag in tags}}
-                        <li><a href="javascript:void(0)" class="search_left_tag" tag="{{tag.tg}}"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>{{tag.tg}}</em></a></li>
+                    {{#each tag in tags_item.tags}}
+                        <li><a href="javascript:void(0)" class="search_left_tag" tag="{{tag.tg}}"><i><img src="/img/icon-arrow-bottom.png" alt=""></i><em>{{tag.tg}}({{display_num tag.tg tags_item.facets}})</em></a></li>
                     {{/each}}
                 </ul>
             </div>

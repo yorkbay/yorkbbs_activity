@@ -66,32 +66,6 @@ export const listbytag = new ValidatedMethod({
     }
 });
 
-export const tagnum = new ValidatedMethod({
-    name: 'Activity.tagnum',
-    validate: new SimpleSchema({}).validator(),
-    run() {
-        let query={
-            $facet: {
-                "categorizedByTags": [
-                    {$unwind: "$tags"},
-                    {$sortByCount: "$tags"}
-                ]
-            }
-        };
-
-
-        const results ="";//Activity.aggregate(query).shift() || {};
-
-        // post processing facet values
-        for (let facet in results) {
-            results[facet] && results[facet].forEach(obj => {
-                obj.id = obj._id;
-                delete obj._id;
-            });
-        }
-        return results;
-    }
-});
 
 export const activitymodifyst = new ValidatedMethod({
     name: 'Activity.activitymodifyst',
@@ -164,27 +138,49 @@ export const activityAggr=new ValidatedMethod({
     name:'Activity.aggregate',
     validate: new SimpleSchema({}).validator(),
     run() {
-
         if(Meteor.isServer) {
-            /*
             var pipeline = [
+                {
+                    $match:{st:{$nin:["del","hidden"]}}
+                },
                 {
                     $facet: {
                         "categorizedByTags": [
-                            {$unwind: "$tags"}
+                            { $unwind: "$tags" },
+                            { $sortByCount: "$tags" }
                         ]
                     }
                 }
             ];
-            var result = Activity.aggregate(pipeline, {explain: true});
-            */
-            var pipeline = [
-                {$group: {_id: null, tags: {$sum: "$tags"}}}
-            ];
-            var result = Activity.aggregate(pipeline, {explain: true});
+            return Activity.aggregate(pipeline);
+        }
+    }
+});
 
-            //console.log("Explain Report:", JSON.stringify(result[0]));
-            return result;
+export const front_activityAggr=new ValidatedMethod({
+    name:'Activity.front_activityAggr',
+    validate: new SimpleSchema({
+        key:{
+            type:String
+        }
+    }).validator(),
+    run({params}) {
+        if(Meteor.isServer) {
+
+            let pipeline = [
+                {
+                    $match:{st:{$nin:["del","hidden"]}}
+                },
+                {
+                    $facet: {
+                        "categorizedByTags": [
+                            { $unwind: "$tags" },
+                            { $sortByCount: "$tags" }
+                        ]
+                    }
+                }
+            ];
+            return Activity.aggregate(pipeline);
         }
     }
 });

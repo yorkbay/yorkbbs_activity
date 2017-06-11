@@ -10,7 +10,9 @@ import '../../components/list/list.js';
 import '../../components/list/simple.js';
 import '../../components/list/grid.js';
 import { Activity } from '../../../api/activity/activity.js';
-import { listbytag,tagnum } from '../../../api/activity/methods.js'
+import { listbytag } from '../../../api/activity/methods.js'
+import {Facets} from '../../../api/activity/facets.js';
+import {Tag} from '../../../api/tag/tag.js';
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions
@@ -20,6 +22,8 @@ const PostSubs = new SubsManager({
 });
 
 const numOfRecords = 10;
+
+
 
 Template.App_home.onCreated(function(){
     const instance = this;
@@ -43,6 +47,10 @@ Template.App_home.onCreated(function(){
         instance.subscribe('activitiestags');
         instance.subscribe('activitiesbytag','周末好去处');
 
+        instance.subscribe('tagslist');
+
+
+
 
         const key = instance.key.get();
         const time = instance.time.get();
@@ -56,8 +64,13 @@ Template.App_home.onCreated(function(){
             key,time,isfree,tag,isrmd,limit,st
         });
 
+        instance.subscribe('tags.facets',{
+            key,time,isfree,tag,isrmd
+        });
+
         instance.ready.set(PostSubs.ready());
     });
+
 
 
 });
@@ -71,7 +84,6 @@ Template.App_home.helpers({
     },
     "listbytag": function (tag) {
         return listbytag.call({tag});
-
     },
     "list_item": function () {
 
@@ -91,43 +103,43 @@ Template.App_home.helpers({
         }
         if(time){
 
-            let startOfDay = moment.utc().startOf('day').format("YYYY-MM-DD");
-            let endOfDay = moment.utc().endOf('day').format("YYYY-MM-DD");
+            let startOfDay;
+            let endOfDay ;
 
             switch (time){
                 case "today":
-                    startOfDay = moment().startOf('day').format("YYYY-MM-DD");
-                    endOfDay = moment().startOf('day').format("YYYY-MM-DD");
+                    startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+
                     break;
                 case "tomorrow":
-                    startOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
-                    endOfDay = moment().add(1, 'day').format("YYYY-MM-DD");
+                    startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
                     break;
                 case "week":
-                    startOfDay =moment().day(0).format("YYYY-MM-DD");
-                    endOfDay = moment().day(7).format("YYYY-MM-DD");
+                    startOfDay =moment().day("Sunday").format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().day("Saturday").format("YYYY-MM-DD")+" 00:00:00";
                     break;
                 case "weekend":
-                    startOfDay =moment().day(6).format("YYYY-MM-DD");
-                    endOfDay = moment().day(7).format("YYYY-MM-DD");
+                    startOfDay =moment().day(6).format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().day(7).format("YYYY-MM-DD")+" 00:00:00";
                     break;
                 case "nextweekend":
-                    startOfDay =moment().day(13).format("YYYY-MM-DD");
-                    endOfDay = moment().day(14).format("YYYY-MM-DD");
+                    startOfDay =moment().day(13).format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().day(14).format("YYYY-MM-DD")+" 00:00:00";
                     break;
                 case "month":
-                    startOfDay =moment().date(1).format("YYYY-MM-DD");
-                    endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD");
+                    startOfDay =moment().date(1).format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD")+" 00:00:00";
                     break;
             }
-
-            query.$and=[
-                {'btime.date': {$lte: new Date(startOfDay)}},
-                {'etime.date': {$gte: new Date(endOfDay)}},
+            query.$or=[
+                {'btime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
+                {'etime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
             ];
 
         }
-        //console.log(JSON.stringify( query));
+
         if(isfree === "1"){
             query.pr={
                 $eq: "free"
@@ -148,7 +160,34 @@ Template.App_home.helpers({
             query.cmdtime={$gte:moment().toDate()};
         }
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
-    }
+    },
+    'tags_item':function () {
+
+        let tags=Tag.find({});
+
+        const instance = Template.instance();
+
+        const key = instance.key.get();
+        const time = instance.time.get();
+        const isfree = instance.isfree.get();
+        const tag = instance.tag();
+        const isrmd = instance.isrmd.get();
+
+        const token = Facets.getToken({
+            key,time,isfree,tag,isrmd
+        });
+
+        let facets=Facets.findOne({token});
+        let categorizedByTags=[]
+        if(facets) {
+            categorizedByTags=facets.data.categorizedByTags;
+        }
+
+        return {
+            tags:tags,
+            facets:categorizedByTags
+        };
+    },
 });
 
 Template.App_home.events({

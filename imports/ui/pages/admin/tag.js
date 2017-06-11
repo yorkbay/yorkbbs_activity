@@ -18,6 +18,8 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
+let categorizedByTags;
+
 Template.admin_tag_list.onCreated(function(){
     const instance = this;
 
@@ -39,6 +41,11 @@ Template.admin_tag_list.onCreated(function(){
         //instance.subscribe('admin_activitiestags');
 
         instance.ready.set(PostSubs.ready());
+    });
+
+    activityAggr.call({},function (err,result) {
+        categorizedByTags=result[0].categorizedByTags;
+
     });
 });
 
@@ -65,14 +72,18 @@ Template.admin_tag_list.helpers({
 
         return Tag.findOne(query);
     },
-    /*
-    "aggr_tag":function () {
-        activityAggr.call({},function (err,result) {
-            console.log("Explain Report:", JSON.stringify(result[0]), null, 2);
+    "aggr_tag":function (tg) {
+        let count=0;
+        categorizedByTags.forEach(function (t) {
+            let tag=t._id;
+            console.log(tag+"----"+tg);
+            if(tg===tag){
+                count= t.count;
+            }
         });
-        return "";
+        return count;
     }
-    */
+
 });
 
 

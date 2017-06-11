@@ -11,7 +11,7 @@ import '../../components/layer/share.js';
 //xx月xx日
 Template.registerHelper('formatDate_MD', function(date) {
     if(!date)return "";
-    return moment(date).format("MM月DD日");
+    return new Date(date).format("MM月DD日");
 });
 
 //xx月xx日
@@ -30,4 +30,10 @@ Template.registerHelper('formatDate_YMDHS', function(date) {
 Template.registerHelper('formatDate_YMD', function(date) {
     if(!date)return "";
     return moment(date).format("YYYY-MM-DD");
+});
+
+//xx月xx日
+Template.registerHelper('display_pr', function(pr) {
+    if(!pr)return "";
+    return pr==="free"?"免费":pr;
 });

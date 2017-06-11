@@ -3,22 +3,33 @@
  */
 import './search.html';
 import {Tag} from '../../../api/tag/tag.js';
-import { tagnum } from '../../../api/activity/methods.js';
+
+
 
 Template.search_left.onCreated(function(){
     const instance = this;
 
-    //https://themeteorchef.com/tutorials/simple-search
     instance.autorun(function () {
-        //instance.subscribe('activitiestags');
-        instance.subscribe('tagslist');
+
     });
+
+
 
 
 });
 
 Template.search_left.helpers({
-    'tags':function () {
-        return Tag.find({});
+    "display_num":function (tg,facets) {
+        let count=0;
+        if(facets) {
+            facets.forEach(function (t) {
+                let tag = t._id;
+                if (tg === tag) {
+                    count = t.count;
+                }
+            });
+        }
+        return count;
     }
+
 });

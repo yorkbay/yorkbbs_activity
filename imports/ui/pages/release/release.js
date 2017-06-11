@@ -105,6 +105,7 @@ Template.release.events({
         }
     },
     "click #sub":()=>{
+
         let isonline=$("#isonline").is(':checked');
         let isifree=$("#isfree").is(':checked');
         let pr=$.trim($("#pr").val());
@@ -229,6 +230,7 @@ Template.release.events({
             ct=ct.replace(o_n[0],o_n[1]);
         });
 
+
         var doc= {
             "ti":$("#ti").val(),
             "st":"normal",
@@ -239,11 +241,11 @@ Template.release.events({
             "address":$("#address").val(),
             "code":$("#code").val(),
             "btime":{
-                "date":new Date($("#bdate").val()),
+                "date":new Date($("#bdate").val()+" 00:00:00"),
                 "time":$('#btime').val()
             },
             "etime":{
-                "date":new Date($("#edate").val()),
+                "date":new Date($("#edate").val()+" 00:00:00"),
                 "time":$('#etime').val()
             },
             "ct":ct,
@@ -259,6 +261,11 @@ Template.release.events({
                 "dt":new Date()
             }
         };
+
+        if(!doc.logo){
+            Bert.alert( '请至少上传一张图片，作为封面图', 'danger',"growl-top-right");
+            return;
+        }
 
 
         insert.call(doc,function (err,result) {
@@ -296,7 +303,6 @@ Template.release.events({
 
             FlowRouter.go('/activity/'+result);
         });
-
 
     },
     'click .J-change-tags a':(event,instance)=>{

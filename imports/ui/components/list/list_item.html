@@ -2,7 +2,7 @@
     <div class="newslist-content">
         <div class="newslist-cover newslist-image-cover">
             <a href="/activity/{{item._id}}" title=""><img src="{{item.logo}}" alt=""></a>
-            <p class="newslist-channel"><a href="/activity?id={{item._id}}" title="">{{item.pr}}</a></p>
+            <p class="newslist-channel"><a href="/activity?id={{item._id}}" title="">{{display_pr item.pr}}</a></p>
         </div>
         <div class="newslist-image-cont">
             <div class="newslist-body">

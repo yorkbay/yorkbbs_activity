@@ -46,11 +46,7 @@ Newsletter.schema = new SimpleSchema({
     dt: {
         type: Date,
         label: "create date",
-        optional:true,
-        autoValue:function(){
-            return new Date()
-        }
-
+        optional:true
     }
 });
 

@@ -9,6 +9,7 @@
     "bcrypt": "^1.0.2",
     "fs": "0.0.1-security",
     "meteor-node-stubs": "~0.2.4",
-    "needle": "0.11.0"
+    "needle": "0.11.0",
+    "object-hash": "^1.1.8"
   }
 }

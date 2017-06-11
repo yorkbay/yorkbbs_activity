@@ -21,7 +21,8 @@ Template.newsletter.events({
                 st:"normal",
                 issend:false,
                 uid:usr.id,
-                uname:usr.uname
+                uname:usr.uname,
+                dt:new Date()
             }
             newsletterInsert.call(doc);
 

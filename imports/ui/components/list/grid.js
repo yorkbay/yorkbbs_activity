@@ -35,6 +35,7 @@ Template.grid.onRendered(function gridOnRendered() {
 
 });
 
+
 Template.grid.events({
     "click .fav"(event, instance) {
         const usr=Session.get("usr");
