@@ -90,7 +90,6 @@ Template.detail.events({
             }
         };
         usrCenterInsert.call(doc);
-        //Overlay.show('helloTemplate',{closeable: false, title:'prova'});
 
     },
     'click .J-error-submit':function (event,instance) {
