@@ -36,19 +36,19 @@ Template.admin.events({
 //xx月xx日
 Template.registerHelper('formatDate_MD', function(date) {
     if(!date)return "";
-    return moment.utc(date).format("MM月DD日");
+    return moment(date).format("MM月DD日");
 });
 
 //xx月xx日
 Template.registerHelper('formatDate_HS', function(date) {
     if(!date)return "";
-    return moment.utc(date).format("H:mm");
+    return moment(date).format("H:mm");
 });
 
 //xx月xx日
 Template.registerHelper('formatDate_YMDHS', function(date) {
     if(!date)return "";
-    return moment.utc(date).format("YYYY-MM-DD HH:mm");
+    return moment(date).format("YYYY-MM-DD HH:mm");
 });
 
 //xx月xx日
@@ -56,3 +56,5 @@ Template.registerHelper('formatDate_YMD', function(date) {
     if(!date)return "";
     return moment(date).format("YYYY-MM-DD");
 });
+
+

@@ -41,6 +41,8 @@ Template.error.events({
                 dt:new Date()
             }
         }
+        $("#ct").val('');
+        $('[name="errortype"]').removeAttr('checked');
         LogInsert.call(log);
         return tag;
     },
