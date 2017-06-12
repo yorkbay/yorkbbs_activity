@@ -19,5 +19,6 @@ Template.list_item.events({
             }
         };
         usrCenterInsert.call(doc);
+        Bert.alert( '收藏成功', 'success',"growl-top-right");
     },
 });
