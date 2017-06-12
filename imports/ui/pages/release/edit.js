@@ -149,13 +149,12 @@ Template.edit.events({
 
         var ct=tinymce.activeEditor.getContent();
 
-
         var imageurl=$("#imageurl").val().split(',');
         imageurl.pop();
 
         imageurl.forEach(function (i) {
             let o_n=i.split(':');
-            ct=ct.replace(o_n[0],o_n[1]);
+            ct=ct.replace(o_n[0],o_n[1]).replace('../','');
 
         });
 
@@ -210,5 +209,5 @@ Template.edit.events({
 
 
 function getlogo(content){
-    return $(content).find('img:first').attr('src');
+    return $(content).find('img:first').attr('src').replace('../','');
 }
