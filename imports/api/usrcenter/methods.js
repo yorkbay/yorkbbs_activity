@@ -15,7 +15,6 @@ export const usrCenterInsert = new ValidatedMethod({
             } else {
                 result= "";
             }
-            console.log(result);
             return result;
         }
     }
