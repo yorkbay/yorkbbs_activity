@@ -7,12 +7,16 @@ export const usrCenterInsert = new ValidatedMethod({
     name: 'UsrCenter.insert',
     validate: UsrCenter.simpleSchema().pick(["refid",'st','ty',"meta.uid","meta.usr"]).validator({ clean: true, filter: false }),
     run(obj) {
-        //validate: UsrCenter.simpleSchema().pick(["ti","refid",'st','ty','location','city','address','code','btime.date','btime.time','etime.date','etime.time',"logo",'pr','tags','tags.$',"meta.uid","meta.usr"]).validator({ clean: true, filter: false }),
-        var usrct = UsrCenter.findOne({refid: obj.refid,ty:obj.ty,"meta.uid":obj.meta.uid});
-        if (!usrct || !usrct._id) {
-            return UsrCenter.insert(obj);
-        }else{
-            return usrct;
+        if(Meteor.isServer) {
+            let result="";
+            var usrct = UsrCenter.findOne({refid: obj.refid, ty: obj.ty, "meta.uid": obj.meta.uid});
+            if (!usrct || !usrct._id) {
+                result= UsrCenter.insert(obj);
+            } else {
+                result= "";
+            }
+            console.log(result);
+            return result;
         }
     }
 });

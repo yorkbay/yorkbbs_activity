@@ -462,6 +462,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/utils.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/parse.js" />
         <item url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/charref.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/fuww_addthis/0.0.2/web.browser/client/main.js" />
         <item url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/html.js" />
         <item url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/preamble.js" />
         <item url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/visitors.js" />
@@ -1173,6 +1174,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/utils.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/parse.js" />
       <root url="file://$USER_HOME$/.meteor/packages/html-tools/1.0.11/web.browser/charref.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/fuww_addthis/0.0.2/web.browser/client/main.js" />
       <root url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/html.js" />
       <root url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/preamble.js" />
       <root url="file://$USER_HOME$/.meteor/packages/htmljs/1.0.11/web.browser/visitors.js" />

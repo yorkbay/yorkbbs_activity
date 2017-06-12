@@ -4,6 +4,12 @@
  <div id="google-map" style="height: 300px;"></div>
      </div>-->
     <div class="map-container">
+        {{#each item in items}}
+        {{#if item.isonline}}
+        {{else}}
+            <input type="hidden" name="hdnlatlng" value="{{item.lat}}|{{item.lng}}|{{item.logo}}|{{item.ti}}">
+        {{/if}}
+        {{/each}}
         {{> googleMap name="leftmap" options=(mapOptions items)}}
         {{display_markers items}}
     </div>

@@ -89,8 +89,9 @@ Template.detail.events({
                 "usr":usr.uname
             }
         };
-        usrCenterInsert.call(doc);
-        Bert.alert( '收藏成功', 'success',"growl-top-right");
+        usrCenterInsert.call(doc,function (err,result) {
+            Bert.alert( '收藏成功', 'success',"growl-top-right");
+        });
         return;
 
     },

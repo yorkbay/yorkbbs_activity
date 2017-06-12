@@ -49,6 +49,7 @@ es5-shim@4.6.15
 fastclick@1.0.13
 fortawesome:fontawesome@4.4.0_1
 fourseven:scss@4.5.0
+fuww:addthis@0.0.2
 gadicohen:headers@0.0.31
 geojson-utils@1.0.10
 hot-code-push@1.0.4

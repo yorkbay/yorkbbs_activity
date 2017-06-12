@@ -65,6 +65,8 @@ Template.release.onRendered(function releaseOnRendered() {
         }
     });
 
+
+    tinymce.remove();
     tinymce.init({
         selector: '#ct',
         skin_url: '/packages/teamon_tinymce/skins/lightgray'
@@ -87,6 +89,7 @@ Template.release.helpers({
     }
 })
 
+let markers=[];
 Template.release.events({
     'change #isonline':function (event,instance) {
         let ischeck=event.target.checked;
@@ -232,7 +235,7 @@ Template.release.events({
 
 
         var doc= {
-            "ti":$("#ti").val(),
+            "ti":$("#ti").val().replace("|",""),
             "st":"normal",
             "logo":getlogo(ct),
             "isonline":isonline,
@@ -325,12 +328,12 @@ Template.release.events({
     "keyup #address":function (event,instance) {
         let address = $.trim($(event.currentTarget).val());
         if (!address)return;
-
+        clearMarkers();
 
         $("#google-map").css("visibility","visible");
 
-        const map=GoogleMaps.maps.releasemap.instance;
 
+        const map=GoogleMaps.maps.releasemap.instance;
         const geocoder = new google.maps.Geocoder();
 
         geocoder.geocode({'address': address}, function (results, status) {
@@ -342,16 +345,25 @@ Template.release.events({
                     map: map,
                     position: results[0].geometry.location
                 });
+                markers.push(marker);
             }
         });
 
     },
     "click #closemap":function (event,instance) {
-        $("#google-map").hide();
+        $("#google-map").css("visibility","hidden");
     }
 });
 
+function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
 
+function clearMarkers() {
+    setMapOnAll(null);
+}
 
 function getlogo(content){
     return $(content).find('img:first').attr('src');
