@@ -46,6 +46,7 @@ FlowRouter.route('/release', {
 
 FlowRouter.route('/release/:id', {
     name: 'App.admin.release',
+
     action() {
         require('../../ui/stylesheets/front/active.css');
         BlazeLayout.render('home', { main: 'release' });

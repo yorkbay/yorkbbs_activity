@@ -69,7 +69,16 @@ Template.release.onRendered(function releaseOnRendered() {
     tinymce.remove();
     tinymce.init({
         selector: '#ct',
-        skin_url: '/packages/teamon_tinymce/skins/lightgray'
+        plugins: [
+            'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen',
+            'insertdatetime media nonbreaking save table contextmenu directionality',
+            'emoticons template paste textcolor colorpicker textpattern imagetools codesample toc help'
+        ],
+        toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+        toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
+        skin_url: '/packages/teamon_tinymce/skins/lightgray',
+
 
     });
 
@@ -107,7 +116,7 @@ Template.release.events({
             $('.J-free-or').attr('disabled',false);
         }
     },
-    "click #sub":()=>{
+    "click #sub":(event,instance)=>{
 
         let isonline=$("#isonline").is(':checked');
         let isifree=$("#isfree").is(':checked');
@@ -131,13 +140,14 @@ Template.release.events({
             $("#ti").addClass("release-hints");
             $("#ti").focus();
             return;
+        }else if(ti.length>20){
+            $("#ti").addClass("release-hints");
+            $("#ti").focus();
+            Bert.alert( '不能超过20个字', 'danger',"growl-top-right");
+            return;
         }
+
         if(!isonline){
-            if(!location){
-                $("#location").addClass("release-hints");
-                $("#location").focus();
-                return;
-            }
             if(!city){
                 $("#city").addClass("release-hints");
                 $("#city").focus();
@@ -185,11 +195,12 @@ Template.release.events({
             $("#pr").focus();
             return;
         }
-        if(!site){
-            $("#site").addClass("release-hints");
-            $("#site").focus();
+
+        if(site && site.indexOf("http")<0){
+            Bert.alert( '活动网站必须以http开头', 'danger',"growl-top-right");
             return;
         }
+
         if(!tel){
             $("#tel").addClass("release-hints");
             $("#tel").focus();
@@ -271,7 +282,7 @@ Template.release.events({
             return;
         }
 
-
+        $("#sub").prop( "disabled", true );
         insert.call(doc,function (err,result) {
             if(err){
                 console.log(err);
@@ -307,6 +318,7 @@ Template.release.events({
 
             FlowRouter.go('/activity/'+result);
         });
+
 
     },
     'click .J-change-tags a':(event,instance)=>{

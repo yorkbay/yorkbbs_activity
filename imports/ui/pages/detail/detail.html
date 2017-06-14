@@ -6,9 +6,9 @@
     <div class="row">
         <div class="breadcrumb">
             <i class="breadcrumb-home"><img src="/img/icon-home.jpg" alt="" /></i>
-            <a href="/">网站首页</a>
+            <a href="http://www.yorkbbs.ca" target="_blank">网站首页</a>
             <span>></span>
-            <a href="">活动预告</a>
+            <a href="/">活动预告</a>
             <span>></span>
             <a href="">详情</a>
         </div>
@@ -36,17 +36,23 @@
                                 {{#if item.isonline}}
                                 这是一个线上活动
                                 {{else}}
-                                {{item.location}},{{item.address}},{{item.city}},{{item.code}}
+                                {{item.location}}-{{item.address}},{{item.city}}, ON {{item.code}}
                                 {{/if}}
                             </div>
                         </li>
+                        <li>
+                            <div class="views-content-title">电话</div>
+                            <div class="views-content-meta">{{item.tel}}</div>
+                        </li>
                     </ul>
+                    {{#if item.site}}
                     <div class="views-content-go">
-                        <a href="">
+                        <a href="{{item.site}}" target="_blank">
                             <i>+</i>
                             <em>立即参加</em>
                         </a>
                     </div>
+                    {{/if}}
                     <div class="views-social">
                         <a href="javascript:;" id="fav" itemid="{{item._id}}">
                             <img src="/img/icon-heard.png" alt="">
@@ -84,8 +90,20 @@
                 </dl>
                 {{> share item=item}}
             </section>
-            {{> recommend items=item.recommends}}
-            {{> comment comments=item.comments}}
+            {{> recommend items=recommends}}
+
+            <div class="article-comment">
+                <input id="refid" type="hidden" value="{{item._id}}">
+                <input id="ti" type="hidden" value="{{item.ti}}">
+                <p>您有任何问题，在这里提问！</p>
+                <div class="article-comment-textarea">
+                    <textarea placeholder="想对主办方说..." id="commentct" name="commentct"></textarea>
+                    <input type="button" id="sub" value="提问" />
+                </div>
+                <h2>全部评论</h2>
+                {{> comment comments=comments}}
+            </div>
+
         </div>
         <aside class="l-aside-widget">
             {{#if item.isonline}}

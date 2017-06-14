@@ -53,6 +53,7 @@ Meteor.publishComposite('activitieslist', function (params) {
 
             var query={};
             query.st={$nin:["del","hidden"]};
+            query['etime.date']={$gte: new Date()};
             if(time){
 
                 let startOfDay;
@@ -165,7 +166,8 @@ Meteor.publishComposite('activitybyid', function (id) {
             find(item) {
                 return Comment.find({
                     refid: item._id,
-                    st:"normal"
+                    st:"normal",
+                    isshow:true
                 });
             },
             find(item) {
@@ -196,12 +198,17 @@ Meteor.publish('admin_activitieslist', function (params) {
     }else {
         query.st = {$ne: "del"};
     }
-    if(btime){
-        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-    }
+    if(btime || etime) {
+        query.$and = [];
+        if (btime) {
+            let b = {'meta.dt': {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+            query.$and.push(b);
+        }
 
-    if(etime){
-        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        if (etime) {
+            let e = {'meta.dt': {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+            query.$and.push(e);
+        }
     }
     if(key){
         let regex = new RegExp( key, 'i' );

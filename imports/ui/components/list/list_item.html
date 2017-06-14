@@ -9,7 +9,7 @@
                 <a href="/activity/{{item._id}}" title="">
                 <time class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</time>
                 <div class="newslist-title">{{item.ti}}</div>
-                <div class="newslist-date newslist-address">{{item.location}}</div>
+                <div class="newslist-date newslist-address">{{item.location}}-{{item.address}},{{item.city}}, ON {{item.code}}</div>
                 </a>
             </div>
             <div class="newslist-footer">

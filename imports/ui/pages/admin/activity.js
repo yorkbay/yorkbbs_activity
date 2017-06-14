@@ -96,12 +96,18 @@ Template.admin_activity_list.helpers({
                 ti:regex
             }
         }
-        if(btime){
-            query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-        }
 
-        if(etime){
-            query['meta.dt']={$lte:new Date(moment(btime).format("YYYY-MM-DD"))}
+        if(btime || etime) {
+            query.$and = [];
+            if (btime) {
+                let b = {'meta.dt': {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+                query.$and.push(b);
+            }
+
+            if (etime) {
+                let e = {'meta.dt': {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+                query.$and.push(e);
+            }
         }
 
         if(st){

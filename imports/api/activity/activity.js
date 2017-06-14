@@ -219,7 +219,7 @@ Activity.helpers({
         return {
             itemid:this._id,
             ti:this.ti,
-            comments:Comment.find({refid: this._id}, {sort: {'meta.dt': -1}})
+            comments:Comment.find({refid: this._id,st:"normal",isshow:true}, {sort: {'meta.dt': -1}})
         }
     },
     images() {

@@ -11,9 +11,11 @@ export const usrCenterInsert = new ValidatedMethod({
             let result="";
             var usrct = UsrCenter.findOne({refid: obj.refid, ty: obj.ty, "meta.uid": obj.meta.uid});
             if (!usrct || !usrct._id) {
-                result= UsrCenter.insert(obj);
+               UsrCenter.insert(obj);
+                result="1";
             } else {
-                result= "";
+                UsrCenter.remove({_id:usrct._id});
+                result= "0";
             }
             return result;
         }

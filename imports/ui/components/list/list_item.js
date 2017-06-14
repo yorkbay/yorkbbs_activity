@@ -18,7 +18,13 @@ Template.list_item.events({
                 "usr":usr.uname
             }
         };
-        usrCenterInsert.call(doc);
-        Bert.alert( '收藏成功', 'success',"growl-top-right");
+        usrCenterInsert.call(doc,function (err,result) {
+            if(result=="1"){
+                Bert.alert( '收藏成功', 'success',"growl-top-right");
+            }else{
+                Bert.alert( '取消收藏', 'success',"growl-top-right");
+            }
+
+        });
     },
 });

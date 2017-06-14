@@ -8,6 +8,7 @@ import './comment.html';
 import {Tag} from '../../../api/tag/tag.js';
 import {tagInsert,tagmodifyst} from '../../../api/tag/methods.js';
 import {activityAggr} from '../../../api/activity/methods.js';
+import {Facets} from '../../../api/activity/facets.js';
 
 const numOfRecords = 5;
 
@@ -38,15 +39,20 @@ Template.admin_tag_list.onCreated(function(){
 
         instance.subscribe('tagfindbyid',id);
 
+        const key ="";
+        const time = "";
+        const isfree = "";
+        const tag = "";
+        const isrmd = "";
+        instance.subscribe('tags.facets',{
+            key,time,isfree,tag,isrmd
+        });
+
         //instance.subscribe('admin_activitiestags');
 
         instance.ready.set(PostSubs.ready());
     });
 
-    activityAggr.call({},function (err,result) {
-        categorizedByTags=result[0].categorizedByTags;
-
-    });
 });
 
 
@@ -60,8 +66,28 @@ Template.admin_tag_list.helpers({
 
         var query={};
 
+        const key = "";
+        const time = "";
+        const isfree = "";
+        const tag = "";
+        const isrmd = "";
 
-        return Tag.find(query,{limit:limit,sort:{'dt':-1}});
+        const token = Facets.getToken({
+            key,time,isfree,tag,isrmd
+        });
+
+        let facets=Facets.findOne({token});
+        let categorizedByTags=[]
+        if(facets) {
+            categorizedByTags=facets.data.categorizedByTags;
+        }
+
+        let tags=Tag.find(query,{limit:limit,sort:{'dt':-1}});
+        return {
+            tags:tags,
+            facets:categorizedByTags
+        };
+        //return Tag.find(query,{limit:limit,sort:{'dt':-1}});
     },
     "display_isshow":function (isshow) {
         return isshow?"显示":"隐藏";
@@ -81,6 +107,18 @@ Template.admin_tag_list.helpers({
                 count= t.count;
             }
         });
+        return count;
+    },
+    "display_num":function (tg,facets) {
+        let count=0;
+        if(facets) {
+            facets.forEach(function (t) {
+                let tag = t._id;
+                if (tg === tag) {
+                    count = t.count;
+                }
+            });
+        }
         return count;
     }
 

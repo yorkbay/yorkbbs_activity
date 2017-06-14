@@ -56,11 +56,11 @@ Template.leftmap.helpers({
                         position: new google.maps.LatLng(item.lat, item.lng),
                     });
 
-                    let c='<div class="map-info-content">'+
+                    let c='<div class="map-info-content"><a href="/activity/'+item._id+'">'+
                         '<div style="float: left; width: 100px; margin-right: 10px;">'+
                         '<img style="max-width: 100%" src="'+item.logo+'" alt="">'+
                         '</div>'+
-                        '<div style="overflow: hidden;">'+item.ti+'</div>'+
+                        '<div style="overflow: hidden;">'+item.ti+'</div></a>'+
                         '</div>';
 
                     var infowindow = new google.maps.InfoWindow({
@@ -79,7 +79,7 @@ Template.leftmap.helpers({
         if (GoogleMaps.loaded()) {
             return {
                 center: new google.maps.LatLng(43.7182197, -79.4482687),
-                zoom: 8,
+                zoom: 11,
                 items:items
             };
 

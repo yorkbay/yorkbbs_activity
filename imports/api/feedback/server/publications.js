@@ -24,12 +24,17 @@ Meteor.publish('feedbackslist', function (params) {
     if(ty){
         query.ty={$in:[ty]}
     }
-    if(btime){
-        query.fddt={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-    }
+    if(btime || etime) {
+        query.$and = [];
+        if (btime) {
+            let b = {fddt: {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+            query.$and.push(b);
+        }
 
-    if(etime){
-        query.fddt={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        if (etime) {
+            let e = {fddt: {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+            query.$and.push(e);
+        }
     }
 
     if(ismanage){

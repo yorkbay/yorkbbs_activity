@@ -17,7 +17,7 @@ import {
     findbyuid
 } from '../../../api/usrcenter/methods.js';
 
-const numOfRecords = 5;
+const numOfRecords = 25;
 
 const PostSubs = new SubsManager({
     // maximum number of cache subscriptions

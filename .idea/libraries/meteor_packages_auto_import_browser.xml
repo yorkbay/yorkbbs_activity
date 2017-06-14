@@ -627,6 +627,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/babel-runtime/1.0.1/web.browser/babel-runtime.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/test-app/client/main.css" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/src/reporters/MirrorReporter.coffee" />
+        <item url="file://$USER_HOME$/.meteor/packages/tomwasd_flow-router-seo/0.0.3/web.browser/packages/tomwasd_flow-router-seo.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/src/reporters/ClientServerReporter.coffee" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/misc/only/tdd.js" />
         <item url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/test-app/client/main.js" />
@@ -1338,6 +1339,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/babel-runtime/1.0.1/web.browser/babel-runtime.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/test-app/client/main.css" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/src/reporters/MirrorReporter.coffee" />
+      <root url="file://$USER_HOME$/.meteor/packages/tomwasd_flow-router-seo/0.0.3/web.browser/packages/tomwasd_flow-router-seo.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/src/reporters/ClientServerReporter.coffee" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/test/acceptance/misc/only/tdd.js" />
       <root url="file://$USER_HOME$/.meteor/packages/practicalmeteor_mocha/2.4.5_6/web.browser/meteor/test-app/client/main.js" />

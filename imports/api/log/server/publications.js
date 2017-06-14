@@ -27,12 +27,17 @@ Meteor.publish('admin_loglist', function (params) {
         query.action=action;
     }
 
-    if(btime){
-        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-    }
+    if(btime || etime) {
+        query.$and = [];
+        if (btime) {
+            let b = {'meta.dt': {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+            query.$and.push(b);
+        }
 
-    if(etime){
-        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        if (etime) {
+            let e = {'meta.dt': {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+            query.$and.push(e);
+        }
     }
 
     return Log.find(query,{limit:limit,sort:{'meta.dt':-1}});

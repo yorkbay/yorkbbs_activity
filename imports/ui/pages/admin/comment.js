@@ -79,12 +79,17 @@ Template.admin_comment_list.helpers({
             }
 
         }
-        if(btime){
-            query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-        }
+        if(btime || etime) {
+            query.$and = [];
+            if (btime) {
+                let b = {'meta.dt': {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+                query.$and.push(b);
+            }
 
-        if(etime){
-            query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+            if (etime) {
+                let e = {'meta.dt': {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+                query.$and.push(e);
+            }
         }
 
         if(isshow){
@@ -102,8 +107,6 @@ Template.admin_comment_list.helpers({
                 query.review=false;
             }
         }
-
-
         return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
     "display_isshow":function (review) {

@@ -4,37 +4,15 @@
 
 import {Comment} from '../comment.js'
 
-Meteor.publish('commentslist', function (params) {
+Meteor.publish('commentslistbyid', function (params) {
     check(params,{
-        key:String,
-        btime:Date,
-        etime:Date,
-        limit:Number,
-        review:String
+        id:String
     });
-    const {key,btime, etime,limit,review} = params;
+    const {id} = params;
 
-    var query={};
+    return Comment.find({refid: id,st:"normal",isshow:true}, {sort: {'meta.dt': -1}})
 
-    query.st={$ne:"del"};
-    query.isshow=true;
-    if(key){
-        let regex = new RegExp( key, 'i' );
-        query={
-            ct:regex
-        }
-    }
-
-
-    if(review){
-        if(review =="true"){
-            query.review=true;
-        }else{
-            query.review=false;
-        }
-    }
-
-    return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
+    //return Comment.find(query,{limit:limit,sort:{'meta.dt':-1}});
 });
 
 Meteor.publish('admin_commentslist', function (params) {
@@ -57,12 +35,17 @@ Meteor.publish('admin_commentslist', function (params) {
             ct:regex
         }
     }
-    if(btime){
-        query['meta.dt']={$gte:new Date(moment(btime).format("YYYY-MM-DD"))}
-    }
+    if(btime || etime) {
+        query.$and = [];
+        if (btime) {
+            let b = {'meta.dt': {$gte: new Date(moment(btime).format("YYYY-MM-DD"))}}
+            query.$and.push(b);
+        }
 
-    if(etime){
-        query['meta.dt']={$lte:new Date(moment(etime).format("YYYY-MM-DD"))}
+        if (etime) {
+            let e = {'meta.dt': {$lte: new Date(moment(etime).format("YYYY-MM-DD"))}}
+            query.$and.push(e);
+        }
     }
     if(isshow){
         if(isshow =="true"){
