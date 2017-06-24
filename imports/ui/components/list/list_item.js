@@ -27,4 +27,17 @@ Template.list_item.events({
 
         });
     },
+    'click .list-share'(event,instance){
+
+        $(event.currentTarget).parent().find(".layer-content").addClass('animate-down-show');
+
+
+    }
 });
+
+Template.list_item.helpers({
+    'gethost':function () {
+        return window.location.host;
+    }
+});
+

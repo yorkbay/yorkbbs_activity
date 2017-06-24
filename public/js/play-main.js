@@ -79,7 +79,9 @@ $(function(){
 	/*分享*/
 	$('.J-share').click(function(){
 		var shareLink = $(this).attr('href');
-		$('.J-share-layer').find('.layer-box-web').val(shareLink).end().show();
+
+
+        $('.J-share-layer').find('.layer-box-web').val(shareLink).end().show();
 		$('.J-share-layer').find('.layer-content').addClass('animate-down-show');
 		return false;
 	});

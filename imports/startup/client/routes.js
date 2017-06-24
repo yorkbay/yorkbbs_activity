@@ -36,7 +36,7 @@ FlowRouter.route('/', {
 });
 
 
-FlowRouter.route('/release', {
+FlowRouter.route('/post', {
     name: 'App.release',
     action() {
         require('../../ui/stylesheets/front/active.css');
@@ -48,6 +48,7 @@ FlowRouter.route('/release/:id', {
     name: 'App.admin.release',
 
     action() {
+        BlazeLayout.reset();
         require('../../ui/stylesheets/front/active.css');
         BlazeLayout.render('home', { main: 'release' });
     },

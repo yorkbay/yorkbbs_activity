@@ -6,7 +6,7 @@
         </div>
         <div class="newslist-image-cont">
             <div class="newslist-body">
-                <a href="/activity/{{item._id}}" title="">
+                <a href="/activity/{{item._id}}" title="" target="_blank">
                 <time class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</time>
                 <div class="newslist-title">{{item.ti}}</div>
                 <div class="newslist-date newslist-address">{{item.location}}-{{item.address}},{{item.city}}, ON {{item.code}}</div>
@@ -17,9 +17,10 @@
                     {{#each tg in item.tags}}
                         <a href="/?tag={{tg}}">#{{tg}} </a>
                     {{/each}}
+
                 </div>
                 <div class="newslist-bookmark">
-                    <a class="J-share" href="http://fenxianglujing.com">
+                    <a class=" list-share" href="">
                         <img src="img/icon-share.png" alt="">
                         <img src="img/icon-share-red.png" alt="">
                     </a>
@@ -27,8 +28,12 @@
                         <img src="img/icon-heard.png" alt="">
                         <img src="img/icon-heard-red.png" alt="">
                     </a>
+
                 </div>
+
             </div>
         </div>
+        <div class="addthis_inline_share_toolbox_lztf" data-url="http://{{gethost}}/activity/{{item._id}}" data-title="{{item.ti}}"></div>
+
     </div>
 </template>

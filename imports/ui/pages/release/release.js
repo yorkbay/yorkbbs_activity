@@ -61,7 +61,16 @@ Template.release.onRendered(function releaseOnRendered() {
                 //var img="<img src='"+file.path+"' />";
                 var img="<img src='/upload/"+file.name+"'  refsrc='"+file._path+"'/>";
                 tinymce.activeEditor.insertContent(img);
-            })
+            });
+
+            let ct=tinymce.activeEditor.getContent();
+            let logo=getlogo(ct);
+            if(logo){
+                $(".release-pic").show();
+                $('.release-pic').find('img').attr('src',logo);
+            }else{
+                $(".release-pic").hide();
+            }
         }
     });
 
@@ -77,9 +86,13 @@ Template.release.onRendered(function releaseOnRendered() {
         ],
         toolbar1: 'undo redo | insert | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
         toolbar2: 'print preview media | forecolor backcolor emoticons | codesample help',
-        skin_url: '/packages/teamon_tinymce/skins/lightgray',
+        skin_url: '/packages/teamon_tinymce/skins/lightgray'
+    });
 
-
+    SEO.set({
+        title: '活动发布 - 约克论坛活动预告',
+        keywords:'多伦多周末好去处,周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩,本周好去处,本周活动,周末好去处,娱乐活动,多伦多周末有什么好玩的地方,周末好玩的活动,周末去哪玩儿',
+        description: '约克论坛活动预告,为加拿大多伦多地区的华人和留学生提供周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩等多伦多活动预告信息'
     });
 
 });

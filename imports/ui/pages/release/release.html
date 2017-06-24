@@ -11,7 +11,7 @@
                     <label class="release-label"><b>活动标题 </b> <i>*</i></label>
                     <input type="hidden" name="lat" id="lat" value=""/>
                     <input type="hidden" name="lng" id="lng" value=""/>
-                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}" class="release-input release-input-text" placeholder="介绍一下这是一个什么样的活动" />
+                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}"  class="release-input release-input-text" placeholder="介绍一下这是一个什么样的活动" />
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动地点</b> <i>*</i></label>
@@ -91,10 +91,13 @@
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动图片</b> <i></i></label>
-                    <div>
-                        <a name="dropzoneDiv" id="dropzoneDiv" class="dz-clickable release-button-yes">点击上传本地图</a>
+                    <div class="release-camera">
+                        <a  class="release-camera-box" name="dropzoneDiv" id="dropzoneDiv">
+                            <img src="/img/icon-camera.png" alt="">
+                            <p>添加活动图片</p>
+                        </a>
                     </div>
-                    <div id="preview-template" style="display: none;"></div>
+                    <div class="release-pic" style="display: none;"><img src="/img/img1.jpg" alt=""></div>
                     <div class="release-camera-tips"><i>注：</i> 图片最小尺寸为2160x1080px (2:1 比例) 图片大小不能超出 10MB</div>
                 </div>
                 <div class="release-row">

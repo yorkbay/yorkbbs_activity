@@ -5,8 +5,8 @@
 # but you can also edit it by hand.
 
 # meteor libraries
-meteor-base@1.0.4
-ecmascript@0.7.3
+meteor-base@1.1.0
+ecmascript@0.8.0
 es5-shim@4.6.15
 check@1.2.5
 tracker@1.1.3
@@ -18,14 +18,14 @@ fourseven:scss
 
 # ui
 blaze-html-templates@1.0.4
-reactive-dict@1.1.8
+reactive-dict@1.1.9
 reactive-var@1.0.11
 aldeed:template-extension
 percolate:momentum
 mrt:bootstrap-3
 
 # data
-mongo@1.1.17
+mongo@1.1.18
 aldeed:collection2
 dburles:collection-helpers
 reywood:publish-composite
@@ -53,7 +53,7 @@ useraccounts:core
 useraccounts:unstyled
 useraccounts:flow-routing
 softwarerero:accounts-t9n
-accounts-ui
+accounts-ui@1.1.9
 
 alanning:roles
 
@@ -64,7 +64,7 @@ chriswessels:hammer
 
 # production
 juliancwirko:postcss
-standard-minifier-js@2.0.0
+standard-minifier-js@2.1.0
 ddp-rate-limiter@1.0.7
 
 # rest apis
@@ -93,7 +93,7 @@ meteortoys:allthings
 teamon:tinymce
 swiper:swiper
 dbarrett:dropzonejs
-session
+session@1.1.7
 u2622:persistent-session
 tomi:upload-server
 tsega:bootstrap3-datetimepicker
@@ -103,3 +103,5 @@ dburles:google-maps
 themeteorchef:bert
 #fuww:addthis
 tomwasd:flow-router-seo
+shmck:meteor-social-buttons
+dynamic-import@0.1.0

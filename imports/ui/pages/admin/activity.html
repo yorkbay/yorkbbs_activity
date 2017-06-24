@@ -43,9 +43,9 @@
                         <em class="contacts-detail-radio">
                             <select class="form-control" name="imgtagcl" id="imgtagcl">
                                 <option value="">默认</option>
-                                <option class="red" value="red"></option>
-                                <option class="green" value="green"></option>
-                                <option class="blue" value="blue"></option>
+                                <option class="red" value="red">红</option>
+                                <option class="green" value="green">绿</option>
+                                <option class="blue" value="blue">蓝</option>
                             </select>
                         </em>
 
@@ -150,7 +150,7 @@
                             <em>{{formatDate_YMD item.meta.dt}}</em>
                         </td>
                         <td>
-                            <em class="table-blue">{{display_st item.st}}</em>
+                            <em class="table-blue">{{display_st item.st item.etime.date}}</em>
                         </td>
                         <td>
                             <em>

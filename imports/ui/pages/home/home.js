@@ -21,7 +21,7 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
-const numOfRecords = 25;
+const numOfRecords = 2;
 
 
 
@@ -112,38 +112,47 @@ Template.App_home.helpers({
 
             let startOfDay;
             let endOfDay ;
+            if(time=="today"){
 
-            switch (time){
-                case "today":
-                    startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                query.$and = [
+                    {'btime.date': {$lte: new Date(startOfDay)}},
+                    {'etime.date': { $gte: new Date(endOfDay)}},
+                ];
+            }else if(time=="tomorrow"){
 
-                    break;
-                case "tomorrow":
-                    startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
-                    break;
-                case "week":
-                    startOfDay =moment().day("Sunday").format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().day("Saturday").format("YYYY-MM-DD")+" 00:00:00";
-                    break;
-                case "weekend":
-                    startOfDay =moment().day(6).format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().day(7).format("YYYY-MM-DD")+" 00:00:00";
-                    break;
-                case "nextweekend":
-                    startOfDay =moment().day(13).format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().day(14).format("YYYY-MM-DD")+" 00:00:00";
-                    break;
-                case "month":
-                    startOfDay =moment().date(1).format("YYYY-MM-DD")+" 00:00:00";
-                    endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD")+" 00:00:00";
-                    break;
+                startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                query.$and = [
+                    {'btime.date': {$lte: new Date(startOfDay)}},
+                    {'etime.date': { $gte: new Date(endOfDay)}},
+                ];
+
+            }else {
+                switch (time) {
+                    case "week":
+                        startOfDay = moment().day("Sunday").format("YYYY-MM-DD") + " 00:00:00";
+                        endOfDay = moment().day("Saturday").format("YYYY-MM-DD") + " 00:00:00";
+                        break;
+                    case "weekend":
+                        startOfDay = moment().day(6).format("YYYY-MM-DD") + " 00:00:00";
+                        endOfDay = moment().day(7).format("YYYY-MM-DD") + " 00:00:00";
+                        break;
+                    case "nextweekend":
+                        startOfDay = moment().day(13).format("YYYY-MM-DD") + " 00:00:00";
+                        endOfDay = moment().day(14).format("YYYY-MM-DD") + " 00:00:00";
+                        break;
+                    case "month":
+                        startOfDay = moment().date(1).format("YYYY-MM-DD") + " 00:00:00";
+                        endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD") + " 00:00:00";
+                        break;
+                }
+                query.$or = [
+                    {'btime.date': {$gte: new Date(startOfDay), $lte: new Date(endOfDay)}},
+                    {'etime.date': {$gte: new Date(startOfDay), $lte: new Date(endOfDay)}},
+                ];
             }
-            query.$or=[
-                {'btime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
-                {'etime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
-            ];
 
         }
 
@@ -166,7 +175,9 @@ Template.App_home.helpers({
             query.iscmd=true;
             query.cmdtime={$gte:moment().toDate()};
         }
-        return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
+        let activity_items=Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
+
+        return activity_items;
     },
     'tags_item':function () {
 

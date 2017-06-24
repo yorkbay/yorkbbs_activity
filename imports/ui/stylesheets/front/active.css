@@ -1842,12 +1842,14 @@ th {
   width: 100%; }
 
 #topbar,
-#footer {
+#footer,
+#subnav {
   display: none; }
-  @media only print, screen and (min-width: 75.0625em) {
-    #topbar,
-    #footer {
-      display: block; } }
+@media only print, screen and (min-width: 75.0625em) {
+  #topbar,
+  #footer,
+  #subnav {
+    display: block; } }
 
 #top {
   display: none; }
@@ -3218,11 +3220,11 @@ th {
 
 .newslist-grid {
   display: none; }
-  @media only print, screen and (min-width: 64.0625em) {
-    .newslist-grid {
-      display: block;
-      margin: 0;
-      position: relative; } }
+@media only print, screen and (min-width: 75.0625em) {
+  .newslist-grid {
+    display: block;
+    margin: 0;
+    position: relative; } }
   .newslist-grid ul {
     left: 0;
     position: relative;
@@ -3314,16 +3316,18 @@ th {
   padding: 0;
   position: relative;
   height: 5.625rem; }
-  @media only print, screen and (min-width: 64.0625em) {
-    .newslist-cover {
-      padding-left: 0.9375rem;
-      padding-right: 0.9375rem;
-      width: 100%;
-      float: left;
-      height: 8.75rem;
-      padding: 0; } }
-  .newslist-cover img:hover {
-    transform: scale(1.1, 1.1); }
+@media only print, screen and (min-width: 64.0625em) {
+  .newslist-cover {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+    width: 100%;
+    float: left;
+    height: 8.75rem;
+    padding: 0; } }
+.newslist-cover img {
+  width: 100%; }
+.newslist-cover img:hover {
+  transform: scale(1.1, 1.1); }
 
 .newslist-channel {
   background: rgba(0, 0, 0, 0.5);
@@ -3416,7 +3420,6 @@ th {
       display: inline-block; }
 
 .newslist-label {
-  background: #e4393c;
   color: #fff;
   display: inline-block;
   font-size: 0.75rem;

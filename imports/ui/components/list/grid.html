@@ -1,6 +1,6 @@
 <template name="grid">
     <div class="row">
-        <div class="swiper-container">
+        <div class="swiper-container newslist-grid">
             <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
             {{#each item in items}}
                 <div class="swiper-slide" style="width: 277.5px;margin-right: 30px;">
@@ -10,7 +10,7 @@
                                 <div class="newslist-cover">
                                     <a href="/activity/{{item._id}}" title=""><img src="{{item.logo}}" alt=""></a>
                                     <p class="newslist-channel"><a href="/activity/{{item._id}}" title="">{{display_pr item.pr }}</a></p>
-                                    <span class="newslist-label">{{item.imgtag}}</span>
+                                    <span class="newslist-label" style="background:{{display_color item.imgtagcl}} ">{{item.imgtag}}</span>
                                 </div>
                                 <div class="newslist-body">
                                     <div class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</div>

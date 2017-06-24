@@ -28,6 +28,7 @@ Template.admin_activity_list.onCreated(function(){
     instance.tag = new ReactiveVar("");
     instance.key = new ReactiveVar("");
     instance.st = new ReactiveVar("");
+    instance.out = new ReactiveVar("");
 
     instance.activityid = new ReactiveVar("");
     instance.btime = new ReactiveVar("");
@@ -42,10 +43,11 @@ Template.admin_activity_list.onCreated(function(){
         const etime = instance.etime.get();
         const tag = instance.tag.get();
         const st = instance.st.get();
+        const out = instance.out.get();
         const limit = instance.limit.get();
 
         instance.subscribe('admin_activitieslist', {
-            key,btime,etime,tag,limit,st
+            key,btime,etime,tag,limit,st,out
         });
 
         instance.subscribe('tagslist');
@@ -86,10 +88,16 @@ Template.admin_activity_list.helpers({
         const etime = instance.etime.get();
         const tag = instance.tag.get();
         const st = instance.st.get();
+        const out = instance.out.get();
 
         const limit = instance.limit.get();
 
         var query={};
+
+        if(out){
+            query["etime.date"]={$lte: new Date()};
+        }
+
         if(key){
             let regex = new RegExp( key, 'i' );
             query={
@@ -119,10 +127,9 @@ Template.admin_activity_list.helpers({
                 $in:[tag]
             }
         }
-
         return Activity.find(query,{limit:limit,sort:{'meta.dt':-1}});
     },
-    "display_st":function (st) {
+    "display_st":function (st,edate) {
         let val="正常";
         switch (st){
             case "del":
@@ -134,6 +141,10 @@ Template.admin_activity_list.helpers({
             case "normal":
                 val="正常";
                 break;
+        }
+
+        if(new Date(edate)<new Date()){
+            val="过期";
         }
         return val;
     },
@@ -267,7 +278,12 @@ Template.admin_activity_list.events({
     },
     'change #st'(event,instance){
         var val= $(event.currentTarget).val();
-        instance.st.set(val);
+        if(val=="out"){
+            instance.out.set("true");
+        }else {
+            instance.st.set(val);
+            instance.out.set("");
+        }
         instance.limit.set(numOfRecords);
     },
     'blur #startdate'(event,instance){

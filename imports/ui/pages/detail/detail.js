@@ -178,6 +178,10 @@ Template.detail.events({
         }
         LogInsert.call(log);
         $("#commentct").val('');
+    },
+    'click .j-share'(event,instance){
+        $('.J-share-layer').find('.layer-content').addClass('animate-down-show');
+
     }
 });
 

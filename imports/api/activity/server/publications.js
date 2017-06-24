@@ -58,38 +58,47 @@ Meteor.publishComposite('activitieslist', function (params) {
 
                 let startOfDay;
                 let endOfDay ;
+                if(time=="today"){
 
-                switch (time){
-                    case "today":
-                        startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                    startOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().startOf('day').format("YYYY-MM-DD")+" 00:00:00";
+                    query.$and = [
+                        {'btime.date': {$lte: new Date(startOfDay)}},
+                        {'etime.date': { $gte: new Date(endOfDay)}},
+                    ];
+                }else if(time=="tomorrow"){
 
-                        break;
-                    case "tomorrow":
-                        startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
-                        break;
-                    case "week":
-                        startOfDay =moment().day("Sunday").format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().day("Saturday").format("YYYY-MM-DD")+" 00:00:00";
-                        break;
-                    case "weekend":
-                        startOfDay =moment().day(6).format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().day(7).format("YYYY-MM-DD")+" 00:00:00";
-                        break;
-                    case "nextweekend":
-                        startOfDay =moment().day(13).format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().day(14).format("YYYY-MM-DD")+" 00:00:00";
-                        break;
-                    case "month":
-                        startOfDay =moment().date(1).format("YYYY-MM-DD")+" 00:00:00";
-                        endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD")+" 00:00:00";
-                        break;
+                    startOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                    endOfDay = moment().add(1, 'day').format("YYYY-MM-DD")+" 00:00:00";
+                    query.$and = [
+                        {'btime.date': {$lte: new Date(startOfDay)}},
+                        {'etime.date': { $gte: new Date(endOfDay)}},
+                    ];
+
+                }else {
+                    switch (time) {
+                        case "week":
+                            startOfDay = moment().day("Sunday").format("YYYY-MM-DD") + " 00:00:00";
+                            endOfDay = moment().day("Saturday").format("YYYY-MM-DD") + " 00:00:00";
+                            break;
+                        case "weekend":
+                            startOfDay = moment().day(6).format("YYYY-MM-DD") + " 00:00:00";
+                            endOfDay = moment().day(7).format("YYYY-MM-DD") + " 00:00:00";
+                            break;
+                        case "nextweekend":
+                            startOfDay = moment().day(13).format("YYYY-MM-DD") + " 00:00:00";
+                            endOfDay = moment().day(14).format("YYYY-MM-DD") + " 00:00:00";
+                            break;
+                        case "month":
+                            startOfDay = moment().date(1).format("YYYY-MM-DD") + " 00:00:00";
+                            endOfDay = moment().add('months', 1).date(0).format("YYYY-MM-DD") + " 00:00:00";
+                            break;
+                    }
+                    query.$or = [
+                        {'btime.date': {$gte: new Date(startOfDay), $lte: new Date(endOfDay)}},
+                        {'etime.date': {$gte: new Date(startOfDay), $lte: new Date(endOfDay)}},
+                    ];
                 }
-                query.$or=[
-                    {'btime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
-                    {'etime.date': {$gte: new Date(startOfDay),$lte: new Date(endOfDay)}},
-                ];
 
             }
             if(key){
@@ -186,12 +195,18 @@ Meteor.publish('admin_activitieslist', function (params) {
         etime:String,
         tag:String,
         limit:Number,
-        st:String
+        st:String,
+        out:String
     });
 
-    const {key,btime,etime,tag,limit,st} = params;
+    const {key,btime,etime,tag,limit,st,out} = params;
 
     var query={};
+
+    if(out){
+        query["etime.date"]={$lte: new Date()};
+    }
+
 
     if(st){
         query.st=st

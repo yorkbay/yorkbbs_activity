@@ -59,3 +59,9 @@ Template.grid.events({
         });
     },
 });
+
+Template.grid.helpers({
+    "display_color"(color) {
+        return color;
+    },
+});
