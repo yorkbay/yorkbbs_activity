@@ -142,7 +142,7 @@ Meteor.publishComposite('activitiesbytag', function (tag) {
     check(tag,String);
     return {
         find() {
-            return Activity.find({tags:{ "$in": [tag] },st:{$nin:["del","hidden"]}},{limit:5,sort:{'meta.dt':-1}});
+            return Activity.find({tags:{ "$in": [tag] },st:{$nin:["del","hidden"]},'etime.date':{$gte: new Date()}},{limit:5,sort:{'meta.dt':-1}});
         },
         children: [
             {
