@@ -31,7 +31,7 @@ const PostSubs = new SubsManager({
 Template.usercenter.onCreated(function(){
     const instance = this;
 
-    const uid=Session.get("usr").id;
+    const uid=Session.get("usr").id.toString();
 
     instance.ready = new ReactiveVar();
     instance.ty = new ReactiveVar("relea");
@@ -48,6 +48,12 @@ Template.usercenter.onCreated(function(){
             ty,uid,limit
         );
         instance.ready.set(PostSubs.ready());
+    });
+
+    SEO.set({
+        title: '用户中心 - 约克论坛活动预告',
+        keywords:'多伦多周末好去处,周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩,本周好去处,本周活动,周末好去处,娱乐活动,多伦多周末有什么好玩的地方,周末好玩的活动,周末去哪玩儿',
+        description: '约克论坛活动预告,为加拿大多伦多地区的华人和留学生提供周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩等多伦多活动预告信息'
     });
 
 });

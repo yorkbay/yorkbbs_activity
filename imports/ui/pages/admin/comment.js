@@ -74,9 +74,11 @@ Template.admin_comment_list.helpers({
         if(key){
 
             let regex = new RegExp( key, 'i' );
-            query={
-                ct:regex
-            }
+            query.$or = [
+                {'ct': regex},
+                {'ti': regex},
+                {'meta.usr': regex}
+            ];
 
         }
         if(btime || etime) {

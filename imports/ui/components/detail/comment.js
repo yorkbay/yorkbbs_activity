@@ -8,6 +8,8 @@ import {Comment} from '../../../api/comment/comment.js';
 
 
 
-Template.comment.events({
-
+Template.comment.helpers({
+    "showavatar":function (avatar) {
+        return avatar.replace("/media","/media/c3");
+    }
 });

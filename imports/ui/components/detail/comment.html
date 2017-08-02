@@ -2,7 +2,7 @@
     <ul class="article-comment-list">
         {{#each comment in comments}}
             <li>
-                <div class="article-comment-cover"><a href=""><img src="/img/icon-avtar.jpg" alt="" /></a></div>
+                <div class="article-comment-cover"><a href=""><img src="https://i.ybbs.ca{{showavatar comment.meta.avatar}}" alt="" /></a></div>
                 <div class="article-comment-content">
                     <h3><a href="">{{comment.meta.usr}}</a><span>{{formatDate_YMDHS comment.meta.dt}}</span></h3>
                     <p>{{comment.ct}}</p>

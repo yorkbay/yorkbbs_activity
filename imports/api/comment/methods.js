@@ -3,7 +3,7 @@ import {Comment} from './comment.js';
 
 export const commentInsert = new ValidatedMethod({
     name: 'commentInsert',
-    validate: Comment.simpleSchema().pick(['ct','st','isshow','review','refid','ti','meta.uid','meta.usr','meta.dt']).validator({ clean: true, filter: false }),
+    validate: Comment.simpleSchema().pick(['ct','st','isshow','review','refid','ti','meta.uid','meta.usr','meta.avatar','meta.dt']).validator({ clean: true, filter: false }),
     run(obj) {
         return Comment.insert(obj);
     }

@@ -44,6 +44,8 @@ Template.error.events({
         $("#ct").val('');
         $('[name="errortype"]').removeAttr('checked');
         LogInsert.call(log);
+
+        Bert.alert( '提交成功', 'success',"growl-top-right");
         return tag;
     },
     'click .layer-close':function (event,instance) {

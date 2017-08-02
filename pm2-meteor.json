@@ -1,7 +1,7 @@
 {
   "appName": "events",
   "appLocation": {
-    "local": "/var/www/yorkbbs/activity/activity"
+    "local": "/www/yorkbbs_activity"
   },
   "meteorSettingsInRepo": false,
   "prebuildScript": "",

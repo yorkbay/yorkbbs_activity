@@ -31,9 +31,11 @@ Meteor.publish('admin_commentslist', function (params) {
 
     if(key){
         let regex = new RegExp( key, 'i' );
-        query={
-            ct:regex
-        }
+        query.$or = [
+            {'ct': regex},
+            {'ti': regex},
+            {'meta.usr': regex}
+        ];
     }
     if(btime || etime) {
         query.$and = [];

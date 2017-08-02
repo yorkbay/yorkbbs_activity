@@ -47,6 +47,11 @@ JoinUsr.schema = new SimpleSchema({
         label: "user",
         optional:true
     },
+    'meta.avatar': {
+        type: String,
+        label: "user Avatar",
+        optional:true
+    },
     'meta.dt': {
         type: Date,
         label: "create date",

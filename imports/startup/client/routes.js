@@ -14,16 +14,6 @@ import '../../ui/layouts/admin/body.js';
 import '../../ui/layouts/admin/login.js'
 
 //https://stackoverflow.com/questions/13371324/meteor-session-and-browser-refreshes
-var usr=Session.get('usr');
-
-if(!usr || !usr.id){
-    usr={
-        id:"11111",
-        uname:"约克管家"
-    }
-
-    Session.set("usr",usr);
-}
 
 // Set up all routes in the app
 FlowRouter.route('/', {

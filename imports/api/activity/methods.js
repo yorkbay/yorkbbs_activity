@@ -189,7 +189,7 @@ export const front_activityAggr=new ValidatedMethod({
 
 export const joinActivity=new ValidatedMethod({
     name:'Activity.joinActivity',
-    validate: JoinUsr.simpleSchema().pick(["refid","ti","meta.uid","meta.usr","meta.dt"]).validator({ clean: true, filter: false }),
+    validate: JoinUsr.simpleSchema().pick(["refid","ti","meta.uid","meta.usr","meta.avatar","meta.dt"]).validator({ clean: true, filter: false }),
     run(params) {
         if(Meteor.isServer) {
             let joinusr=JoinUsr.findOne({refid:params.refid,"meta.uid":params.meta.uid});

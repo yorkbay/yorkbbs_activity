@@ -12,7 +12,8 @@ import '../../components/googlemap/rightmap.js';
 import '../../components/layer/error.js';
 import '../../components/layer/share.js';
 import '../../components/layer/weixin.js'
-import {Activity} from '../../../api/activity/activity.js'
+import {JoinUsr} from '../../../api/activity/joinusr.js';
+import {Activity} from '../../../api/activity/activity.js';
 import {Comment} from '../../../api/comment/comment.js';
 
 import { listbytag } from '../../../api/activity/methods.js';
@@ -27,31 +28,33 @@ Template.detail.onCreated(function(){
     var self=this;
     var id=FlowRouter.getParam('id');
     const usr=Session.get("usr");
-    var doc= {
-        "ty":"log",
-        "refid":id,
-        "st":"normal",
-        "meta":{
-            "uid":usr.id,
-            "usr":usr.uname
-        }
-    };
-    usrCenterInsert.call(doc);
+    if(usr) {
+        var doc = {
+            "ty": "log",
+            "refid": id,
+            "st": "normal",
+            "meta": {
+                "uid": usr.id,
+                "usr": usr.uname
+            }
+        };
+        usrCenterInsert.call(doc);
 
-    var log={
-        ty:"front",
-        action:"查看信息",
-        ip:headers.getClientIP(),
-        from:"",
-        refid:id,
-        ti:"",
-        meta:{
-            uid:usr.id,
-            usr:usr.uname,
-            dt:new Date()
+        var log = {
+            ty: "front",
+            action: "查看信息",
+            ip: headers.getClientIP(),
+            from: "",
+            refid: id,
+            ti: "",
+            meta: {
+                uid: usr.id,
+                usr: usr.uname,
+                dt: new Date()
+            }
         }
+        LogInsert.call(log);
     }
-    LogInsert.call(log);
 
     self.autorun(function () {
         self.subscribe('activitybyid',id);
@@ -89,6 +92,10 @@ Template.detail.helpers({
                 keywords: item.ti + ',多伦多周末好去处,周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩,本周好去处,本周活动,周末好去处,娱乐活动,多伦多周末有什么好玩的地方,周末好玩的活动,周末去哪玩儿',
                 description: '约克论坛活动预告,为加拿大多伦多地区的华人和留学生提供周末活动,周末免费活动,多伦多精彩周末,活动讲座,多伦多去哪玩等多伦多活动预告信息'
             });
+            var joinusrs=JoinUsr.find({
+                refid: id
+            });
+            item.joinusrs=joinusrs;
         }
         return item;
     },
@@ -156,6 +163,7 @@ Template.detail.events({
             "meta":{
                 "uid":usr.id,
                 "usr":usr.uname,
+                "avatar":usr.Avatar,
                 "dt":new Date()
             }
 

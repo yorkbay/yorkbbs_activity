@@ -13,6 +13,7 @@ Template.user.events({
             "meta":{
                 "uid":usr.id,
                 "usr":usr.uname,
+                "avatar":usr.Avatar,
                 "dt":new Date()
             }
         }
@@ -29,5 +30,8 @@ Template.user.events({
 Template.user.helpers({
     "display_joinnum":function (joinnum) {
         return joinnum?joinnum:0;
+    },
+    "showavatar":function (avatar) {
+        return avatar.replace("/media","/media/c3");
     }
 });

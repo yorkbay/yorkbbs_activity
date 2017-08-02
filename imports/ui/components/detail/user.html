@@ -10,11 +10,9 @@
             </div>
         </div>
         <div class="views-share-avatar">
-            <a href=""><img src="/img/icon-avtar.jpg" alt="" /></a>
-            <a href=""><img src="/img/icon-avtar.jpg" alt="" /></a>
-            <a href=""><img src="/img/icon-avtar.jpg" alt="" /></a>
-            <a href=""><img src="/img/icon-avtar.jpg" alt="" /></a>
-            <a href=""><img src="/img/icon-avtar.jpg" alt="" /></a>
+            {{#each item in item.joinusrs}}
+            <a href=""><img src="https://i.ybbs.ca{{showavatar item.meta.avatar}}" alt="" /></a>
+            {{/each}}
         </div>
     </div>
 </template>

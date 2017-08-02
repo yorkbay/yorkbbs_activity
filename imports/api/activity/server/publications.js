@@ -182,7 +182,7 @@ Meteor.publishComposite('activitybyid', function (id) {
             find(item) {
                 return JoinUsr.find({
                     refid: item._id
-                });
+                },{limit:5,sort:{'meta.dt':-1}});
             }
         }]
     };
@@ -258,6 +258,7 @@ Meteor.publish('tags.facets', function (params) {
 
     var match={};
     match.st={$nin:["del","hidden"]};
+    match['etime.date']={$gte: new Date()};
     if(time){
 
         let startOfDay;
