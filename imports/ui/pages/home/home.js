@@ -21,7 +21,7 @@ const PostSubs = new SubsManager({
     expireIn: 5
 });
 
-const numOfRecords = 2;
+const numOfRecords = 15;
 
 
 
