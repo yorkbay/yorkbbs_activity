@@ -44,7 +44,7 @@ Template.release.onRendered(function releaseOnRendered() {
         format: 'LT'
     });
 
-    $("a#dropzoneDiv").dropzone({
+    $("#dropzoneDiv").dropzone({
         url: "/upload" ,
         acceptedFiles:"image/*",
         uploadMultiple:true,

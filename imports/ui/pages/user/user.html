@@ -6,18 +6,24 @@
                 <div class="newslist-image-caption newslist-user-caption">
                     <h2><a href="" class="newslist-images-current">{{display_tab}}</a></h2>
                 </div>
-                <div class="newslist-caption-conent">
-                    <ul>
-                        {{#each list }}
-                            <li>
-                                {{> usr_list_item item=findActivitybyid}}
-                            </li>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div class="newslist-more">
-                    <a href="javascript:void(0)" id="more">加载更多</a>
-                </div>
+                {{#if checklist}}
+                    <div class="newslist-caption-conent">
+                        <ul>
+                            {{#each list }}
+                                <li>
+                                    {{> usr_list_item item=findActivitybyid}}
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    <div class="newslist-more">
+                        <a href="javascript:void(0)" id="more">加载更多</a>
+                    </div>
+                {{else}}
+                    <div class="newslist-conent-nodata">
+                        <img src="/img/nodata.png" alt="">
+                    </div>
+                {{/if}}
             </div>
         </div>
     </div>

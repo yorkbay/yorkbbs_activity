@@ -3916,7 +3916,7 @@ th {
       padding: 0.5rem 0; }
       .layer-content ul li:nth-child(3) {
         max-height: 17.5rem;
-        overflow-y: auto; }
+        }
     .layer-content ul em {
       line-height: 1.875rem; }
   .layer-content input[type="text"] {

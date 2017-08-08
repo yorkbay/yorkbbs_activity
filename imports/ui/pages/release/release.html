@@ -11,14 +11,17 @@
                     <label class="release-label"><b>活动标题 </b> <i>*</i></label>
                     <input type="hidden" name="lat" id="lat" value=""/>
                     <input type="hidden" name="lng" id="lng" value=""/>
-                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}"  class="release-input release-input-text" placeholder="介绍一下这是一个什么样的活动" />
+                    <input type="text" name="ti" id="ti" value="{{Activity.ti}}"
+                           class="release-input release-input-text" placeholder="介绍一下这是一个什么样的活动"/>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动地点</b> <i>*</i></label>
                     <div class="release-adress">
                         <div class="release-adress-box">
                             <div class="release-adress-title">场地</div>
-                            <input type="text" value="{{Activity.location}}" id="location" name="location" class="release-adress-large release-input-text J-online-or" placeholder="输入活动举行的具体场地名称" />
+                            <input type="text" value="{{Activity.location}}" id="location" name="location"
+                                   class="release-adress-large release-input-text J-online-or"
+                                   placeholder="输入活动举行的具体场地名称"/>
                         </div>
                         <div class="release-adress-box">
                             <div class="release-adress-title">地址</div>
@@ -43,9 +46,12 @@
                             <div class="release-adress-map">
                                 <input type="hidden" id="hdnlat" value="">
                                 <input type="hidden" id="hdnlng" value="">
-                                <input type="text" value="{{Activity.address}}" id="address" name="address" class="release-adress-input-row release-input-text J-map J-online-or" placeholder="请输入详细地址" />
-                                <a href="" class="release-adress-map-button"><img src="/img/icon-map.jpg" alt="" /></a>
-                                <div id="google-map" class="release-map-layer" style="visibility: hidden; height: 400px;">
+                                <input type="text" value="{{Activity.address}}" id="address" name="address"
+                                       class="release-adress-input-row release-input-text J-map J-online-or"
+                                       placeholder="请输入详细地址"/>
+                                <a href="" class="release-adress-map-button"><img src="/img/icon-map.jpg" alt=""/></a>
+                                <div id="google-map" class="release-map-layer"
+                                     style="visibility: hidden; height: 400px;">
                                     <a href="javascript:;" id="closemap">关闭</a>
                                     {{> googleMap name="releasemap" options=mapOptions}}
                                 </div>
@@ -53,10 +59,13 @@
                         </div>
                         <div class="release-adress-box">
                             <div class="release-adress-title">邮编</div>
-                            <input type="text" value="{{Activity.code}}" id="code" name="code" class="release-adress-small release-input-text J-online-or J-zip-code" placeholder="" />   格式： M2J 1P9    <i class="release-tips J-zip-code-error">请输入正确格式</i>
+                            <input type="text" value="{{Activity.code}}" id="code" name="code"
+                                   class="release-adress-small release-input-text J-online-or J-zip-code"
+                                   placeholder=""/> 格式： M2J 1P9 <i class="release-tips J-zip-code-error">请输入正确格式</i>
                         </div>
                         <div class="release-adress-checkbox">
-                            <input class="J-online-check" type="checkbox" value="" id="isonline" name="isonline"/> 这是一个线上活动
+                            <input class="J-online-check" type="checkbox" value="" id="isonline" name="isonline"/>
+                            这是一个线上活动
                         </div>
                     </div>
                 </div>
@@ -66,25 +75,27 @@
                         <div class="release-date">
                             <div class="release-date-box">
                                 <div class="release-date-choose ">
-                                    <i><img src="/img/icon-date.jpg" alt="" /></i>
-                                    <input type="text" value=""  placeholder="2017/01/26" id="bdate" name="bdate"  />
+                                    <i><img src="/img/icon-date.jpg" alt=""/></i>
+                                    <input type="text" value="" placeholder="2017/01/26" id="bdate" name="bdate"/>
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" placeholder="07:00AM" id="btime" name="btime" />
+                                <input class="release-date-input-time" type="text" value="" placeholder="07:00AM"
+                                       id="btime" name="btime"/>
                             </div>
                         </div>
                     </div>
                     <div class="release-date-arrow">
-                        <i><img src="/img/icon-date-arrow.png" alt="" /></i>
+                        <i><img src="/img/icon-date-arrow.png" alt=""/></i>
                     </div>
                     <div class="release-column">
                         <label class="release-label"><b>结束时间 </b> <i>*</i></label>
                         <div class="release-date">
                             <div class="release-date-box">
                                 <div class="release-date-choose">
-                                    <i><img src="/img/icon-date.jpg" alt="" /></i>
-                                    <input type="text" value="" placeholder="2017/01/26" id="edate" name="edate" />
+                                    <i><img src="/img/icon-date.jpg" alt=""/></i>
+                                    <input type="text" value="" placeholder="2017/01/26" id="edate" name="edate"/>
                                 </div>
-                                <input class="release-date-input-time" type="text" value="" id="etime" name="etime" placeholder="07:00AM" />
+                                <input class="release-date-input-time" type="text" value="" id="etime" name="etime"
+                                       placeholder="07:00AM"/>
                             </div>
                         </div>
                     </div>
@@ -92,10 +103,9 @@
                 <div class="release-row">
                     <label class="release-label"><b>活动图片</b> <i></i></label>
                     <div class="release-camera">
-                        <a  class="release-camera-box" name="dropzoneDiv" id="dropzoneDiv">
-                            <img src="/img/icon-camera.png" alt="">
-                            <p>添加活动图片</p>
-                        </a>
+                        <a class="release-camera-box" name="dropzoneDiv" id="dropzoneDiv"></a>
+                        <img src="/img/icon-camera.png" alt="">
+                        <p>添加活动图片</p>
                     </div>
                     <div class="release-pic" style="display: none;"><img src="/img/img1.jpg" alt=""></div>
                     <div class="release-camera-tips"><i>注：</i> 图片最小尺寸为2160x1080px (2:1 比例) 图片大小不能超出 10MB</div>
@@ -111,35 +121,38 @@
                 </h1>
                 <div class="release-row">
                     <label class="release-label"><b>活动费用 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text J-free-or" placeholder="例：$50" id="pr" name="pr"/>
+                    <input type="text" value="" class="release-input release-input-text J-free-or" placeholder="例：$50"
+                           id="pr" name="pr"/>
                     <div class="release-adress-checkbox">
                         <input class="J-free-check" type="checkbox" value="" id="isfree" name="isfree">这是一个免费的活动
                     </div>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动网址 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="site" name="site"/>
+                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="site"
+                           name="site"/>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>联系电话 </b> <i></i></label>
-                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="tel" name="tel"/>
+                    <input type="text" value="" class="release-input release-input-text" placeholder="" id="tel"
+                           name="tel"/>
                 </div>
                 <div class="release-row">
                     <label class="release-label"><b>活动标签 </b> <i></i></label>
                     <div class="release-tags J-change-tags">
                         <input type="hidden" name="tags" id="tags" value=""/>
                         {{#each tag in tags}}
-                        <a href="" class="" tag="{{tag.tg}}">
-                            <i><img src="/img/icon-arrow-bottom.png" alt="" /></i>
-                            <em>{{tag.tg}}</em>
-                        </a>
+                            <a href="" class="" tag="{{tag.tg}}">
+                                <i><img src="/img/icon-arrow-bottom.png" alt=""/></i>
+                                <em>{{tag.tg}}</em>
+                            </a>
                         {{/each}}
                     </div>
                 </div>
             </section>
         </div>
         <div class="release-button">
-            <a href="javascript:;" id="sub" class="release-button-yes"><img src="/img/icon-yes.png" alt="发布" /> 发布</a>
+            <a href="javascript:;" id="sub" class="release-button-yes"><img src="/img/icon-yes.png" alt="发布"/> 发布</a>
         </div>
     </div>
 </template>

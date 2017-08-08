@@ -10,7 +10,7 @@
                                 <div class="newslist-cover">
                                     <a href="/activity/{{item._id}}" title=""><img src="{{item.logo}}" alt=""></a>
                                     <p class="newslist-channel"><a href="/activity/{{item._id}}" title="">{{display_pr item.pr }}</a></p>
-                                    <span class="newslist-label" style="background:{{display_color item.imgtagcl}} ">{{item.imgtag}}</span>
+                                    {{#if item.imgtag}}<span class="newslist-label" style="background:{{display_color item.imgtagcl}} ">{{item.imgtag}}</span>{{/if}}
                                 </div>
                                 <div class="newslist-body">
                                     <div class="newslist-date">{{ formatDate_MD item.btime.date }} 至 {{ formatDate_MD item.etime.date }}</div>

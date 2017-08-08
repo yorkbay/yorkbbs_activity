@@ -91,6 +91,17 @@ Template.usercenter.helpers({
                 break;
         }
         return tab;
+    },
+    "checklist":function () {
+        const instance = Template.instance();
+        const ty = instance.ty.get();
+        const limit = instance.limit.get();
+
+        var uid=Session.get("usr").id;
+
+        let list=findbyuid.call({ty,uid,limit}).fetch();
+
+        return list.length>0?true:false;
     }
 });
 

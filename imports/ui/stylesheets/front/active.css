@@ -2885,7 +2885,7 @@ th {
       height: 3.125rem;
       margin: 0 0 0 0.625rem;
       padding: 0.625rem 0.9375rem;
-      width: 37%; } }
+      width: 32%; } }
 
 .release-date-arrow {
   float: left;
@@ -2900,17 +2900,21 @@ th {
 .release-camera {
   float: left;
   margin: 0 0.625rem 0 0;
-  padding: 0.625rem;
+  padding: 0.9375rem 0.625rem;
+  position: relative;
+  text-align: center;
   width: 15.625rem; }
+.release-camera img {
+  max-width: 2.5rem;
+  padding: 0.9375rem 0 0.3125rem; }
 
 .release-camera-box {
   display: table;
   text-align: center;
-  padding: 1.25rem 0.625rem 0.625rem;
+  padding: 4.375rem 0.625rem 0.625rem;
+  position: absolute;
   vertical-align: middle;
-  width: 100%; }
-  .release-camera-box > img {
-    max-width: 2.5rem; }
+  width: 14.375rem; }
 
 .release-camera-tips {
   float: left;
@@ -6306,3 +6310,6 @@ and open the template in the editor.
   font-family: Verdana, Geneva, sans-serif; }
 
 /*# sourceMappingURL=active.css.map */
+.newslist-conent-nodata {
+  padding: 1.25rem;
+  text-align: center; }
